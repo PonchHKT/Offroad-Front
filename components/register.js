@@ -35,7 +35,7 @@ const { width: WIDTH } = Dimensions.get('window')
   return (
     <View style={styles.logoContainer}>
         <Image source={logo} style={styles.logo}></Image>
-        <Text style={styles.logoText}>OFFROAD BIKE TRIP</Text>
+        <Text style={styles.logoText}>Register</Text>
       </View>
 
 
@@ -43,5 +43,19 @@ const { width: WIDTH } = Dimensions.get('window')
 }
 
 const styles = StyleSheet.create({
-  
+  logoContainer: {
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  logo: {
+    width: 150,
+    height: 150,
+  },
+  logoText: {
+    color: 'black',
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginTop: 10,
+    opacity: 0.5
+  },
 });
