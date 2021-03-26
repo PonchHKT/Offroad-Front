@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ImageBackground, CheckBox, Dimensions, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, CheckBox, Dimensions, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import bgImage from '../assets/images/background.jpg';
 import Icon from 'react-native-vector-icons/Ionicons'
 import Icon2 from 'react-native-vector-icons/FontAwesome';
 import GPicker from './genderpicker.js';
+import { emailValidator } from '../helpers/register/emailValidator'
+import { passwordValidator } from '../helpers/register/passwordValidator'
+import { birthValidator } from '../helpers/register/birthValidator'
+import { nameValidator } from '../helpers/register/nameValidator'
 
 const { width: WIDTH } = Dimensions.get('window')
 
@@ -42,6 +46,7 @@ const { width: WIDTH } = Dimensions.get('window')
 
   return (
     <ImageBackground source={bgImage} style={styles.backgroundContainer}>
+      <ScrollView>
     <View style={styles.logoContainer}>
         <Text style={styles.logoText}>BECOME ONE OF US!</Text>
       </View>
@@ -58,7 +63,10 @@ const { width: WIDTH } = Dimensions.get('window')
         onChangeText={(text) => setName({ value: text, error: '' })}
         error={!!name.error}
         errorText={name.error}/>
-        <Text style={styles.error}>{password.error}</Text>
+        { name.error ?
+        <Text style={styles.error}>{name.error}</Text>
+        : 
+      <View></View> }
         </View>
 
         <View style={styles.inputContainer}>
@@ -78,7 +86,10 @@ const { width: WIDTH } = Dimensions.get('window')
         placeholderTextColor={'black'}
         underlineColorAndroid='transparent'
       />
+      { email.error ?
       <Text style={styles.error}>{email.error}</Text>
+      : 
+      <View></View> }
       </View>
 
       <View style={styles.inputContainer}>
@@ -94,7 +105,10 @@ const { width: WIDTH } = Dimensions.get('window')
         error={!!birth.error}
         errorText={birth.error}
       />
+      { birth.error ? 
       <Text style={styles.error}>{birth.error}</Text>
+      : 
+      <View></View> }
       </View>
 
       <View style={styles.inputContainer}>
@@ -148,10 +162,10 @@ const { width: WIDTH } = Dimensions.get('window')
       name={'information-circle-outline'} style={styles.cgusize} size={28} color={'black'}>
       </Icon>
       </TouchableOpacity>
+
       </View>
-
+      </ScrollView>
     </ImageBackground>
-
 
   );
 }
@@ -177,9 +191,9 @@ const styles = StyleSheet.create({
     color: 'black',
     fontSize: 30,
     fontWeight: 'bold',
-    marginTop: 10,
+    marginTop: 80,
     opacity: 0.5,
-    bottom: 30,
+    bottom: 10,
   },
 inputContainer1: {
 },
@@ -197,6 +211,7 @@ input: {
   marginHorizontal: 25,
   borderWidth: 0.8,
   borderColor: 'black',
+  marginBottom: 7,
 },
 inputIcon: {
   position: 'absolute',
@@ -216,7 +231,7 @@ btnRegister: {
   backgroundColor: 'rgba(230, 126, 34,1.0)',
   justifyContent: 'center',
   alignSelf: 'center',
-  marginTop: 30,
+  marginTop: 20,
 },
 text: {
   color: 'rgba(255, 255, 255, 0.7)',
@@ -244,7 +259,19 @@ cgusize: {
   color: 'black',
   textAlign: 'center',
   left: 134,
-  bottom: 107,
+  bottom: 97,
+},
+error: {
+  alignSelf: 'center',
+  color: 'red',
+  backgroundColor: 'pink',
+  fontSize: 12,
+  marginTop: 5,
+  borderRadius: 30,
+  paddingLeft: 4,
+  paddingRight: 4,
+  borderColor: 'red',
+  borderWidth: 1,
 },
 
 
