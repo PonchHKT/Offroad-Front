@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, ImageBackground, Image, Dimensions, TextInput, TouchableOpacity } from 'react-native';
 import bgImage from '../assets/images/background.jpg';
 import logo from '../assets/images/motocrosslogo.png';
+import Google from '../assets/images/google.png';
 import Icon from 'react-native-vector-icons/Ionicons'
 
 const { width: WIDTH } = Dimensions.get('window')
@@ -78,6 +79,13 @@ const { width: WIDTH } = Dimensions.get('window')
       </TouchableOpacity>
       <Text style={styles.error}>{password.error}</Text>
       </View>
+      <Image source={Google} style={styles.logoGoogle}></Image>
+      <TouchableOpacity 
+            style={styles.btnGoogle}
+            onPress={() => navigation.navigate('todolist')}
+            onPress={onLoginPressed}>
+      <Text style={styles.textGoogle} >Sign in with Google</Text>
+      </TouchableOpacity>
 
       <TouchableOpacity 
             style={styles.btnLogin}
@@ -105,11 +113,11 @@ backgroundContainer: {
 },
 logoContainer: {
   alignItems: 'center',
-  marginBottom: 50,
+  marginBottom: 10,
 },
 logo: {
-  width: 120,
-  height: 120,
+  width: 150,
+  height: 150,
 },
 logoText: {
   color: 'black',
@@ -117,6 +125,13 @@ logoText: {
   fontWeight: 'bold',
   marginTop: 10,
   opacity: 0.5
+},
+logoGoogle: {
+  width: 20,
+  height: 20,
+  right: 85,
+  top: 32,
+  zIndex: 10,
 },
 inputContainer: {
   marginTop: 5,
@@ -152,6 +167,24 @@ btnLogin: {
   justifyContent: 'center',
   marginTop: 20,
 },
+
+btnGoogle: {
+  width: WIDTH - 130,
+  height: 45,
+  borderRadius: 0,    
+  backgroundColor: 'white',
+  justifyContent: 'center',
+  borderWidth: 1,
+  borderColor: 'gray',
+},
+
+textGoogle: {
+  color:'#7d7d7d',
+  fontSize: 16,
+  fontWeight: 'bold',
+  textAlign: 'center',
+},
+
 text: {
   color: 'rgba(255, 255, 255, 0.7)',
   fontSize: 16,
