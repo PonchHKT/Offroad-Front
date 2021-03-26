@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ImageBackground, Image, Dimensions, TextInput, TouchableOpacity } from 'react-native';
-import logo from '../assets/images/motocrosslogo.png';
+import { StyleSheet, Text, View, ImageBackground, CheckBox, Dimensions, TextInput, TouchableOpacity } from 'react-native';
 import bgImage from '../assets/images/background.jpg';
 import Icon from 'react-native-vector-icons/Ionicons'
 import Icon2 from 'react-native-vector-icons/FontAwesome';
@@ -44,8 +43,7 @@ const { width: WIDTH } = Dimensions.get('window')
   return (
     <ImageBackground source={bgImage} style={styles.backgroundContainer}>
     <View style={styles.logoContainer}>
-        <Image source={logo} style={styles.logo}></Image>
-        <Text style={styles.logoText}>Register</Text>
+        <Text style={styles.logoText}>BECOME ONE OF US!</Text>
       </View>
 
       <View style={styles.inputContainer}>
@@ -127,11 +125,30 @@ const { width: WIDTH } = Dimensions.get('window')
       <View></View> }
       </View>
 
+      <View style={styles.checkboxContainer}>
+      <CheckBox
+      value={isSelected}
+      onValueChange={setSelection}
+      style={styles.checkbox}
+      />
+      <Text style={styles.label}>Do you accept our terms and conditions ?</Text>
+      </View>
+
+      <View>
       <TouchableOpacity 
             style={styles.btnRegister}
             onPress={onRegisterPressed}>
       <Text style={styles.text} >Register</Text>
       </TouchableOpacity>
+      </View>
+
+      <View>
+      <TouchableOpacity>
+      <Icon onPress={() => Alert.alert('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum')} 
+      name={'information-circle-outline'} style={styles.cgusize} size={28} color={'black'}>
+      </Icon>
+      </TouchableOpacity>
+      </View>
 
     </ImageBackground>
 
@@ -158,10 +175,11 @@ const styles = StyleSheet.create({
   logoText: {
     justifyContent: 'center',
     color: 'black',
-    fontSize: 20,
+    fontSize: 30,
     fontWeight: 'bold',
     marginTop: 10,
-    opacity: 0.5
+    opacity: 0.5,
+    bottom: 30,
   },
 inputContainer1: {
 },
@@ -192,18 +210,41 @@ btnEye: {
   right: 37,
 },
 btnRegister: {
-  width: WIDTH - 130,
+  width: WIDTH - 100,
   height: 45,
   borderRadius: 45,    
   backgroundColor: 'rgba(230, 126, 34,1.0)',
   justifyContent: 'center',
   alignSelf: 'center',
-  marginTop: 20,
+  marginTop: 30,
 },
 text: {
   color: 'rgba(255, 255, 255, 0.7)',
   fontSize: 16,
   textAlign: 'center',
+},
+checkboxContainer: {
+  flexDirection: "row",
+  left: 30,
+},
+checkbox: {
+  alignSelf: "center",
+},
+label: {
+  color: 'black',
+  fontSize: 13,
+  textAlign: 'center',
+  marginTop: 8,
+  left: 2,
+},
+cgusize: {
+  fontSize: 20,
+  marginLeft: 3,
+  paddingTop: 7,
+  color: 'black',
+  textAlign: 'center',
+  left: 134,
+  bottom: 107,
 },
 
 
