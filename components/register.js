@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, ImageBackground, CheckBox, Dimensions, TextInpu
 import bgImage from '../assets/images/background.jpg';
 import Icon from 'react-native-vector-icons/Ionicons'
 import Icon2 from 'react-native-vector-icons/FontAwesome';
-import GPicker from './genderpicker.js';
+import RadioButton from 'react-native-radio-button'
 import { emailValidator } from '../helpers/register/emailValidator'
 import { passwordValidator } from '../helpers/register/passwordValidator'
 import { birthValidator } from '../helpers/register/birthValidator'
@@ -93,30 +93,6 @@ const { width: WIDTH } = Dimensions.get('window')
       </View>
 
       <View style={styles.inputContainer}>
-      <Icon name={'fitness-outline'} size={28} color={'black'} style={styles.inputIcon} />
-        <TextInput
-        style={styles.input}
-        placeholder={'DD/MMM/YYYY'}
-        placeholderTextColor={'black'}
-        underlineColorAndroid='transparent'
-        returnKeyType="done"
-        value={birth.value}
-        onChangeText={(text) => setBirth({ value: text, error: '' })}
-        error={!!birth.error}
-        errorText={birth.error}
-      />
-      { birth.error ? 
-      <Text style={styles.error}>{birth.error}</Text>
-      : 
-      <View></View> }
-      </View>
-
-      <View style={styles.inputContainer}>
-      <Icon2 name={'venus-mars'} size={28} color={'black'} style={styles.inputIcon} />
-      <GPicker/>
-      </View>
-
-      <View style={styles.inputContainer}>
         <Icon name={'lock-closed-outline'} size={28} color={'black'} 
             style={styles.inputIcon} />
         <TextInput
@@ -137,6 +113,18 @@ const { width: WIDTH } = Dimensions.get('window')
       <Text style={styles.error}>{password.error}</Text>
       : 
       <View></View> }
+      </View>
+
+      <View style={styles.radio}>
+      <RadioButton
+            size={6}
+            animation={'bounceIn'}
+            isSelected={true}
+            value={isSelected}
+            onValueChange={setSelection}
+            outerColor={'black'}
+            innerColor={'black'}
+      />
       </View>
 
       <View style={styles.checkboxContainer}>
@@ -273,6 +261,7 @@ error: {
   borderColor: 'red',
   borderWidth: 1,
 },
+
 
 
 });
