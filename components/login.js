@@ -5,6 +5,8 @@ import bgImage from '../assets/images/background.jpg';
 import logo from '../assets/images/motocrosslogo.png';
 import Google from '../assets/images/google.png';
 import Icon from 'react-native-vector-icons/Ionicons'
+import { emailValidator } from '../helpers/login/emailValidator'
+import { passwordValidator } from '../helpers/login/passwordValidator'
 
 const { width: WIDTH } = Dimensions.get('window')
 
@@ -40,7 +42,7 @@ const { width: WIDTH } = Dimensions.get('window')
         <Image source={logo} style={styles.logo}></Image>
         <Text style={styles.logoText}>OFFROAD BIKE TRIP</Text>
       </View>
-      <View style={styles.inputContainer}>
+      <View style={styles.inputContainer1}>
         <Icon name={'mail-outline'} size={28} color={'black'} 
             style={styles.inputIcon} />
         <TextInput
@@ -57,10 +59,13 @@ const { width: WIDTH } = Dimensions.get('window')
             placeholder={'Email'}
             placeholderTextColor={'black'}
             underlineColorAndroid='transparent'/>
+            { email.error ?
       <Text style={styles.error}>{email.error}</Text>
+      : 
+      <View></View> }
       </View>
 
-      <View style={styles.inputContainer}>
+      <View style={styles.inputContainer2}>
         <Icon name={'lock-closed-outline'} size={28} color={'black'} 
             style={styles.inputIcon} />
         <TextInput
@@ -77,19 +82,19 @@ const { width: WIDTH } = Dimensions.get('window')
       <TouchableOpacity style={styles.btnEye}>
         <Icon onPress={changeSecurity} name={'ios-eye-outline'} size={26} color={'black'}/>
       </TouchableOpacity>
+      { password.error ?
       <Text style={styles.error}>{password.error}</Text>
+      : 
+      <View></View> }
       </View>
       <Image source={Google} style={styles.logoGoogle}></Image>
       <TouchableOpacity 
-            style={styles.btnGoogle}
-            onPress={() => navigation.navigate('todolist')}
-            onPress={onLoginPressed}>
+            style={styles.btnGoogle}>
       <Text style={styles.textGoogle} >Sign in with Google</Text>
       </TouchableOpacity>
 
       <TouchableOpacity 
             style={styles.btnLogin}
-            onPress={() => navigation.navigate('todolist')}
             onPress={onLoginPressed}>
       <Text style={styles.text} >Login</Text>
       </TouchableOpacity>
@@ -133,8 +138,10 @@ logoGoogle: {
   top: 32,
   zIndex: 10,
 },
-inputContainer: {
-  marginTop: 5,
+inputContainer1: {
+  marginBottom: 7,
+},
+inputContainer2: {
 },
 input: {
   width: WIDTH - 55,
@@ -206,8 +213,15 @@ clickHere: {
 error: {
   alignSelf: 'center',
   color: 'red',
-  backgroundColor: 'transparent',
-  fontSize: 16,
+  backgroundColor: 'pink',
+  fontSize: 12,
+  marginTop: 5,
+  borderRadius: 30,
+  paddingLeft: 4,
+  paddingRight: 4,
+  borderColor: 'red',
+  borderWidth: 1,
+
 },
 });
 
