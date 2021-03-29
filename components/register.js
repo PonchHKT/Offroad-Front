@@ -115,6 +115,9 @@ const { width: WIDTH } = Dimensions.get('window')
       <View></View> }
       </View>
 
+      <View>
+      <Text style={styles.niveau}>Level :</Text>
+      </View>
       <View style={styles.radio}>
       <RadioButton
             size={6}
@@ -122,9 +125,32 @@ const { width: WIDTH } = Dimensions.get('window')
             isSelected={true}
             value={isSelected}
             onValueChange={setSelection}
-            outerColor={'black'}
-            innerColor={'black'}
-      />
+            outerColor={'rgba(230, 126, 34,1.0)'}
+            innerColor={'black'} />
+      <RadioButton
+            size={6}
+            animation={'bounceIn'}
+            isSelected={true}
+            value={isSelected}
+            onValueChange={setSelection}
+            outerColor={'rgba(230, 126, 34,1.0)'}
+            innerColor={'black'} />
+      <RadioButton
+            size={6}
+            animation={'bounceIn'}
+            isSelected={true}
+            value={isSelected}
+            onValueChange={setSelection}
+            outerColor={'rgba(230, 126, 34,1.0)'}
+            innerColor={'black'} />
+      <RadioButton
+            size={6}
+            animation={'bounceIn'}
+            isSelected={true}
+            value={isSelected}
+            onValueChange={setSelection}
+            outerColor={'rgba(230, 126, 34,1.0)'}
+            innerColor={'black'} />
       </View>
 
       <View style={styles.checkboxContainer}>
@@ -260,6 +286,13 @@ error: {
   paddingRight: 4,
   borderColor: 'red',
   borderWidth: 1,
+},
+niveau: {
+  fontWeight: 'bold',
+  left: 28,
+},
+radio: {
+  alignSelf: 'center',
 },
 
 
