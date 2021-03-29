@@ -247,7 +247,7 @@ const styles = StyleSheet.create({
       color: 'black',
       fontSize: 16,
       textAlign: 'center',
-      paddingTop: 50,
+      paddingTop: 30,
   },
   clickHere: {
       textDecorationLine: 'underline',
