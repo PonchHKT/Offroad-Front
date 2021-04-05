@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, StyleSheet, Text, Dimensions } from "react-native";
+import { View, TouchableOpacity, StyleSheet, Text, Dimensions } from "react-native";
 
 const { width: WIDTH } = Dimensions.get('window')
 
@@ -27,12 +27,15 @@ export default function CustomButton(props) {
     });    
     
     return (
-        <TouchableOpacity
+        <View
             key={props.id}
-            style={styles.button}
-            onPress={props.actionsbtn}
         >
-            <Text style={styles.btntxt}>{props.title}</Text>
-        </TouchableOpacity>
+            <TouchableOpacity
+                style={styles.button}
+                onPress={props.actionsbtn}
+            >
+                <Text style={styles.btntxt}>{props.title}</Text>
+            </TouchableOpacity>
+        </View>
     )
 }

@@ -28,7 +28,19 @@ export default function CustomInput(props) {
             top: 22,
             right: 5,
             fontSize: 20
-        }
+        },
+        error: {
+            alignSelf: 'center',
+            color: 'red',
+            backgroundColor: 'pink',
+            fontSize: 12,
+            marginTop: 5,
+            borderRadius: 30,
+            paddingLeft: 4,
+            paddingRight: 4,
+            borderColor: 'red',
+            borderWidth: 1,
+        },
     });
     
     return (

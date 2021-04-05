@@ -1,8 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, Dimensions } from "react-native";
 
-const { width: WIDTH } = Dimensions.get('window')
-
 export default function CustomTitle(props) {
 
     const styles = StyleSheet.create({
@@ -17,6 +15,6 @@ export default function CustomTitle(props) {
     });    
     
     return (
-        <Text style={styles.title} key={props.id}>{props.text}</Text>
+        <Text style={styles.title} key={props.id}>{props.title}</Text>
     )
 }

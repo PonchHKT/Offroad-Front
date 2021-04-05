@@ -5,10 +5,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import bgImage from '../assets/images/background.jpg';
 import logo from '../assets/images/motocrosslogo.png';
-import Google from '../assets/images/google.png';
-import Icon from 'react-native-vector-icons/Ionicons'
 import { emailValidator } from '../helpers/login/emailValidator'
 import { passwordValidator } from '../helpers/login/passwordValidator'
+
+import GoogleButton from '../components/Google';
+import CustomTitle from '../components/CustomTitle';
+import CustomInput from '../components/CustomInput';
+import CustomButton from '../components/CustomButton';
 
 const { width: WIDTH } = Dimensions.get('window')
 
@@ -68,90 +71,67 @@ export function login({ navigation }) {
         }
     }
 
-  return (
-      <ImageBackground source={bgImage} style={styles.backgroundContainer}>
-          <ScrollView>
-          <View style={styles.logoContainer}>
-              <Image source={logo} style={styles.logo}></Image>
-              <Text style={styles.logoText}>OFFROAD BIKE TRIP</Text>
-          </View>
+    return (
+        <ImageBackground source={bgImage} style={styles.backgroundContainer}>
+            <ScrollView>
+                <View style={styles.logoContainer}>
+                    <Image source={logo} style={styles.logo}></Image>
+                    <CustomTitle
+                        key={1}
+                        id={1}
+                        title={'OFFROAD BIKE TRIP'}
+                    />
+                </View>
 
-          <View style={styles.inputContainer1}>
-              <Icon name={'mail-outline'} 
-                  size={28} 
-                  color={'black'} 
-                  style={styles.inputIcon} />
-              <TextInput
-                  style={styles.input}
-                  returnKeyType="next"
-                  value={email.value}
-                  onChangeText={(text) => setEmail({ value: text, error: '' })}
-                  error={!!email.error}
-                  errorText={email.error}
-                  autoCapitalize="none"
-                  autoCompleteType="email"
-                  textContentType="emailAddress"
-                  keyboardType="email-address"
-                  placeholder={'Email'}
-                  placeholderTextColor={'black'}
-                  underlineColorAndroid='transparent'/>
+                <CustomInput
+                    key={1}
+                    id={1}
+                    placeholder={'Email'}
+                    valeur={email.value}
+                    error={!!email.error}
+                    errorText={email.error}
+                    text={(text) => setEmail({ value: text, error: '' })}
+                    secure={false}
+                    pwd={false}
+                />
 
-              { email.error ?
-                  <Text style={styles.error}>{email.error}</Text>
-              : 
-                  <View></View> 
-              }
-          </View>
+                <CustomInput
+                    key={2}
+                    id={2}
+                    placeholder={'Password'}
+                    valeur={password.value}
+                    error={!!password.error}
+                    errorText={password.error}
+                    text={(text) => setPassword({ value: text, error: '' })}
+                    secure={security}
+                    pwd={true}
+                    changeVisibility={changeSecurity}
+                />
 
-          <View style={styles.inputContainer2}>
-              <Icon name={'lock-closed-outline'} 
-                  size={28} 
-                  color={'black'} 
-                  style={styles.inputIcon} />
-              <TextInput
-                  style={styles.input}
-                  placeholder={'Password'}
-                  returnKeyType="done"
-                  value={password.value}
-                  onChangeText={(text) => setPassword({ value: text, error: '' })}
-                  error={!!password.error}
-                  errorText={password.error}
-                  placeholderTextColor={'black'}
-                  underlineColorAndroid='transparent'
-                  secureTextEntry={security} />
-              <TouchableOpacity style={styles.btnEye}>
-                  <Icon onPress={changeSecurity} name={'ios-eye-outline'} size={26} color={'black'}/>
-              </TouchableOpacity>
+                <GoogleButton
+                    key={3}
+                    id={3}
+                    title={'Login with Google'}
+                />
+        
+                <CustomButton
+                    key={4}
+                    id={4}
+                    actionsbtn={() => onLoginPressed()}
+                    title={'Login'}
+                />
 
-              { password.error ?
-                  <Text style={styles.error}>{password.error}</Text>
-              : 
-                  <View></View> 
-              }
-          </View>
+                <View>
+                    <Text style={styles.noAccount}>Don't have an account yet?</Text>
 
-          <Image source={Google} style={styles.logoGoogle}></Image>
+                    <TouchableOpacity>
+                        <Text onPress={() => navigation.navigate('register')} style={styles.clickHere}> Make one!</Text>
+                    </TouchableOpacity>
+                </View>
 
-          <TouchableOpacity 
-              style={styles.btnGoogle}>
-              <Text style={styles.textGoogle} >Sign in with Google</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity 
-              style={styles.btnLogin}
-              onPress={onLoginPressed}>
-              <Text style={styles.text} >Login</Text>
-          </TouchableOpacity>
-
-          <Text style={styles.noAccount}>Don't have an account yet?</Text>
-
-          <TouchableOpacity>
-              <Text onPress={() => navigation.navigate('register')} style={styles.clickHere}> Make one!</Text>
-          </TouchableOpacity>
-
-      <StatusBar style="auto" />
-      </ScrollView>
-    </ImageBackground>
+                <StatusBar style="auto" />
+            </ScrollView>
+        </ImageBackground>
     ); 
   }
 
@@ -172,73 +152,7 @@ const styles = StyleSheet.create({
       height: 150,
       marginTop: 30,
   },
-  logoText: {
-      color: 'black',
-      fontSize: 20,
-      fontWeight: 'bold',
-      marginTop: 10,
-      opacity: 0.5
-  },
-  logoGoogle: {
-      width: 20,
-      height: 20,
-      right: 85,
-      left: 80,
-      top: 32,
-      zIndex: 10,
-  },
-  inputContainer1: {
-      marginBottom: 7,
-  },
-  input: {
-      width: WIDTH - 55,
-      height: 45,
-      borderRadius: 10,
-      fontSize: 16,
-      paddingLeft: 45,
-      backgroundColor: '#ecf0f1',
-      color: 'black',
-      marginHorizontal: 25,
-      borderWidth: 0.8,
-      borderColor: 'black',
-  },
-  inputIcon: {
-      position: 'absolute',
-      top: 8,
-      left: 37,
-      zIndex: 10,
-  },
-  btnEye: {
-      position: 'absolute',
-      top: 8,
-      right: 37,
-  },
-  btnLogin: {
-      width: WIDTH - 130,
-      height: 45,
-      borderRadius: 45,    
-      backgroundColor: 'rgba(230, 126, 34,1.0)',
-      justifyContent: 'center',
-      marginTop: 20,
-      alignSelf: 'center',
-  },
-  btnGoogle: {
-      width: WIDTH - 130,
-      height: 45,
-      borderRadius: 0,    
-      backgroundColor: 'white',
-      justifyContent: 'center',
-      alignSelf: 'center',
-      borderWidth: 1,
-      borderColor: 'gray',
-  },
-  textGoogle: {
-      color:'#7d7d7d',
-      fontSize: 16,
-      fontWeight: 'bold',
-      textAlign: 'center',
-      top: 10,
-  },
+
   text: {
       color: 'rgba(255, 255, 255, 0.7)',
       fontSize: 16,
