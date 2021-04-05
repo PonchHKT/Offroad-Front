@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ImageBackground, Image, Dimensions, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Image, Dimensions, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import bgImage from '../assets/images/background.jpg';
@@ -70,7 +70,7 @@ export function login({ navigation }) {
 
   return (
       <ImageBackground source={bgImage} style={styles.backgroundContainer}>
-
+          <ScrollView>
           <View style={styles.logoContainer}>
               <Image source={logo} style={styles.logo}></Image>
               <Text style={styles.logoText}>OFFROAD BIKE TRIP</Text>
@@ -150,6 +150,7 @@ export function login({ navigation }) {
           </TouchableOpacity>
 
       <StatusBar style="auto" />
+      </ScrollView>
     </ImageBackground>
     ); 
   }
@@ -169,6 +170,7 @@ const styles = StyleSheet.create({
   logo: {
       width: 150,
       height: 150,
+      marginTop: 30,
   },
   logoText: {
       color: 'black',
@@ -181,6 +183,7 @@ const styles = StyleSheet.create({
       width: 20,
       height: 20,
       right: 85,
+      left: 80,
       top: 32,
       zIndex: 10,
   },
@@ -217,6 +220,7 @@ const styles = StyleSheet.create({
       backgroundColor: 'rgba(230, 126, 34,1.0)',
       justifyContent: 'center',
       marginTop: 20,
+      alignSelf: 'center',
   },
   btnGoogle: {
       width: WIDTH - 130,
@@ -224,6 +228,7 @@ const styles = StyleSheet.create({
       borderRadius: 0,    
       backgroundColor: 'white',
       justifyContent: 'center',
+      alignSelf: 'center',
       borderWidth: 1,
       borderColor: 'gray',
   },
@@ -232,6 +237,7 @@ const styles = StyleSheet.create({
       fontSize: 16,
       fontWeight: 'bold',
       textAlign: 'center',
+      top: 10,
   },
   text: {
       color: 'rgba(255, 255, 255, 0.7)',

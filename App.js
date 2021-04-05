@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { login } from './components/login';
 import { register } from './components/register';
+import { startrando } from './components/startrando';
 /*
 import { register } from './components/register';
 import { forgetpassword } from './components/forgetpassword'
@@ -26,6 +27,7 @@ export default function App() {
       }}>
         <Stack.Screen name="login" component={login} />
         <Stack.Screen name="register" component={register} />
+        <Stack.Screen name="startrando" component={startrando} />
       </Stack.Navigator>
     </NavigationContainer>
   );
