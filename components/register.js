@@ -33,7 +33,7 @@ const { width: WIDTH } = Dimensions.get('window')
     }
         navigation.reset({
         index: 0,
-        routes: [{ name: '' }],
+        routes: [{ name: 'startrando' }],
     })
 }
     const changeSecurity = () => {
@@ -163,7 +163,7 @@ const { width: WIDTH } = Dimensions.get('window')
       </View>
 
       <View>
-      <TouchableOpacity 
+      <TouchableOpacity onPress={() => navigation.navigate('startrando')}
             style={styles.btnRegister}
             onPress={onRegisterPressed}>
       <Text style={styles.text} >Register</Text>
