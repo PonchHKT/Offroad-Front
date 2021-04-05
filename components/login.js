@@ -34,68 +34,87 @@ const { width: WIDTH } = Dimensions.get('window')
     }
 
   return (
-    <ImageBackground source={bgImage} style={styles.backgroundContainer}>
-      <View style={styles.logoContainer}>
-        <Image source={logo} style={styles.logo}></Image>
-        <Text style={styles.logoText}>AYMENE & PONCH</Text>
-      </View>
-      <View style={styles.inputContainer}>
-        <Icon name={'ios-person-outline'} size={28} color={'rgba(255, 255, 255, 0.7)'} 
-        style={styles.inputIcon} />
-        <TextInput
-        style={styles.input}
-        returnKeyType="next"
-        value={email.value}
-        onChangeText={(text) => setEmail({ value: text, error: '' })}
-        error={!!email.error}
-        errorText={email.error}
-        autoCapitalize="none"
-        autoCompleteType="email"
-        textContentType="emailAddress"
-        keyboardType="email-address"
-        placeholder={'Email'}
-        placeholderTextColor={'rgba(255, 255, 255, 0.7)'}
-        underlineColorAndroid='transparent'
-      />
-      <Text style={styles.error}>{email.error}</Text>
-      </View>
+      <ImageBackground source={bgImage} style={styles.backgroundContainer}>
+          <ScrollView>
+              
+          <View style={styles.logoContainer}>
+              <Image source={logo} style={styles.logo}></Image>
+              <Text style={styles.logoText}>OFFROAD BIKE TRIP</Text>
+          </View>
 
-      <View style={styles.inputContainer}>
-        <Icon name={'lock-closed-outline'} size={28} color={'rgba(255, 255, 255, 0.7)'} 
-        style={styles.inputIcon} />
-        <TextInput
-        style={styles.input}
-        placeholder={'Password'}
-        returnKeyType="done"
-        value={password.value}
-        onChangeText={(text) => setPassword({ value: text, error: '' })}
-        error={!!password.error}
-        errorText={password.error}
-        placeholderTextColor={'rgba(255, 255, 255, 0.7)'}
-        underlineColorAndroid='transparent'
-        secureTextEntry={security}
-      />
-      
-      <TouchableOpacity style={styles.btnEye}>
-        <Icon onPress={changeSecurity} name={'ios-eye-outline'} size={26} color={'rgba(255, 255, 255, 0.7)'}/>
-      </TouchableOpacity>
-      <Text style={styles.error}>{password.error}</Text>
-      </View>
-      <TouchableOpacity 
-      style={styles.btnLogin}
-      onPress={() => navigation.navigate('todolist')}
-      onPress={onLoginPressed}>
-        <Text
-        style={styles.text} >Login</Text>
-      </TouchableOpacity>
+          <View style={styles.inputContainer1}>
+              <Icon name={'mail-outline'} 
+                  size={28} 
+                  color={'black'} 
+                  style={styles.inputIcon} />
+              <TextInput
+                  style={styles.input}
+                  returnKeyType="next"
+                  value={email.value}
+                  onChangeText={(text) => setEmail({ value: text, error: '' })}
+                  error={email.error}
+                  errorText={email.error}
+                  autoCapitalize="none"
+                  autoCompleteType="email"
+                  textContentType="emailAddress"
+                  keyboardType="email-address"
+                  placeholder={'Email'}
+                  placeholderTextColor={'black'}
+                  underlineColorAndroid='transparent'/>
 
-        <Text
-        style={styles.noAccount}>Don't have an account yet?</Text>
-        <TouchableOpacity>
-        <Text onPress={() => navigation.navigate('register')} 
-              style={styles.clickUnderline, styles.noAccount} 
-              fontWeight="bold"> Click here</Text>
-      </TouchableOpacity>
+              { email.error ?
+                  <Text style={styles.error}>{email.error}</Text>
+              : 
+                  <View></View> 
+              }
+          </View>
+
+          <View style={styles.inputContainer2}>
+              <Icon name={'lock-closed-outline'} 
+                  size={28} 
+                  color={'black'} 
+                  style={styles.inputIcon} />
+              <TextInput
+                  style={styles.input}
+                  placeholder={'Password'}
+                  returnKeyType="done"
+                  value={password.value}
+                  onChangeText={(text) => setPassword({ value: text, error: '' })}
+                  error={!!password.error}
+                  errorText={password.error}
+                  placeholderTextColor={'black'}
+                  underlineColorAndroid='transparent'
+                  secureTextEntry={security} />
+              <TouchableOpacity style={styles.btnEye}>
+                  <Icon onPress={changeSecurity} name={'ios-eye-outline'} size={26} color={'black'}/>
+              </TouchableOpacity>
+
+              { password.error ?
+                  <Text style={styles.error}>{password.error}</Text>
+              : 
+                  <View></View> 
+              }
+          </View>
+
+          <Image source={Google} style={styles.logoGoogle}></Image>
+
+          <TouchableOpacity 
+              style={styles.btnGoogle}>
+              <Text style={styles.textGoogle} >Sign in with Google</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity 
+              style={styles.btnLogin}
+              onPress={onLoginPressed}>
+              <Text style={styles.text} >Login</Text>
+          </TouchableOpacity>
+
+          <Text style={styles.noAccount}>Don't have an account yet?</Text>
+
+          <TouchableOpacity>
+              <Text onPress={() => navigation.navigate('register')} style={styles.clickHere}> Make one!</Text>
+          </TouchableOpacity>
+
       <StatusBar style="auto" />
     </ImageBackground>
 
