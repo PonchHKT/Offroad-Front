@@ -71,7 +71,6 @@ export function login({ navigation }) {
   return (
       <ImageBackground source={bgImage} style={styles.backgroundContainer}>
           <ScrollView>
-              
           <View style={styles.logoContainer}>
               <Image source={logo} style={styles.logo}></Image>
               <Text style={styles.logoText}>OFFROAD BIKE TRIP</Text>
@@ -183,6 +182,7 @@ const styles = StyleSheet.create({
   logoGoogle: {
       width: 20,
       height: 20,
+      right: 85,
       left: 80,
       top: 32,
       zIndex: 10,
@@ -227,6 +227,7 @@ const styles = StyleSheet.create({
       height: 45,
       borderRadius: 0,    
       backgroundColor: 'white',
+      justifyContent: 'center',
       alignSelf: 'center',
       borderWidth: 1,
       borderColor: 'gray',
@@ -247,7 +248,7 @@ const styles = StyleSheet.create({
       color: 'black',
       fontSize: 16,
       textAlign: 'center',
-      paddingTop: 30,
+      paddingTop: 20,
   },
   clickHere: {
       textDecorationLine: 'underline',

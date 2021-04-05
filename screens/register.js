@@ -63,6 +63,7 @@ const { width: WIDTH } = Dimensions.get('window')
         onChangeText={(text) => setName({ value: text, error: '' })}
         error={!!name.error}
         errorText={name.error}/>
+
         { name.error ?
         <Text style={styles.error}>{name.error}</Text>
         : 
@@ -86,6 +87,7 @@ const { width: WIDTH } = Dimensions.get('window')
         placeholderTextColor={'black'}
         underlineColorAndroid='transparent'
       />
+
       { email.error ?
       <Text style={styles.error}>{email.error}</Text>
       : 
@@ -114,6 +116,7 @@ const { width: WIDTH } = Dimensions.get('window')
       : 
       <View></View> }
       </View>
+
 
       <View>
       <Text style={styles.niveau}>Level :</Text>
@@ -294,7 +297,6 @@ niveau: {
 radio: {
   alignSelf: 'center',
 },
-
 
 
 });
