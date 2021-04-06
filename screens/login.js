@@ -28,8 +28,6 @@ export function login({ navigation }) {
         if (emailError || passwordError) {
             setEmail({ ...email, error: emailError })
             setPassword({ ...password, error: passwordError })
-            console.log(email.error)
-            console.log(password)
             return;
 
         } else {
@@ -142,7 +140,7 @@ const styles = StyleSheet.create({
         resizeMode: "cover", 
         flex:1, 
         height: '100%', 
-        width: '100%'
+        width: '100%',
     },
     logoContainer: {
         alignItems: 'center',
@@ -151,7 +149,7 @@ const styles = StyleSheet.create({
     logo: {
         width: 150,
         height: 150,
-        marginTop: 30,
+        marginTop: 40,
     },
     noAccount: {
         color: 'black',

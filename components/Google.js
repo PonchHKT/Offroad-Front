@@ -13,14 +13,14 @@ export default function GoogleButton(props) {
         logoGoogle: {
             width: 20,
             height: 20,
-            right: -10,
+            right: -20,
             top: 33,
             zIndex: 10,
         },
         btnGoogle: {
             width: WIDTH - 130,
             height: 45,
-            borderRadius: 0,    
+            borderRadius: 20,    
             backgroundColor: 'white',
             justifyContent: 'center',
             borderWidth: 1,

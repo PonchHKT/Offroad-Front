@@ -8,7 +8,8 @@ export default function CustomTitle(props) {
             color: 'dimgray',
             height: 50,
             fontSize: 20,
-            marginTop: 20,
+            marginTop: 10,
+            marginBottom: 10,
             fontSize: 30,
             alignSelf: 'center'
         }

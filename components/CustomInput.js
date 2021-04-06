@@ -19,26 +19,29 @@ export default function CustomInput(props) {
             borderColor: "#000000",
             borderRadius: 20,
             paddingLeft: 10,
-            marginTop: 15,
-            marginBottom: 15,
+            marginTop: 10,
         },
         inputIcon: {
             position: 'absolute',
-            top: 22,
+            top: 17,
             right: 5,
             fontSize: 20
         },
-        error: {
+        errorView: {
             alignSelf: 'center',
-            color: 'red',
             backgroundColor: 'pink',
-            fontSize: 12,
+            marginTop: 5,
             marginBottom: 5,
             borderRadius: 30,
+            borderColor: 'red',
             paddingLeft: 4,
             paddingRight: 4,
-            borderColor: 'red',
             borderWidth: 1,
+        },
+        error: {
+            color: 'red',   
+            fontSize: 12,
+            lineHeight: 20  
         },
     });
     
@@ -70,13 +73,13 @@ export default function CustomInput(props) {
                     <View></View> 
                 }
             </View> 
-            <View>
                 { props.error ?
-                    <Text style={styles.error}>{props.errorText}</Text>
+                    <View style={styles.errorView}>
+                        <Text style={styles.error}>{props.errorText}</Text>
+                    </View>
                 : 
                     <Text></Text>
                 }
-            </View>
         </View>
     )
 }
