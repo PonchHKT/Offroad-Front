@@ -6,21 +6,22 @@ const { width: WIDTH } = Dimensions.get('window')
 export default function CustomButton(props) {
 
     const styles = StyleSheet.create({
-        button: {
+        buttonView: {
             alignSelf: 'center',
+        },
+        button: {
+            justifyContent: 'center',
             width: WIDTH - 200,
             height: 55,
             backgroundColor: "#e74c3c",
             borderWidth: 1.75,
             borderColor: "#000000",
-            opacity: 0.8,
             borderRadius: 15,
             marginTop: 15,
         },
         btntxt: {
             color: "#FBFBFB",
-            alignSelf: 'center',
-            marginTop: '4%',
+            textAlign: 'center',
             fontSize: 20,
             fontWeight: 'bold'
         }
@@ -29,6 +30,7 @@ export default function CustomButton(props) {
     return (
         <View
             key={props.id}
+            style={styles.buttonView}
         >
             <TouchableOpacity
                 style={styles.button}

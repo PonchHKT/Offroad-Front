@@ -28,6 +28,8 @@ export function login({ navigation }) {
         if (emailError || passwordError) {
             setEmail({ ...email, error: emailError })
             setPassword({ ...password, error: passwordError })
+            console.log(email.error)
+            console.log(password)
             return;
 
         } else {
@@ -84,8 +86,8 @@ export function login({ navigation }) {
                 </View>
 
                 <CustomInput
-                    key={1}
-                    id={1}
+                    key={2}
+                    id={2}
                     placeholder={'Email'}
                     valeur={email.value}
                     error={!!email.error}
@@ -96,8 +98,8 @@ export function login({ navigation }) {
                 />
 
                 <CustomInput
-                    key={2}
-                    id={2}
+                    key={3}
+                    id={3}
                     placeholder={'Password'}
                     valeur={password.value}
                     error={!!password.error}
@@ -109,14 +111,14 @@ export function login({ navigation }) {
                 />
 
                 <GoogleButton
-                    key={3}
-                    id={3}
+                    key={4}
+                    id={4}
                     title={'Login with Google'}
                 />
         
                 <CustomButton
-                    key={4}
-                    id={4}
+                    key={5}
+                    id={5}
                     actionsbtn={() => onLoginPressed()}
                     title={'Login'}
                 />
@@ -136,51 +138,33 @@ export function login({ navigation }) {
   }
 
 const styles = StyleSheet.create({
-  backgroundContainer: {
-      resizeMode: "cover", 
-      flex:1, 
-      height: '100%', 
-      width: '100%'
-  },
-  logoContainer: {
-      alignItems: 'center',
-      marginBottom: 10,
-  },
-  logo: {
-      width: 150,
-      height: 150,
-      marginTop: 30,
-  },
-
-  text: {
-      color: 'rgba(255, 255, 255, 0.7)',
-      fontSize: 16,
-      textAlign: 'center',
-  },
-  noAccount: {
-      color: 'black',
-      fontSize: 16,
-      textAlign: 'center',
-      paddingTop: 20,
-  },
-  clickHere: {
-      textDecorationLine: 'underline',
-      fontWeight: 'bold',
-      color: 'black',
-      fontSize: 16,
-      textAlign: 'center',
-  },
-  error: {
-      alignSelf: 'center',
-      color: 'red',
-      backgroundColor: 'pink',
-      fontSize: 12,
-      marginTop: 5,
-      borderRadius: 30,
-      paddingLeft: 4,
-      paddingRight: 4,
-      borderColor: 'red',
-      borderWidth: 1,
-  },
+    backgroundContainer: {
+        resizeMode: "cover", 
+        flex:1, 
+        height: '100%', 
+        width: '100%'
+    },
+    logoContainer: {
+        alignItems: 'center',
+        marginBottom: 10,
+    },
+    logo: {
+        width: 150,
+        height: 150,
+        marginTop: 30,
+    },
+    noAccount: {
+        color: 'black',
+        fontSize: 16,
+        textAlign: 'center',
+        paddingTop: 20,
+    },
+    clickHere: {
+        textDecorationLine: 'underline',
+        fontWeight: 'bold',
+        color: 'black',
+        fontSize: 16,
+        textAlign: 'center',
+    },
 });
 
