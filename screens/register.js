@@ -5,14 +5,15 @@ import logo from '../assets/images/motocrosslogo.png';
 
 import Icon from 'react-native-vector-icons/Ionicons'
 import RadioButton from 'react-native-radio-button'
-import { emailValidator } from '../helpers/register/emailValidator'
-import { passwordValidator } from '../helpers/register/passwordValidator'
-import { pseudoValidator } from '../helpers/register/pseudoValidator'
+import { emailValidator } from '../helpers/auth/emailValidator'
+import { passwordValidator } from '../helpers/auth/passwordValidator'
+import { pseudoValidator } from '../helpers/auth/pseudoValidator'
 
 import GoogleButton from '../components/Google';
 import CustomTitle from '../components/CustomTitle';
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
+import Separator from '../components/Separator';
 
 const { width: WIDTH } = Dimensions.get('window')
   
@@ -39,7 +40,31 @@ export function register({ navigation }) {
       return;
 
     } else {
-
+        fetch(`https://offroad-app.herokuapp.com/api/auth/signup`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                pseudo: pseudo.value,
+                email: email.value,
+                level: 'INTERMEDIAIRE',
+                password: password.value,
+                passwordConfirmation: password2.value,
+            })
+            })
+            .then((response) => response.json())
+            .then((responseData) => {
+                if(responseData.error !== "id is not defined") {
+                    Alert.alert(responseData.error)
+                } else {
+                    navigation.navigate('login')
+                }
+            })
+        .catch((error) =>{
+            console.error(error);
+        }) 
     }
   }
   const changeSecurity = () => {
@@ -53,12 +78,17 @@ export function register({ navigation }) {
   return (
       <ImageBackground source={bgImage} style={styles.backgroundContainer}>
           <ScrollView>
+            
+              <Separator></Separator>
+              <Separator></Separator>
+              <Separator></Separator>
+
               <View style={styles.logoContainer}>
                   <Image source={logo} style={styles.logo}></Image>
                   <CustomTitle
                       key={1}
                       id={1}
-                      title={'OFFROAD BIKE TRIP'}
+                      title={'S\'inscrire'}
                   />
               </View>
 
@@ -126,8 +156,7 @@ export function register({ navigation }) {
                       icon={'lock-closed-outline'}
                   />
 
-               
-          </View>
+              </View>
 
       
 
@@ -170,90 +199,71 @@ export function register({ navigation }) {
       </View>
 
       <View style={styles.checkboxContainer}>
-      <CheckBox
-      value={isSelected}
-      onValueChange={setSelection}
-      style={styles.checkbox}
-      />
-      <Text style={styles.label}>Do you accept our terms and conditions ?</Text>
+          <CheckBox
+              value={isSelected}
+              onValueChange={setSelection}
+              style={styles.checkbox}
+            />
+            <Text style={styles.label}>Do you accept our terms and conditions ?</Text>
+            <TouchableOpacity>
+                <Icon onPress={() => Alert.alert('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum')} 
+                  name={'information-circle-outline'} style={styles.cgusize} size={28} color={'black'} />
+            </TouchableOpacity>
       </View>
 
-      <View>
-      <TouchableOpacity onPress={() => navigation.navigate('startrando')}
-            style={styles.btnRegister}
-            onPress={onRegisterPressed}>
-      <Text style={styles.text} >Register</Text>
-      </TouchableOpacity>
-      </View>
+                <CustomButton
+                    key={6}
+                    id={6}
+                    actionsbtn={() => onRegisterPressed()}
+                    title={'S\'inscrire'}
+                />
 
-      <View>
-      <TouchableOpacity>
-      <Icon onPress={() => Alert.alert('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum')} 
-      name={'information-circle-outline'} style={styles.cgusize} size={28} color={'black'}>
-      </Icon>
-      </TouchableOpacity>
+                  <View>
+                    <Text style={styles.Account}>Vous possédez déjà un compte ?</Text>
 
-      </View>
-      </ScrollView>
-    </ImageBackground>
+                    <TouchableOpacity>
+                        <Text onPress={() => navigation.navigate('login')} style={styles.clickHere}>Se connecter !</Text>
+                    </TouchableOpacity>
+                </View>
+
+                <Separator></Separator>
+
+          </ScrollView>
+      </ImageBackground>
 
   );
 }
 
 const styles = StyleSheet.create({
   backgroundContainer: {
-    flex: 1,
-    width: null,
-    height: null,
-    justifyContent: 'center',
+    resizeMode: "cover", 
+    flex:1, 
+    height: '100%', 
+    width: '100%',
   },
   logoContainer: {
-    justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 5,
+    marginBottom: 10,
   },
   logo: {
-    width: 120,
-    height: 120,
+    width: 150,
+    height: 150,
   },
-  logoText: {
-    justifyContent: 'center',
+  Account: {
     color: 'black',
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginTop: 80,
-    opacity: 0.5,
-    bottom: 10,
+    fontSize: 16,
+    textAlign: 'center',
+    paddingTop: 20,
   },
-inputContainer1: {
-},
-inputContainer: {
-  marginBottom: 3,
-},
-input: {
-  width: WIDTH - 55,
-  height: 45,
-  borderRadius: 10,
-  fontSize: 16,
-  paddingLeft: 45,
-  backgroundColor: '#ecf0f1',
-  color: 'black',
-  marginHorizontal: 25,
-  borderWidth: 0.8,
-  borderColor: 'black',
-  marginBottom: 7,
-},
-inputIcon: {
-  position: 'absolute',
-  top: 8,
-  left: 37,
-  zIndex: 10,
-},
-btnEye: {
-  position: 'absolute',
-  top: 8,
-  right: 37,
-},
+  clickHere: {
+      textDecorationLine: 'underline',
+      fontWeight: 'bold',
+      color: 'black',
+      fontSize: 16,
+      textAlign: 'center',
+  },
+  
+
 btnRegister: {
   width: WIDTH - 100,
   height: 45,
@@ -263,11 +273,7 @@ btnRegister: {
   alignSelf: 'center',
   marginTop: 20,
 },
-text: {
-  color: 'rgba(255, 255, 255, 0.7)',
-  fontSize: 16,
-  textAlign: 'center',
-},
+
 checkboxContainer: {
   flexDirection: "row",
   left: 30,
@@ -291,18 +297,7 @@ cgusize: {
   left: 134,
   bottom: 97,
 },
-error: {
-  alignSelf: 'center',
-  color: 'red',
-  backgroundColor: 'pink',
-  fontSize: 12,
-  marginTop: 5,
-  borderRadius: 30,
-  paddingLeft: 4,
-  paddingRight: 4,
-  borderColor: 'red',
-  borderWidth: 1,
-},
+
 niveau: {
   fontWeight: 'bold',
   left: 28,

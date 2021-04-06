@@ -29,7 +29,6 @@ export default function GoogleButton(props) {
         textGoogle: {
             color:'#7d7d7d',
             fontSize: 16,
-            marginLeft: 30,
             fontWeight: 'bold',
             textAlign: 'center',
         },
