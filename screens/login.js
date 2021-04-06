@@ -98,7 +98,7 @@ export function login({ navigation }) {
                 <CustomInput
                     key={3}
                     id={3}
-                    placeholder={'Password'}
+                    placeholder={'Mot de passe'}
                     valeur={password.value}
                     error={!!password.error}
                     errorText={password.error}
@@ -107,11 +107,14 @@ export function login({ navigation }) {
                     pwd={true}
                     changeVisibility={changeSecurity}
                 />
+                <TouchableOpacity>
+                    <Text onPress={() => navigation.navigate('register')} style={styles.clickHere}>Mot de passe oublié ?</Text>
+                </TouchableOpacity>
 
                 <GoogleButton
                     key={4}
                     id={4}
-                    title={'Login with Google'}
+                    title={'Connexion avec Google'}
                 />
         
                 <CustomButton
@@ -122,10 +125,10 @@ export function login({ navigation }) {
                 />
 
                 <View>
-                    <Text style={styles.noAccount}>Don't have an account yet?</Text>
+                    <Text style={styles.noAccount}>Vous ne possédez pas de compte ?</Text>
 
                     <TouchableOpacity>
-                        <Text onPress={() => navigation.navigate('register')} style={styles.clickHere}>Make one!</Text>
+                        <Text onPress={() => navigation.navigate('register')} style={styles.clickHere}>Créer un compte !</Text>
                     </TouchableOpacity>
                 </View>
 

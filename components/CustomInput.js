@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Dimensions, TextInput , View, Text } from "react-native";
 import { IconButton } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/Ionicons'
 
 const { width: WIDTH } = Dimensions.get('window')
 
@@ -8,22 +9,27 @@ export default function CustomInput(props) {
 
     const styles = StyleSheet.create({
         containerText: {
+            width: WIDTH - 60,
             flexDirection: 'row',
-            alignSelf: 'center'
-        },
-        textInput: {
-            width: WIDTH - 75,
-            height: 55,
+            alignSelf: 'center',
             backgroundColor: "ghostwhite",
             borderWidth: 1.5,
             borderColor: "#000000",
             borderRadius: 20,
-            paddingLeft: 10,
-            marginTop: 10,
+            height: 50,
+
         },
         inputIcon: {
+            top: 8,
+            left: 5
+        },
+        textInput: {
+            width: WIDTH - 105,
+            paddingLeft: 10,
+        },
+        pwdIcon: {
             position: 'absolute',
-            top: 17,
+            top: 3,
             right: 5,
             fontSize: 20
         },
@@ -50,7 +56,12 @@ export default function CustomInput(props) {
             <View
                 key={props.id}
                 style={styles.containerText}
-            >
+            >   
+                { props.useIcon ?
+                    <Icon name={props.icon} size={28} color={'black'} style={styles.inputIcon} />
+                :
+                    <View></View>
+                }
                 <TextInput
                     style={styles.textInput}
                     autoCorrect={false}
@@ -64,7 +75,7 @@ export default function CustomInput(props) {
                 />   
                 { props.pwd ? 
                     <IconButton 
-                        style={styles.inputIcon}
+                        style={styles.pwdIcon}
                         icon={ props.secure ? "eye" : "eye-off"}
                         size={20}
                         onPress={props.changeVisibility}

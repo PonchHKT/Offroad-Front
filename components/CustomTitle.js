@@ -1,11 +1,11 @@
 import React from 'react';
-import { StyleSheet, Text, Dimensions } from "react-native";
+import { StyleSheet, Text } from "react-native";
 
 export default function CustomTitle(props) {
 
     const styles = StyleSheet.create({
         title: {
-            color: 'dimgray',
+            color: 'black',
             height: 50,
             fontSize: 20,
             marginTop: 10,

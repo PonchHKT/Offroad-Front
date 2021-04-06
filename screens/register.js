@@ -1,122 +1,135 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ImageBackground, CheckBox, Dimensions, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, CheckBox, Dimensions, Alert, TouchableOpacity, ScrollView, Image } from 'react-native';
 import bgImage from '../assets/images/background.jpg';
+import logo from '../assets/images/motocrosslogo.png';
+
 import Icon from 'react-native-vector-icons/Ionicons'
-import Icon2 from 'react-native-vector-icons/FontAwesome';
 import RadioButton from 'react-native-radio-button'
 import { emailValidator } from '../helpers/register/emailValidator'
 import { passwordValidator } from '../helpers/register/passwordValidator'
-import { birthValidator } from '../helpers/register/birthValidator'
-import { nameValidator } from '../helpers/register/nameValidator'
+import { pseudoValidator } from '../helpers/register/pseudoValidator'
+
+import GoogleButton from '../components/Google';
+import CustomTitle from '../components/CustomTitle';
+import CustomInput from '../components/CustomInput';
+import CustomButton from '../components/CustomButton';
 
 const { width: WIDTH } = Dimensions.get('window')
+  
+export function register({ navigation }) {
+  const [security, setSecurity] = useState(true)
+  const [isSelected, setSelection] = useState(false);
 
-   export function register({ navigation }) {
-    const [security, setSecurity] = useState(true)
-    const [isSelected, setSelection] = useState(false);
-    const [email, setEmail] = useState({ value: '', error: '' })
-    const [password, setPassword] = useState({ value: '', error: '' })
-    const [name, setName] = useState({ value: '', error: '' })
-    const [birth, setBirth] = useState({ value: '', error: ''})
+  const [pseudo, setPseudo] = useState({ value: '', error: '' })
+  const [email, setEmail] = useState({ value: '', error: '' })
+  const [password, setPassword] = useState({ value: '', error: '' })
+  const [password2, setPassword2] = useState({ value: '', error: '' })
 
-    const onRegisterPressed = () => {
-      const emailError = emailValidator(email.value)
-      const passwordError = passwordValidator(password.value)
-      const nameError = nameValidator(name.value)
-      const birthError = birthValidator(birth.value)
-      if (emailError || passwordError) {
-        setEmail({ ...email, error: emailError })
-        setPassword({ ...password, error: passwordError })
-        setName({ ...name, error: nameError })
-        setBirth({ ...birth, error: birthError })
-        return
+  const onRegisterPressed = () => {
+    const pseudoError = pseudoValidator(pseudo.value)
+    const emailError = emailValidator(email.value)
+    const passwordError = passwordValidator(password.value)
+    const passwordError2 = passwordValidator(password2.value)
+
+    if (pseudoError || emailError || passwordError || passwordError2) {
+      setPseudo({ ...pseudo, error: pseudoError })
+      setEmail({ ...email, error: emailError })
+      setPassword({ ...password, error: passwordError })
+      setPassword2({ ...password2, error: passwordError2 })
+      return;
+
+    } else {
+
     }
-        navigation.reset({
-        index: 0,
-        routes: [{ name: 'startrando' }],
-    })
-}
-    const changeSecurity = () => {
-      if(security == true) {
+  }
+  const changeSecurity = () => {
+    { security ?
         setSecurity(false)
-      } else {
+    :
         setSecurity(true)
-      }
     }
+  }
 
   return (
-    <ImageBackground source={bgImage} style={styles.backgroundContainer}>
-      <ScrollView>
-    <View style={styles.logoContainer}>
-        <Text style={styles.logoText}>BECOME ONE OF US!</Text>
-      </View>
+      <ImageBackground source={bgImage} style={styles.backgroundContainer}>
+          <ScrollView>
+              <View style={styles.logoContainer}>
+                  <Image source={logo} style={styles.logo}></Image>
+                  <CustomTitle
+                      key={1}
+                      id={1}
+                      title={'OFFROAD BIKE TRIP'}
+                  />
+              </View>
 
-      <View style={styles.inputContainer}>
-        <Icon name={'ios-person-outline'} size={28} color={'black'} style={styles.inputIcon} />
-        <TextInput
-        style={styles.input}
-        placeholder={'Username'}
-        placeholderTextColor={'black'}
-        underlineColorAndroid='transparent'
-        returnKeyType="done"
-        value={name.value}
-        onChangeText={(text) => setName({ value: text, error: '' })}
-        error={!!name.error}
-        errorText={name.error}/>
+              <View style={styles.inputContainer}>
 
-        { name.error ?
-        <Text style={styles.error}>{name.error}</Text>
-        : 
-      <View></View> }
-        </View>
+                  <CustomInput
+                      key={2}
+                      id={2}
+                      placeholder={'Pseudo'}
+                      valeur={pseudo.value}
+                      error={!!pseudo.error}
+                      errorText={pseudo.error}
+                      text={(text) => setPseudo({ value: text, error: '' })}
+                      secure={false}
+                      pwd={false}
 
-        <View style={styles.inputContainer}>
-        <Icon name={'mail-outline'} size={28} color={'black'} style={styles.inputIcon} />
-        <TextInput
-        style={styles.input}
-        returnKeyType="next"
-        value={email.value}
-        onChangeText={(text) => setEmail({ value: text, error: '' })}
-        error={!!email.error}
-        errorText={email.error}
-        autoCapitalize="none"
-        autoCompleteType="email"
-        textContentType="emailAddress"
-        keyboardType="email-address"
-        placeholder={'Email adress'}
-        placeholderTextColor={'black'}
-        underlineColorAndroid='transparent'
-      />
+                      useIcon={true}
+                      icon={'ios-person-outline'}
+                  />
 
-      { email.error ?
-      <Text style={styles.error}>{email.error}</Text>
-      : 
-      <View></View> }
-      </View>
+                  <CustomInput
+                      key={3}
+                      id={3}
+                      placeholder={'Email'}
+                      valeur={email.value}
+                      error={!!email.error}
+                      errorText={email.error}
+                      text={(text) => setEmail({ value: text, error: '' })}
+                      secure={false}
+                      pwd={false}
 
-      <View style={styles.inputContainer}>
-        <Icon name={'lock-closed-outline'} size={28} color={'black'} 
-            style={styles.inputIcon} />
-        <TextInput
-            style={styles.input}
-            placeholder={'Password'}
-            returnKeyType="done"
-            value={password.value}
-            onChangeText={(text) => setPassword({ value: text, error: '' })}
-            error={!!password.error}
-            errorText={password.error}
-            placeholderTextColor={'black'}
-            underlineColorAndroid='transparent'
-            secureTextEntry={security} />
-      <TouchableOpacity style={styles.btnEye}>
-        <Icon onPress={changeSecurity} name={'ios-eye-outline'} size={26} color={'black'}/>
-      </TouchableOpacity>
-      { password.error ?
-      <Text style={styles.error}>{password.error}</Text>
-      : 
-      <View></View> }
-      </View>
+                      useIcon={true}
+                      icon={'mail-outline'}
+                  />
 
+                  <CustomInput
+                      key={4}
+                      id={4}
+                      placeholder={'Mot de passe'}
+                      valeur={password.value}
+                      error={!!password.error}
+                      errorText={password.error}
+                      text={(text) => setPassword({ value: text, error: '' })}
+                      secure={security}
+                      pwd={true}
+                      changeVisibility={changeSecurity}
+
+                      useIcon={true}
+                      icon={'lock-closed-outline'}
+                  />
+
+                  <CustomInput
+                      key={5}
+                      id={5}
+                      placeholder={'Confirmer mot de passe'}
+                      valeur={password2.value}
+                      error={!!password2.error}
+                      errorText={password2.error}
+                      text={(text) => setPassword2({ value: text, error: '' })}
+                      secure={security}
+                      pwd={true}
+                      changeVisibility={changeSecurity}
+
+                      useIcon={true}
+                      icon={'lock-closed-outline'}
+                  />
+
+               
+          </View>
+
+      
 
       <View>
       <Text style={styles.niveau}>Level :</Text>
