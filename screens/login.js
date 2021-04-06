@@ -32,7 +32,7 @@ export function login({ navigation }) {
 
         } else {
 
-            fetch(`http://localhost:4242/api/auth/signin`, {
+            fetch(`https://offroad-app.herokuapp.com/api/auth/signin`, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -125,7 +125,7 @@ export function login({ navigation }) {
                     <Text style={styles.noAccount}>Don't have an account yet?</Text>
 
                     <TouchableOpacity>
-                        <Text onPress={() => navigation.navigate('register')} style={styles.clickHere}> Make one!</Text>
+                        <Text onPress={() => navigation.navigate('register')} style={styles.clickHere}>Make one!</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -137,11 +137,10 @@ export function login({ navigation }) {
 
 const styles = StyleSheet.create({
   backgroundContainer: {
-      flex: 1,
-      width: null,
-      height: null,
-      justifyContent: 'center',
-      alignItems: 'center',
+      resizeMode: "cover", 
+      flex:1, 
+      height: '100%', 
+      width: '100%'
   },
   logoContainer: {
       alignItems: 'center',

@@ -7,14 +7,14 @@ const { width: WIDTH } = Dimensions.get('window')
 export default function GoogleButton(props) {
 
     const styles = StyleSheet.create({
-        google: {
+        googleView: {
             alignSelf: 'center',
         },
         logoGoogle: {
             width: 20,
             height: 20,
-            right: 85,
-            top: 32,
+            right: -10,
+            top: 33,
             zIndex: 10,
         },
         btnGoogle: {
@@ -37,7 +37,7 @@ export default function GoogleButton(props) {
     return (
         <View
             key={props.id}
-            style={styles.google}
+            style={styles.googleView}
         >
             <Image source={Google} style={styles.logoGoogle}></Image>
 
