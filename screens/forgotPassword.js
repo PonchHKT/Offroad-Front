@@ -39,7 +39,7 @@ export function forgotPassword({ navigation }) {
               console.log(responseData)
                 if (responseData.error == null) {
                     try {
-                        Alert.alert('Un mail vous a été envoyé !')
+                        Alert.alert('Un email vous a été envoyé !')
                         navigation.navigate('login')
                     } catch (e) {
                         console.log(e)

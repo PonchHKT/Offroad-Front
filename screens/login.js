@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import bgImage from '../assets/images/background.jpg';
@@ -44,7 +44,6 @@ export function login({ navigation }) {
             })
             .then((response) => response.json())
             .then((responseData) => {
-              console.log(responseData)
                 if (responseData.error == null) {
                     try {
                         AsyncStorage.setItem('token', responseData.data.token)
