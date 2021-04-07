@@ -1,11 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { View, ScrollView, Text, Dimensions } from 'react-native';
+import { View, ScrollView, Text } from 'react-native';
 
 import CustomTitle from '../components/CustomTitle'
 import Separator from '../components/Separator';
-
-const { width: WIDTH } = Dimensions.get('window')
 
 export function cgu({ navigation }) {
     

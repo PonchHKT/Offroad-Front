@@ -1,22 +1,52 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, View, ScrollView, Alert } from 'react-native';
-import Navbar from '../components/Navbar';
+import { StyleSheet, View, ScrollView, Alert, Dimensions } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 import { IconButton } from 'react-native-paper';
+import MapView, { Marker } from 'react-native-maps';
+
+import Navbar from '../components/Navbar';
+
+const HEIGHT = Dimensions.get("window").height;
 
 export function dashboard({ navigation }) {
-    
+
+    const [region, setRegion] = useState({})
     const [spot, setSpot] = useState({ value: [] })
 
+    if(!region) {
+        navigator.geolocation.getCurrentPosition(success, error, options);
+    }
+
+    let options = {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0
+    };
+    
+    function success(pos) {
+        let crd = pos.coords;
+    
+        setRegion({
+            latitude: crd.latitude,
+            longitude: crd.longitude,
+            latitudeDelta: 0.0922,
+            longitudeDelta: 0.0421,
+        })
+    }
+    
+    function error(err) {
+        console.warn(`ERREUR (${err.code}): ${err.message}`);
+    }
+
+    
     function logout() {
         Alert.alert('You have been disconnected')
         try {
-          AsyncStorage.removeItem('token')
-          navigation.navigate('login')
+            AsyncStorage.removeItem('token')
+            navigation.navigate('login')
         } catch (e) {
-          console.log(e)
+            console.log(e)
         }
       }
 
@@ -53,12 +83,12 @@ export function dashboard({ navigation }) {
                 color={'black'}
                 onPress={() => navigation.navigate('cgu')}
             />
+            <MapView
+                region={region}
+                style={{width: '100%', height: HEIGHT}}
+            >
+            </MapView>
             <StatusBar style="auto" />
         </ScrollView>
     ); 
-  }
-
-const styles = StyleSheet.create({
-    
-});
-
+}
