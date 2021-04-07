@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Dimensions, TextInput , View } from "react-native";
+import { StyleSheet, Dimensions, TextInput , View, Text } from "react-native";
 import { IconButton } from 'react-native-paper';
+import Icon from 'react-native-vector-icons/Ionicons'
 
 const { width: WIDTH } = Dimensions.get('window')
 
@@ -8,61 +9,88 @@ export default function CustomInput(props) {
 
     const styles = StyleSheet.create({
         containerText: {
+            width: WIDTH - 60,
             flexDirection: 'row',
-            alignSelf: 'center'
-        },
-        textInput: {
-            width: WIDTH - 75,
-            height: 55,
-            backgroundColor: "#ded6d4",
+            alignSelf: 'center',
+            backgroundColor: "ghostwhite",
             borderWidth: 1.5,
             borderColor: "#000000",
-            opacity: 0.8,
-            borderRadius: 45,
-            paddingLeft: 10,
-            marginTop: 15,
-            marginBottom: 15,
+            borderRadius: 20,
+            height: 50,
+
         },
         inputIcon: {
+            top: 8,
+            left: 5
+        },
+        textInput: {
+            width: WIDTH - 105,
+            paddingLeft: 10,
+        },
+        pwdIcon: {
             position: 'absolute',
-            top: 22,
+            top: 3,
             right: 5,
             fontSize: 20
-        }
+        },
+        errorView: {
+            alignSelf: 'center',
+            backgroundColor: 'pink',
+            marginTop: 5,
+            marginBottom: 5,
+            borderRadius: 30,
+            borderColor: 'red',
+            paddingLeft: 4,
+            paddingRight: 4,
+            borderWidth: 1,
+        },
+        error: {
+            color: 'red',   
+            fontSize: 12,
+            lineHeight: 20  
+        },
     });
     
     return (
-        <View
-            key={props.id}
-            style={styles.containerText}
-        >
-            <TextInput
-                style={styles.textInput}
-                autoCorrect={false}
-                placeholder={props.placeholder}
-                value={props.valeur}
-                error={props.error}
-                errorText={props.error}
-                autoCapitalize="none"
-                onChangeText={props.text}
-                secureTextEntry={props.secure}
-            />   
-            { props.pwd ? 
-            <IconButton 
-                style={styles.inputIcon}
-                icon="eye"
-                size={20}
-                onPress={props.changeVisibility}
-            />
-            : 
-            <View></View> 
-            } 
-
-            { props.error ?
-                <Text style={styles.error}>{props.error}</Text>
-            : 
-                <View></View>
-            }
+        <View>
+            <View
+                key={props.id}
+                style={styles.containerText}
+            >   
+                { props.useIcon ?
+                    <Icon name={props.icon} size={28} color={'black'} style={styles.inputIcon} />
+                :
+                    <View></View>
+                }
+                <TextInput
+                    style={styles.textInput}
+                    autoCorrect={false}
+                    placeholder={props.placeholder}
+                    value={props.valeur}
+                    error={props.error}
+                    errorText={props.error}
+                    autoCapitalize="none"
+                    onChangeText={props.text}
+                    secureTextEntry={props.secure}
+                />   
+                { props.pwd ? 
+                    <IconButton 
+                        style={styles.pwdIcon}
+                        icon={ props.secure ? "eye" : "eye-off"}
+                        size={20}
+                        onPress={props.changeVisibility}
+                    />
+                : 
+                    <View></View> 
+                }
+            </View> 
+                { props.error ?
+                    <View style={styles.errorView}>
+                        <Text style={styles.error}>{props.errorText}</Text>
+                    </View>
+                : 
+                    <Text></Text>
+                }
         </View>
     )
 }

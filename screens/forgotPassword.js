@@ -1,37 +1,30 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity, ScrollView, Alert } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { StyleSheet, Text, View, ImageBackground, Image, ScrollView, Alert } from 'react-native';
 
 import bgImage from '../assets/images/background.jpg';
 import logo from '../assets/images/motocrosslogo.png';
 import { emailValidator } from '../helpers/auth/emailValidator'
-import { passwordValidator } from '../helpers/auth/passwordValidator'
 
-import GoogleButton from '../components/Google';
 import CustomTitle from '../components/CustomTitle';
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
 import Separator from '../components/Separator';
 
-export function login({ navigation }) {
+export function forgotPassword({ navigation }) {
     
     const [email, setEmail] = useState({ value: '', error: '' })
-    const [password, setPassword] = useState({ value: '', error: '' })
-    const [security, setSecurity] = useState(true)
 
-    const onLoginPressed = () => {
+    const onSendPressed = () => {
         const emailError = emailValidator(email.value)
-        const passwordError = passwordValidator(password.value)
 
-        if (emailError || passwordError) {
+        if (emailError) {
             setEmail({ ...email, error: emailError })
-            setPassword({ ...password, error: passwordError })
             return;
 
         } else {
 
-            fetch(`https://offroad-app.herokuapp.com/api/auth/signin`, {
+            fetch(`https://offroad-app.herokuapp.com/api/auth/forgot-password`, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -39,20 +32,20 @@ export function login({ navigation }) {
                 },
                 body: JSON.stringify({
                     email: email.value,
-                    password: password.value,
                 })
             })
             .then((response) => response.json())
             .then((responseData) => {
+              console.log(responseData)
                 if (responseData.error == null) {
                     try {
-                        AsyncStorage.setItem('token', responseData.data.token)
-                        navigation.navigate('dashboard')
+                        Alert.alert('Un email vous a été envoyé !')
+                        navigation.navigate('login')
                     } catch (e) {
                         console.log(e)
                     }
                 } else {
-                    Alert.alert('COMPTE INEXISTANT')
+                    Alert.alert('EMAIL INEXISTANT')
                 }
               })
           .catch((error) =>{
@@ -61,18 +54,10 @@ export function login({ navigation }) {
         }
     }
 
-    const changeSecurity = () => {
-        { security ?
-            setSecurity(false)
-        :
-            setSecurity(true)
-        }
-    }
 
     return (
         <ImageBackground source={bgImage} style={styles.backgroundContainer}>
             <ScrollView>
-
                 <Separator></Separator>
                 <Separator></Separator>
                 <Separator></Separator>
@@ -82,9 +67,13 @@ export function login({ navigation }) {
                     <CustomTitle
                         key={1}
                         id={1}
-                        title={'Se connecter'}
+                        title={'Mot de passe oublié'}
                     />
                 </View>
+
+                <Text style={styles.text}>
+                    Un email vous sera envoyé, pour récupéré votre mot de passe.
+                </Text>
 
                 <CustomInput
                     key={2}
@@ -97,43 +86,13 @@ export function login({ navigation }) {
                     secure={false}
                     pwd={false}
                 />
-
-                <CustomInput
-                    key={3}
-                    id={3}
-                    placeholder={'Mot de passe'}
-                    valeur={password.value}
-                    error={!!password.error}
-                    errorText={password.error}
-                    text={(text) => setPassword({ value: text, error: '' })}
-                    secure={security}
-                    pwd={true}
-                    changeVisibility={changeSecurity}
-                />
-                <TouchableOpacity>
-                    <Text onPress={() => navigation.navigate('forgotPassword')} style={styles.clickHere}>Mot de passe oublié ?</Text>
-                </TouchableOpacity>
-
-                <GoogleButton
-                    key={4}
-                    id={4}
-                    title={'Connexion avec Google'}
-                />
         
                 <CustomButton
-                    key={5}
-                    id={5}
-                    actionsbtn={() => onLoginPressed()}
-                    title={'Se connecter'}
+                    key={3}
+                    id={3}
+                    actionsbtn={() => onSendPressed()}
+                    title={'Envoyez'}
                 />
-
-                <View>
-                    <Text style={styles.noAccount}>Vous ne possédez pas de compte ?</Text>
-
-                    <TouchableOpacity>
-                        <Text onPress={() => navigation.navigate('register')} style={styles.clickHere}>Créer un compte !</Text>
-                    </TouchableOpacity>
-                </View>
 
                 <StatusBar style="auto" />
             </ScrollView>
@@ -144,7 +103,7 @@ export function login({ navigation }) {
 const styles = StyleSheet.create({
     backgroundContainer: {
         resizeMode: "cover", 
-        flex:1, 
+        flex: 1, 
         height: '100%', 
         width: '100%',
     },
@@ -156,11 +115,10 @@ const styles = StyleSheet.create({
         width: 150,
         height: 150,
     },
-    noAccount: {
-        color: 'black',
-        fontSize: 16,
+    text: {
+        fontSize: 18,
         textAlign: 'center',
-        paddingTop: 20,
+        paddingBottom: 20
     },
     clickHere: {
         textDecorationLine: 'underline',

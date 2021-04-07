@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Dimensions, TextInput , View } from "react-native";
+import { StyleSheet, Dimensions, TouchableOpacity , View, Image, Text} from "react-native";
 import Google from '../assets/images/google.png';
 
 const { width: WIDTH } = Dimensions.get('window')
@@ -7,17 +7,20 @@ const { width: WIDTH } = Dimensions.get('window')
 export default function GoogleButton(props) {
 
     const styles = StyleSheet.create({
+        googleView: {
+            alignSelf: 'center',
+        },
         logoGoogle: {
             width: 20,
             height: 20,
-            right: 85,
-            top: 32,
+            right: -20,
+            top: 33,
             zIndex: 10,
         },
         btnGoogle: {
             width: WIDTH - 130,
             height: 45,
-            borderRadius: 0,    
+            borderRadius: 20,    
             backgroundColor: 'white',
             justifyContent: 'center',
             borderWidth: 1,
@@ -34,7 +37,7 @@ export default function GoogleButton(props) {
     return (
         <View
             key={props.id}
-            style={styles.google}
+            style={styles.googleView}
         >
             <Image source={Google} style={styles.logoGoogle}></Image>
 
