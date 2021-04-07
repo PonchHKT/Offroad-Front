@@ -41,6 +41,12 @@ export function dashboard({ navigation }) {
                 color={'black'}
                 onPress={() => logout()}
             />
+            <IconButton
+                icon={"folder"}
+                size={30}
+                color={'black'}
+                onPress={() => navigation.navigate('spot')}
+            />
             <StatusBar style="auto" />
         </ScrollView>
     ); 

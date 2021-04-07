@@ -12,6 +12,7 @@ import { forgotPassword } from './screens/forgotPassword';
 import { dashboard } from './screens/dashboard';
 
 import { startrando } from './screens/startrando';
+import { spot } from './screens/spot';
 /*
 import { register } from './components/register';
 import { forgetpassword } from './components/forgetpassword'
@@ -59,6 +60,7 @@ export default function App() {
         <Stack.Screen name="dashboard" component={dashboard} />
 
         <Stack.Screen name="startrando" component={startrando} />
+        <Stack.Screen name="spot" component={spot} />
       </Stack.Navigator>
     </NavigationContainer>
   );
