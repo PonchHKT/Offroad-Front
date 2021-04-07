@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, View, ScrollView, Alert, Dimensions } from 'react-native';
+import { StyleSheet, View, ScrollView, Alert, Dimensions, Text } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { IconButton } from 'react-native-paper';
 import MapView, { Marker } from 'react-native-maps';
@@ -11,10 +11,16 @@ const HEIGHT = Dimensions.get("window").height;
 
 export function dashboard({ navigation }) {
 
-    const [region, setRegion] = useState({})
+    const [region, setRegion] = useState({
+        latitude: 0,
+        longitude: 0,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+        verify: false
+    })
     const [spot, setSpot] = useState({ value: [] })
 
-    if(!region) {
+    if(region.verify === false) {
         navigator.geolocation.getCurrentPosition(success, error, options);
     }
 
@@ -32,6 +38,7 @@ export function dashboard({ navigation }) {
             longitude: crd.longitude,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
+            verify: true
         })
     }
     
@@ -81,13 +88,14 @@ export function dashboard({ navigation }) {
                 icon={"eye"}
                 size={30}
                 color={'black'}
-                onPress={() => navigation.navigate('cgu')}
+                onPress={() => navigation.navigate('comments')}
             />
             <MapView
                 region={region}
                 style={{width: '100%', height: HEIGHT}}
             >
             </MapView>
+
             <StatusBar style="auto" />
         </ScrollView>
     ); 
