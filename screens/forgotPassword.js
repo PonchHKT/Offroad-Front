@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ImageBackground, Image, ScrollView, Alert } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Image, ScrollView, Alert, TouchableOpacity } from 'react-native';
 
 import bgImage from '../assets/images/background.jpg';
 import logo from '../assets/images/motocrosslogo.png';
@@ -94,6 +94,14 @@ export function forgotPassword({ navigation }) {
                     title={'Envoyez'}
                 />
 
+                <View>
+                    <Text style={styles.Account}>Vous vous rappelez de votre mot de passe ?</Text>
+
+                    <TouchableOpacity>
+                        <Text onPress={() => navigation.navigate('login')} style={styles.clickHere}>Se connectez !</Text>
+                    </TouchableOpacity>
+                </View>
+
                 <StatusBar style="auto" />
             </ScrollView>
         </ImageBackground>
@@ -119,6 +127,12 @@ const styles = StyleSheet.create({
         fontSize: 18,
         textAlign: 'center',
         paddingBottom: 20
+    },
+    Account: {
+        color: 'black',
+        fontSize: 16,
+        textAlign: 'center',
+        paddingTop: 20,
     },
     clickHere: {
         textDecorationLine: 'underline',
