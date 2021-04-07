@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Dimensions } from "react-native";
 import { SearchBar } from 'react-native-elements';
 import { IconButton } from 'react-native-paper';
+
+const { width: WIDTH } = Dimensions.get('window')
 
 export default function Navbar(props) {
 
@@ -9,14 +11,13 @@ export default function Navbar(props) {
         navbar: {
             flex: 1,
             flexDirection: 'row',
-            backgroundColor: 'grey',
+            backgroundColor: '#e74c3c',
             alignItems: 'center',
             justifyContent: 'space-between',
             paddingTop: 5,
-            paddingBottom: 5
-        },
-        searchbar: {
-            paddingRight: '30%',
+            paddingBottom: 5,
+            borderBottomColor: 'black',
+            borderBottomWidth: 1
         },
     })
 
@@ -31,9 +32,8 @@ export default function Navbar(props) {
             { props.dashboard ?
                 <SearchBar
                     style={styles.searchbar}
-                    inputContainerStyle={{backgroundColor: 'white'}}
-                    containerStyle={{backgroundColor: 'grey', borderBottomColor: 'transparent', borderTopColor: 'transparent'}}
-                    placeholder=""
+                    inputContainerStyle={{backgroundColor: 'white', borderRadius: 20, width: WIDTH - 180}}
+                    containerStyle={{backgroundColor: 'transparent', borderBottomColor: 'transparent', borderTopColor: 'transparent'}}
                     onChangeText={updateSearch}
                     value={search.value}
                 />

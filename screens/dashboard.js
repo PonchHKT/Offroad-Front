@@ -41,6 +41,12 @@ export function dashboard({ navigation }) {
                 color={'black'}
                 onPress={() => logout()}
             />
+            <IconButton
+                icon={"eye"}
+                size={30}
+                color={'black'}
+                onPress={() => navigation.navigate('cgu')}
+            />
             <StatusBar style="auto" />
         </ScrollView>
     ); 

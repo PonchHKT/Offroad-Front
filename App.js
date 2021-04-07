@@ -11,6 +11,8 @@ import { forgotPassword } from './screens/forgotPassword';
 
 import { dashboard } from './screens/dashboard';
 
+import { cgu } from './screens/cgu';
+
 import { startrando } from './screens/startrando';
 /*
 import { register } from './components/register';
@@ -57,6 +59,8 @@ export default function App() {
         <Stack.Screen name="forgotPassword" component={forgotPassword} />
         
         <Stack.Screen name="dashboard" component={dashboard} />
+
+        <Stack.Screen name="cgu" component={cgu} />
 
         <Stack.Screen name="startrando" component={startrando} />
       </Stack.Navigator>
