@@ -1,36 +1,30 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ImageBackground, Image, TouchableWithoutFeedback, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableWithoutFeedback, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
 import Spot from '../assets/images/spots/forest.jpg';
 import {FontAwesome} from '@expo/vector-icons';
 import Separator from '../components/Separator2';
+import Note from '../components/Note';
 
-const numStars = 5
 const { width: WIDTH } = Dimensions.get('window')
 
 export function spot({ navigation }) {
-
-    let stars = []
-
-    for (let x = 1; x <= numStars; x++) {
-        stars.push(
-            <TouchableWithoutFeedback key={x}>
-                <Star />
-            </TouchableWithoutFeedback>
-        )
-    }
+            
     return (
 
-    <ImageBackground style={styles.backgroundContainer}>
-    <ScrollView>
+    <View>
         <Image source={Spot} style={styles.imageSpot}></Image>
         
         <View>
             <Text style={styles.noteText}>Note :</Text>
-            <View style={{ flexDirection: "row"}}>{stars}</View>
+            <Note
+                note={4.5}
+            />
         </View>
+
         <Separator/>
-        <View>
+
+        <ScrollView>
 
             <View>
                 <Text style={styles.user}>[USERNAME], [LEVEL]</Text>
@@ -40,63 +34,64 @@ export function spot({ navigation }) {
                 <Text style={styles.description}>Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.</Text>
             </View>
 
-        <View>
+        </ScrollView>
+
         <Separator/>
-        </View>
 
-        <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.locationTouch}>
-        <FontAwesome 
-        name="location-arrow" 
-        color="black" 
-        style={styles.locationBtn}/>
-        </TouchableOpacity>
-        </View>
+        <View>
+        
+            <View style={styles.buttonContainer}>
+                <TouchableOpacity style={styles.locationTouch}>
+                    <FontAwesome 
+                        name="location-arrow" 
+                        color="black" 
+                        style={styles.locationBtn}/>
+                </TouchableOpacity>
+            </View>
 
-        <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.heartTouch}>
-        <FontAwesome 
-        name="heart" 
-        color="black" 
-        style={styles.heartBtn}/>
-        </TouchableOpacity>
-        </View>
+            <View style={styles.buttonContainer}>
+                <TouchableOpacity style={styles.heartTouch}>
+                    <FontAwesome 
+                        name="heart" 
+                        color="black" 
+                        style={styles.heartBtn}/>
+                </TouchableOpacity>
+            </View>
 
-        <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.shareTouch}>
-        <FontAwesome 
-        name="share" 
-        color="black" 
-        style={styles.shareBtn}/>
-        </TouchableOpacity>
-        </View>
+            <View style={styles.buttonContainer}>
+                <TouchableOpacity style={styles.shareTouch}>
+                    <FontAwesome 
+                        name="share" 
+                        color="black" 
+                        style={styles.shareBtn}/>
+                </TouchableOpacity>
+            </View>
 
-        <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.editTouch}>
-        <FontAwesome 
-        name="edit" 
-        color="black" 
-        style={styles.editBtn}/>
-        </TouchableOpacity>
-        </View>
+            <View style={styles.buttonContainer}>
+                <TouchableOpacity style={styles.editTouch}>
+                    <FontAwesome 
+                        name="edit" 
+                        color="black" 
+                        style={styles.editBtn}/>
+                </TouchableOpacity>
+            </View>
 
-        <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.warningTouch}>
-        <FontAwesome 
-        name="exclamation-triangle" 
-        color="black" 
-        style={styles.warningBtn}/>
-        </TouchableOpacity>
+            <View style={styles.buttonContainer}>
+                <TouchableOpacity style={styles.warningTouch}>
+                    <FontAwesome 
+                        name="exclamation-triangle" 
+                        color="black" 
+                        style={styles.warningBtn}/>
+                </TouchableOpacity>
+            </View>
+
+            <View style={styles.buttonView}>
+                <TouchableOpacity style={styles.button}>
+                    <Text style={styles.buttonText}>Démarrer</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     </View>
-
-        <View style={styles.buttonView}>
-            <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText}>Démarrer</Text>
-            </TouchableOpacity>
-        </View>
-    </ScrollView>
-    </ImageBackground>
     )
 };
 
@@ -110,8 +105,7 @@ class Star extends React.Component {
 
 const styles = StyleSheet.create({
     imageSpot: {
-        flex:1,
-        width: 360,
+        width: WIDTH,
         height: 250,
         marginTop: 25,
     },

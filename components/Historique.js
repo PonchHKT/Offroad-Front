@@ -1,5 +1,7 @@
 import React from 'react';
 import { Image, StyleSheet, Text, View } from "react-native";
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import CustomButton from './CustomButton';
 import Note from './Note';
 
 export default function Historique(props) {
@@ -30,6 +32,11 @@ export default function Historique(props) {
                 key={props.id}
                 note={props.note}
             />
+            <TouchableOpacity>
+                <Text>
+                    Voir
+                </Text>
+            </TouchableOpacity>
         </View>
     )
 }
