@@ -42,6 +42,12 @@ export function dashboard({ navigation }) {
                 onPress={() => logout()}
             />
             <IconButton
+                icon={"folder"}
+                size={30}
+                color={'black'}
+                onPress={() => navigation.navigate('spot')}
+            />
+            <IconButton
                 icon={"eye"}
                 size={30}
                 color={'black'}
