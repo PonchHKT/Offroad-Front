@@ -16,7 +16,9 @@ const styles = StyleSheet.create({
         width: '87%',
         marginTop:'3%',
         opacity: 0.76,
-        marginLeft: 20,
+        marginTop: 20,
+        marginBottom: 20,
         marginRight: 20,
+        marginLeft: 20
     },
 });

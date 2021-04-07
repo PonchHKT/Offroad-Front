@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, TouchableWithoutFeedback, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
 import Spot from '../assets/images/spots/forest.jpg';
 import {FontAwesome} from '@expo/vector-icons';
 import Separator from '../components/Separator2';
@@ -12,7 +12,7 @@ export function spot({ navigation }) {
             
     return (
 
-    <View>
+    <View style={styles.container}>
         <Image source={Spot} style={styles.imageSpot}></Image>
         
         <View>
@@ -24,7 +24,7 @@ export function spot({ navigation }) {
 
         <Separator/>
 
-        <ScrollView>
+        <View style={styles.comments}>
 
             <View>
                 <Text style={styles.user}>[USERNAME], [LEVEL]</Text>
@@ -34,17 +34,18 @@ export function spot({ navigation }) {
                 <Text style={styles.description}>Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.</Text>
             </View>
 
-        </ScrollView>
+        </View>
 
         <Separator/>
 
-        <View>
+        <View style={styles.icons}>
         
             <View style={styles.buttonContainer}>
                 <TouchableOpacity style={styles.locationTouch}>
                     <FontAwesome 
                         name="location-arrow" 
-                        color="black" 
+                        color="black"
+                        size={30}
                         style={styles.locationBtn}/>
                 </TouchableOpacity>
             </View>
@@ -53,7 +54,8 @@ export function spot({ navigation }) {
                 <TouchableOpacity style={styles.heartTouch}>
                     <FontAwesome 
                         name="heart" 
-                        color="black" 
+                        color="black"
+                        size={30}
                         style={styles.heartBtn}/>
                 </TouchableOpacity>
             </View>
@@ -63,6 +65,7 @@ export function spot({ navigation }) {
                     <FontAwesome 
                         name="share" 
                         color="black" 
+                        size={30}
                         style={styles.shareBtn}/>
                 </TouchableOpacity>
             </View>
@@ -72,6 +75,7 @@ export function spot({ navigation }) {
                     <FontAwesome 
                         name="edit" 
                         color="black" 
+                        size={30}
                         style={styles.editBtn}/>
                 </TouchableOpacity>
             </View>
@@ -81,15 +85,17 @@ export function spot({ navigation }) {
                     <FontAwesome 
                         name="exclamation-triangle" 
                         color="black" 
+                        size={30}
                         style={styles.warningBtn}/>
                 </TouchableOpacity>
             </View>
+        </View>
 
-            <View style={styles.buttonView}>
-                <TouchableOpacity style={styles.button}>
-                    <Text style={styles.buttonText}>Démarrer</Text>
-                </TouchableOpacity>
-            </View>
+
+        <View style={styles.buttonView}>
+            <TouchableOpacity style={styles.button}>
+                <Text style={styles.buttonText}>Démarrer</Text>
+            </TouchableOpacity>
         </View>
     </View>
     )
@@ -104,16 +110,12 @@ class Star extends React.Component {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1
+    },
     imageSpot: {
         width: WIDTH,
         height: 250,
-        marginTop: 25,
-    },
-    backgroundContainer: {
-        resizeMode: "cover", 
-        flex:1, 
-        height: '100%', 
-        width: '100%',
     },
     noteText: {
         fontSize: 20,
@@ -121,103 +123,34 @@ const styles = StyleSheet.create({
         marginTop: 10,
         color: '#606060',
     },
-    stars: {
-        marginHorizontal: 4,
-        left: 15,
-        marginTop: 5,
+    comments: {
+        paddingRight: 20,
+        paddingLeft: 20
     },
     user: {
         fontWeight: 'bold',
         color: '#606060',
         fontSize: 16,
-        left: 10,
         marginTop: 5,
     },
     description: {
         color: '#606060',
         fontSize: 15,
-        left: 10,
         marginTop: 5,
     },
     buttonContainer: {
-        marginBottom: 20,
-        marginLeft: 25,
+        paddingBottom: 10,
+        paddingTop: 10,
     },
-    locationBtn: {
-        alignSelf: 'flex-start',
-        fontSize: 38,
-        left: 10,
-        marginTop: 5,
-    },
-    locationTouch: {
-        width: 50,
-        borderRadius: 60,
-        paddingRight: 20,
-        left: 20,
-    },
-    heartBtn: {
-        alignSelf: 'flex-start',
-        fontSize: 38,
-        left: 10,
-        marginTop: 5,
-        marginLeft : -8,
-    },
-    heartTouch: {
-        width: 50,
-        borderRadius: 60,
-        marginBottom: 20,
-        paddingRight: 20,
-        left: 80,
-        bottom: 63,
-    },
-    shareBtn: {
-        alignSelf: 'flex-start',
-        fontSize: 38,
-        left: 10,
-        marginTop: 5,
-        marginLeft : -8,
-    },
-    shareTouch: {
-        width: 50,
-        borderRadius: 60,
-        marginBottom: 20,
-        paddingRight: 20,
-        left: 135,
-        bottom: 146,
-    },
-    editBtn: {
-        alignSelf: 'flex-start',
-        fontSize: 38,
-        left: 10,
-        marginTop: 5,
-        marginLeft : -8,
-    },
-    editTouch: {
-        width: 50,
-        borderRadius: 60,
-        marginBottom: 20,
-        paddingRight: 20,
-        left: 193,
-        bottom: 228,
-    },
-    warningBtn: {
-        alignSelf: 'flex-start',
-        fontSize: 38,
-        left: 10,
-        marginTop: 5,
-        marginLeft : -8,
-    },
-    warningTouch: {
-        width: 50,
-        borderRadius: 60,
-        marginBottom: 20,
-        paddingRight: 20,
-        left: 240,
-        bottom: 313,
+    icons: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignSelf: 'center',
+        width: WIDTH - 50,
     },
     buttonView: {
         alignSelf: 'center',
-        bottom: 360,
     },
     button: {
         justifyContent: 'center',
