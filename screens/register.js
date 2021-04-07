@@ -211,6 +211,10 @@ export function register({ navigation }) {
             </TouchableOpacity>
       </View>
 
+      <Separator />
+      <Separator />
+
+
                 <CustomButton
                     key={6}
                     id={6}

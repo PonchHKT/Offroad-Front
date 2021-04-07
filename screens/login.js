@@ -119,6 +119,9 @@ export function login({ navigation }) {
                     id={4}
                     title={'Connexion avec Google'}
                 />
+
+                <Separator />
+                <Separator />
         
                 <CustomButton
                     key={5}

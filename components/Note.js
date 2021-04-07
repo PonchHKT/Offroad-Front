@@ -13,9 +13,9 @@ export default function Note(props) {
         <View style={{alignItems:'center'}}>
         <Stars
             display={props.note}
-            spacing={8}
+            spacing={4}
             count={5}
-            starSize={40}
+            starSize={30}
             fullStar={require('../assets/images/starFilled.png')}
             emptyStar={require('../assets/images/starEmpty.png')}/>
         </View>

@@ -17,7 +17,6 @@ export default function CustomButton(props) {
             borderWidth: 1.75,
             borderColor: "#000000",
             borderRadius: 15,
-            marginTop: 15,
         },
         btntxt: {
             color: "#FBFBFB",
