@@ -73,9 +73,9 @@ export function login({ navigation }) {
         <ImageBackground source={bgImage} style={styles.backgroundContainer}>
             <ScrollView>
 
-                <Separator></Separator>
-                <Separator></Separator>
-                <Separator></Separator>
+                <Separator/>
+                <Separator/>
+                <Separator/>
 
                 <View style={styles.logoContainer}>
                     <Image source={logo} style={styles.logo}></Image>
