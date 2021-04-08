@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, ScrollView } from 'react-native';
-import Note from '../components/Note';
-import Separator from '../components/Separator2';
-import Separator2 from '../components/Separator';
+
+import Separator from '../components/Separator';
+import Separator2 from '../components/Separator2';
 import CustomButton from '../components/CustomButton';
 import CustomRadio from '../components/CustomRadio';
 import Navbar from '../components/Navbar';
+import CustomTitle from '../components/CustomTitle';
+import CustomInput from '../components/CustomInput';
 
 export function addspotnext({ navigation }) {
 
     const [checked, setChecked] = useState('Débutant');
+    const [adress, setAdress] = useState({});
+    const [infos, setInfos] = useState({});
 
     return (
 
@@ -17,17 +21,22 @@ export function addspotnext({ navigation }) {
 
         <Navbar 
             key={1}
-            id={1}
-            dashboard={true}
-            plus={false}
-            plusPress={() => navigation.navigate('')}
+            dashboard={false}
+            plus={true}
             like={false}
             likePress={() => navigation.navigate('')}
             account={false}
-            accountPress={() => navigation.navigate('')}/>
+            accountPress={() => navigation.navigate('')}
+        />
+
+        <Separator/>
+        <Separator/>
 
         <View>
-            <Text style={styles.title}>Ajout d'un spot</Text>
+            <CustomTitle
+                key={1}
+                title={'Ajout d\'un spot'}
+            />
         </View>
 
         <View style={styles.level}>
@@ -63,32 +72,46 @@ export function addspotnext({ navigation }) {
                 />
             </View>
         </View>
+
         
         <View style={styles.informationbox}>
             <Text style={styles.commentText}>Adresse :</Text>
         </View>
 
         <View>
-            <TextInput style={styles.textInput}> </TextInput>
+            <CustomInput
+                key={1}
+                placeholder={''}
+                valeur={adress}
+                text={(text) => setAdress({ text })}
+                secure={false}
+                pwd={false}
+            />
         </View>
 
 
         <View style={styles.informationbox1}>
-            <Text style={styles.commentText1}>Information supplémentaire :</Text>
+            <Text style={styles.commentText}>Informations supplémentaires :</Text>
         </View>
 
         <View>
-            <TextInput style={styles.textInput1}> </TextInput>
+            <CustomInput
+                key={2}
+                placeholder={''}
+                valeur={infos}
+                text={(text) => setInfos({ text })}
+                secure={false}
+                pwd={false}
+            />
         </View>
 
-        <View style={{bottom: 65}}>
-        <Separator/>
+        <View>
+
+            <Separator2/>
+
             <CustomButton
                 key={1}
-                title={'AJOUTER'}
-                color={'black'}
-                textColor={'white'}
-                border={'gray'}
+                title={'Ajouter'}
             />
         </View>
 
@@ -97,77 +120,17 @@ export function addspotnext({ navigation }) {
 )};
 
 const styles = StyleSheet.create({
-    title: {
-        color: '#606060',
-        alignSelf: 'center',
-        marginTop: 38,
-        fontSize: 32,
-    },
     level: {
         marginTop: 5,
         paddingLeft: '6.5%',
     },
-    informationbox: {
-        bottom: 30,
-    },
+    
     commentText: {
         color: '#606060',
-        justifyContent: 'flex-start',
         fontSize: 18,
-        marginTop: 30,
+        marginTop: 20,
         fontWeight: 'bold',
         left: 25,
-    },
-    textInput: {
-        color: 'white',
-        width: 300,
-        height: 50,
-        marginTop: 8,
-        backgroundColor: '#484848',
-        borderRadius: 5,
-        borderWidth: 2,
-        borderColor: '#606060',
-        left: 20,
-        textAlign: 'left',
-        textAlignVertical: 'top',
-        flexWrap: 'wrap',
-        bottom: 35,
-    },
-    noteText: {
-        fontSize: 20,
-        left: 20,
-        marginTop: 10,
-        color: '#606060',
-    },
-    note: {
-        right: 78,
-        marginTop: 5,
-    },
-    informationbox1: {
-        bottom: 30,
-    },
-    commentText1: {
-        color: '#606060',
-        justifyContent: 'flex-start',
-        fontSize: 18,
-        marginTop: 30,
-        fontWeight: 'bold',
-        left: 25,
-        bottom: 28,
-    },
-    textInput1: {
-        color: 'white',
-        width: 300,
-        height: 50,
-        marginTop: 8,
-        backgroundColor: '#484848',
-        borderRadius: 5,
-        borderWidth: 2,
-        borderColor: '#606060',
-        left: 20,
-        textAlign: 'left',
-        textAlignVertical: 'top',
-        flexWrap: 'wrap',
-        bottom: 60,
+        bottom: 10,
     },
 });

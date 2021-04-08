@@ -79,15 +79,19 @@ export function getHistorique({ navigation }) {
                 />
             </View>
 
-            { historiques.historique.map((historique) => (
-                <Historique
-                  key={historique.id}
-                  id={historique.id}
-                  date={historique.createdAt}
-                  img={historique.content}
-                  note={historique.note}
-                />
-            ))}
+            { !historiques.historique ?
+                <View></View>
+            :
+                historiques.historique.map((historique) => (
+                    <Historique
+                        key={historique.id}
+                        id={historique.id}
+                        date={historique.createdAt}
+                        img={historique.content}
+                        note={historique.note}
+                    />
+                ))
+            }
 
             <StatusBar style="auto" />
         </ScrollView>
