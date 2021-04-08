@@ -15,7 +15,7 @@ export function comments({ navigation }) {
                 {
                     "id": 2,
                     "content": "Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.",
-                    "note": "2",
+                    "note": 2,
                     "createdAt": "2021-04-07T12:57:07.879Z",
                     "updatedAt": "2021-04-07T12:57:07.879Z",
                     "spotId": 1,
@@ -24,7 +24,7 @@ export function comments({ navigation }) {
                 {
                     "id": 3,
                     "content": "blabla",
-                    "note": "2",
+                    "note": 2,
                     "createdAt": "2021-04-07T13:05:54.815Z",
                     "updatedAt": "2021-04-07T13:05:54.816Z",
                     "spotId": 1,

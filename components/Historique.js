@@ -28,6 +28,7 @@ export default function Historique(props) {
             flexDirection: 'row',
             paddingTop: 10,
             alignItems: 'center',
+            justifyContent: 'space-between'
         }
     });   
     
@@ -61,6 +62,7 @@ export default function Historique(props) {
                     <CustomButton
                         key={1}
                         title={'Voir'}
+                        width={250}
                     />
                 </View>
             </View>
