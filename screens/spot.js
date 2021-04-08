@@ -157,22 +157,4 @@ const styles = StyleSheet.create({
         width: WIDTH - 50,
         marginBottom: 25,
     },
-    buttonView: {
-        alignSelf: 'center',
-        marginBottom: 8,
-    },
-    button: {
-        justifyContent: 'center',
-        width: WIDTH - 200,
-        height: 55,
-        backgroundColor: "black",
-        borderWidth: 1.75,
-        borderColor: "gray",
-        borderRadius: 15,
-        marginTop: 15,
-    },
-    buttonText: {
-        alignSelf: 'center',
-        color: 'white',
-    },
 });

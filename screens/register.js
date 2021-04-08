@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ImageBackground, CheckBox, Dimensions, Alert, TouchableOpacity, ScrollView, Image } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground, Dimensions, Alert, TouchableOpacity, ScrollView, Image } from 'react-native';
+import CheckBox from 'react-native-check-box'
+
 import bgImage from '../assets/images/background.jpg';
 import logo from '../assets/images/motocrosslogo.png';
 
-import Icon from 'react-native-vector-icons/Ionicons'
-import RadioButton from 'react-native-radio-button'
 import { emailValidator } from '../helpers/auth/emailValidator'
 import { passwordValidator } from '../helpers/auth/passwordValidator'
 import { pseudoValidator } from '../helpers/auth/pseudoValidator'
@@ -14,12 +14,16 @@ import CustomTitle from '../components/CustomTitle';
 import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
 import Separator from '../components/Separator';
+import CustomRadio from '../components/CustomRadio';
 
 const { width: WIDTH } = Dimensions.get('window')
   
 export function register({ navigation }) {
   const [security, setSecurity] = useState(true)
+
   const [isSelected, setSelection] = useState(false);
+  const [notif, setNotif] = useState(false);
+  const [checked, setChecked] = useState('Débutant');
 
   const [pseudo, setPseudo] = useState({ value: '', error: '' })
   const [email, setEmail] = useState({ value: '', error: '' })
@@ -31,6 +35,11 @@ export function register({ navigation }) {
     const emailError = emailValidator(email.value)
     const passwordError = passwordValidator(password.value)
     const passwordError2 = passwordValidator(password2.value)
+
+    if(isSelected == false) {
+      Alert.alert('Vous devez coché les conditions générales d\'utilisation')
+      return;
+    }
 
     if (pseudoError || emailError || passwordError || passwordError2) {
       setPseudo({ ...pseudo, error: pseudoError })
@@ -52,6 +61,7 @@ export function register({ navigation }) {
                 level: 'INTERMEDIAIRE',
                 password: password.value,
                 passwordConfirmation: password2.value,
+                notif: notif
             })
             })
             .then((response) => response.json())
@@ -87,7 +97,6 @@ export function register({ navigation }) {
                   <Image source={logo} style={styles.logo}></Image>
                   <CustomTitle
                       key={1}
-                      id={1}
                       title={'S\'inscrire'}
                   />
               </View>
@@ -96,7 +105,6 @@ export function register({ navigation }) {
 
                   <CustomInput
                       key={2}
-                      id={2}
                       placeholder={'Pseudo'}
                       valeur={pseudo.value}
                       error={!!pseudo.error}
@@ -111,7 +119,6 @@ export function register({ navigation }) {
 
                   <CustomInput
                       key={3}
-                      id={3}
                       placeholder={'Email'}
                       valeur={email.value}
                       error={!!email.error}
@@ -126,7 +133,6 @@ export function register({ navigation }) {
 
                   <CustomInput
                       key={4}
-                      id={4}
                       placeholder={'Mot de passe'}
                       valeur={password.value}
                       error={!!password.error}
@@ -142,7 +148,6 @@ export function register({ navigation }) {
 
                   <CustomInput
                       key={5}
-                      id={5}
                       placeholder={'Confirmer mot de passe'}
                       valeur={password2.value}
                       error={!!password2.error}
@@ -158,79 +163,86 @@ export function register({ navigation }) {
 
               </View>
 
-      
+              <Separator />
 
-      <View>
-      <Text style={styles.niveau}>Level :</Text>
-      </View>
-      <View style={styles.radio}>
-      <RadioButton
-            size={6}
-            animation={'bounceIn'}
-            isSelected={true}
-            value={isSelected}
-            onValueChange={setSelection}
-            outerColor={'rgba(230, 126, 34,1.0)'}
-            innerColor={'black'} />
-      <RadioButton
-            size={6}
-            animation={'bounceIn'}
-            isSelected={true}
-            value={isSelected}
-            onValueChange={setSelection}
-            outerColor={'rgba(230, 126, 34,1.0)'}
-            innerColor={'black'} />
-      <RadioButton
-            size={6}
-            animation={'bounceIn'}
-            isSelected={true}
-            value={isSelected}
-            onValueChange={setSelection}
-            outerColor={'rgba(230, 126, 34,1.0)'}
-            innerColor={'black'} />
-      <RadioButton
-            size={6}
-            animation={'bounceIn'}
-            isSelected={true}
-            value={isSelected}
-            onValueChange={setSelection}
-            outerColor={'rgba(230, 126, 34,1.0)'}
-            innerColor={'black'} />
-      </View>
-
-      <View style={styles.checkboxContainer}>
-          <CheckBox
-              value={isSelected}
-              onValueChange={setSelection}
-              style={styles.checkbox}
-            />
-            <Text style={styles.label}>Do you accept our terms and conditions ?</Text>
-            <TouchableOpacity>
-                <Icon onPress={() => Alert.alert('Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum')} 
-                  name={'information-circle-outline'} style={styles.cgusize} size={28} color={'black'} />
-            </TouchableOpacity>
-      </View>
-
-      <Separator />
-      <Separator />
-
-
-                <CustomButton
-                    key={6}
-                    id={6}
-                    actionsbtn={() => onRegisterPressed()}
-                    title={'S\'inscrire'}
-                />
-
+              <View style={styles.level}>
+                  <Text style={{fontSize: 20}}>Niveau :</Text>
                   <View>
-                    <Text style={styles.Account}>Vous possédez déjà un compte ?</Text>
+                      <CustomRadio 
+                        key={1}
+                        value={'Débutant'}
+                        color={'black'}
+                        status={checked === 'Débutant' ? 'checked' : 'unchecked'}
+                        action={() => setChecked('Débutant')}
+                      />
+                      <CustomRadio 
+                        key={2}
+                        value={'Intermédiaire'}
+                        color={'black'}
+                        status={checked === 'Intermédiaire' ? 'checked' : 'unchecked'}
+                        action={() => setChecked('Intermédiaire')}
+                      />
+                      <CustomRadio 
+                        key={3}
+                        value={'Avancé'}
+                        color={'black'}
+                        status={checked === 'Avancé' ? 'checked' : 'unchecked'}
+                        action={() => setChecked('Avancé')}
+                      />
+                      <CustomRadio 
+                        key={4}
+                        value={'Expert'}
+                        color={'black'}
+                        status={checked === 'Expert' ? 'checked' : 'unchecked'}
+                        action={() => setChecked('Expert')}
+                      />
+                  </View>
+              </View>
 
-                    <TouchableOpacity>
-                        <Text onPress={() => navigation.navigate('login')} style={styles.clickHere}>Se connecter !</Text>
-                    </TouchableOpacity>
-                </View>
+              <Separator />
 
-                <Separator></Separator>
+              <View style={styles.checkboxContainer}>
+                  <CheckBox
+                      isChecked={isSelected}
+                      onClick={() => setSelection(!isSelected)}
+                  />
+                  <Text style={styles.label}>Acceptez vous les <Text onPress={() => navigation.navigate('cgu')} style={styles.clickHere}>conditions générales d'utilisation ?</Text></Text>
+              </View>
+
+              <View style={styles.checkboxContainer}>
+                  <CheckBox
+                      isChecked={notif}
+                      onClick={() => setNotif(!notif)}
+                  />
+                  <Text style={styles.label}>Acceptez vous de recevoir des notifications</Text>
+              </View>
+
+              <Separator />
+              <Separator />
+
+              <GoogleButton
+                  key={5}
+                  title={'S\'inscrire avec Google'}
+              />
+                           
+             <Separator />
+             <Separator />
+
+              <CustomButton
+                  key={6}
+                  actionsbtn={() => onRegisterPressed()}
+                  title={'S\'inscrire'}
+              />
+
+              <View>
+                  <Text style={styles.Account}>Vous possédez déjà un compte ?</Text>
+
+                  <TouchableOpacity>
+                      <Text onPress={() => navigation.navigate('login')} style={styles.clickHere}>Se connecter !</Text>
+                  </TouchableOpacity>
+              </View>
+
+              <Separator />
 
           </ScrollView>
       </ImageBackground>
@@ -253,6 +265,18 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
   },
+  level: {
+    paddingLeft: '6.5%'
+  },
+  checkboxContainer: {
+    flexDirection: "row",
+    alignItems: 'center',
+    alignSelf: 'center',
+    width: WIDTH - 50
+  },
+  label: {
+    paddingLeft: 10
+  },
   Account: {
     color: 'black',
     fontSize: 16,
@@ -266,49 +290,4 @@ const styles = StyleSheet.create({
       fontSize: 16,
       textAlign: 'center',
   },
-  
-
-btnRegister: {
-  width: WIDTH - 100,
-  height: 45,
-  borderRadius: 45,    
-  backgroundColor: 'rgba(230, 126, 34,1.0)',
-  justifyContent: 'center',
-  alignSelf: 'center',
-  marginTop: 20,
-},
-
-checkboxContainer: {
-  flexDirection: "row",
-  left: 30,
-},
-checkbox: {
-  alignSelf: "center",
-},
-label: {
-  color: 'black',
-  fontSize: 13,
-  textAlign: 'center',
-  marginTop: 8,
-  left: 2,
-},
-cgusize: {
-  fontSize: 20,
-  marginLeft: 3,
-  paddingTop: 7,
-  color: 'black',
-  textAlign: 'center',
-  left: 134,
-  bottom: 97,
-},
-
-niveau: {
-  fontWeight: 'bold',
-  left: 28,
-},
-radio: {
-  alignSelf: 'center',
-},
-
-
 });
