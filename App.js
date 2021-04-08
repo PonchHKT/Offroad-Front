@@ -49,9 +49,14 @@ export default function App() {
         <Stack.Screen name="login" component={login} />
         <Stack.Screen name="register" component={register} />
         <Stack.Screen name="forgotPassword" component={forgotPassword} />
+
         <Stack.Screen name="dashboard" component={dashboard} />
+
         <Stack.Screen name="cgu" component={cgu} />
+
         <Stack.Screen name="comments" component={comments} />
+        <Stack.Screen name="getHistorique" component={getHistorique} />
+
         <Stack.Screen name="startrando" component={startrando} />
         <Stack.Screen name="spot" component={spot} />
         <Stack.Screen name="addreview" component={addreview} />
