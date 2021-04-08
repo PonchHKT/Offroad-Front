@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, Dimensions, TouchableOpacity, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 import Note from '../components/Note';
 import Separator from '../components/Separator2';
 import Separator2 from '../components/Separator';
