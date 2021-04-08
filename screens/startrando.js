@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
         borderRadius: 80,
         marginTop: 5,
         zIndex: 500,
-        right: 10,
+        right: 15,
     },
     buttonStop: {
         justifyContent: 'center',
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
         marginTop: 15,
         zIndex: 500,
         bottom: 71,
-        left: 162,
+        left: 165,
     },
     buttonText: {
         alignSelf: 'center',
