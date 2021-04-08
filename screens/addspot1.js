@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     title: {
         color: '#606060',
         alignSelf: 'center',
-        marginTop: 10,
+        marginTop: 35,
         fontSize: 32,
     },
     commentText: {
