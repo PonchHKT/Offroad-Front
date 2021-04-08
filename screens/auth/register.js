@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, ImageBackground, Dimensions, Alert, TouchableOpacity, ScrollView, Image } from 'react-native';
 import CheckBox from 'react-native-check-box'
 
-import bgImage from '../assets/images/background.jpg';
-import logo from '../assets/images/motocrosslogo.png';
+import bgImage from '../../assets/images/background.jpg';
+import logo from '../../assets/images/motocrosslogo.png';
 
-import { emailValidator } from '../helpers/auth/emailValidator'
-import { passwordValidator } from '../helpers/auth/passwordValidator'
-import { pseudoValidator } from '../helpers/auth/pseudoValidator'
+import { emailValidator } from '../../helpers/auth/emailValidator'
+import { passwordValidator } from '../../helpers/auth/passwordValidator'
+import { pseudoValidator } from '../../helpers/auth/pseudoValidator'
 
-import GoogleButton from '../components/Google';
-import CustomTitle from '../components/CustomTitle';
-import CustomInput from '../components/CustomInput';
-import CustomButton from '../components/CustomButton';
-import Separator from '../components/Separator';
-import CustomRadio from '../components/CustomRadio';
+import GoogleButton from '../../components/Google';
+import CustomTitle from '../../components/CustomTitle';
+import CustomInput from '../../components/CustomInput';
+import CustomButton from '../../components/CustomButton';
+import Separator from '../../components/Separator';
+import CustomRadio from '../../components/CustomRadio';
 
 const { width: WIDTH } = Dimensions.get('window')
   
