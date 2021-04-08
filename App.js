@@ -3,22 +3,19 @@ import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 import { login } from './screens/auth/login';
 import { register } from './screens/auth/register';
 import { forgotPassword } from './screens/auth/forgotPassword';
-
 import { dashboard } from './screens/dashboard';
-
 import { cgu } from './screens/cgu';
-
 import { comments } from './screens/profile/comments';
 import { getHistorique } from './screens/profile/historique';
-
 import { startrando } from './screens/startrando';
 import { spot } from './screens/spot';
 import { addreview } from './screens/addreview';
 import { signalspot } from './screens/signalspot';
+import { addspot } from './screens/addspot1';
+import { addspotnext } from './screens/addspot2';
 
 const Stack = createStackNavigator();
 
@@ -59,6 +56,8 @@ export default function App() {
         <Stack.Screen name="spot" component={spot} />
         <Stack.Screen name="addreview" component={addreview} />
         <Stack.Screen name="signalspot" component={signalspot} />
+        <Stack.Screen name="addspot" component={addspot} />
+        <Stack.Screen name="addspotnext" component={addspotnext} />
 
       </Stack.Navigator>
     </NavigationContainer>
