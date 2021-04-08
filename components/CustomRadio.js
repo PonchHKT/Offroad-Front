@@ -1,8 +1,6 @@
 import React from 'react';
-import { View, Text, Dimensions } from "react-native";
+import { View, Text } from "react-native";
 import { RadioButton } from 'react-native-paper';
-
-const { width: WIDTH } = Dimensions.get('window')
 
 export default function CustomRadio(props) {
     

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, ScrollView } from 'react-native';
 import Note from '../components/Note';
 import Separator from '../components/Separator2';
 import Separator2 from '../components/Separator';
@@ -8,66 +8,71 @@ import CustomRadio from '../components/CustomRadio';
 
 export function addspotnext({ navigation }) {
 
-const [checked, setChecked] = useState('Débutant');
+    const [checked, setChecked] = useState('Débutant');
 
-return (
+    return (
 
+    <ScrollView>
         <View>
-        <View>
-        <Text style={styles.title}>Ajout d'un spot</Text>
+            <Text style={styles.title}>Ajout d'un spot</Text>
         </View>
 
         <View style={styles.level}>
-        <Text style={{fontSize: 20}}>Niveau :</Text>
-        <View>
-        <CustomRadio 
-            key={1}
-            value={'Débutant'}
-            color={'black'}
-            status={checked === 'Débutant' ? 'checked' : 'unchecked'}
-            action={() => setChecked('Débutant')}/>
-        <CustomRadio 
-            key={2}
-            value={'Intermédiaire'}
-            color={'black'}
-            status={checked === 'Intermédiaire' ? 'checked' : 'unchecked'}
-            action={() => setChecked('Intermédiaire')}/>
-        <CustomRadio 
-            key={3}
-            value={'Avancé'}
-            color={'black'}
-            status={checked === 'Avancé' ? 'checked' : 'unchecked'}
-            action={() => setChecked('Avancé')}/>
-        <CustomRadio 
-            key={4}
-            value={'Expert'}
-            color={'black'}
-            status={checked === 'Expert' ? 'checked' : 'unchecked'}
-            action={() => setChecked('Expert')} />
+            <Text style={{fontSize: 20}}>Niveau :</Text>
+            <View>
+                <CustomRadio 
+                    key={1}
+                    value={'Débutant'}
+                    color={'black'}
+                    status={checked === 'Débutant' ? 'checked' : 'unchecked'}
+                    action={() => setChecked('Débutant')}
+                />
+                <CustomRadio 
+                    key={2}
+                    value={'Intermédiaire'}
+                    color={'black'}
+                    status={checked === 'Intermédiaire' ? 'checked' : 'unchecked'}
+                    action={() => setChecked('Intermédiaire')}
+                />
+                <CustomRadio 
+                    key={3}
+                    value={'Avancé'}
+                    color={'black'}
+                    status={checked === 'Avancé' ? 'checked' : 'unchecked'}
+                    action={() => setChecked('Avancé')}
+                />
+                <CustomRadio 
+                    key={4}
+                    value={'Expert'}
+                    color={'black'}
+                    status={checked === 'Expert' ? 'checked' : 'unchecked'}
+                    action={() => setChecked('Expert')}
+                />
             </View>
         </View>
         
         <View>
-        <Text style={styles.commentText}>Adresse :</Text>
+            <Text style={styles.commentText}>Adresse :</Text>
         </View>
 
         <View>
-        <TextInput style={styles.textInput}> </TextInput>
+            <TextInput style={styles.textInput}> </TextInput>
         </View>
 
         <Separator/>
         <Separator2/>
+        
         <View>
-        <CustomButton
-            key={1}
-            title={'SUIVANT'}
-            color={'black'}
-            textColor={'white'}
-            border={'gray'}
-        />
-    </View>
+            <CustomButton
+                key={1}
+                title={'SUIVANT'}
+                color={'black'}
+                textColor={'white'}
+                border={'gray'}
+            />
+        </View>
 
-</View> 
+    </ScrollView> 
 
 )};
 
