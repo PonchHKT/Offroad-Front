@@ -12,6 +12,7 @@ import { comments } from './screens/comments';
 import { startrando } from './screens/startrando';
 import { spot } from './screens/spot';
 import { addreview } from './screens/addreview';
+import { addspot } from './screens/addspot';
 
 const Stack = createStackNavigator();
 
@@ -51,7 +52,8 @@ export default function App() {
         <Stack.Screen name="startrando" component={startrando} />
         <Stack.Screen name="spot" component={spot} />
         <Stack.Screen name="addreview" component={addreview} />
-        
+        <Stack.Screen name="addspot" component={addspot} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
