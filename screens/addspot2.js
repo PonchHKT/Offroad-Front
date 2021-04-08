@@ -74,7 +74,7 @@ export function addspotnext({ navigation }) {
         </View>
 
         
-        <View style={styles.informationbox}>
+        <View>
             <Text style={styles.commentText}>Adresse :</Text>
         </View>
 
@@ -90,7 +90,7 @@ export function addspotnext({ navigation }) {
         </View>
 
 
-        <View style={styles.informationbox1}>
+        <View>
             <Text style={styles.commentText}>Informations supplémentaires :</Text>
         </View>
 
@@ -121,10 +121,9 @@ export function addspotnext({ navigation }) {
 
 const styles = StyleSheet.create({
     level: {
-        marginTop: 5,
+        marginTop: 15,
         paddingLeft: '6.5%',
     },
-    
     commentText: {
         color: '#606060',
         fontSize: 18,
