@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
         left: 20,
         textAlign: 'left',
         textAlignVertical: 'top',
+        flexWrap: 'wrap',
     },
     noteText: {
         fontSize: 20,
