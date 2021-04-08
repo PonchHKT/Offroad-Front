@@ -3,16 +3,16 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import bgImage from '../assets/images/background.jpg';
-import logo from '../assets/images/motocrosslogo.png';
-import { emailValidator } from '../helpers/auth/emailValidator'
-import { passwordValidator } from '../helpers/auth/passwordValidator'
+import bgImage from '../../assets/images/background.jpg';
+import logo from '../../assets/images/motocrosslogo.png';
+import { emailValidator } from '../../helpers/auth/emailValidator'
+import { passwordValidator } from '../../helpers/auth/passwordValidator'
 
-import GoogleButton from '../components/Google';
-import CustomTitle from '../components/CustomTitle';
-import CustomInput from '../components/CustomInput';
-import CustomButton from '../components/CustomButton';
-import Separator from '../components/Separator';
+import GoogleButton from '../../components/Google';
+import CustomTitle from '../../components/CustomTitle';
+import CustomInput from '../../components/CustomInput';
+import CustomButton from '../../components/CustomButton';
+import Separator from '../../components/Separator';
 
 export function login({ navigation }) {
     

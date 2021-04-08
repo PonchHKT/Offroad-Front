@@ -2,14 +2,15 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, ImageBackground, Image, ScrollView, Alert, TouchableOpacity } from 'react-native';
 
-import bgImage from '../assets/images/background.jpg';
-import logo from '../assets/images/motocrosslogo.png';
-import { emailValidator } from '../helpers/auth/emailValidator'
+import bgImage from '../../assets/images/background.jpg';
+import logo from '../../assets/images/motocrosslogo.png';
 
-import CustomTitle from '../components/CustomTitle';
-import CustomInput from '../components/CustomInput';
-import CustomButton from '../components/CustomButton';
-import Separator from '../components/Separator';
+import { emailValidator } from '../../helpers/auth/emailValidator'
+
+import CustomTitle from '../../components/CustomTitle';
+import CustomInput from '../../components/CustomInput';
+import CustomButton from '../../components/CustomButton';
+import Separator from '../../components/Separator';
 
 export function forgotPassword({ navigation }) {
     

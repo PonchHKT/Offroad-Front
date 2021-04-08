@@ -3,9 +3,11 @@ import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { login } from './screens/login';
-import { register } from './screens/register';
-import { forgotPassword } from './screens/forgotPassword';
+
+import { login } from './screens/auth/login';
+import { register } from './screens/auth/register';
+import { forgotPassword } from './screens/auth/forgotPassword';
+
 import { dashboard } from './screens/dashboard';
 import { cgu } from './screens/cgu';
 import { comments } from './screens/comments';
