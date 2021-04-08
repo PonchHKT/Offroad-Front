@@ -9,8 +9,12 @@ import { register } from './screens/auth/register';
 import { forgotPassword } from './screens/auth/forgotPassword';
 
 import { dashboard } from './screens/dashboard';
+
 import { cgu } from './screens/cgu';
-import { comments } from './screens/comments';
+
+import { comments } from './screens/profile/comments';
+import { getHistorique } from './screens/profile/historique';
+
 import { startrando } from './screens/startrando';
 import { spot } from './screens/spot';
 import { addreview } from './screens/addreview';
