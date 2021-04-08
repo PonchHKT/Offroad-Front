@@ -5,6 +5,7 @@ import Separator from '../components/Separator2';
 import Separator2 from '../components/Separator';
 import CustomButton from '../components/CustomButton';
 import CustomRadio from '../components/CustomRadio';
+import Navbar from '../components/Navbar';
 
 export function addspotnext({ navigation }) {
 
@@ -13,12 +14,24 @@ export function addspotnext({ navigation }) {
     return (
 
     <ScrollView>
+
+        <Navbar 
+            key={1}
+            id={1}
+            dashboard={true}
+            plus={false}
+            plusPress={() => navigation.navigate('')}
+            like={false}
+            likePress={() => navigation.navigate('')}
+            account={false}
+            accountPress={() => navigation.navigate('')}/>
+
         <View>
             <Text style={styles.title}>Ajout d'un spot</Text>
         </View>
 
         <View style={styles.level}>
-            <Text style={{fontSize: 20}}>Niveau :</Text>
+            <Text style={{fontSize: 20, color: '#606060'}}>Niveau :</Text>
             <View>
                 <CustomRadio 
                     key={1}
@@ -51,7 +64,7 @@ export function addspotnext({ navigation }) {
             </View>
         </View>
         
-        <View>
+        <View style={styles.informationbox}>
             <Text style={styles.commentText}>Adresse :</Text>
         </View>
 
@@ -59,13 +72,20 @@ export function addspotnext({ navigation }) {
             <TextInput style={styles.textInput}> </TextInput>
         </View>
 
-        <Separator/>
-        <Separator2/>
-        
+
+        <View style={styles.informationbox1}>
+            <Text style={styles.commentText1}>Information supplémentaire :</Text>
+        </View>
+
         <View>
+            <TextInput style={styles.textInput1}> </TextInput>
+        </View>
+
+        <View style={{bottom: 65}}>
+        <Separator/>
             <CustomButton
                 key={1}
-                title={'SUIVANT'}
+                title={'AJOUTER'}
                 color={'black'}
                 textColor={'white'}
                 border={'gray'}
@@ -77,14 +97,18 @@ export function addspotnext({ navigation }) {
 )};
 
 const styles = StyleSheet.create({
-    level: {
-        paddingLeft: '6.5%'
-    },
     title: {
         color: '#606060',
         alignSelf: 'center',
-        marginTop: 50,
+        marginTop: 10,
         fontSize: 32,
+    },
+    level: {
+        marginTop: 5,
+        paddingLeft: '6.5%',
+    },
+    informationbox: {
+        bottom: 30,
     },
     commentText: {
         color: '#606060',
@@ -97,8 +121,8 @@ const styles = StyleSheet.create({
     textInput: {
         color: 'white',
         width: 300,
-        height: 200,
-        marginTop: 10,
+        height: 50,
+        marginTop: 8,
         backgroundColor: '#484848',
         borderRadius: 5,
         borderWidth: 2,
@@ -107,6 +131,7 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         textAlignVertical: 'top',
         flexWrap: 'wrap',
+        bottom: 35,
     },
     noteText: {
         fontSize: 20,
@@ -117,5 +142,32 @@ const styles = StyleSheet.create({
     note: {
         right: 78,
         marginTop: 5,
-    }
+    },
+    informationbox1: {
+        bottom: 30,
+    },
+    commentText1: {
+        color: '#606060',
+        justifyContent: 'flex-start',
+        fontSize: 18,
+        marginTop: 30,
+        fontWeight: 'bold',
+        left: 25,
+        bottom: 28,
+    },
+    textInput1: {
+        color: 'white',
+        width: 300,
+        height: 50,
+        marginTop: 8,
+        backgroundColor: '#484848',
+        borderRadius: 5,
+        borderWidth: 2,
+        borderColor: '#606060',
+        left: 20,
+        textAlign: 'left',
+        textAlignVertical: 'top',
+        flexWrap: 'wrap',
+        bottom: 60,
+    },
 });
