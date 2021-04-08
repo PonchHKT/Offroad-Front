@@ -40,7 +40,7 @@ return (
        <View>
             <Text style={styles.noteText}>Note :</Text>
             </View>
-
+            <Separator2/>
             <View style={styles.note}>
             <Note 
                 key={1}
@@ -51,8 +51,10 @@ return (
             />
         </View>
 
+        <View style={styles.margin}>
         <Separator/>
         <Separator2/>
+
         <View>
         <CustomButton
             key={1}
@@ -62,7 +64,7 @@ return (
             border={'gray'}
         />
     </View>
-
+    </View>
    </View> 
    </ScrollView>
 
@@ -106,5 +108,8 @@ const styles = StyleSheet.create({
     note: {
         right: 78,
         marginTop: 5,
-    }
+    },
+    margin: {
+        top: 15,
+    },
 });

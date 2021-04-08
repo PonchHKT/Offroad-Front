@@ -104,11 +104,12 @@ const styles = StyleSheet.create({
         fontSize: 32,
     },
     level: {
-        marginTop: 5,
+        marginTop: 15,
         paddingLeft: '6.5%',
     },
     informationbox: {
         bottom: 30,
+        marginTop: 15,
     },
     commentText: {
         color: '#606060',
