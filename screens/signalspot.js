@@ -5,7 +5,7 @@ import Separator from '../components/Separator2';
 import Separator2 from '../components/Separator';
 import CustomButton from '../components/CustomButton';
 
-export function addspot({ navigation }) {
+export function signalspot({ navigation }) {
 
 return (
 

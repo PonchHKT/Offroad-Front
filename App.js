@@ -18,7 +18,7 @@ import { getHistorique } from './screens/profile/historique';
 import { startrando } from './screens/startrando';
 import { spot } from './screens/spot';
 import { addreview } from './screens/addreview';
-import { addspot } from './screens/addspot';
+import { signalspot } from './screens/signalspot';
 
 const Stack = createStackNavigator();
 
@@ -58,7 +58,7 @@ export default function App() {
         <Stack.Screen name="startrando" component={startrando} />
         <Stack.Screen name="spot" component={spot} />
         <Stack.Screen name="addreview" component={addreview} />
-        <Stack.Screen name="addspot" component={addspot} />
+        <Stack.Screen name="signalspot" component={signalspot} />
 
       </Stack.Navigator>
     </NavigationContainer>
