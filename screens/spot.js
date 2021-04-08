@@ -6,6 +6,8 @@ import {FontAwesome} from '@expo/vector-icons';
 import Separator from '../components/Separator2';
 import Note from '../components/Note';
 
+import CustomButton from '../components/CustomButton';
+
 const { width: WIDTH } = Dimensions.get('window')
 
 export function spot({ navigation }) {
@@ -96,11 +98,13 @@ export function spot({ navigation }) {
         </View>
 
 
-        <View style={styles.buttonView}>
-            <TouchableOpacity style={styles.button}>
-                <Text style={styles.buttonText}>Démarrer</Text>
-            </TouchableOpacity>
-        </View>
+        <CustomButton
+            key={1}
+            title={'Voir'}
+            color={'black'}
+            textColor={'white'}
+            border={'gray'}
+        />
     </View>
     )
 };
