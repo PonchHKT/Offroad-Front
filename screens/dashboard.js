@@ -96,6 +96,12 @@ export function dashboard({ navigation }) {
                 color={'black'}
                 onPress={() => navigation.navigate('startrando')}
             />
+            <IconButton
+                icon={"check"}
+                size={30}
+                color={'blue'}
+                onPress={() => navigation.navigate('addreview')}
+            />
             <MapView
                 region={region}
                 style={{width: '100%', height: HEIGHT}}
