@@ -106,7 +106,7 @@ export function dashboard({ navigation }) {
                 icon={"check"}
                 size={30}
                 color={'pink'}
-                onPress={() => navigation.navigate('addspot')}
+                onPress={() => navigation.navigate('signalspot')}
             />
             <MapView
                 region={region}
