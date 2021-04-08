@@ -54,6 +54,9 @@ export default function Historique(props) {
                     <Note 
                         key={props.id}
                         note={props.note}
+                        edit={false}
+                        spacing={4}
+                        size={25}
                     />
                     <CustomButton
                         key={1}

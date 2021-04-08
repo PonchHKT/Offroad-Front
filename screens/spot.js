@@ -17,8 +17,12 @@ export function spot({ navigation }) {
         
         <View>
             <Text style={styles.noteText}>Note :</Text>
-            <Note
-                note={4.5}
+            <Note 
+                key={1}
+                note={5}
+                edit={false}
+                spacing={4}
+                size={30}
             />
         </View>
 
