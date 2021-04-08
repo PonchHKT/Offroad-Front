@@ -3,29 +3,16 @@ import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 import { login } from './screens/login';
 import { register } from './screens/register';
 import { forgotPassword } from './screens/forgotPassword';
-
 import { dashboard } from './screens/dashboard';
-
 import { cgu } from './screens/cgu';
-
 import { comments } from './screens/comments';
-
-
 import { startrando } from './screens/startrando';
 import { spot } from './screens/spot';
-/*
-import { register } from './components/register';
-import { forgetpassword } from './components/forgetpassword'
-import { cgu } from './components/cgu.js'
-
-import { map } from './components/map'
-import { profil } from './components/profil'
-import { localization } from './components/localization' 
-*/
+import { addreview } from './screens/addreview';
+import { addspot } from './screens/addspot';
 
 const Stack = createStackNavigator();
 
@@ -59,15 +46,14 @@ export default function App() {
         <Stack.Screen name="login" component={login} />
         <Stack.Screen name="register" component={register} />
         <Stack.Screen name="forgotPassword" component={forgotPassword} />
-        
         <Stack.Screen name="dashboard" component={dashboard} />
-
         <Stack.Screen name="cgu" component={cgu} />
-
         <Stack.Screen name="comments" component={comments} />
-
         <Stack.Screen name="startrando" component={startrando} />
         <Stack.Screen name="spot" component={spot} />
+        <Stack.Screen name="addreview" component={addreview} />
+        <Stack.Screen name="addspot" component={addspot} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

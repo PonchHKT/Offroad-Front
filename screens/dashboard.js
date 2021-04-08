@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, View, ScrollView, Alert, Dimensions, Text } from 'react-native';
+import { View, ScrollView, Alert, Dimensions, Text } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { IconButton } from 'react-native-paper';
 import MapView, { Marker } from 'react-native-maps';
@@ -95,6 +95,18 @@ export function dashboard({ navigation }) {
                 size={30}
                 color={'black'}
                 onPress={() => navigation.navigate('startrando')}
+            />
+            <IconButton
+                icon={"check"}
+                size={30}
+                color={'blue'}
+                onPress={() => navigation.navigate('addreview')}
+            />
+            <IconButton
+                icon={"check"}
+                size={30}
+                color={'pink'}
+                onPress={() => navigation.navigate('addspot')}
             />
             <MapView
                 region={region}

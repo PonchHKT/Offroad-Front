@@ -5,7 +5,6 @@ import Spot from '../assets/images/spots/forest.jpg';
 import {FontAwesome} from '@expo/vector-icons';
 import Separator from '../components/Separator2';
 import Note from '../components/Note';
-
 import CustomButton from '../components/CustomButton';
 
 const { width: WIDTH } = Dimensions.get('window')
