@@ -218,7 +218,6 @@ export function register({ navigation }) {
               </View>
 
               <Separator />
-              <Separator />
 
               <GoogleButton
                   key={5}
