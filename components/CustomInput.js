@@ -7,25 +7,32 @@ const { width: WIDTH } = Dimensions.get('window')
 
 export default function CustomInput(props) {
 
+    const tHEIGHT = props.multiline ? 250 : 50
+    const tWIDTH = props.multiline ? 75 : 105
+    const tAlign = props.multiline ? 'top' : 'center'
+    const tTop = props.multiline ? 10 : 0
+
     const styles = StyleSheet.create({
         containerText: {
-            width: WIDTH - 60,
+            flex: 1,
             flexDirection: 'row',
+            width: WIDTH - 60,
             alignSelf: 'center',
             backgroundColor: "ghostwhite",
             borderWidth: 1.5,
             borderColor: "#000000",
             borderRadius: 20,
-            height: 50,
-
         },
         inputIcon: {
             top: 8,
             left: 5
         },
         textInput: {
-            width: WIDTH - 105,
+            width: WIDTH - tWIDTH,
             paddingLeft: 10,
+            height: tHEIGHT,
+            paddingTop: tTop,
+            textAlignVertical: tAlign
         },
         pwdIcon: {
             position: 'absolute',
@@ -72,6 +79,7 @@ export default function CustomInput(props) {
                     autoCapitalize="none"
                     onChangeText={props.text}
                     secureTextEntry={props.secure}
+                    multiline={props.multiline ? props.multiline : false}
                 />   
                 { props.pwd ? 
                     <IconButton 

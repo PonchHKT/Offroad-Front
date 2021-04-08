@@ -47,10 +47,10 @@ export function dashboard({ navigation }) {
     }
 
     
-    function logout() {
+    async function logout() {
         Alert.alert('You have been disconnected')
         try {
-            AsyncStorage.removeItem('token')
+            await AsyncStorage.removeItem('token')
             navigation.navigate('login')
         } catch (e) {
             console.log(e)

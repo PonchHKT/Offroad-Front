@@ -6,108 +6,100 @@ import Separator from '../components/Separator';
 import CustomButton from '../components/CustomButton';
 import Navbar from '../components/Navbar';
 import CustomTitle from '../components/CustomTitle';
+import CustomInput from '../components/CustomInput';
 
 export function addspot({ navigation }) {
 
-return (
+    const [comment, setComment] = useState('');
+    const [note, setNote] = useState(0);
 
-    <ScrollView>
+    return (
 
-        <Navbar 
-            key={1}
-            id={1}
-            dashboard={false}
-            plus={true}
-            like={false}
-            likePress={() => navigation.navigate('')}
-            account={false}
-            accountPress={() => navigation.navigate('')}
-        />
+        <ScrollView>
 
-        <View>
-
-            <Separator/>
-            <Separator/>
+            <Navbar 
+                key={1}
+                id={1}
+                dashboard={false}
+                plus={true}
+                like={false}
+                likePress={() => navigation.navigate('')}
+                account={false}
+                accountPress={() => navigation.navigate('')}
+            />
 
             <View>
-                <CustomTitle
-                    key={1}
-                    id={1}
-                    title={'Ajout d\'un spot'}
-                />
-            </View>
-       
-            <View>
-                <Text style={styles.commentText}>Ecrire un commentaire :</Text>
-            </View>
 
-            <View>
-                <TextInput style={styles.textInput}> </TextInput>
-            </View>
-
-                    
-            <View>
-                <Text style={styles.noteText}>Note :</Text>
-            </View>
-            <Separator2/>
-            <View style={styles.note}>
-                <Note 
-                    key={1}
-                    note={4}
-                    edit={true}
-                    spacing={4}
-                    size={30}
-                />
-            </View>
-
-            <View style={styles.margin}>
-            
                 <Separator/>
-                <Separator2/>
+                <Separator/>
 
                 <View>
-                    <CustomButton
+                    <CustomTitle
                         key={1}
-                        title={'SUIVANT'}
-                        color={'black'}
-                        textColor={'white'}
-                        border={'gray'}
+                        id={1}
+                        title={'Ajout d\'un spot'}
                     />
                 </View>
-            </View>
-        </View> 
-   </ScrollView>
+        
+                <View>
+                    <Text style={styles.commentText}>Ecrire un commentaire :</Text>
+                </View>
+
+                <View>
+                    <CustomInput
+                        key={1}
+                        placeholder={''}
+                        valeur={comment}
+                        text={(text) => setComment({ text })}
+                        multiline={true}
+                    />
+                </View>
+
+                        
+                <View>
+                    <Text style={styles.noteText}>Note :</Text>
+                </View>
+
+                <Separator/>
+
+                <View style={styles.note}>
+                    <Note 
+                        key={1}
+                        note={note}
+                        update={(val) => setNote(val)}
+                        edit={true}
+                        spacing={4}
+                        size={30}
+                    />
+                </View>
+
+                <View>
+                
+                    <Separator/>
+                    <Separator2/>
+
+                    <View>
+                        <CustomButton
+                            key={1}
+                            title={'Suivant'}
+                        />
+                    </View>
+                </View>
+            </View> 
+    </ScrollView>
 )};
 
 const styles = StyleSheet.create({
-    title: {
-        color: '#606060',
-        alignSelf: 'center',
-        marginTop: 35,
-        fontSize: 32,
-    },
+
     commentText: {
         color: '#606060',
-        justifyContent: 'flex-start',
         fontSize: 18,
-        marginTop: 30,
+        marginTop: 20,
         fontWeight: 'bold',
         left: 25,
+        bottom: 10,
     },
-    textInput: {
-        color: 'black',
-        width: 300,
-        height: 200,
-        marginTop: 10,
-        backgroundColor: 'ghostwhite',
-        borderRadius: 5,
-        borderWidth: 2,
-        borderColor: '#606060',
-        left: 20,
-        textAlign: 'left',
-        textAlignVertical: 'top',
-        flexWrap: 'wrap',
-    },
+   
     noteText: {
         fontSize: 20,
         left: 20,
@@ -117,8 +109,5 @@ const styles = StyleSheet.create({
     note: {
         right: 78,
         marginTop: 5,
-    },
-    margin: {
-        top: 15,
     },
 });
