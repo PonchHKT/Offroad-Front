@@ -1,13 +1,27 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, ScrollView } from 'react-native';
 import Note from '../components/Note';
 import Separator from '../components/Separator2';
 import Separator2 from '../components/Separator';
 import CustomButton from '../components/CustomButton';
+import Navbar from '../components/Navbar';
 
 export function addspot({ navigation }) {
 
 return (
+
+    <ScrollView>
+
+    <Navbar 
+    key={1}
+    id={1}
+    dashboard={true}
+    plus={false}
+    plusPress={() => navigation.navigate('')}
+    like={false}
+    likePress={() => navigation.navigate('')}
+    account={false}
+    accountPress={() => navigation.navigate('')}/>
 
    <View>
        <View>
@@ -50,6 +64,7 @@ return (
     </View>
 
    </View> 
+   </ScrollView>
 
 )};
 
@@ -57,7 +72,7 @@ const styles = StyleSheet.create({
     title: {
         color: '#606060',
         alignSelf: 'center',
-        marginTop: 50,
+        marginTop: 10,
         fontSize: 32,
     },
     commentText: {
