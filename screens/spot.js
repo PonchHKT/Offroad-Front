@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     },
     imageSpot: {
         width: WIDTH,
-        height: 250,
+        height: 210,
     },
     noteText: {
         fontSize: 20,
@@ -140,7 +140,6 @@ const styles = StyleSheet.create({
     },
     buttonContainer: {
         paddingBottom: 10,
-        paddingTop: 10,
     },
     icons: {
         flex: 1,
@@ -148,9 +147,11 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignSelf: 'center',
         width: WIDTH - 50,
+        marginBottom: 25,
     },
     buttonView: {
         alignSelf: 'center',
+        marginBottom: 8,
     },
     button: {
         justifyContent: 'center',
