@@ -90,6 +90,12 @@ export function dashboard({ navigation }) {
                 color={'black'}
                 onPress={() => navigation.navigate('comments')}
             />
+            <IconButton
+                icon={"check"}
+                size={30}
+                color={'black'}
+                onPress={() => navigation.navigate('startrando')}
+            />
             <MapView
                 region={region}
                 style={{width: '100%', height: HEIGHT}}

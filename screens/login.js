@@ -111,7 +111,7 @@ export function login({ navigation }) {
                     changeVisibility={changeSecurity}
                 />
                 <TouchableOpacity>
-                    <Text onPress={() => navigation.navigate('forgotPassword')} style={styles.clickHere}>Mot de passe oublié ?</Text>
+                    <Text onPress={() => navigation.navigate('forgotPassword')} style={styles.forgotPasswordText}>Mot de passe oublié ?</Text>
                 </TouchableOpacity>
 
                 <GoogleButton
@@ -134,7 +134,7 @@ export function login({ navigation }) {
                     <Text style={styles.noAccount}>Vous ne possédez pas de compte ?</Text>
 
                     <TouchableOpacity>
-                        <Text onPress={() => navigation.navigate('register')} style={styles.clickHere}>Créer un compte !</Text>
+                        <Text onPress={() => navigation.navigate('register')} style={styles.createAccountText}>Créer un compte !</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -165,7 +165,15 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         paddingTop: 20,
     },
-    clickHere: {
+    createAccountText: {
+        textDecorationLine: 'underline',
+        fontWeight: 'bold',
+        color: 'black',
+        fontSize: 16,
+        textAlign: 'center',
+        marginBottom: 20,
+    },
+    forgotPasswordText: {
         textDecorationLine: 'underline',
         fontWeight: 'bold',
         color: 'black',

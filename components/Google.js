@@ -28,9 +28,10 @@ export default function GoogleButton(props) {
         },
         textGoogle: {
             color:'#7d7d7d',
-            fontSize: 16,
+            fontSize: 15,
             fontWeight: 'bold',
             textAlign: 'center',
+            left: 8,
         },
     });
     
