@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, ScrollView } from 'react-native';
-import Note from '../components/Note';
-import Separator2 from '../components/Separator2';
-import Separator from '../components/Separator';
-import CustomButton from '../components/CustomButton';
-import Navbar from '../components/Navbar';
-import CustomTitle from '../components/CustomTitle';
-import CustomInput from '../components/CustomInput';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
+
+import Note from '../../components/Note';
+import Separator2 from '../../components/Separator2';
+import Separator from '../../components/Separator';
+import CustomButton from '../../components/CustomButton';
+import Navbar from '../../components/Navbar';
+import CustomTitle from '../../components/CustomTitle';
+import CustomInput from '../../components/CustomInput';
 
 export function addspot({ navigation }) {
 
@@ -21,6 +22,7 @@ export function addspot({ navigation }) {
                 key={1}
                 id={1}
                 dashboard={false}
+                mapPress={() => navigation.navigate('dashboard')}
                 plus={true}
                 like={false}
                 likePress={() => navigation.navigate('')}
@@ -50,7 +52,7 @@ export function addspot({ navigation }) {
                         key={1}
                         placeholder={''}
                         valeur={comment}
-                        text={(text) => setComment({ text })}
+                        text={(text) => setComment(text)}
                         multiline={true}
                     />
                 </View>
@@ -90,7 +92,6 @@ export function addspot({ navigation }) {
 )};
 
 const styles = StyleSheet.create({
-
     commentText: {
         color: '#606060',
         fontSize: 18,

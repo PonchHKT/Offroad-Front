@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ImageBackground, CheckBox, Dimensions, TextInput, TouchableOpacity, ScrollView } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
+import { StyleSheet, View, Dimensions } from 'react-native';
+import MapView from 'react-native-maps';
+
+import CustomButton from '../components/CustomButton';
 
 
 const { width: WIDTH } = Dimensions.get('window')
@@ -15,7 +17,6 @@ export function startrando({ navigation }) {
         longitudeDelta: 0.0421,
         verify: false
     })
-    const [spot, setSpot] = useState({ value: [] })
 
     if(region.verify === false) {
         navigator.geolocation.getCurrentPosition(success, error, options);
@@ -43,28 +44,30 @@ export function startrando({ navigation }) {
         console.warn(`ERREUR (${err.code}): ${err.message}`);
     }
 
-return (
-    <ImageBackground style={styles.backgroundContainer}>
+    return (
     
-    <MapView
-    region={region}
-    style={styles.map}>
-    </MapView>
-    
-    <View style={styles.buttonContainer}>
-    <TouchableOpacity style={styles.buttonOff}>
-    <Text style={styles.buttonText}>DÉSACTIVER {"\n"}    ALARME </Text>
-    </TouchableOpacity>
+        <View style={styles.backgroundContainer}>
+            <MapView
+                region={region}
+                style={styles.map}>
+            </MapView>
+
+            <View style={styles.buttons}>
+                <CustomButton
+                    key={1}
+                    title={'Désactiver l\'alarme'}
+                    style={styles.button}
+                />
+
+                <CustomButton
+                    key={2}
+                    title={'Arrêter'}
+                    style={styles.button}
+                />
+            </View>
         </View>
 
-        <View style={styles.buttonContainer}>
-    <TouchableOpacity style={styles.buttonStop}>
-    <Text style={styles.buttonText}>ARRÊTER</Text>
-    </TouchableOpacity>
-        </View>
 
-
-    </ImageBackground>
 )}
 
 const styles = StyleSheet.create({
@@ -76,46 +79,14 @@ const styles = StyleSheet.create({
     },
     map: {
         width: '100%',
-        height: HEIGHT,
-        borderWidth: 4,
+        height: HEIGHT - 100,
         borderColor: 'black',
-        paddingBottom: 50,
-
     },
-    buttonContainer: {
-        justifyContent: 'flex-start',
+    buttons: {
+        flex: 1,
         flexDirection: 'row',
         alignSelf: 'center',
-        width: WIDTH - 50,
+        justifyContent: 'space-around'
+    },
 
-    },
-    buttonOff: {
-        justifyContent: 'center',
-        width: WIDTH - 200,
-        height: 55,
-        backgroundColor: "black",
-        borderWidth: 1.75,
-        borderColor: "gray",
-        borderRadius: 80,
-        marginTop: 5,
-        zIndex: 500,
-        right: 15,
-    },
-    buttonStop: {
-        justifyContent: 'center',
-        width: WIDTH - 200,
-        height: 55,
-        backgroundColor: "black",
-        borderWidth: 1.75,
-        borderColor: "gray",
-        borderRadius: 80,
-        marginTop: 15,
-        zIndex: 500,
-        bottom: 71,
-        left: 165,
-    },
-    buttonText: {
-        alignSelf: 'center',
-        color: 'white',    
-    },
 });

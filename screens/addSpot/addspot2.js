@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
-import Separator from '../components/Separator';
-import Separator2 from '../components/Separator2';
-import CustomButton from '../components/CustomButton';
-import CustomRadio from '../components/CustomRadio';
-import Navbar from '../components/Navbar';
-import CustomTitle from '../components/CustomTitle';
-import CustomInput from '../components/CustomInput';
+import Separator from '../../components/Separator';
+import Separator2 from '../../components/Separator2';
+import CustomButton from '../../components/CustomButton';
+import CustomRadio from '../../components/CustomRadio';
+import Navbar from '../../components/Navbar';
+import CustomTitle from '../../components/CustomTitle';
+import CustomInput from '../../components/CustomInput';
 
 export function addspotnext({ navigation }) {
 
@@ -22,6 +22,7 @@ export function addspotnext({ navigation }) {
         <Navbar 
             key={1}
             dashboard={false}
+            mapPress={() => navigation.navigate('dashboard')}
             plus={true}
             like={false}
             likePress={() => navigation.navigate('')}
@@ -83,7 +84,7 @@ export function addspotnext({ navigation }) {
                 key={1}
                 placeholder={''}
                 valeur={adress}
-                text={(text) => setAdress({ text })}
+                text={(text) => setAdress(text)}
                 secure={false}
                 pwd={false}
             />
@@ -99,7 +100,7 @@ export function addspotnext({ navigation }) {
                 key={2}
                 placeholder={''}
                 valeur={infos}
-                text={(text) => setInfos({ text })}
+                text={(text) => setInfos(text)}
                 secure={false}
                 pwd={false}
             />

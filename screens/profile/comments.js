@@ -85,6 +85,7 @@ export function comments({ navigation }) {
                     key={1}
                     id={1}
                     dashboard={false}
+                    mapPress={() => navigation.navigate('dashboard')}
                     plus={false}
                     plusPress={() => navigation.navigate('')}
                     like={false}

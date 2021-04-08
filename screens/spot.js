@@ -100,9 +100,6 @@ export function spot({ navigation }) {
         <CustomButton
             key={1}
             title={'Voir'}
-            color={'black'}
-            textColor={'white'}
-            border={'gray'}
         />
     </View>
     )

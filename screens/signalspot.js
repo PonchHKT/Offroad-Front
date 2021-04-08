@@ -1,82 +1,83 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
-import Note from '../components/Note';
-import Separator from '../components/Separator2';
-import Separator2 from '../components/Separator';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
+
+import Separator2 from '../components/Separator2';
+import Separator from '../components/Separator';
 import CustomButton from '../components/CustomButton';
+import CustomInput from '../components/CustomInput';
+import Navbar from '../components/Navbar';
+import CustomTitle from '../components/CustomTitle';
 
 export function signalspot({ navigation }) {
 
-return (
+    const [comment, setComment] = useState('');
 
-   <View>
-       <View>
-           <Text style={styles.title}>Signaler un spot</Text>
-       </View>
-       
-       <View>
-           <Text style={styles.commentText}>Décrire votre signalement :</Text>
-       </View>
+    return (
 
-       <View>
-           <TextInput style={styles.textInput}> </TextInput>
-       </View>
+        <ScrollView>
 
-       <Separator2/>
-       <Separator2/>
-       <Separator2/>
-        <View>
-        <CustomButton
-            key={1}
-            title={'VALIDER'}
-            color={'black'}
-            textColor={'white'}
-            border={'gray'}
-        />
-    </View>
+            <View>
+                <Navbar 
+                    key={1}
+                    dashboard={true}
+                    plus={false}
+                    plusPress={() => navigation.navigate('')}
+                    like={false}
+                    likePress={() => navigation.navigate('')}
+                    account={false}
+                    accountPress={() => navigation.navigate('')}
+                />
+            </View>
 
-   </View> 
+            <Separator/>
+            <Separator/>
+
+            <View>
+                <CustomTitle
+                    key={1}
+                    id={1}
+                    title={'Signaler un spot'}
+                />
+            </View>
+            
+            <View>
+                <Text style={styles.commentText}>Décrire votre signalement :</Text>
+            </View>
+
+            <View>
+                <CustomInput
+                    key={1}
+                    placeholder={''}
+                    valeur={comment}
+                    text={(text) => setComment(text)}
+                    multiline={true}
+                />
+            </View>
+
+            <Separator/>
+            <Separator2/>
+            <Separator/>
+
+            <View>
+
+                <CustomButton
+                    key={1}
+                    title={'Valider'}
+                />
+
+            </View>
+
+        </ScrollView> 
 
 )};
 
 const styles = StyleSheet.create({
-    title: {
-        color: '#606060',
-        alignSelf: 'center',
-        marginTop: 50,
-        fontSize: 32,
-    },
     commentText: {
         color: '#606060',
-        justifyContent: 'flex-start',
         fontSize: 18,
-        marginTop: 30,
+        marginTop: 20,
         fontWeight: 'bold',
         left: 25,
+        bottom: 10,
     },
-    textInput: {
-        color: 'white',
-        marginTop: 10,
-        alignSelf: 'center',
-        width: 300,
-        height: 320,
-        marginTop: 10,
-        backgroundColor: '#484848',
-        borderRadius: 5,
-        borderWidth: 2,
-        borderColor: '#606060',
-        textAlign: 'left',
-        textAlignVertical: 'top',
-        flexWrap: 'wrap',
-    },
-    noteText: {
-        fontSize: 20,
-        left: 20,
-        marginTop: 10,
-        color: '#606060',
-    },
-    note: {
-        right: 78,
-        marginTop: 5,
-    }
 });

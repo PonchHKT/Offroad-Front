@@ -1,86 +1,102 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
+
 import Note from '../components/Note';
-import Separator from '../components/Separator2';
-import Separator2 from '../components/Separator';
+import Separator2 from '../components/Separator2';
+import Separator from '../components/Separator';
 import CustomButton from '../components/CustomButton';
+import Navbar from '../components/Navbar';
+import CustomTitle from '../components/CustomTitle';
+import CustomInput from '../components/CustomInput';
 
 export function addreview({ navigation }) {
 
-return (
+    const [comment, setComment] = useState('');
+    const [note, setNote] = useState(0);
 
-   <View>
-       <View>
-           <Text style={styles.title}>Ajout d'un avis</Text>
-       </View>
-       
-       <View>
-           <Text style={styles.commentText}>Ecrire un commentaire :</Text>
-       </View>
+    return (
 
-       <View>
-           <TextInput style={styles.textInput}> </TextInput>
-       </View>
+        <ScrollView>
 
-               
-       <View>
-            <Text style={styles.noteText}>Note :</Text>
+            <View>
+                <Navbar 
+                    key={1}
+                    dashboard={true}
+                    plus={false}
+                    plusPress={() => navigation.navigate('')}
+                    like={false}
+                    likePress={() => navigation.navigate('')}
+                    account={false}
+                    accountPress={() => navigation.navigate('')}
+                />
             </View>
 
-            <View style={styles.note}>
-            <Note 
-                key={1}
-                note={4}
-                edit={true}
-                spacing={4}
-                size={30}
-            />
-        </View>
+            <Separator/>
+            <Separator/>
 
-        <Separator/>
-        <Separator2/>
-        <View>
-        <CustomButton
-            key={1}
-            title={'VALIDER'}
-            color={'black'}
-            textColor={'white'}
-            border={'gray'}
-        />
-    </View>
+            <View>
+                <CustomTitle
+                    key={1}
+                    id={1}
+                    title={'Ajout d\'un avis'}
+                />
+            </View>
+            
+            <View>
+                <Text style={styles.commentText}>Ecrire un commentaire :</Text>
+            </View>
 
-   </View> 
+            <View>
+                <CustomInput
+                    key={1}
+                    placeholder={''}
+                    valeur={comment}
+                    text={(text) => setComment(text)}
+                    multiline={true}
+                />
+            </View>
+
+                    
+            <View>
+                <Text style={styles.noteText}>Note :</Text>
+                </View>
+
+                <View style={styles.note}>
+                <Note 
+                    key={1}
+                    note={note}
+                    update={(val) => setNote(val)}
+                    edit={true}
+                    spacing={4}
+                    size={30}
+                />
+            </View>
+
+            <Separator/>
+            <Separator2/>
+            <Separator/>
+
+            <View>
+
+                <CustomButton
+                    key={1}
+                    title={'Valider'}
+                />
+
+            </View>
+
+        </ScrollView> 
 
 )};
 
 const styles = StyleSheet.create({
-    title: {
-        color: '#606060',
-        alignSelf: 'center',
-        marginTop: 50,
-        fontSize: 32,
-    },
     commentText: {
         color: '#606060',
-        justifyContent: 'flex-start',
         fontSize: 18,
-        marginTop: 30,
+        marginTop: 20,
         fontWeight: 'bold',
         left: 25,
-    },
-    textInput: {
-        color: 'white',
-        width: 300,
-        height: 200,
-        marginTop: 10,
-        backgroundColor: '#484848',
-        borderRadius: 5,
-        borderWidth: 2,
-        borderColor: '#606060',
-        left: 20,
-        textAlign: 'left',
-        textAlignVertical: 'top',
-        flexWrap: 'wrap',
+        bottom: 10,
     },
     noteText: {
         fontSize: 20,
@@ -91,5 +107,5 @@ const styles = StyleSheet.create({
     note: {
         right: 78,
         marginTop: 5,
-    }
+    },
 });
