@@ -79,6 +79,12 @@ export function dashboard({ navigation }) {
                 onPress={() => logout()}
             />
             <IconButton
+                icon={"plus-circle"}
+                size={30}
+                color={'pink'}
+                onPress={() => navigation.navigate('getHistorique')}
+            />
+            <IconButton
                 icon={"folder"}
                 size={30}
                 color={'black'}
