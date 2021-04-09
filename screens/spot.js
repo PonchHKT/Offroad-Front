@@ -1,15 +1,46 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
-import Spot from '../assets/images/spots/forest.jpg';
 import {FontAwesome} from '@expo/vector-icons';
+
+import Spot from '../assets/images/spots/forest.jpg';
 import Separator from '../components/Separator2';
 import Note from '../components/Note';
 import CustomButton from '../components/CustomButton';
+import { signalspot } from './signalspot';
 
 const { width: WIDTH } = Dimensions.get('window')
 
 export function spot({ navigation }) {
+
+    const[spot, setSpot] = useState({})
+
+    const addReview = () => {
+        try {
+            AsyncStorage.setItem('spot', spot)
+            navigation.navigate('addreview')
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    const signalSpot = () => {
+        try {
+            AsyncStorage.setItem('spot', spot)
+            navigation.navigate('signalspot')
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
+    const startRando = () => {
+        try {
+            AsyncStorage.setItem('spot', spot)
+            navigation.navigate('startrando')
+        } catch (e) {
+            console.log(e)
+        }
+    }
             
     return (
 
@@ -76,25 +107,23 @@ export function spot({ navigation }) {
             </View>
 
             <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.editTouch}>
+                <TouchableOpacity style={styles.editTouch} onPress={() => addReview}>
                     <FontAwesome 
                         name="edit" 
                         color="black" 
                         size={30}
                         style={styles.editBtn}
-                        onPress={() => navigation.navigate('addreview')}
                     />
                 </TouchableOpacity>
             </View>
 
             <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.warningTouch}>
+                <TouchableOpacity style={styles.warningTouch} onPress={() => signalSpot()}>
                     <FontAwesome 
                         name="exclamation-triangle" 
                         color="black" 
                         size={30}
                         style={styles.warningBtn}
-                        onPress={() => navigation.navigate('signalspot')}
                     />
                 </TouchableOpacity>
             </View>
@@ -104,7 +133,7 @@ export function spot({ navigation }) {
         <CustomButton
             key={1}
             title={'Démarer'}
-            actionsbtn={() => navigation.navigate('startrando')}
+            actionsbtn={() => startRando()}
         />
         <StatusBar style="auto" />
     </View>
