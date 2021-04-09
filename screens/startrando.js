@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Dimensions } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, View, Dimensions, Text } from 'react-native';
 import MapView from 'react-native-maps';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import jwt_decode from "jwt-decode";
+
+import { getPreciseDistance, getSpeed } from 'geolib';
+
 
 import CustomButton from '../components/CustomButton';
 
-
-const { width: WIDTH } = Dimensions.get('window')
 const HEIGHT = Dimensions.get("window").height;
 
 export function startrando({ navigation }) {
@@ -17,6 +20,15 @@ export function startrando({ navigation }) {
         longitudeDelta: 0.0421,
         verify: false
     })
+
+    const [coord, setCoord] = useState({})
+
+    let longueur = 0;
+    let secondes = 0;
+    let speed = 0;
+    let startDate = new Date();
+
+    const [userToken, setUserToken] = useState([])
 
     if(region.verify === false) {
         navigator.geolocation.getCurrentPosition(success, error, options);
@@ -38,10 +50,108 @@ export function startrando({ navigation }) {
             longitudeDelta: 0.0421,
             verify: true
         })
+
+        setCoord({
+            latitude: crd.latitude,
+            longitude: crd.longitude
+        })
     }
 
     function error(err) {
         console.warn(`ERREUR (${err.code}): ${err.message}`);
+    }
+
+    const getPosition = function (options) {
+        return new Promise(function (resolve, reject) {
+          navigator.geolocation.getCurrentPosition(resolve, reject, options);
+        });
+    }
+
+    const Boucle = async() => {
+
+        if (!startDate) {
+            startDate = new Date();
+            console.log('B')
+        }
+
+        getPosition()
+        .then((position) => {
+            
+            let endDate = new Date();
+            
+            const distance = getPreciseDistance(
+                { latitude: coord.latitude, longitude: coord.longitude },
+                { latitude: position.coords.latitude, longitude: position.coords.longitude }
+            )
+
+            const speed2 = getSpeed(
+                { latitude: coord.latitude, longitude: coord.longitude, time: startDate },
+                { latitude: position.coords.latitude, longitude: position.coords.longitude, time: endDate }
+            )
+
+            if(speed2 > speed) {
+                speed = speed2;
+            }
+            
+
+            navigator.geolocation.getCurrentPosition(success, error)
+            secondes = secondes + (endDate.getTime() - startDate.getTime()) / 1000;
+            longueur = longueur + distance;
+
+            startDate = endDate
+
+            setTimeout(Boucle, 1000)
+        })
+        .catch((err) => {
+            console.error(err.message);
+        })
+    }
+
+    useEffect(() => {
+        try {
+            const value = AsyncStorage.getItem('token')
+            .then((token) => { 
+                const decryptToken = jwt_decode(token);
+                setUserToken(decryptToken)
+            })
+            const spotValue = AsyncStorage.getItem('spot')
+            .then((spot) => { 
+                console.log(spot)
+            })
+        } catch(e) {
+            console.log(e)
+        }
+    },[])
+
+   
+
+    const Stop = async() => {
+        fetch(`https://offroad-app.herokuapp.com/api/historique/add`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                distance: longueur,
+                temps: secondes,
+                speed: speed,
+                spotId: spotId,
+                authorId: userToken.id
+            })
+        })
+        .then((response) => response.json())
+        .then(async(responseData) => {
+            try {
+                await AsyncStorage.removeItem('spot')
+                navigation.navigate('dashboard')
+            } catch(e) {
+                console.log(e)
+            }
+        })
+        .catch((error) =>{
+            console.error(error);
+        })
     }
 
     return (
@@ -63,11 +173,17 @@ export function startrando({ navigation }) {
                     key={2}
                     title={'Arrêter'}
                     style={styles.button}
+                    actionsbtn={() => Stop()}
                 />
             </View>
+
+                <CustomButton
+                    key={3}
+                    title={'Départ'}
+                    style={styles.button}
+                    actionsbtn={() => Boucle()}
+                />
         </View>
-
-
 )}
 
 const styles = StyleSheet.create({
@@ -86,7 +202,7 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         alignSelf: 'center',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
+        width: '100%'
     },
-
 });

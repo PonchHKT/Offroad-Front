@@ -99,7 +99,7 @@ export function spot({ navigation }) {
 
         <CustomButton
             key={1}
-            title={'Voir'}
+            title={'Démarer'}
         />
     </View>
     )

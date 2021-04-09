@@ -46,6 +46,9 @@ export function dashboard({ navigation }) {
         console.warn(`ERREUR (${err.code}): ${err.message}`);
     }
 
+    if (!AsyncStorage.getItem('token')) {
+        navigation.navigate('login')
+    }
     
     async function logout() {
         Alert.alert('You have been disconnected')
@@ -55,7 +58,7 @@ export function dashboard({ navigation }) {
         } catch (e) {
             console.log(e)
         }
-      }
+    }
 
     return (
         <ScrollView>
