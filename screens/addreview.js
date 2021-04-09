@@ -23,7 +23,7 @@ export function addreview({ navigation }) {
                     key={1}
                     dashboard={true}
                     plus={false}
-                    plusPress={() => navigation.navigate('')}
+                    plusPress={() => navigation.navigate('addspot')}
                     like={false}
                     likePress={() => navigation.navigate('')}
                     account={false}

@@ -87,7 +87,7 @@ export function comments({ navigation }) {
                     dashboard={false}
                     mapPress={() => navigation.navigate('dashboard')}
                     plus={false}
-                    plusPress={() => navigation.navigate('')}
+                    plusPress={() => navigation.navigate('addspot')}
                     like={false}
                     likePress={() => navigation.navigate('')}
                     account={true}

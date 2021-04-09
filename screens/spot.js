@@ -81,7 +81,9 @@ export function spot({ navigation }) {
                         name="edit" 
                         color="black" 
                         size={30}
-                        style={styles.editBtn}/>
+                        style={styles.editBtn}
+                        onPress={() => navigation.navigate('addreview')}
+                    />
                 </TouchableOpacity>
             </View>
 
@@ -91,7 +93,9 @@ export function spot({ navigation }) {
                         name="exclamation-triangle" 
                         color="black" 
                         size={30}
-                        style={styles.warningBtn}/>
+                        style={styles.warningBtn}
+                        onPress={() => navigation.navigate('signalspot')}
+                    />
                 </TouchableOpacity>
             </View>
         </View>
@@ -100,7 +104,9 @@ export function spot({ navigation }) {
         <CustomButton
             key={1}
             title={'Démarer'}
+            actionsbtn={() => navigation.navigate('startrando')}
         />
+        <StatusBar style="auto" />
     </View>
     )
 };

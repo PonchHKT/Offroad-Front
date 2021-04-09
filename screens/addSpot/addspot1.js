@@ -25,7 +25,7 @@ export function addspot({ navigation }) {
                 mapPress={() => navigation.navigate('dashboard')}
                 plus={true}
                 like={false}
-                likePress={() => navigation.navigate('')}
+                likePress={() => navigation.navigate('addspot')}
                 account={false}
                 accountPress={() => navigation.navigate('')}
             />
@@ -84,6 +84,7 @@ export function addspot({ navigation }) {
                         <CustomButton
                             key={1}
                             title={'Suivant'}
+                            actionsbtn={() => navigation.navigate('addspotnext')}
                         />
                     </View>
                 </View>

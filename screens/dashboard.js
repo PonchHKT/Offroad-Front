@@ -68,7 +68,7 @@ export function dashboard({ navigation }) {
                     id={1}
                     dashboard={true}
                     plus={false}
-                    plusPress={() => navigation.navigate('')}
+                    plusPress={() => navigation.navigate('addspot')}
                     like={false}
                     likePress={() => navigation.navigate('')}
                     account={false}
@@ -99,36 +99,7 @@ export function dashboard({ navigation }) {
                 color={'black'}
                 onPress={() => navigation.navigate('comments')}
             />
-            <IconButton
-                icon={"check"}
-                size={30}
-                color={'black'}
-                onPress={() => navigation.navigate('startrando')}
-            />
-            <IconButton
-                icon={"check"}
-                size={30}
-                color={'blue'}
-                onPress={() => navigation.navigate('addreview')}
-            />
-            <IconButton
-                icon={"check"}
-                size={30}
-                color={'pink'}
-                onPress={() => navigation.navigate('signalspot')}
-            />
-                        <IconButton
-                icon={"check"}
-                size={30}
-                color={'orange'}
-                onPress={() => navigation.navigate('addspot')}
-            />
-                                    <IconButton
-                icon={"check"}
-                size={30}
-                color={'red'}
-                onPress={() => navigation.navigate('addspotnext')}
-            />
+              
             <MapView
                 region={region}
                 style={{width: '100%', height: HEIGHT}}
