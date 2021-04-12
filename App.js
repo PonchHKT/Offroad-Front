@@ -25,6 +25,7 @@ import { addspot } from './screens/addSpot/addspot1';
 import { addspotnext } from './screens/addSpot/addspot2';
 
 import { viewpost } from './screens/viewpost';
+import { splash } from './screens/splashscreen';
 
 const Stack = createStackNavigator();
 
@@ -54,7 +55,6 @@ export default function App() {
         :
           <Stack.Screen name="login2" component={login} />
         }
-
         <Stack.Screen name="login" component={login} />
         <Stack.Screen name="register" component={register} />
         <Stack.Screen name="forgotPassword" component={forgotPassword} />
