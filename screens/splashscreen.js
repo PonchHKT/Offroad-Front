@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import {View, StyleSheet, Text, Image} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import logoImage from '../assets/images/motocrosslogo.png'
 
 import LottieView from 'lottie-react-native';
 
@@ -38,19 +39,20 @@ export function splash({ navigation }) {
     return (
             <View
             style={styles.backgroundContainer}>
-                <View>
-                <Text style={styles.text}>OFFROAD BIKE TRIP</Text>
+                <View style={styles.logoContainer}>
+                <Image style={styles.logo} source={logoImage}/>
                 </View>
+
                 <LottieView 
-                style={{width: 250, height: 250, top: 50, left: 15,}}
+                style={{width: 300, height: 300, top: 15, left: 15,}}
                 source={require('../assets/splash.json')} 
                 autoPlay 
                 loop = {false}
-                speed = {1.5}
+                speed = {0.5}
                 onAnimationFinish = {() => finish() }/>
 
                 <View>
-                <Text style={{fontWeight: 'bold', top: 350, left: 11,}}>v1.0</Text>
+                <Text style={{fontWeight: 'bold', top: 220, left: 11,}}>v1.0</Text>
                 </View>
             </View>
 
@@ -68,6 +70,16 @@ const styles = StyleSheet.create({
         left: 80,
         fontFamily: 'biker',
         fontSize: 30,
+    },
+    logoContainer: {
+        top: 240,
+        left: 140,
+    },
+    logo: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: 120,
+        height: 120,
     },
 
 });
