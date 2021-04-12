@@ -178,9 +178,6 @@ const styles = StyleSheet.create({
         fontSize: 15,
         marginTop: 5,
     },
-    buttonContainer: {
-        paddingBottom: 10,
-    },
     icons: {
         flex: 1,
         flexDirection: 'row',
