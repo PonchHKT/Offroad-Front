@@ -1,27 +1,56 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, ScrollView, Alert, Dimensions, Text } from 'react-native';
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import jwt_decode from "jwt-decode";
+
 import { IconButton } from 'react-native-paper';
 import MapView, { Marker } from 'react-native-maps';
 
 import Navbar from '../components/Navbar';
 
+import markerPng from '../assets/images/marker.png';
+
 const HEIGHT = Dimensions.get("window").height;
 
 export function dashboard({ navigation }) {
 
-    const [region, setRegion] = useState({
-        latitude: 0,
-        longitude: 0,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
-        verify: false
-    })
+    const [region, setRegion] = useState({})
+
     const [spot, setSpot] = useState({ value: [] })
 
-    if(region.verify === false) {
+    // useEffect(() => {
+    //     try {
+    //         const value = AsyncStorage.getItem('token')
+    //         .then((token) => { 
+    //             const decryptToken = jwt_decode(token);
+  
+    //             fetch(`https://offroad-app.herokuapp.com/api/spot/${decryptToken.level}`, {
+    //                 method: 'GET',
+    //                 headers: {
+    //                     'Accept': 'application/json',
+    //                     'Content-Type': 'application/json',
+    //                 },
+    //             })
+    //             .then((response) => response.json())
+    //             .then((responseData) => {
+    //                 console.log(responseData)
+    //             })
+
+    //             .catch((error) =>{
+    //                 console.error(error);
+    //             })
+    
+    //       })
+    //     } catch(e) {
+    //       console.log(e)
+    //     }
+    // },[])
+
+    if(region.latitude == undefined) {
         navigator.geolocation.getCurrentPosition(success, error, options);
+        return ( <View></View> )
     }
 
     let options = {
@@ -38,7 +67,6 @@ export function dashboard({ navigation }) {
             longitude: crd.longitude,
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
-            verify: true
         })
     }
     
@@ -51,7 +79,7 @@ export function dashboard({ navigation }) {
     }
     
     async function logout() {
-        Alert.alert('You have been disconnected')
+        Alert.alert('Vous avez été déconnecté !')
         try {
             await AsyncStorage.removeItem('token')
             navigation.navigate('login')
@@ -104,6 +132,12 @@ export function dashboard({ navigation }) {
                 region={region}
                 style={{width: '100%', height: HEIGHT}}
             >
+                {/* { spot.value.map((info) => (
+                <Marker
+                    coordinate={{ latitude : info.latitude , longitude : info.longitude }}
+                    image={markerPng}
+                />
+                ))} */}
             </MapView>
 
             <StatusBar style="auto" />

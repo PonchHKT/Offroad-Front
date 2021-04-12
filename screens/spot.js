@@ -3,11 +3,12 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
 import {FontAwesome} from '@expo/vector-icons';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import Spot from '../assets/images/spots/forest.jpg';
 import Separator from '../components/Separator2';
 import Note from '../components/Note';
 import CustomButton from '../components/CustomButton';
-import { signalspot } from './signalspot';
 
 const { width: WIDTH } = Dimensions.get('window')
 
@@ -51,7 +52,7 @@ export function spot({ navigation }) {
             <Text style={styles.noteText}>Note :</Text>
             <Note 
                 key={1}
-                note={5}
+                note={3}
                 edit={false}
                 spacing={4}
                 size={30}
