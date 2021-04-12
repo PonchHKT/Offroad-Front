@@ -38,18 +38,23 @@ export function splash({ navigation }) {
     return (
             <View
             style={styles.backgroundContainer}>
-                <LottieView 
-                source={require('../assets/splash.json')} 
-                autoPlay 
-                loop = {false}
-                speed = {0.5}
-                onAnimationFinish = {() => finish() }/>
                 <View>
                 <Text style={styles.text}>OFFROAD BIKE TRIP</Text>
                 </View>
+                <LottieView 
+                style={{width: 250, height: 250, top: 50, left: 15,}}
+                source={require('../assets/splash.json')} 
+                autoPlay 
+                loop = {false}
+                speed = {1.5}
+                onAnimationFinish = {() => finish() }/>
+
+                <View>
+                <Text style={{fontWeight: 'bold', top: 350, left: 11,}}>v1.0</Text>
+                </View>
             </View>
 
-)};
+)};LottieView
 
 const styles = StyleSheet.create({
     backgroundContainer: {
@@ -58,9 +63,9 @@ const styles = StyleSheet.create({
     },
     text: {
         alignItems: 'center',
-        fontSize: 20,
-        top: 240,
-        left: 65,
+        fontSize: 50,
+        top: 120,
+        left: 80,
         fontFamily: 'biker',
         fontSize: 30,
     },
