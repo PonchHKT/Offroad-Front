@@ -26,6 +26,8 @@ import { addspotnext } from './screens/addSpot/addspot2';
 import { viewpost } from './screens/viewpost';
 import { splash } from './screens/splashscreen';
 
+import {welcome} from './screens/welcome.js';
+
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -40,6 +42,7 @@ export default function App() {
         }}
       >
         <Stack.Screen name="splash" component={splash} />
+        <Stack.Screen name="welcome" component={welcome} />
 
         <Stack.Screen name="login" component={login} />
         <Stack.Screen name="register" component={register} />

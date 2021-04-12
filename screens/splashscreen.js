@@ -31,7 +31,7 @@ export function splash({ navigation }) {
             Logged ?
                 navigation.navigate('dashboard')
             : 
-                navigation.navigate('login')
+                navigation.navigate('welcome')
         }
     }
 
