@@ -63,20 +63,6 @@ export function comments({ navigation }) {
     if (!posts) {
         return <Text>Chargement...</Text>
     }
-
-    if (!posts.post) {
-        <View></View>
-    } else {
-        { posts.post.map((post) => (
-            <Historique
-              key={post.id}
-              id={post.id}
-              date={post.createdAt}
-              text={post.content}
-              note={post.note}
-            />
-        ))}
-    }
    
     return (
         <ScrollView>
@@ -97,13 +83,12 @@ export function comments({ navigation }) {
             { !posts.post ?
                 <View></View>
             :
-                posts.post.map((post) => (
+                posts.post.map((post, index) => (
                     <Historique
-                    key={post.id}
-                    id={post.id}
-                    date={post.createdAt}
-                    text={post.content}
-                    note={post.note}
+                        key={index}
+                        date={post.createdAt}
+                        text={post.content}
+                        note={post.note}
                     />
                 ))
             }
