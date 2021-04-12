@@ -1,10 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions } from 'react-native';
 import {FontAwesome} from '@expo/vector-icons';
-
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 import Spot from '../assets/images/spots/forest.jpg';
 import Separator from '../components/Separator2';
 import Note from '../components/Note';

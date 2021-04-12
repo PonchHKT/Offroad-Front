@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
-
 import Note from '../components/Note';
 import Separator2 from '../components/Separator2';
 import Separator from '../components/Separator';

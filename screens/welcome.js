@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, ImageBackground, Image, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
 import logo from '../assets/images/motocrosslogo.png';
 import GoogleButton from '../components/Google2';
 import Separator from '../components/Separator2';
 import Separator2 from '../components/Separator';
-
 import LottieView from 'lottie-react-native';
 
 const { width: WIDTH } = Dimensions.get('window')
@@ -54,7 +53,7 @@ export function welcome({ navigation }) {
                 style={styles.btnLogin}
                 onPress={() => navigation.navigate('register')} 
             >
-                <Text style={styles.textLogin}>S'INSCRIRE</Text>
+                <Text style={styles.textLogin}>S'inscrire</Text>
             </TouchableOpacity>
         </View>
         </View>

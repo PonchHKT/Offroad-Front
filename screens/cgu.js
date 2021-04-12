@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { View, ScrollView, Text } from 'react-native';
-
 import CustomTitle from '../components/CustomTitle'
 import Separator from '../components/Separator';
 

@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {View, StyleSheet, Text, Image} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import logoImage from '../assets/images/motocrosslogo.png'
-
 import LottieView from 'lottie-react-native';
-
 import { useFonts } from 'expo-font';
 
 export function splash({ navigation }) {

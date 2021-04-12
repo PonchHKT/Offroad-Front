@@ -1,9 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
-import { View, ScrollView, Alert, Dimensions, Text } from 'react-native';
+import React, { useState } from 'react';
+import { View, ScrollView, Alert, Dimensions } from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import jwt_decode from "jwt-decode";
 
 import { IconButton } from 'react-native-paper';
 import MapView, { Marker } from 'react-native-maps';
