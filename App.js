@@ -2,7 +2,6 @@ import 'react-native-gesture-handler';
 import React, { useState, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { login } from './screens/auth/login';
 import { register } from './screens/auth/register';
@@ -31,16 +30,7 @@ const Stack = createStackNavigator();
 
 export default function App() {
 
-  const [Logged, setLogged] = useState(false)
-
-  useEffect(() => {
-    try {
-      const value = AsyncStorage.getItem('token')
-      .then((login) => { login ? setLogged(true) : setLogged(false)})
-    } catch(e) {
-      console.log(e)
-    }
-  },[])
+ 
 
   return (
     <NavigationContainer>
@@ -49,12 +39,8 @@ export default function App() {
         headerShown: false
         }}
       >
-        {
-          Logged ?
-          <Stack.Screen name="dashboard2" component={dashboard} />
-        :
-          <Stack.Screen name="login2" component={login} />
-        }
+        <Stack.Screen name="splash" component={splash} />
+
         <Stack.Screen name="login" component={login} />
         <Stack.Screen name="register" component={register} />
         <Stack.Screen name="forgotPassword" component={forgotPassword} />

@@ -1,16 +1,38 @@
-import React, { Component, component } from 'react';
+import React, { useEffect, useState } from 'react';
 import {View, StyleSheet, Text} from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import LottieView from 'lottie-react-native';
-import * as Font from 'expo-font';
+
 import { useFonts } from 'expo-font';
 
 export function splash({ navigation }) {
     const [loaded] = useFonts({
         biker: require('../assets/fonts/biker.otf'),
     });
+
+    const [Logged, setLogged] = useState(false)
+
+    useEffect(() => {
+      try {
+        const value = AsyncStorage.getItem('token')
+        .then((login) => { login ? setLogged(true) : setLogged(false)})
+      } catch(e) {
+        console.log(e)
+      }
+    },[])
     
     if (!loaded) {
         return null;
+    }
+
+    const finish  = async() => {
+        {
+            Logged ?
+                navigation.navigate('dashboard')
+            : 
+                navigation.navigate('login')
+        }
     }
 
     return (
@@ -21,7 +43,7 @@ export function splash({ navigation }) {
                 autoPlay 
                 loop = {false}
                 speed = {0.5}
-                onAnimationFinish = {() => navigation.navigate('dashboard')}/>
+                onAnimationFinish = {() => finish() }/>
                 <View>
                 <Text style={styles.text}>OFFROAD BIKE TRIP</Text>
                 </View>
