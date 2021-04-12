@@ -5,7 +5,7 @@ import Stars from 'react-native-stars';
 export default function Note(props) {
     
     return (
-        <View style={{alignItems:'center'}}>
+        <View style={{right: 85}}>
             { props.edit ?
             <Stars
                 half={true}
