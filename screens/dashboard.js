@@ -99,6 +99,12 @@ export function dashboard({ navigation }) {
                 color={'black'}
                 onPress={() => navigation.navigate('comments')}
             />
+            <IconButton
+                icon={"check"}
+                size={30}
+                color={'black'}
+                onPress={() => navigation.navigate('viewpost')}
+            />
               
             <MapView
                 region={region}

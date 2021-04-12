@@ -24,6 +24,8 @@ import { signalspot } from './screens/signalspot';
 import { addspot } from './screens/addSpot/addspot1';
 import { addspotnext } from './screens/addSpot/addspot2';
 
+import { viewpost } from './screens/viewpost';
+
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -70,6 +72,7 @@ export default function App() {
         <Stack.Screen name="signalspot" component={signalspot} />
         <Stack.Screen name="addspot" component={addspot} />
         <Stack.Screen name="addspotnext" component={addspotnext} />
+        <Stack.Screen name="viewpost" component={viewpost} />
 
       </Stack.Navigator>
     </NavigationContainer>
