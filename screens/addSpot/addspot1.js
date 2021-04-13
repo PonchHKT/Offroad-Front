@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
 import Note from '../../components/Note';
-import Separator2 from '../../components/Separator2';
+import Separator2 from '../../components/Separator3';
 import Separator from '../../components/Separator';
 import CustomButton from '../../components/CustomButton';
 import Navbar from '../../components/Navbar';
@@ -17,7 +17,7 @@ export function addspot({ navigation }) {
     return (
 
         <ScrollView>
-
+            <View style={{marginTop: 20}}>
             <Navbar 
                 key={1}
                 id={1}
@@ -28,7 +28,7 @@ export function addspot({ navigation }) {
                 likePress={() => navigation.navigate('addspot')}
                 account={false}
                 accountPress={() => navigation.navigate('')}
-            />
+            /></View>
 
             <View>
 
@@ -104,12 +104,12 @@ const styles = StyleSheet.create({
    
     noteText: {
         fontSize: 20,
-        left: 20,
-        marginTop: 10,
+        left: 35,
+        marginTop: 3,
         color: '#606060',
     },
     note: {
-        right: 78,
-        marginTop: 5,
+        left: 10,
+        bottom: 5,
     },
 });

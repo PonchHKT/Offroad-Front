@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Dimensions } from
 import {FontAwesome} from '@expo/vector-icons';
 import Navbar from '../components/Navbar';
 import Note from '../components/Note';
-import Separator from '../components/Separator2';
+import Separator from '../components/Separator3';
 
 const { width: WIDTH } = Dimensions.get('window')
 
@@ -12,7 +12,7 @@ export function viewpost({ navigation }) {
     return (
         <ScrollView>
 
-        <View>
+        <View style={{marginTop: 20}}>
         <Navbar 
                     key={1}
                     dashboard={false}
@@ -33,16 +33,17 @@ export function viewpost({ navigation }) {
                 <Text style={styles.description}>Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.</Text>
             </View>
             <Separator/>
-
             <View>
             <Text style={styles.noteText}>Note :</Text>
+            <View style={{right: 5,}}>
             <Note
                 key={1}
-                note={5}
-                edit={true}
+                note={3}
+                edit={false}
                 spacing={4}
                 size={30}
             />
+            </View>
         </View>
 
             <Separator/>
@@ -93,7 +94,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#606060',
         fontSize: 16,
-        marginTop: 5,
     },
     description: {
         color: '#606060',
@@ -107,6 +107,8 @@ const styles = StyleSheet.create({
         fontSize: 20,
         left: 20,
         color: '#606060',
+        bottom: 5,
+        right: -8,
     },
     icons: {
         flex: 1,
@@ -115,6 +117,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         width: WIDTH - 300,
         marginBottom: 25,
+        bottom: 8,
     },
     buttonContainer: {
         paddingBottom: 10,

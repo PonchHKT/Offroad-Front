@@ -17,7 +17,7 @@ export function addreview({ navigation }) {
 
         <ScrollView>
 
-            <View>
+            <View style={{marginTop: 20}}>
                 <Navbar 
                     key={1}
                     dashboard={true}

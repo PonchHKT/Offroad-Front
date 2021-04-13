@@ -127,13 +127,14 @@ export function spot({ navigation }) {
                 </TouchableOpacity>
             </View>
         </View>
-
-
+        
+        <View style={{bottom: 50}}>
         <CustomButton
             key={1}
             title={'Démarer'}
             actionsbtn={() => startRando()}
-        />
+        /></View>
+
         <StatusBar style="auto" />
     </View>
     )
@@ -149,7 +150,8 @@ class Star extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        marginTop: 20,
     },
     imageSpot: {
         width: WIDTH,
@@ -182,6 +184,5 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignSelf: 'center',
         width: WIDTH - 50,
-        marginBottom: 25,
     },
 });

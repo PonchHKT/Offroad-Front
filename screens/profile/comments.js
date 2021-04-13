@@ -66,7 +66,7 @@ export function comments({ navigation }) {
    
     return (
         <ScrollView>
-            <View>
+            <View style={{marginTop: 20,}}>
                 <Navbar 
                     key={1}
                     id={1}

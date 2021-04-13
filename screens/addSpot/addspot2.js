@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
 import Separator from '../../components/Separator';
-import Separator2 from '../../components/Separator2';
+import Separator2 from '../../components/Separator3';
 import CustomButton from '../../components/CustomButton';
 import CustomRadio from '../../components/CustomRadio';
 import Navbar from '../../components/Navbar';
@@ -18,7 +18,7 @@ export function addspotnext({ navigation }) {
     return (
 
     <ScrollView>
-
+        <View style={{marginTop: 20}}>
         <Navbar 
             key={1}
             dashboard={false}
@@ -28,7 +28,7 @@ export function addspotnext({ navigation }) {
             likePress={() => navigation.navigate('')}
             account={false}
             accountPress={() => navigation.navigate('')}
-        />
+        /></View>
 
         <Separator/>
         <Separator/>
@@ -124,6 +124,8 @@ const styles = StyleSheet.create({
     level: {
         marginTop: 15,
         paddingLeft: '6.5%',
+        bottom: 10,
+        left: 10,
     },
     commentText: {
         color: '#606060',
