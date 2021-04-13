@@ -106,7 +106,7 @@ export function addspotnext({ navigation }) {
             />
         </View>
 
-        <View>
+        <View style={{bottom: 14,}}>
 
             <Separator2/>
 
