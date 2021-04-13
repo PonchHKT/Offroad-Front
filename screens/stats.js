@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     },
     dataContainer: {
         marginTop: 10,
-        justifyContent: 'flex-start',
+        justifyContent: 'space-between',
         marginLeft: 20,
     },
     dataText: {
