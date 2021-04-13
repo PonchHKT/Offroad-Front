@@ -138,6 +138,13 @@ export function dashboard({ navigation }) {
                 color={'red'}
                 onPress={() => navigation.navigate('infoMed')}
             />
+
+            <IconButton
+                icon={"check"}
+                size={30}
+                color={'red'}
+                onPress={() => navigation.navigate('stats')}
+            />
               
             <MapView
                 region={region}
