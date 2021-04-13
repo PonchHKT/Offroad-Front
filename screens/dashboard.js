@@ -74,14 +74,14 @@ export function dashboard({ navigation }) {
     }
 
     if (!AsyncStorage.getItem('token')) {
-        navigation.navigate('login')
+        navigation.navigate('welcome')
     }
     
     async function logout() {
         Alert.alert('Vous avez été déconnecté !')
         try {
             await AsyncStorage.removeItem('token')
-            navigation.navigate('login')
+            navigation.navigate('welcome')
         } catch (e) {
             console.log(e)
         }
@@ -92,7 +92,6 @@ export function dashboard({ navigation }) {
             <View>
                 <Navbar 
                     key={1}
-                    id={1}
                     dashboard={true}
                     plus={false}
                     plusPress={() => navigation.navigate('addspot')}
@@ -131,6 +130,13 @@ export function dashboard({ navigation }) {
                 size={30}
                 color={'black'}
                 onPress={() => navigation.navigate('viewpost')}
+            />
+
+            <IconButton
+                icon={"check"}
+                size={30}
+                color={'red'}
+                onPress={() => navigation.navigate('infoMed')}
             />
               
             <MapView

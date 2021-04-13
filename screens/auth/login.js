@@ -81,7 +81,6 @@ export function login({ navigation }) {
                     <Image source={logo} style={styles.logo}></Image>
                     <CustomTitle
                         key={1}
-                        id={1}
                         title={'Se connecter'}
                     />
                 </View>
@@ -125,7 +124,6 @@ export function login({ navigation }) {
         
                 <CustomButton
                     key={5}
-                    id={5}
                     actionsbtn={() => onLoginPressed()}
                     title={'Se connecter'}
                 />

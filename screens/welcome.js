@@ -1,62 +1,73 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
+import { StyleSheet, View, Image, ScrollView, Dimensions } from 'react-native';
+import LottieView from 'lottie-react-native';
+
 import logo from '../assets/images/motocrosslogo.png';
+
+import CustomTitle from '../components/CustomTitle';
+import CustomButton from '../components/CustomButton';
 import GoogleButton from '../components/Google2';
 import Separator from '../components/Separator2';
 import Separator2 from '../components/Separator';
-import LottieView from 'lottie-react-native';
 
 const { width: WIDTH } = Dimensions.get('window')
 
 export function welcome({ navigation }) {
 
     return (
-            <ScrollView style={styles.backgroundContainer}>
-                <View style={{bottom: 45,}}>
-                <View style={styles.logoContainer}>
-                
-                <LottieView 
-                style={{width: 110, height: 110, top: 77, left: 35, zIndex: 10,}}
-                source={require('../assets/location.json')} 
-                autoPlay 
-                loop = {true}
-                speed = {1}/>
+        <ScrollView style={styles.backgroundContainer}>
+
+            <Separator2/>
+            <Separator2/>
+            <Separator2/>
+            
+            <View>
+
+                <View style={styles.logoContainer}>    
                     <Image source={logo} style={styles.logo}></Image>
                 </View>
 
-                <View style={{alignItems: 'center'}}>
-                <Text style={styles.textWelcome}>Bienvenue</Text>
+                <View style={styles.header}>
+                    <CustomTitle
+                        key={1}
+                        title={'Bienvenue'}
+                    />
+                    <LottieView 
+                        style={{width: WIDTH / 5}}
+                        source={require('../assets/location.json')} 
+                        autoPlay 
+                        loop
+                        speed={1}
+                    />
                 </View>
 
-                <View style={styles.loginView}>
-            <TouchableOpacity 
-                style={styles.btnLogin}
-                onPress={() => navigation.navigate('login')} 
-            >
-                <Text style={styles.textLogin}>Se connecter</Text>
-            </TouchableOpacity>
-        </View>
+                <CustomButton
+                    key={2}
+                    actionsbtn={() => navigation.navigate('login')}
+                    title={'Se connecter'}
+                    width={60}
+                />
 
                 <GoogleButton
-                    key={4}
-                    id={4}
+                    key={3}
                     title={'Connexion avec Google'}
                 />
-                <Separator2/>
-                <Separator2/>
-                <Separator/>
-                <Separator2/>
-                <Separator2/>
-                <View style={styles.loginView}>
-            <TouchableOpacity 
-                style={styles.btnLogin}
-                onPress={() => navigation.navigate('register')} 
-            >
-                <Text style={styles.textLogin}>S'inscrire</Text>
-            </TouchableOpacity>
-        </View>
-        </View>
+
+                    <Separator2/>
+                    <Separator2/>
+                    <Separator/>
+                    <Separator2/>
+                    <Separator2/>
+
+                <CustomButton
+                    key={4}
+                    actionsbtn={() => navigation.navigate('register')}
+                    title={'S\'inscrire'}
+                    width={60}
+                />
+
+            </View>
             <StatusBar style="auto" hidden={true}/>
         </ScrollView>
     ); 
@@ -64,7 +75,6 @@ export function welcome({ navigation }) {
 
 const styles = StyleSheet.create({
     backgroundContainer: {
-        resizeMode: "cover", 
         flex:1, 
         height: '100%', 
         width: '100%',
@@ -80,29 +90,15 @@ const styles = StyleSheet.create({
     },
     textWelcome: {
         fontWeight: 'bold',
-        justifyContent: 'center',
         fontSize: 40,
-        marginBottom: 20,
-        right: 20,
+        zIndex: 10
     },
-    btnLogin: {
-        width: WIDTH - 80,
-        height: 60,
-        borderRadius: 20,    
+    header: {
+        flex: 1, 
+        flexDirection: 'row', 
+        width: WIDTH,
         justifyContent: 'center',
-        borderWidth: 1,
-        borderColor: 'gray',
-        backgroundColor: '#e74c3c',
-    },
-    textLogin: {
-        color:'white',
-        fontSize: 15,
-        fontWeight: 'bold',
-        textAlign: 'center',
-        left: 8,
-    },
-    loginView: {
-        alignSelf: 'center',
+        marginBottom: 20
     },
 });
 

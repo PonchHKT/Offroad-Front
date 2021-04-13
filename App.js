@@ -6,27 +6,20 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { login } from './screens/auth/login';
 import { register } from './screens/auth/register';
 import { forgotPassword } from './screens/auth/forgotPassword';
-
 import { dashboard } from './screens/dashboard';
-
 import { cgu } from './screens/cgu';
-
 import { comments } from './screens/profile/comments';
 import { getHistorique } from './screens/profile/historique';
-
 import { startrando } from './screens/startrando';
 import { spot } from './screens/spot';
-
 import { addreview } from './screens/addreview';
 import { signalspot } from './screens/signalspot';
-
 import { addspot } from './screens/addSpot/addspot1';
 import { addspotnext } from './screens/addSpot/addspot2';
-
 import { viewpost } from './screens/viewpost';
 import { splash } from './screens/splashscreen';
-
-import {welcome} from './screens/welcome.js';
+import { welcome } from './screens/welcome.js';
+import { infoMed } from './screens/profile/infoMed';
 
 const Stack = createStackNavigator();
 
@@ -54,6 +47,7 @@ export default function App() {
 
         <Stack.Screen name="comments" component={comments} />
         <Stack.Screen name="getHistorique" component={getHistorique} />
+        <Stack.Screen name="infoMed" component={infoMed} />
 
         <Stack.Screen name="startrando" component={startrando} />
         <Stack.Screen name="spot" component={spot} />

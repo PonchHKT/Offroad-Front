@@ -28,7 +28,7 @@ export default function Historique(props) {
             flexDirection: 'row',
             paddingTop: 10,
             alignItems: 'center',
-            justifyContent: 'space-arround'
+            justifyContent: 'space-between'
         }
     });   
     
