@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Dimensions } from 'react-native';
 
 import Separator from '../../components/Separator';
 import Separator2 from '../../components/Separator3';
@@ -9,6 +9,9 @@ import CustomRadio from '../../components/CustomRadio';
 import Navbar from '../../components/Navbar';
 import CustomTitle from '../../components/CustomTitle';
 import CustomInput from '../../components/CustomInput';
+import LottieView from 'lottie-react-native';
+
+const { width: WIDTH } = Dimensions.get('window')
 
 export function addspotnext({ navigation }) {
 
@@ -75,7 +78,16 @@ export function addspotnext({ navigation }) {
             </View>
         </View>
 
+        <LottieView 
+                style={{width: WIDTH / 1.7, left: 50, bottom: 65}}
+                resizeMode={'cover'}
+                source={require('../../assets/addspot2.json')} 
+                autoPlay 
+                loop={true}
+                speed={0.5}
+            />
         
+        <View style={{bottom: 210}}>
         <View>
             <Text style={styles.commentText}>Adresse :</Text>
         </View>
@@ -115,6 +127,7 @@ export function addspotnext({ navigation }) {
                 key={1}
                 title={'Ajouter'}
             />
+        </View>
         </View>
         <StatusBar style="auto" hidden={true}/>
     </ScrollView> 
