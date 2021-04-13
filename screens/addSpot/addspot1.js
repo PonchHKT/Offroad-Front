@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Dimensions } from 'react-native';
 
 import Note from '../../components/Note';
 import Separator2 from '../../components/Separator3';
@@ -9,6 +9,9 @@ import CustomButton from '../../components/CustomButton';
 import Navbar from '../../components/Navbar';
 import CustomTitle from '../../components/CustomTitle';
 import CustomInput from '../../components/CustomInput';
+import LottieView from 'lottie-react-native';
+
+const { width: WIDTH } = Dimensions.get('window')
 
 export function addspot({ navigation }) {
 
@@ -75,7 +78,16 @@ export function addspot({ navigation }) {
                     />
                 </View>
 
-                <View>
+                <LottieView 
+                style={{width: WIDTH / 2, left: 65, bottom: 26}}
+                resizeMode={'cover'}
+                source={require('../../assets/addspot.json')} 
+                autoPlay 
+                loop={false}
+                speed={0.5}
+            />
+
+                <View style={{bottom: 100,}}>
                 
                     <Separator/>
                     <Separator2/>
