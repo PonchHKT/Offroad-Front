@@ -19,7 +19,7 @@ export function addspotnext({ navigation }) {
     return (
 
     <ScrollView>
-        <View style={{marginTop: 20}}>
+        <View>
         <Navbar 
             key={1}
             dashboard={false}
