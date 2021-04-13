@@ -14,14 +14,13 @@ export function welcome({ navigation }) {
             <ScrollView style={styles.backgroundContainer}>
                 <View style={{bottom: 45,}}>
                 <View style={styles.logoContainer}>
-
+                
                 <LottieView 
                 style={{width: 110, height: 110, top: 77, left: 35, zIndex: 10,}}
                 source={require('../assets/location.json')} 
                 autoPlay 
                 loop = {true}
                 speed = {1}/>
-
                     <Image source={logo} style={styles.logo}></Image>
                 </View>
 
