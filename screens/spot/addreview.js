@@ -1,16 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
-import React, {     useState } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, ScrollView, Alert } from 'react-native';
 
-import { commentsValidator } from '../helpers/commentsValidator'
+import { commentsValidator } from '../../helpers/commentsValidator';
 
-import Note from '../components/Note';
-import Separator2 from '../components/Separator2';
-import Separator from '../components/Separator';
-import CustomButton from '../components/CustomButton';
-import Navbar from '../components/Navbar';
-import CustomTitle from '../components/CustomTitle';
-import CustomInput from '../components/CustomInput';
+import Note from '../../components/Note';
+import Separator2 from '../../components/Separator2';
+import Separator from '../../components/Separator';
+import CustomButton from '../../components/CustomButton';
+import Navbar from '../../components/Navbar';
+import CustomTitle from '../../components/CustomTitle';
+import CustomInput from '../../components/CustomInput';
 
 export function addreview({ route, navigation }) {
 

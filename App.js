@@ -1,21 +1,25 @@
 import 'react-native-gesture-handler';
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import { login } from './screens/auth/login';
 import { register } from './screens/auth/register';
 import { forgotPassword } from './screens/auth/forgotPassword';
+
 import { dashboard } from './screens/dashboard';
 import { cgu } from './screens/cgu';
 import { comments } from './screens/profile/comments';
 import { getHistorique } from './screens/profile/historique';
-import { startrando } from './screens/startrando';
-import { spot } from './screens/spot';
-import { addreview } from './screens/addreview';
-import { signalspot } from './screens/signalspot';
+
+import { spot } from './screens/spot/spot';
+import { startrando } from './screens/spot/startrando';
+import { addreview } from './screens/spot/addreview';
+import { signalspot } from './screens/spot/signalspot';
+
 import { addspot } from './screens/addSpot/addspot1';
 import { addspotnext } from './screens/addSpot/addspot2';
+
 import { viewpost } from './screens/viewpost';
 import { splash } from './screens/splashscreen';
 import { welcome } from './screens/welcome.js';
@@ -25,13 +29,11 @@ const Stack = createStackNavigator();
 
 export default function App() {
 
- 
-
   return (
     <NavigationContainer>
       <Stack.Navigator 
         screenOptions={{
-        headerShown: false
+          headerShown: false
         }}
       >
         <Stack.Screen name="splash" component={splash} />

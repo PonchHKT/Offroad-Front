@@ -1,12 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions, Alert } from 'react-native';
 import {FontAwesome} from '@expo/vector-icons';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import Spot from '../assets/images/spots/forest.jpg';
-import Separator from '../components/Separator2';
-import Note from '../components/Note';
-import CustomButton from '../components/CustomButton';
+
+import Spot from '../../assets/images/spots/forest.jpg';
+import Separator from '../../components/Separator2';
+import Note from '../../components/Note';
+import CustomButton from '../../components/CustomButton';
 
 const { width: WIDTH } = Dimensions.get('window')
 
@@ -15,6 +15,75 @@ export function spot({ route, navigation }) {
     const { spotId, userInfos } = route.params;
 
     const[spot, setSpot] = useState({})
+
+    const addLike = () => {
+
+        fetch(`https://offroad-app.herokuapp.com/api/like/${userInfos.id}`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+        })
+        .then((response) => response.json())
+        .then((responseData) => {
+            console.log(responseData.data.like)
+
+            if(!responseData.data.like[0]) {
+
+                fetch(`https://offroad-app.herokuapp.com/api/like/add`, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        spotId: spotId,
+                        authorId: userInfos.id
+                    })
+                })
+                .then((response) => response.json())
+                .then((responseData) => {
+                    console.log(responseData)
+                    if (responseData.data) {
+                        Alert.alert('Spot bien ajouté aux favoris !')
+                    }
+                })
+
+                .catch((error) =>{
+                    console.error(error);
+                })
+
+            } else {
+                fetch(`https://offroad-app.herokuapp.com/api/like/delete/${responseData.data.like[0].id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        spotId: spotId,
+                        authorId: userInfos.id
+                    })
+                })
+                .then((response) => response.json())
+                .then((responseData) => {
+                    if (responseData.data) {
+                        Alert.alert('Spot bien retiré des favoris !')
+                    }
+                })
+
+                .catch((error) =>{
+                    console.error(error);
+                })
+            }
+        })
+
+        .catch((error) =>{
+            console.error(error);
+        })
+        
+    }
             
     return (
 
@@ -61,7 +130,7 @@ export function spot({ route, navigation }) {
             </View>
 
             <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.heartTouch}>
+                <TouchableOpacity style={styles.heartTouch} onPress={() => addLike()}>
                     <FontAwesome 
                         name="heart" 
                         color="black"

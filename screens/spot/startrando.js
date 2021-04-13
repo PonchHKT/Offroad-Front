@@ -8,7 +8,7 @@ import jwt_decode from "jwt-decode";
 import { getPreciseDistance, getSpeed } from 'geolib';
 
 
-import CustomButton from '../components/CustomButton';
+import CustomButton from '../../components/CustomButton';
 
 const HEIGHT = Dimensions.get("window").height;
 

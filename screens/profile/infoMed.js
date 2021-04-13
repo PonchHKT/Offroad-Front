@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 
 import Navbar from '../../components/Navbar';
 import CustomInput from '../../components/CustomInput';
+import CustomButton from '../../components/CustomButton';
 
 
 export function infoMed({ navigation }) {
@@ -12,6 +13,11 @@ export function infoMed({ navigation }) {
     const [taille, setTaille] = useState({ value: '', error: '' })
     const [poids, setPoids] = useState({ value: '', error: '' })
     const [sang, setSang] = useState({ value: '', error: '' })
+    const [numero, setNumero] = useState({ value: '', error: '' })
+    const [allergies, setAllergies] = useState({ value: '', error: '' })
+    const [traitement, setTraitement] = useState({ value: '', error: '' })
+    const [other, setOther] = useState({ value: '', error: '' })
+    
 
 
     return (
@@ -61,33 +67,61 @@ export function infoMed({ navigation }) {
             />
 
             <Text style={styles.front}>Numéro du proche à contacter :</Text>
-                <View style={styles.rect}/>  
+                <CustomInput
+                key={5}
+                placeholder={'O7 00 00 01 11'}
+                valeur={numero.value}
+                error={!!numero.error}
+                errorText={numero.error}
+                text={(text) => setNumero({ value: text, error: '' })}
+            />
 
             <Text style={styles.front}>Allergies (à certains médicaments) :</Text>
-                <View style={styles.rect}/>
+                <CustomInput
+                key={6}
+                placeholder={'allergie au paracétamol'}
+                valeur={allergies.value}
+                error={!!allergies.error}
+                errorText={allergies.error}
+                text={(text) => setAllergies({ value: text, error: '' })}
+            />
+
 
             <Text style={styles.front}>Traitement suivis :</Text>
-                <View style={styles.rect}/>
+                <CustomInput
+                key={7}
+                placeholder={'prise de médicament anti-coagulant'}
+                valeur={traitement.value}
+                error={!!traitement.error}
+                errorText={traitement.error}
+                text={(text) => setTraitement({ value: text, error: '' })}
+            />
+
 
             <Text style={styles.front}>Autres (maladie/opération récente) :</Text>
-            <View style={styles.rect}/>
-            
+            <CustomInput
+                key={8}
+                placeholder={'opération de la hanche le 20/05/2019'}
+                valeur={other.value}
+                error={!!other.error}
+                errorText={other.error}
+                text={(text) => setOther({ value: text, error: '' })}
+            />
 
         </View>
         <View style={styles.container2}>
+
+            <CustomButton
+                key={1}
+                actionsbtn={() => navigation.navigate('Profil')}
+                title={'Retour'}
+            />
             
-            <TouchableOpacity
-                style={styles.buttonArrondi}
-                onPress={() => navigation.navigate('Profil')}
-            >
-                <Text style={styles.front}>Retour</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-                style={styles.buttonArrondi}
-                onPress={() => navigation.navigate('Profil')}
-            >
-                <Text style={styles.front}>Modifier</Text>
-            </TouchableOpacity>
+            <CustomButton
+                key={1}
+                actionsbtn={() => navigation.navigate('Profil')}
+                title={'Modifier'}
+            />
 
         <StatusBar style="auto" hidden={true}/>
         </View>

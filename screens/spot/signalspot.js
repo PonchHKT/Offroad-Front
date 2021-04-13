@@ -2,14 +2,14 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, ScrollView, Alert } from 'react-native';
 
-import { commentsValidator } from '../helpers/commentsValidator'
+import { commentsValidator } from '../../helpers/commentsValidator';
 
-import Separator2 from '../components/Separator2';
-import Separator from '../components/Separator';
-import CustomButton from '../components/CustomButton';
-import CustomInput from '../components/CustomInput';
-import Navbar from '../components/Navbar';
-import CustomTitle from '../components/CustomTitle';
+import Separator2 from '../../components/Separator2';
+import Separator from '../../components/Separator';
+import CustomButton from '../../components/CustomButton';
+import CustomInput from '../../components/CustomInput';
+import Navbar from '../../components/Navbar';
+import CustomTitle from '../../components/CustomTitle';
 
 export function signalspot({ route, navigation }) {
 

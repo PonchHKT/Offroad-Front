@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, ImageBackground, Dimensions, Alert, TouchableOpacity, ScrollView, Image } from 'react-native';
 import CheckBox from 'react-native-check-box'
