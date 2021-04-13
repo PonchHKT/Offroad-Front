@@ -12,7 +12,9 @@ import CustomButton from '../components/CustomButton';
 
 const HEIGHT = Dimensions.get("window").height;
 
-export function startrando({ navigation }) {
+export function startrando({ route, navigation }) {
+
+    const { spotId } = route.params;
 
     const [region, setRegion] = useState({
         latitude: 0,
@@ -72,7 +74,6 @@ export function startrando({ navigation }) {
 
         if (!startDate) {
             startDate = new Date();
-            console.log('B')
         }
 
         getPosition()
@@ -115,10 +116,6 @@ export function startrando({ navigation }) {
                 const decryptToken = jwt_decode(token);
                 setUserToken(decryptToken)
             })
-            const spotValue = AsyncStorage.getItem('spot')
-            .then((spot) => { 
-                console.log(spot)
-            })
         } catch(e) {
             console.log(e)
         }
@@ -143,12 +140,7 @@ export function startrando({ navigation }) {
         })
         .then((response) => response.json())
         .then(async(responseData) => {
-            try {
-                await AsyncStorage.removeItem('spot')
-                navigation.navigate('dashboard')
-            } catch(e) {
-                console.log(e)
-            }
+            // navigation.navigate('dashboard')
         })
         .catch((error) =>{
             console.error(error);

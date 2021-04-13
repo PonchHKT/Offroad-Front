@@ -1,6 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import React, {     useState } from 'react';
+import { StyleSheet, Text, View, ScrollView, Alert } from 'react-native';
+
+import { commentsValidator } from '../helpers/commentsValidator'
 
 import Note from '../components/Note';
 import Separator2 from '../components/Separator2';
@@ -10,10 +12,50 @@ import Navbar from '../components/Navbar';
 import CustomTitle from '../components/CustomTitle';
 import CustomInput from '../components/CustomInput';
 
-export function addreview({ navigation }) {
+export function addreview({ route, navigation }) {
+
+    const { spotId, userInfos } = route.params;
 
     const [comment, setComment] = useState('');
     const [note, setNote] = useState(0);
+
+    const submit = () => {
+
+        const commentError = commentsValidator(comment)
+        const noteError = commentsValidator(note)
+
+        if (commentError || noteError) {
+            Alert.alert('Des champs non pas été remplis !')
+            return;
+
+        } else {
+
+            fetch(`https://offroad-app.herokuapp.com/api/post/add`, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    content: comment,
+                    noteUser: note,
+                    spotId: spotId,
+                    authorId: userInfos.id
+                })
+            })
+            .then((response) => response.json())
+            .then((responseData) => {
+                if (responseData.data) {
+                    Alert.alert('Commentaire bien ajouté !')
+                    navigation.navigate('spot', {spotId: spotId, userInfos: userInfos})
+                }
+            })
+
+            .catch((error) =>{
+                console.error(error);
+            })
+        }
+    }
 
     return (
 
@@ -38,7 +80,6 @@ export function addreview({ navigation }) {
             <View>
                 <CustomTitle
                     key={1}
-                    id={1}
                     title={'Ajout d\'un avis'}
                 />
             </View>
@@ -82,6 +123,7 @@ export function addreview({ navigation }) {
                 <CustomButton
                     key={1}
                     title={'Valider'}
+                    actionsbtn={() => submit()}
                 />
 
             </View>
@@ -106,7 +148,6 @@ const styles = StyleSheet.create({
         color: '#606060',
     },
     note: {
-        right: 78,
         marginTop: 5,
     },
 });
