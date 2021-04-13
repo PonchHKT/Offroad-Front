@@ -68,7 +68,7 @@ export function addspot({ navigation }) {
                 <Separator/>
 
                 <View style={styles.note}>
-                    <Note 
+                    <Note
                         key={1}
                         note={note}
                         update={(val) => setNote(val)}
@@ -113,6 +113,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         left: 25,
         bottom: 10,
+        zIndex: 1000,
     },
    
     noteText: {
@@ -120,9 +121,11 @@ const styles = StyleSheet.create({
         left: 35,
         marginTop: 3,
         color: '#606060',
+        zIndex: 1000,
     },
     note: {
         left: 10,
         bottom: 5,
+        zIndex: 1000,
     },
 });
