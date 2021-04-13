@@ -12,7 +12,7 @@ const { width: WIDTH } = Dimensions.get('window')
 
 export function spot({ route, navigation }) {
 
-    const { spotId } = route.params;
+    const { spotId, userInfos } = route.params;
 
     const[spot, setSpot] = useState({})
             
@@ -81,7 +81,7 @@ export function spot({ route, navigation }) {
             </View>
 
             <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.editTouch} onPress={() => navigation.navigate('addreview', {spotId: spotId})}>
+                <TouchableOpacity style={styles.editTouch} onPress={() => navigation.navigate('addreview', {spotId: spotId, userInfos: userInfos})}>
                     <FontAwesome 
                         name="edit" 
                         color="black" 
@@ -92,7 +92,7 @@ export function spot({ route, navigation }) {
             </View>
 
             <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.warningTouch} onPress={() => navigation.navigate('signalspot', {spotId: spotId})}>
+                <TouchableOpacity style={styles.warningTouch} onPress={() => navigation.navigate('signalspot', {spotId: spotId, userInfos: userInfos})}>
                     <FontAwesome 
                         name="exclamation-triangle" 
                         color="black" 
@@ -107,7 +107,7 @@ export function spot({ route, navigation }) {
         <CustomButton
             key={1}
             title={'Démarer'}
-            actionsbtn={() => navigation.navigate('startrando', {spotId: spotId})}
+            actionsbtn={() => navigation.navigate('startrando', {spotId: spotId, userInfos: userInfos})}
         /></View>
 
         <StatusBar style="auto" hidden={true}/>

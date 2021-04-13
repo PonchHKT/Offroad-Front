@@ -18,12 +18,14 @@ export function dashboard({ navigation }) {
 
     const [region, setRegion] = useState({})
     const [spot, setSpot] = useState({ value: [] })
+    const [user, setUser] = useState({})
 
     useEffect(() => {
         try {
             const value = AsyncStorage.getItem('token')
             .then((token) => { 
                 const decryptToken = jwt_decode(token);
+                setUser(decryptToken)
   
                 fetch(`https://offroad-app.herokuapp.com/api/spot/${decryptToken.level}`, {
                     method: 'GET',
@@ -141,7 +143,7 @@ export function dashboard({ navigation }) {
                 <Marker
                     key={index}
                     coordinate={{ latitude : info.lat , longitude : info.lng }}
-                    onPress={() => navigation.navigate('spot', {spotId: info.id})}
+                    onPress={() => navigation.navigate('spot', {spotId: info.id, userInfos: user})}
                 />
                 ))}
             </MapView>
