@@ -37,7 +37,6 @@ export default function GoogleButton(props) {
     
     return (
         <View
-            key={props.id}
             style={styles.googleView}
         >
             <Image source={Google} style={styles.logoGoogle}></Image>

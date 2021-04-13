@@ -1,7 +1,8 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { AdMobInterstitial } from 'expo-ads-admob';
 
 import { login } from './screens/auth/login';
 import { register } from './screens/auth/register';
@@ -29,6 +30,21 @@ import { stats } from './screens/stats';
 const Stack = createStackNavigator();
 
 export default function App() {
+
+  const [interstitialAdId, setInterstitialAdId] = useState()
+    const [verify, setVerify] = useState(false)
+    
+    if (verify == false) {
+        Platform.OS === 'ios' ? setInterstitialAdId('ca-app-pub-4225220371128640/7899370197') : setInterstitialAdId('ca-app-pub-4225220371128640/1856706025')
+        setVerify(true);
+        Ads;
+    }
+
+    const Ads = async() => {
+        await AdMobInterstitial.setAdUnitID(interstitialAdId);
+        await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: true});
+        await AdMobInterstitial.showAdAsync();
+    }
 
   return (
     <NavigationContainer>

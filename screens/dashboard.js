@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { View, ScrollView, Alert, Dimensions } from 'react-native';
+import { View, ScrollView, Alert, Dimensions, Platform } from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import jwt_decode from "jwt-decode";
@@ -10,8 +10,6 @@ import MapView, { Marker } from 'react-native-maps';
 
 import Navbar from '../components/Navbar';
 
-import markerPng from '../assets/images/marker.png';
-
 const HEIGHT = Dimensions.get("window").height;
 
 export function dashboard({ navigation }) {
@@ -19,6 +17,7 @@ export function dashboard({ navigation }) {
     const [region, setRegion] = useState({})
     const [spot, setSpot] = useState({ value: [] })
     const [user, setUser] = useState({})
+    const [token, setToken] = useState({})
 
     useEffect(() => {
         try {
@@ -26,6 +25,7 @@ export function dashboard({ navigation }) {
             .then((token) => { 
                 const decryptToken = jwt_decode(token);
                 setUser(decryptToken)
+                setToken(token)
   
                 fetch(`https://offroad-app.herokuapp.com/api/spot/${decryptToken.level}`, {
                     method: 'GET',
@@ -113,13 +113,13 @@ export function dashboard({ navigation }) {
                 icon={"plus-circle"}
                 size={30}
                 color={'pink'}
-                onPress={() => navigation.navigate('getHistorique')}
+                onPress={() => navigation.navigate('getHistorique', {userInfos: user, token: token})}
             />
             <IconButton
                 icon={"eye"}
                 size={30}
                 color={'black'}
-                onPress={() => navigation.navigate('comments')}
+                onPress={() => navigation.navigate('comments', {userInfos: user, token: token})}
             />
             <IconButton
                 icon={"check"}

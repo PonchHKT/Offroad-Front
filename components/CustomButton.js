@@ -30,7 +30,6 @@ export default function CustomButton(props) {
     
     return (
         <View
-            key={props.id}
             style={styles.buttonView}
         >
             <TouchableOpacity

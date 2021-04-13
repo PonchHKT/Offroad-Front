@@ -61,7 +61,6 @@ export default function CustomInput(props) {
     return (
         <View>
             <View
-                key={props.id}
                 style={styles.containerText}
             >   
                 { props.useIcon ?

@@ -16,6 +16,6 @@ export default function CustomTitle(props) {
     });    
     
     return (
-        <Text style={styles.title} key={props.id}>{props.title}</Text>
+        <Text style={styles.title}>{props.title}</Text>
     )
 }

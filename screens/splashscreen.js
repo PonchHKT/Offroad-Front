@@ -9,9 +9,7 @@ import { useFonts } from 'expo-font';
 const { HEIGHT, WIDTH } = Dimensions.get('window')
 
 export function splash({ navigation }) {
-    const [loaded] = useFonts({
-        biker: require('../assets/fonts/biker.otf'),
-    });
+   
 
     const [Logged, setLogged] = useState(false)
 
@@ -24,11 +22,9 @@ export function splash({ navigation }) {
       }
     },[])
     
-    if (!loaded) {
-        return null;
-    }
+    
 
-    const finish  = async() => {
+    const finish = async() => {
         {
             Logged ?
                 navigation.navigate('dashboard')

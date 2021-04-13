@@ -10,6 +10,7 @@ npm-debug.*
 web-build/
 .expo
 .expo-shared
+app-ads.txt
 
 # macOS
 .DS_Store

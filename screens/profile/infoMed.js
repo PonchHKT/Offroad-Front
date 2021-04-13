@@ -118,7 +118,7 @@ export function infoMed({ navigation }) {
             />
             
             <CustomButton
-                key={1}
+                key={2}
                 actionsbtn={() => navigation.navigate('Profil')}
                 title={'Modifier'}
             />
