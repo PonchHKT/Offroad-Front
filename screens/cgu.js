@@ -31,7 +31,7 @@ export function cgu({ navigation }) {
                 </View>
             </View>
 
-            <StatusBar style="auto" />
+            <StatusBar style="auto" hidden={true}/>
         </ScrollView>
     ); 
 }

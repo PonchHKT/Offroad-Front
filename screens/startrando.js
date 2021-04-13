@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Dimensions, Text } from 'react-native';
 import MapView from 'react-native-maps';
@@ -183,6 +184,7 @@ export function startrando({ navigation }) {
                     style={styles.button}
                     actionsbtn={() => Boucle()}
                 />
+            <StatusBar style="auto" hidden={true}/>
         </View>
 )}
 

@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
 import logo from '../assets/images/motocrosslogo.png';
@@ -56,8 +57,8 @@ export function welcome({ navigation }) {
             </TouchableOpacity>
         </View>
         </View>
-
-            </ScrollView>
+            <StatusBar style="auto" hidden={true}/>
+        </ScrollView>
     ); 
 }
 

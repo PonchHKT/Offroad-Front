@@ -17,7 +17,7 @@ export default function Navbar(props) {
             paddingTop: 5,
             paddingBottom: 5,
             borderBottomColor: 'black',
-            borderBottomWidth: 1
+            borderBottomWidth: 1,
         },
     })
 

@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import {View, StyleSheet, Text, Image} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -42,19 +43,21 @@ export function splash({ navigation }) {
                 </View>
 
                 <LottieView 
-                style={{width: 300, height: 300, top: 15, left: 15,}}
-                source={require('../assets/splash.json')} 
-                autoPlay 
-                loop = {false}
-                speed = {0.5}
-                onAnimationFinish = {() => finish() }/>
+                    style={{width: 300, height: 300, top: 15, left: 15,}}
+                    source={require('../assets/splash.json')} 
+                    autoPlay 
+                    loop = {false}
+                    speed = {0.5}
+                    onAnimationFinish = {() => finish() }
+                />
 
                 <View>
                 <Text style={{fontWeight: 'bold', top: 220, left: 11,}}>v1.0</Text>
                 </View>
+                <StatusBar style="auto" hidden={true}/>
             </View>
 
-)};LottieView
+)}
 
 const styles = StyleSheet.create({
     backgroundContainer: {

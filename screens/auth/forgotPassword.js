@@ -103,7 +103,7 @@ export function forgotPassword({ navigation }) {
                     </TouchableOpacity>
                 </View>
 
-                <StatusBar style="auto" />
+                <StatusBar style="auto" hidden={true}/>
             </ScrollView>
         </ImageBackground>
     ); 

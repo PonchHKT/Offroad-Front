@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
@@ -89,6 +90,7 @@ export function addspot({ navigation }) {
                     </View>
                 </View>
             </View> 
+            <StatusBar style="auto" hidden={true}/>
     </ScrollView>
 )};
 

@@ -94,7 +94,7 @@ export function getHistorique({ navigation }) {
                 ))
             }
 
-            <StatusBar style="auto" />
+            <StatusBar style="auto" hidden={true}/>
         </ScrollView>
     ); 
 }

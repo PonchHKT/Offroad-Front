@@ -138,7 +138,7 @@ export function login({ navigation }) {
                     </TouchableOpacity>
                 </View>
 
-                <StatusBar style="auto" />
+                <StatusBar style="auto" hidden={true}/>
             </ScrollView>
         </ImageBackground>
     ); 

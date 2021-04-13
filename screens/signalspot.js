@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import Separator2 from '../components/Separator2';
@@ -65,7 +66,7 @@ export function signalspot({ navigation }) {
                 />
 
             </View>
-
+            <StatusBar style="auto" hidden={true}/>
         </ScrollView> 
 
 )};

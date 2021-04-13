@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
 import {FontAwesome} from '@expo/vector-icons';
 import Navbar from '../components/Navbar';
@@ -12,17 +13,17 @@ export function viewpost({ navigation }) {
     return (
         <ScrollView>
 
-        <View style={{marginTop: 20}}>
-        <Navbar 
-                    key={1}
-                    dashboard={false}
-                    mapPress={() => navigation.navigate('dashboard')}
-                    plus={false}
-                    plusPress={() => navigation.navigate('addspot')}
-                    like={false}
-                    likePress={() => navigation.navigate('')}
-                    account={true}
-                />
+        <View>
+            <Navbar 
+                key={1}
+                dashboard={false}
+                mapPress={() => navigation.navigate('dashboard')}
+                plus={false}
+                plusPress={() => navigation.navigate('addspot')}
+                like={false}
+                likePress={() => navigation.navigate('')}
+                account={true}
+            />
         </View>
 
         <View style={styles.userContainer}>
@@ -71,7 +72,7 @@ export function viewpost({ navigation }) {
             </View>
 
             </View>
-
+            <StatusBar style="auto" hidden={true}/>
         </ScrollView>
     )
 };

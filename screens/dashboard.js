@@ -1,8 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, ScrollView, Alert, Dimensions } from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import jwt_decode from "jwt-decode";
 
 import { IconButton } from 'react-native-paper';
 import MapView, { Marker } from 'react-native-maps';
@@ -16,36 +17,35 @@ const HEIGHT = Dimensions.get("window").height;
 export function dashboard({ navigation }) {
 
     const [region, setRegion] = useState({})
-
     const [spot, setSpot] = useState({ value: [] })
 
-    // useEffect(() => {
-    //     try {
-    //         const value = AsyncStorage.getItem('token')
-    //         .then((token) => { 
-    //             const decryptToken = jwt_decode(token);
+    useEffect(() => {
+        try {
+            const value = AsyncStorage.getItem('token')
+            .then((token) => { 
+                const decryptToken = jwt_decode(token);
   
-    //             fetch(`https://offroad-app.herokuapp.com/api/spot/${decryptToken.level}`, {
-    //                 method: 'GET',
-    //                 headers: {
-    //                     'Accept': 'application/json',
-    //                     'Content-Type': 'application/json',
-    //                 },
-    //             })
-    //             .then((response) => response.json())
-    //             .then((responseData) => {
-    //                 console.log(responseData)
-    //             })
+                fetch(`https://offroad-app.herokuapp.com/api/spot/${decryptToken.level}`, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                })
+                .then((response) => response.json())
+                .then((responseData) => {
+                    setSpot({ value: responseData.data.spot})
+                })
 
-    //             .catch((error) =>{
-    //                 console.error(error);
-    //             })
+                .catch((error) =>{
+                    console.error(error);
+                })
     
-    //       })
-    //     } catch(e) {
-    //       console.log(e)
-    //     }
-    // },[])
+          })
+        } catch(e) {
+          console.log(e)
+        }
+    },[])
 
     if(region.latitude == undefined) {
         navigator.geolocation.getCurrentPosition(success, error, options);
@@ -89,7 +89,7 @@ export function dashboard({ navigation }) {
 
     return (
         <ScrollView>
-            <View style={{marginTop: 20}}>
+            <View>
                 <Navbar 
                     key={1}
                     id={1}
@@ -137,15 +137,18 @@ export function dashboard({ navigation }) {
                 region={region}
                 style={{width: '100%', height: HEIGHT}}
             >
-                {/* { spot.value.map((info) => (
+                { spot.value.map((info, index) => (
                 <Marker
-                    coordinate={{ latitude : info.latitude , longitude : info.longitude }}
+                    key={index}
+                    coordinate={{ latitude : info.lat , longitude : info.lng }}
                     image={markerPng}
+                    title={info.adress}
+                    description={info.infos}
                 />
-                ))} */}
+                ))}
             </MapView>
 
-            <StatusBar style="auto" />
+            <StatusBar style="auto" hidden={true}/>
         </ScrollView>
     ); 
 }

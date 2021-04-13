@@ -1,5 +1,7 @@
+import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
+
 import Note from '../components/Note';
 import Separator2 from '../components/Separator2';
 import Separator from '../components/Separator';
@@ -17,7 +19,7 @@ export function addreview({ navigation }) {
 
         <ScrollView>
 
-            <View style={{marginTop: 20}}>
+            <View>
                 <Navbar 
                     key={1}
                     dashboard={true}
@@ -83,7 +85,7 @@ export function addreview({ navigation }) {
                 />
 
             </View>
-
+            <StatusBar style="auto" hidden={true}/>
         </ScrollView> 
 
 )};

@@ -135,23 +135,14 @@ export function spot({ navigation }) {
             actionsbtn={() => startRando()}
         /></View>
 
-        <StatusBar style="auto" />
+        <StatusBar style="auto" hidden={true}/>
     </View>
     )
 };
 
-class Star extends React.Component {
-    render() {
-        return (
-            <FontAwesome name="star" color="black" size={32} style={styles.stars}/>
-        )
-    } 
-}
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 20,
     },
     imageSpot: {
         width: WIDTH,

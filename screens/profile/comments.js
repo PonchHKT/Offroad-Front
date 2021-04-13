@@ -93,7 +93,7 @@ export function comments({ navigation }) {
                 ))
             }
 
-            <StatusBar style="auto" />
+            <StatusBar style="auto" hidden={true}/>
         </ScrollView>
     ); 
 }

@@ -242,7 +242,7 @@ export function register({ navigation }) {
               </View>
 
               <Separator />
-
+              <StatusBar style="auto" hidden={true}/>
           </ScrollView>
       </ImageBackground>
 

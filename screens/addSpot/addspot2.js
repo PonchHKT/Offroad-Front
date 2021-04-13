@@ -1,3 +1,4 @@
+import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
@@ -115,7 +116,7 @@ export function addspotnext({ navigation }) {
                 title={'Ajouter'}
             />
         </View>
-
+        <StatusBar style="auto" hidden={true}/>
     </ScrollView> 
 
 )};
