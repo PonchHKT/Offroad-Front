@@ -99,6 +99,16 @@ export function addspot({ navigation }) {
                             actionsbtn={() => navigation.navigate('addspotnext')}
                         />
                     </View>
+
+                    <LottieView 
+                style={{width: WIDTH / 0.8, top: 35}}
+                resizeMode={'cover'}
+                source={require('../../assets/animatedfooter.json')} 
+                autoPlay 
+                loop={true}
+                speed={1}
+            />
+
                 </View>
             </View> 
             <StatusBar style="auto" hidden={true}/>

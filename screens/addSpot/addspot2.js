@@ -127,6 +127,16 @@ export function addspotnext({ navigation }) {
                 key={1}
                 title={'Ajouter'}
             />
+
+            <LottieView 
+                style={{width: WIDTH / 0.8, top: 75}}
+                resizeMode={'cover'}
+                source={require('../../assets/animatedfooter.json')} 
+                autoPlay 
+                loop={true}
+                speed={1}
+            />
+
         </View>
         </View>
         <StatusBar style="auto" hidden={true}/>
