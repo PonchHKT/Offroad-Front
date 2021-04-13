@@ -114,12 +114,6 @@ export function dashboard({ navigation }) {
                 onPress={() => navigation.navigate('getHistorique')}
             />
             <IconButton
-                icon={"folder"}
-                size={30}
-                color={'black'}
-                onPress={() => navigation.navigate('spot')}
-            />
-            <IconButton
                 icon={"eye"}
                 size={30}
                 color={'black'}
@@ -147,9 +141,7 @@ export function dashboard({ navigation }) {
                 <Marker
                     key={index}
                     coordinate={{ latitude : info.lat , longitude : info.lng }}
-                    image={markerPng}
-                    title={info.adress}
-                    description={info.infos}
+                    onPress={() => navigation.navigate('spot', {spotId: info.id})}
                 />
                 ))}
             </MapView>

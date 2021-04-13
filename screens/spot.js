@@ -10,36 +10,11 @@ import CustomButton from '../components/CustomButton';
 
 const { width: WIDTH } = Dimensions.get('window')
 
-export function spot({ navigation }) {
+export function spot({ route, navigation }) {
+
+    const { spotId } = route.params;
 
     const[spot, setSpot] = useState({})
-
-    const addReview = () => {
-        try {
-            AsyncStorage.setItem('spot', spot)
-            navigation.navigate('addreview')
-        } catch (e) {
-            console.log(e)
-        }
-    }
-
-    const signalSpot = () => {
-        try {
-            AsyncStorage.setItem('spot', spot)
-            navigation.navigate('signalspot')
-        } catch (e) {
-            console.log(e)
-        }
-    }
-
-    const startRando = () => {
-        try {
-            AsyncStorage.setItem('spot', spot)
-            navigation.navigate('startrando')
-        } catch (e) {
-            console.log(e)
-        }
-    }
             
     return (
 
@@ -106,7 +81,7 @@ export function spot({ navigation }) {
             </View>
 
             <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.editTouch} onPress={() => addReview}>
+                <TouchableOpacity style={styles.editTouch} onPress={() => navigation.navigate('addreview', {spotId: spotId})}>
                     <FontAwesome 
                         name="edit" 
                         color="black" 
@@ -117,7 +92,7 @@ export function spot({ navigation }) {
             </View>
 
             <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.warningTouch} onPress={() => signalSpot()}>
+                <TouchableOpacity style={styles.warningTouch} onPress={() => navigation.navigate('signalspot', {spotId: spotId})}>
                     <FontAwesome 
                         name="exclamation-triangle" 
                         color="black" 
@@ -132,7 +107,7 @@ export function spot({ navigation }) {
         <CustomButton
             key={1}
             title={'Démarer'}
-            actionsbtn={() => startRando()}
+            actionsbtn={() => navigation.navigate('startrando', {spotId: spotId})}
         /></View>
 
         <StatusBar style="auto" hidden={true}/>

@@ -8,7 +8,9 @@ import CustomInput from '../components/CustomInput';
 import Navbar from '../components/Navbar';
 import CustomTitle from '../components/CustomTitle';
 
-export function signalspot({ navigation }) {
+export function signalspot({ route,navigation }) {
+
+    const { spotId } = route.params;
 
     const [comment, setComment] = useState('');
 

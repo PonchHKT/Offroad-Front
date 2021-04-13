@@ -10,7 +10,9 @@ import Navbar from '../components/Navbar';
 import CustomTitle from '../components/CustomTitle';
 import CustomInput from '../components/CustomInput';
 
-export function addreview({ navigation }) {
+export function addreview({ route, navigation }) {
+
+    const { spotId } = route.params;
 
     const [comment, setComment] = useState('');
     const [note, setNote] = useState(0);
@@ -38,7 +40,6 @@ export function addreview({ navigation }) {
             <View>
                 <CustomTitle
                     key={1}
-                    id={1}
                     title={'Ajout d\'un avis'}
                 />
             </View>
@@ -106,7 +107,6 @@ const styles = StyleSheet.create({
         color: '#606060',
     },
     note: {
-        right: 78,
         marginTop: 5,
     },
 });

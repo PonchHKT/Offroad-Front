@@ -21,7 +21,6 @@ export function addspot({ navigation }) {
             <View>
             <Navbar 
                 key={1}
-                id={1}
                 dashboard={false}
                 mapPress={() => navigation.navigate('dashboard')}
                 plus={true}
