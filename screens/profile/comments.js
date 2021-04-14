@@ -55,8 +55,8 @@ export function comments({ route, navigation }) {
    
     return (
         <ScrollView>
-            <View>
-                <Navbar 
+            <View style={{marginBottom: 30}}>
+                <Navbar
                     key={1}
                     id={1}
                     dashboard={false}
