@@ -36,7 +36,7 @@ export function welcome({ navigation }) {
                 </View>
 
                 <View style={styles.header}>
-                    <Text style={{fontFamily: 'Apetizzer', fontSize: 40, top: 27, left: 20, zIndex: 10}}>Bienvenue</Text>
+                    <Text style={{fontFamily: 'Apetizzer', fontSize: 30, top: 27, left: 20, zIndex: 10}}>Offroad Bike Trip</Text>
                     <LottieView 
                         style={{width: WIDTH / 4}}
                         source={require('../assets/location.json')} 
