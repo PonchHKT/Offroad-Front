@@ -1,21 +1,20 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import {  View, ScrollView, Text } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import jwt_decode from "jwt-decode";
 
-import Navbar from '../../components/Navbar';
-import Historique from '../../components/Historique';
 
-export function getHistorique({ route, navigation }) {
+import Navbar from '../components/Navbar';
+import Historique from '../components/Historique';
+
+export function like({ route, navigation }) {
 
     const { spotId, userInfos } = route.params;
 
-    const [historiques, setHistorique] = useState({})
+    const [likes, setLike] = useState({})
 
     useEffect(() => {
         try {
-            fetch(`https://offroad-app.herokuapp.com/api/historique/${userInfos.id}`, {
+            fetch(`https://offroad-app.herokuapp.com/api/like/${userInfos.id}`, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
@@ -38,8 +37,8 @@ export function getHistorique({ route, navigation }) {
                         }
                     } while(changed);
                 }
-                sort(responseData.data.historique)
-                setHistorique(responseData.data)
+                sort(responseData.data.like)
+                setLike(responseData.data)
             })
             .catch((error) =>{
                 console.error(error);
@@ -49,16 +48,16 @@ export function getHistorique({ route, navigation }) {
         }
     },[])
 
-    if (!historiques) {
+    if (!likes.like) {
         return <Text>Chargement...</Text>
     }
    
     return (
         <ScrollView>
-
             <View>
                 <Navbar 
                     key={1}
+                    id={1}
                     dashboard={false}
                     mapPress={() => navigation.navigate('dashboard')}
                     plus={false}
@@ -69,16 +68,15 @@ export function getHistorique({ route, navigation }) {
                 />
             </View>
 
-            { !historiques.historique ?
+            { !posts.post ?
                 <View></View>
             :
-                historiques.historique.map((historique) => (
+                posts.post.map((post, index) => (
                     <Historique
-                        key={historique.id}
-                        id={historique.id}
-                        date={historique.createdAt}
-                        img={historique.content}
-                        note={historique.note}
+                        key={index}
+                        date={post.createdAt}
+                        text={post.content}
+                        note={post.note}
                     />
                 ))
             }

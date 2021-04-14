@@ -89,6 +89,17 @@ export function spot({ route, navigation }) {
 
     <View style={styles.container}>
         <Image source={Spot} style={styles.imageSpot}></Image>
+
+            <Navbar 
+                key={1}
+                dashboard={true}
+                plus={false}
+                plusPress={() => navigation.navigate('addspot')}
+                like={false}
+                likePress={() => navigation.navigate('like')}
+                account={false}
+                accountPress={() => navigation.navigate('profil')}
+            />
         
         <View>
             <Text style={styles.noteText}>Note :</Text>

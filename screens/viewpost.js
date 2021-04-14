@@ -21,7 +21,7 @@ export function viewpost({ navigation }) {
                 plus={false}
                 plusPress={() => navigation.navigate('addspot')}
                 like={false}
-                likePress={() => navigation.navigate('')}
+                likePress={() => navigation.navigate('like')}
                 account={true}
             />
         </View>

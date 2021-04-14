@@ -16,128 +16,112 @@ const { width: WIDTH } = Dimensions.get('window')
 export function addspotnext({ navigation }) {
 
     const [checked, setChecked] = useState('Débutant');
-    const [adress, setAdress] = useState({});
-    const [infos, setInfos] = useState({});
+    const [adress, setAdress] = useState('');
+    const [infos, setInfos] = useState('');
 
     return (
 
     <ScrollView>
         <View>
-        <Navbar 
-            key={1}
-            dashboard={false}
-            mapPress={() => navigation.navigate('dashboard')}
-            plus={true}
-            like={false}
-            likePress={() => navigation.navigate('')}
-            account={false}
-            accountPress={() => navigation.navigate('')}
-        /></View>
-
-        <Separator/>
-        <Separator/>
-
-        <View>
-            <CustomTitle
+            <Navbar 
                 key={1}
-                title={'Ajout d\'un spot'}
+                dashboard={false}
+                mapPress={() => navigation.navigate('dashboard')}
+                plus={true}
+                like={false}
+                likePress={() => navigation.navigate('like')}
+                account={false}
+                accountPress={() => navigation.navigate('profil')}
             />
         </View>
 
-        <View style={styles.level}>
-            <Text style={{fontSize: 20, color: '#606060'}}>Niveau :</Text>
+            <Separator/>
+            <Separator/>
+
             <View>
-                <CustomRadio 
+                <CustomTitle
                     key={1}
-                    value={'Débutant'}
-                    color={'black'}
-                    status={checked === 'Débutant' ? 'checked' : 'unchecked'}
-                    action={() => setChecked('Débutant')}
-                />
-                <CustomRadio 
-                    key={2}
-                    value={'Intermédiaire'}
-                    color={'black'}
-                    status={checked === 'Intermédiaire' ? 'checked' : 'unchecked'}
-                    action={() => setChecked('Intermédiaire')}
-                />
-                <CustomRadio 
-                    key={3}
-                    value={'Avancé'}
-                    color={'black'}
-                    status={checked === 'Avancé' ? 'checked' : 'unchecked'}
-                    action={() => setChecked('Avancé')}
-                />
-                <CustomRadio 
-                    key={4}
-                    value={'Expert'}
-                    color={'black'}
-                    status={checked === 'Expert' ? 'checked' : 'unchecked'}
-                    action={() => setChecked('Expert')}
+                    title={'Ajout d\'un spot'}
                 />
             </View>
-        </View>
 
-        <LottieView 
-                style={{width: WIDTH / 1.7, left: 50, bottom: 65}}
-                resizeMode={'cover'}
-                source={require('../../assets/addspot2.json')} 
-                autoPlay 
-                loop={true}
-                speed={0.5}
-            />
-        
-        <View style={{bottom: 210}}>
-        <View>
-            <Text style={styles.commentText}>Adresse :</Text>
-        </View>
+            <View style={styles.level}>
+                <Text style={{fontSize: 20, color: '#606060'}}>Niveau :</Text>
+                <View>
+                    <CustomRadio 
+                        key={1}
+                        value={'Débutant'}
+                        color={'black'}
+                        status={checked === 'Débutant' ? 'checked' : 'unchecked'}
+                        action={() => setChecked('Débutant')}
+                    />
+                    <CustomRadio 
+                        key={2}
+                        value={'Intermédiaire'}
+                        color={'black'}
+                        status={checked === 'Intermédiaire' ? 'checked' : 'unchecked'}
+                        action={() => setChecked('Intermédiaire')}
+                    />
+                    <CustomRadio 
+                        key={3}
+                        value={'Avancé'}
+                        color={'black'}
+                        status={checked === 'Avancé' ? 'checked' : 'unchecked'}
+                        action={() => setChecked('Avancé')}
+                    />
+                    <CustomRadio 
+                        key={4}
+                        value={'Expert'}
+                        color={'black'}
+                        status={checked === 'Expert' ? 'checked' : 'unchecked'}
+                        action={() => setChecked('Expert')}
+                    />
+                </View>
+            </View>
 
-        <View>
-            <CustomInput
-                key={1}
-                placeholder={''}
-                valeur={adress}
-                text={(text) => setAdress(text)}
-                secure={false}
-                pwd={false}
-            />
-        </View>
+            <View>
+
+            <View>
+                <Text style={styles.commentText}>Adresse :</Text>
+            </View>
+
+            <View>
+                <CustomInput
+                    key={1}
+                    placeholder={''}
+                    valeur={adress}
+                    text={(text) => setAdress(text)}
+                    secure={false}
+                    pwd={false}
+                />
+            </View>
 
 
-        <View>
-            <Text style={styles.commentText}>Informations supplémentaires :</Text>
-        </View>
+            <View>
+                <Text style={styles.commentText}>Informations supplémentaires :</Text>
+            </View>
 
-        <View>
-            <CustomInput
-                key={2}
-                placeholder={''}
-                valeur={infos}
-                text={(text) => setInfos(text)}
-                secure={false}
-                pwd={false}
-            />
-        </View>
+            <View>
+                <CustomInput
+                    key={2}
+                    placeholder={''}
+                    valeur={infos}
+                    text={(text) => setInfos(text)}
+                    secure={false}
+                    pwd={false}
+                />
+            </View>
 
-        <View style={{bottom: 14,}}>
+            <View style={{bottom: 14,}}>
 
-            <Separator2/>
+                <Separator2/>
 
-            <CustomButton
-                key={1}
-                title={'Ajouter'}
-            />
+                <CustomButton
+                    key={1}
+                    title={'Ajouter'}
+                />
 
-            <LottieView 
-                style={{width: WIDTH / 0.8, top: 75}}
-                resizeMode={'cover'}
-                source={require('../../assets/animatedfooter.json')} 
-                autoPlay 
-                loop={true}
-                speed={1}
-            />
-
-        </View>
+            </View>
         </View>
         <StatusBar style="auto" hidden={true}/>
     </ScrollView> 

@@ -9,9 +9,6 @@ import CustomButton from '../../components/CustomButton';
 import Navbar from '../../components/Navbar';
 import CustomTitle from '../../components/CustomTitle';
 import CustomInput from '../../components/CustomInput';
-import LottieView from 'lottie-react-native';
-
-const { width: WIDTH } = Dimensions.get('window')
 
 export function addspot({ navigation }) {
 
@@ -28,9 +25,9 @@ export function addspot({ navigation }) {
                 mapPress={() => navigation.navigate('dashboard')}
                 plus={true}
                 like={false}
-                likePress={() => navigation.navigate('addspot')}
+                likePress={() => navigation.navigate('like')}
                 account={false}
-                accountPress={() => navigation.navigate('')}
+                accountPress={() => navigation.navigate('profil')}
             /></View>
 
             <View>
@@ -78,16 +75,7 @@ export function addspot({ navigation }) {
                     />
                 </View>
 
-                <LottieView 
-                style={{width: WIDTH / 2, left: 65, bottom: 26}}
-                resizeMode={'cover'}
-                source={require('../../assets/addspot.json')} 
-                autoPlay 
-                loop={false}
-                speed={0.5}
-            />
-
-                <View style={{bottom: 100,}}>
+                <View>
                 
                     <Separator/>
                     <Separator2/>
@@ -99,15 +87,6 @@ export function addspot({ navigation }) {
                             actionsbtn={() => navigation.navigate('addspotnext')}
                         />
                     </View>
-
-                    <LottieView 
-                style={{width: WIDTH / 0.8, top: 35}}
-                resizeMode={'cover'}
-                source={require('../../assets/animatedfooter.json')} 
-                autoPlay 
-                loop={true}
-                speed={1}
-            />
 
                 </View>
             </View> 

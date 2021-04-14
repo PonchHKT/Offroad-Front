@@ -98,9 +98,9 @@ export function dashboard({ navigation }) {
                     plus={false}
                     plusPress={() => navigation.navigate('addspot')}
                     like={false}
-                    likePress={() => navigation.navigate('')}
+                    likePress={() => navigation.navigate('like')}
                     account={false}
-                    accountPress={() => navigation.navigate('')}
+                    accountPress={() => navigation.navigate('profil')}
                 />
             </View>
             <IconButton
@@ -113,13 +113,13 @@ export function dashboard({ navigation }) {
                 icon={"plus-circle"}
                 size={30}
                 color={'pink'}
-                onPress={() => navigation.navigate('getHistorique', {userInfos: user, token: token})}
+                onPress={() => navigation.navigate('getHistorique', {userInfos: user})}
             />
             <IconButton
                 icon={"eye"}
                 size={30}
                 color={'black'}
-                onPress={() => navigation.navigate('comments', {userInfos: user, token: token})}
+                onPress={() => navigation.navigate('comments', {userInfos: user})}
             />
             <IconButton
                 icon={"check"}

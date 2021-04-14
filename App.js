@@ -10,8 +10,11 @@ import { forgotPassword } from './screens/auth/forgotPassword';
 
 import { dashboard } from './screens/dashboard';
 import { cgu } from './screens/cgu';
+
 import { comments } from './screens/profile/comments';
 import { getHistorique } from './screens/profile/historique';
+
+import { like } from './screens/like';
 
 import { spot } from './screens/spot/spot';
 import { startrando } from './screens/spot/startrando';
@@ -31,7 +34,7 @@ const Stack = createStackNavigator();
 
 export default function App() {
 
-  const [interstitialAdId, setInterstitialAdId] = useState()
+    const [interstitialAdId, setInterstitialAdId] = useState()
     const [verify, setVerify] = useState(false)
     
     if (verify == false) {
@@ -42,7 +45,7 @@ export default function App() {
 
     const Ads = async() => {
         await AdMobInterstitial.setAdUnitID(interstitialAdId);
-        await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: true});
+        await AdMobInterstitial.requestAdAsync({ servePersonalizedAds: false});
         await AdMobInterstitial.showAdAsync();
     }
 
@@ -67,6 +70,8 @@ export default function App() {
         <Stack.Screen name="comments" component={comments} />
         <Stack.Screen name="getHistorique" component={getHistorique} />
         <Stack.Screen name="infoMed" component={infoMed} />
+
+        <Stack.Screen name="like" component={like} />
 
         <Stack.Screen name="startrando" component={startrando} />
         <Stack.Screen name="spot" component={spot} />

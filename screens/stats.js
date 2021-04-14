@@ -82,15 +82,15 @@ export function stats({ navigation }) {
 
                 <View>
                 <Navbar 
-                key={1}
-                id={1}
-                dashboard={false}
-                mapPress={() => navigation.navigate('dashboard')}
-                plus={false}
-                like={false}
-                likePress={() => navigation.navigate('addspot')}
-                account={false}
-                accountPress={() => navigation.navigate('')}
+                    key={1}
+                    id={1}
+                    dashboard={false}
+                    mapPress={() => navigation.navigate('dashboard')}
+                    plus={false}
+                    plusPress={() => navigation.navigate('addspot')}
+                    like={false}
+                    likePress={() => navigation.navigate('like')}
+                    account={true}
             /></View>
 
             <MapView
