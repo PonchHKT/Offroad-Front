@@ -15,11 +15,49 @@ const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export function addspotnext({ route, navigation }) {
 
-    const { userInfos } = route.params;
+    const { userInfos, comment, note } = route.params;
 
     const [checked, setChecked] = useState('Débutant');
     const [adress, setAdress] = useState('');
     const [infos, setInfos] = useState('');
+
+    const submit = () => {
+
+        const adressError = commentsValidator(adress)
+        const infosError = commentsValidator(infos)
+
+        if (adressError || infosError) {
+            Alert.alert('Des champs non pas été remplis !')
+            return;
+
+        } else {
+
+            fetch(`https://offroad-app.herokuapp.com/api/spot/add`, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    level: checked,
+                    adress: adress,
+                    infos: comment,
+                    note: note,
+                })
+            })
+            .then((response) => response.json())
+            .then((responseData) => {
+                if (responseData.data) {
+                    Alert.alert('Spot bien ajouté !')
+                    navigation.navigate('spot', {spotId: responseData.data.spot.id, userInfos: userInfos})
+                }
+            })
+
+            .catch((error) =>{
+                console.error(error);
+            })
+        }
+    }
 
     return (
         <ImageBackground style={{backgroundColor: 'white', height: HEIGHT}}>

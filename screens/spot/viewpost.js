@@ -2,9 +2,10 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import {FontAwesome} from '@expo/vector-icons';
-import Navbar from '../components/Navbar';
-import Note from '../components/Note';
-import Separator from '../components/Separator3';
+
+import Navbar from '../../components/Navbar';
+import Note from '../../components/Note';
+import Separator from '../../components/Separator3';
 
 export function viewpost({ route, navigation }) {
 
@@ -28,7 +29,7 @@ export function viewpost({ route, navigation }) {
                 
                 <View style={{height: '50%'}}>
                     <View style={styles.userContainer}>
-                        <Text style={styles.user}>{postInfos.authorId}</Text>
+                        <Text style={styles.user}>{postInfos.userName}</Text>
                     </View>
                     <ScrollView contentContainerStyle={{flexGrow: 1}}>
                         <Text style={styles.description}>{postInfos.content}</Text>

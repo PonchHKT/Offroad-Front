@@ -10,6 +10,7 @@ import Navbar from '../../components/Navbar';
 import CustomTitle from '../../components/CustomTitle';
 import CustomInput from '../../components/CustomInput';
 import couple from '../../assets/images/addspotcouple.gif'
+import { commentsValidator } from '../../helpers/commentsValidator';
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
@@ -19,6 +20,19 @@ export function addspot({ route, navigation }) {
 
     const [comment, setComment] = useState('');
     const [note, setNote] = useState(0);
+
+    const submit = () => {
+
+        const commentError = commentsValidator(comment)
+        const noteError = commentsValidator(note)
+
+        if (commentError || noteError) {
+            Alert.alert('Des champs non pas été remplis !')
+            return;
+        } else {
+            navigation.navigate('addspotnext', { userInfos: userInfos, comment: comment, note: note})
+        }
+    }
 
     return (
         <ImageBackground style={{backgroundColor: 'white', height: HEIGHT}}>
@@ -96,7 +110,7 @@ export function addspot({ route, navigation }) {
                             <CustomButton
                                 key={1}
                                 title={'Suivant'}
-                                actionsbtn={() => navigation.navigate('addspotnext', {userInfos: userInfos})}
+                                actionsbtn={() => submit()}
                             />
                         </View>
                         <Separator/>

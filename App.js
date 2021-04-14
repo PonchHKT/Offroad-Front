@@ -23,11 +23,10 @@ import { spot } from './screens/spot/spot';
 import { startrando } from './screens/spot/startrando';
 import { addreview } from './screens/spot/addreview';
 import { signalspot } from './screens/spot/signalspot';
+import { viewpost } from './screens/spot/viewpost';
 
 import { addspot } from './screens/addSpot/addspot1';
 import { addspotnext } from './screens/addSpot/addspot2';
-
-import { viewpost } from './screens/viewpost';
 
 import { splash } from './screens/splashscreen';
 import { welcome } from './screens/welcome.js';
