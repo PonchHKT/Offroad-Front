@@ -5,8 +5,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import logoImage from '../assets/images/motocrosslogo.png'
 import LottieView from 'lottie-react-native';
 import { useFonts } from 'expo-font';
+import welcome from '../assets/images/splashwelcome.gif'
 
-const { HEIGHT, WIDTH } = Dimensions.get('window')
+const { width: WIDTH } = Dimensions.get('window')
 
 export function splash({ navigation }) {
    
@@ -41,13 +42,20 @@ export function splash({ navigation }) {
             </View>
 
             <LottieView 
+                style={{zIndex: 10}}
                 resizeMode={'cover'}
                 source={require('../assets/splash.json')} 
                 autoPlay 
-                loop={false}
+                loop= {false}
                 speed={0.5}
                 onAnimationFinish={() => finish() }
             />
+
+            <View style={{justifyContent: 'center', alignItems: 'center', position: 'absolute', left: 132, top: 208}}>
+                <Image 
+                source={welcome}
+                style={{width: 100, height: 100}}/>
+                </View>
 
             <View>
                 <Text style={{fontWeight: 'bold', left: 11, bottom: 11}}>v1.0</Text>
@@ -63,6 +71,7 @@ const styles = StyleSheet.create({
     },
     logoContainer: {
         flex: 1,
+        zIndex: 10,
         justifyContent: 'center',
         alignItems: 'center',
     },
