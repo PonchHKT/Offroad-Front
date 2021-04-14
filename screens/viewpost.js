@@ -1,16 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Dimensions, FlatList, SafeAreaView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import {FontAwesome} from '@expo/vector-icons';
 import Navbar from '../components/Navbar';
 import Note from '../components/Note';
 import Separator from '../components/Separator3';
 
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
-
 export function viewpost({ route, navigation }) {
 
-    const { userInfos } = route.params;
+    const { userInfos, postInfos } = route.params;
             
     return (
         <View style={{flex: 1}}>
@@ -30,10 +28,10 @@ export function viewpost({ route, navigation }) {
                 
                 <View style={{height: '50%'}}>
                     <View style={styles.userContainer}>
-                        <Text style={styles.user}>Jack, amateur</Text>
+                        <Text style={styles.user}>{postInfos.authorId}</Text>
                     </View>
                     <ScrollView contentContainerStyle={{flexGrow: 1}}>
-                        <Text style={styles.description}>Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.</Text>
+                        <Text style={styles.description}>{postInfos.content}</Text>
                     </ScrollView>
                 </View>
 

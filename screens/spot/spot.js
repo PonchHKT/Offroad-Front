@@ -168,13 +168,24 @@ export function spot({ route, navigation }) {
                     { posts.post.map((post, index) => (
                         
                         <View key={index}>
-                            <View>
-                                <Text style={styles.user}>{post.authorId}, {post.authorId}</Text>
-                            </View>
+                            <TouchableOpacity
+                                onPress={() => navigation.navigate('viewpost', { userInfos: userInfos, postInfos: post})}
+                            >
+                                <View>
+                                    <Text style={styles.user}>{post.authorId}</Text>
+                                </View>
 
-                            <View>
-                                <Text style={styles.description}>{post.content}</Text>
-                            </View>
+                                <View>
+                                    <Text style={styles.description}>{post.content}</Text>
+                                </View>
+                                <Note 
+                                    key={1}
+                                    note={post.note}
+                                    edit={false}
+                                    spacing={4}
+                                    size={15}
+                                />
+                            </TouchableOpacity>
                         </View>
                     ))}
 

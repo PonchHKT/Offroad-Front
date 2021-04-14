@@ -1,9 +1,11 @@
 import 'react-native-gesture-handler';
-import { StyleSheet, View, Text, TouchableOpacity,  ScrollView, Dimensions, Image } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, Dimensions, Image, Alert } from "react-native";
 import React from 'react';
+import LottieView from 'lottie-react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import Navbar from '../../components/Navbar';
 import CustomButton from '../../components/CustomButton';
-import LottieView from 'lottie-react-native';
 import user from '../../assets/images/usericon.jpg';
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
@@ -11,7 +13,21 @@ const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 export function profil({ route, navigation }) {
 
     const { userInfos } = route.params;
-  
+
+    if (!AsyncStorage.getItem('token')) {
+        navigation.navigate('welcome')
+    }
+    
+    async function logout() {
+        Alert.alert('Vous avez été déconnecté !')
+        try {
+            await AsyncStorage.removeItem('token')
+            navigation.navigate('welcome')
+        } catch (e) {
+            console.log(e)
+        }
+    }
+
     return (
         <View style={{flex: 1}} >
               
@@ -75,7 +91,7 @@ export function profil({ route, navigation }) {
       
                 <CustomButton
                     key={1}
-                    actionsbtn={() => navigation.navigate('Profil')}
+                    actionsbtn={() => logout()}
                     title={'Déconnexion'}
                     width={200}
                 />

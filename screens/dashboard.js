@@ -75,20 +75,6 @@ export function dashboard({ navigation }) {
         console.warn(`ERREUR (${err.code}): ${err.message}`);
     }
 
-    if (!AsyncStorage.getItem('token')) {
-        navigation.navigate('welcome')
-    }
-    
-    async function logout() {
-        Alert.alert('Vous avez été déconnecté !')
-        try {
-            await AsyncStorage.removeItem('token')
-            navigation.navigate('welcome')
-        } catch (e) {
-            console.log(e)
-        }
-    }
-
     return (
         <View>
             <ScrollView>
@@ -103,45 +89,7 @@ export function dashboard({ navigation }) {
                     accountPress={() => navigation.navigate('profil', {userInfos: user})}
                 />
             </ScrollView>
-            <IconButton
-                icon={"plus-circle"}
-                size={30}
-                color={'black'}
-                onPress={() => logout()}
-            />
-            <IconButton
-                icon={"plus-circle"}
-                size={30}
-                color={'pink'}
-                onPress={() => navigation.navigate('getHistorique', {userInfos: user})}
-            />
-            <IconButton
-                icon={"eye"}
-                size={30}
-                color={'black'}
-                onPress={() => navigation.navigate('comments', {userInfos: user})}
-            />
-            <IconButton
-                icon={"check"}
-                size={30}
-                color={'black'}
-                onPress={() => navigation.navigate('viewpost', {userInfos: user})}
-            />
 
-            <IconButton
-                icon={"check"}
-                size={30}
-                color={'red'}
-                onPress={() => navigation.navigate('infoMed', {userInfos: user})}
-            />
-
-            <IconButton
-                icon={"check"}
-                size={30}
-                color={'red'}
-                onPress={() => navigation.navigate('stats', {userInfos: user})}
-            />
-              
             <MapView
                 region={region}
                 style={{width: '100%', height: HEIGHT}}
