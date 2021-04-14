@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Dimensions, ImageBackground } from 'react-native';
 
 import Separator from '../../components/Separator';
 import Separator2 from '../../components/Separator3';
@@ -22,7 +22,7 @@ export function addspotnext({ route, navigation }) {
     const [infos, setInfos] = useState('');
 
     return (
-
+    <ImageBackground style={{backgroundColor: 'white',}}>
     <ScrollView>
         <View>
             <Navbar 
@@ -139,6 +139,7 @@ export function addspotnext({ route, navigation }) {
         </View>
         <StatusBar style="auto" hidden={true}/>
     </ScrollView> 
+</ImageBackground>
 
 )};
 

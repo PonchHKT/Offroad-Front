@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import {View, StyleSheet, Text, ScrollView, TouchableOpacity, Dimensions} from 'react-native';
+import {View, StyleSheet, Text, ScrollView, TouchableOpacity, ImageBackground} from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 
 import Separator from '../components/Separator2'
@@ -42,8 +42,10 @@ export function stats({ route, navigation }) {
     }
     
     return(
+
+        <ImageBackground style={{backgroundColor: 'white',}}>
+        <ScrollView>
         <View>
-            <ScrollView>
 
                 <View>
                 <Navbar 
@@ -108,8 +110,9 @@ export function stats({ route, navigation }) {
             </View>
             
             <StatusBar style="auto" hidden={true}/>
-            </ScrollView>
         </View>
+        </ScrollView>
+        </ImageBackground>
     )
 }
 
@@ -132,6 +135,8 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         alignSelf: 'center',
+        bottom: 10,
+        marginBottom: 10,
     },
     buttonContainer: {
         paddingLeft: 20,
