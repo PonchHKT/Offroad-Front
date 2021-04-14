@@ -84,9 +84,13 @@ export default function Historique(props) {
     
     return (
         <View style={styles.container}>
-            <View style={styles.heart}>
-            <Image source={heart} style={{width: 25, height: 25,}}/>
-            </View>
+            { props.like ? 
+                <View style={styles.heart}>
+                    <Image source={heart} style={{width: 25, height: 25,}}/>
+                </View>
+            :
+            <View></View>
+            }
             <View style={styles.container2}>
                 <Text style={styles.title}>{convertDate(props.date)}</Text>
                 { props.image ? 

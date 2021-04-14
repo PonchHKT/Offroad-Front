@@ -1,12 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {View, StyleSheet, Text, ScrollView, TouchableOpacity, ImageBackground, Dimensions } from 'react-native';
-import MapView, { Marker } from 'react-native-maps';
-
-import Separator from '../components/Separator2'
-import Separator2 from '../components/Separator'
-import Navbar from '../components/Navbar';
 import {FontAwesome} from '@expo/vector-icons';
+import MapView from 'react-native-maps';
+
+import Separator from '../../components/Separator2'
+import Separator2 from '../../components/Separator'
+import Navbar from '../../components/Navbar';
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
