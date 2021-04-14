@@ -16,7 +16,7 @@ const { width: WIDTH } = Dimensions.get('window')
 export function welcome({ navigation }) {
 
     return (
-        <View style={styles.backgroundContainer}>
+        <ScrollView style={styles.backgroundContainer}>
 
             <Separator2/>
             <Separator2/>
@@ -69,7 +69,7 @@ export function welcome({ navigation }) {
 
             </View>
             <StatusBar style="auto" hidden={true}/>
-        </View>
+        </ScrollView>
     ); 
 }
 
