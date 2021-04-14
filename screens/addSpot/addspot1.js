@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Image, ImageBackground } from 'react-native';
 
 import Note from '../../components/Note';
 import Separator2 from '../../components/Separator3';
@@ -9,6 +9,7 @@ import CustomButton from '../../components/CustomButton';
 import Navbar from '../../components/Navbar';
 import CustomTitle from '../../components/CustomTitle';
 import CustomInput from '../../components/CustomInput';
+import couple from '../../assets/images/addspotcouple.gif'
 
 export function addspot({ route, navigation }) {
 
@@ -18,7 +19,7 @@ export function addspot({ route, navigation }) {
     const [note, setNote] = useState(0);
 
     return (
-
+        <ImageBackground style={{backgroundColor: 'white',}}>
         <ScrollView>
             <View>
             <Navbar 
@@ -49,7 +50,7 @@ export function addspot({ route, navigation }) {
                     <Text style={styles.commentText}>Ecrire un commentaire :</Text>
                 </View>
 
-                <View>
+                <View style={{zIndex: 1000}}>
                     <CustomInput
                         key={1}
                         placeholder={''}
@@ -77,6 +78,12 @@ export function addspot({ route, navigation }) {
                     />
                 </View>
 
+                <View style={{justifyContent: 'center', alignItems: 'center', position: 'absolute', left: 210, top: 350}}>
+                    <Image 
+                    source={couple}
+                    style={{width: 150, height: 150}}/>
+                </View>
+
                 <View>
                 
                     <Separator/>
@@ -89,11 +96,16 @@ export function addspot({ route, navigation }) {
                             actionsbtn={() => navigation.navigate('addspotnext', {userInfos: userInfos})}
                         />
                     </View>
+                    <Separator/>
+                    <Separator/>
+                    <Separator/>
+                    <Separator/>
 
                 </View>
             </View> 
             <StatusBar style="auto" hidden={true}/>
     </ScrollView>
+</ImageBackground>
 )};
 
 const styles = StyleSheet.create({

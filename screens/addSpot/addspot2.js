@@ -48,7 +48,7 @@ export function addspotnext({ route, navigation }) {
             </View>
 
             <LottieView 
-                style={{width: WIDTH / 2, left: 55}}
+                style={{width: WIDTH / 2, left: 55, top: 50, position: 'absolute',}}
                 resizeMode={'cover'}
                 source={require('../../assets/addspotmap.json')} 
                 autoPlay 
@@ -56,7 +56,7 @@ export function addspotnext({ route, navigation }) {
                 speed={0.5}
             />
 
-            <View style={{bottom: 180}}>
+            <View>
 
             <View style={styles.level}>
                 <Text style={{fontSize: 20, color: '#606060'}}>Niveau :</Text>
