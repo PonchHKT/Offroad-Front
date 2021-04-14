@@ -28,7 +28,7 @@ export function like({ route, navigation }) {
                     do{
                         changed = false;
                         for(let i=0; i < tab.length-1; i++) {
-                            if(tab[i].id > tab[i+1].id) {
+                            if(tab[i].id < tab[i+1].id) {
                                 let tmp = tab[i];
                                 tab[i] = tab[i+1];
                                 tab[i+1] = tmp;
@@ -76,7 +76,7 @@ export function like({ route, navigation }) {
                         key={index}
                         date={like.createdAt}
                         image={true}
-                        note={3}
+                        spot={like.spotId}
                         actionsbtn={() => navigation.navigate('spot', { spotId: like.spotId, userInfos: userInfos})}
                     />
                 ))

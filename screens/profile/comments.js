@@ -29,7 +29,7 @@ export function comments({ route, navigation }) {
                     do{
                         changed = false;
                         for(let i=0; i < tab.length-1; i++) {
-                            if(tab[i].id > tab[i+1].id) {
+                            if(tab[i].id < tab[i+1].id) {
                                 let tmp = tab[i];
                                 tab[i] = tab[i+1];
                                 tab[i+1] = tmp;
@@ -78,7 +78,7 @@ export function comments({ route, navigation }) {
                         date={post.createdAt}
                         text={post.content}
                         note={post.note}
-                        actionsbtn={() => navigation.navigate('spot', { spotId: like.spotId, userInfos: userInfos})}
+                        actionsbtn={() => navigation.navigate('spot', { spotId: post.spotId, userInfos: userInfos})}
                     />
                 ))
             }

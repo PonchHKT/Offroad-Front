@@ -125,7 +125,7 @@ export function dashboard({ navigation }) {
                 icon={"check"}
                 size={30}
                 color={'black'}
-                onPress={() => navigation.navigate('viewpost')}
+                onPress={() => navigation.navigate('viewpost', {userInfos: user})}
             />
 
             <IconButton

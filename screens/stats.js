@@ -44,21 +44,22 @@ export function stats({ route, navigation }) {
     return(
 
         <ImageBackground style={{backgroundColor: 'white',}}>
-        <ScrollView>
         <View>
+            <View>
 
-                <View>
-                <Navbar 
-                    key={1}
-                    id={1}
-                    dashboard={false}
-                    mapPress={() => navigation.navigate('dashboard')}
-                    plus={false}
-                    plusPress={() => navigation.navigate('addspot', {userInfos: userInfos})}
-                    like={false}
-                    likePress={() => navigation.navigate('like', {userInfos: userInfos})}
-                    account={true}
-            /></View>
+                <ScrollView>
+                    <Navbar 
+                        key={1}
+                        id={1}
+                        dashboard={false}
+                        mapPress={() => navigation.navigate('dashboard')}
+                        plus={false}
+                        plusPress={() => navigation.navigate('addspot', {userInfos: userInfos})}
+                        like={false}
+                        likePress={() => navigation.navigate('like', {userInfos: userInfos})}
+                        account={true}
+                    />
+                </ScrollView>
 
             <MapView
                 region={region}
@@ -110,8 +111,8 @@ export function stats({ route, navigation }) {
             </View>
             
             <StatusBar style="auto" hidden={true}/>
+            </View>
         </View>
-        </ScrollView>
         </ImageBackground>
     )
 }

@@ -29,7 +29,7 @@ export function getHistorique({ route, navigation }) {
                     do{
                         changed = false;
                         for(let i=0; i < tab.length-1; i++) {
-                            if(tab[i].id > tab[i+1].id) {
+                            if(tab[i].id < tab[i+1].id) {
                                 let tmp = tab[i];
                                 tab[i] = tab[i+1];
                                 tab[i+1] = tmp;
@@ -39,7 +39,7 @@ export function getHistorique({ route, navigation }) {
                     } while(changed);
                 }
                 sort(responseData.data.historique)
-                setHistorique(responseData.data.historique)
+                setHistorique(responseData.data)
             })
             .catch((error) =>{
                 console.error(error);
@@ -72,12 +72,13 @@ export function getHistorique({ route, navigation }) {
             { !historiques.historique ?
                 <View></View>
             :
-                historiques.historique.map((historique) => (
+                historiques.historique.map((historique, index) => (
                     <Historique
-                        key={historique.id}
+                        key={index}
                         date={historique.createdAt}
                         img={historique.content}
-                        note={3}
+                        spot={historique.spotId}
+                        actionsbtn={() => navigation.navigate('spot', {userInfos: userInfos})}
                     />
                 ))
             }
