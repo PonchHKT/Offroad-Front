@@ -30,6 +30,20 @@ export function spot({ route, navigation }) {
             .then((response) => response.json())
             .then((responseData) => {
                 setSpot(responseData.data.spot)
+                fetch(`https://offroad-app.herokuapp.com/api/post/spot/${spotId}`, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                })
+                .then((response) => response.json())
+                .then((responseData) => {
+                    console.log(responseData)
+                })
+                .catch((error) =>{
+                    console.error(error);
+                })
             })
             .catch((error) =>{
                 console.error(error);
@@ -112,18 +126,18 @@ export function spot({ route, navigation }) {
             
     return (
 
-        <ScrollView style={styles.container}>
+        <View style={{flex: 1}}>
 
-            <Navbar 
-                key={1}
-                dashboard={true}
-                plus={false}
-                plusPress={() => navigation.navigate('addspot')}
-                like={false}
-                likePress={() => navigation.navigate('like', {userInfos: userInfos})}
-                account={false}
-                accountPress={() => navigation.navigate('profil', {userInfos: userInfos})}
-            />
+                <Navbar 
+                    key={1}
+                    dashboard={true}
+                    plus={false}
+                    plusPress={() => navigation.navigate('addspot', {userInfos: userInfos})}
+                    like={false}
+                    likePress={() => navigation.navigate('like', {userInfos: userInfos})}
+                    account={false}
+                    accountPress={() => navigation.navigate('profil', {userInfos: userInfos})}
+                />
 
             <Image source={Spot} style={styles.imageSpot}></Image>
             
@@ -142,14 +156,15 @@ export function spot({ route, navigation }) {
 
             <View style={styles.comments}>
 
-                <View>
-                    <Text style={styles.user}>[USERNAME], [LEVEL]</Text>
-                </View>
+                <ScrollView contentContainerStyle={{flexGrow: 1}}>
+                    <View>
+                        <Text style={styles.user}>[USERNAME], [LEVEL]</Text>
+                    </View>
 
-                <View>
-                    <Text style={styles.description}>Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.</Text>
-                </View>
-
+                    <View>
+                        <Text style={styles.description}>Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulaitEndroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.</Text>
+                    </View>
+                </ScrollView>
             </View>
 
             <Separator/>
@@ -209,7 +224,7 @@ export function spot({ route, navigation }) {
                 </View>
             </View>
             
-            <View style={{ marginTop: 20}}>
+            <View style={{paddingBottom: 10}}>
                 <CustomButton
                     key={1}
                     title={'Démarer'}
@@ -218,14 +233,11 @@ export function spot({ route, navigation }) {
             </View>
 
             <StatusBar style="auto" hidden={true}/>
-        </ScrollView>
+        </View>
     )
 };
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
     imageSpot: {
         width: WIDTH,
         height: 210,
@@ -238,7 +250,8 @@ const styles = StyleSheet.create({
     },
     comments: {
         paddingRight: 20,
-        paddingLeft: 20
+        paddingLeft: 20,
+        height: '20%'
     },
     user: {
         fontWeight: 'bold',

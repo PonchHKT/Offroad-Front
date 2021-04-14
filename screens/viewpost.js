@@ -28,7 +28,7 @@ export function viewpost({ route, navigation }) {
                     />
                 </ScrollView>
                 
-                <View style={{height: '60%'}}>
+                <View style={{height: '50%'}}>
                     <View style={styles.userContainer}>
                         <Text style={styles.user}>Jack, amateur</Text>
                     </View>
