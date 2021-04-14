@@ -12,33 +12,36 @@ export function profil({ navigation }) {
   
     return (
         <View style={{flex: 1}} >
-              <ScrollView style={{zIndex: 100}}>
-                  <Navbar 
-                      key={1}
-                      id={1}
-                      dashboard={false}
-                      mapPress={() => navigation.navigate('dashboard')}
-                      plus={false}
-                      plusPress={() => navigation.navigate('addspot', {userInfos: userInfos})}
-                      like={false}
-                      likePress={() => navigation.navigate('like', {userInfos: userInfos})}
-                      account={true}
-                  />
-              </ScrollView>
-              <View style={styles.backgroundContainer}>
+              
+                <Navbar 
+                    key={1}
+                    id={1}
+                    dashboard={false}
+                    mapPress={() => navigation.navigate('dashboard')}
+                    plus={false}
+                    plusPress={() => navigation.navigate('addspot', {userInfos: userInfos})}
+                    like={false}
+                    likePress={() => navigation.navigate('like', {userInfos: userInfos})}
+                    account={true}
+                />
 
-                    <LottieView
-                    style={{width: WIDTH / 0.2, height: HEIGHT / 2.7, display: 'flex', position: 'absolute',}}
-                    source={require('../../assets/profilbackground.json')} 
-                    autoPlay 
-                    loop
-                    speed={0.2}/>
-                    <View style={styles.user}>
-                    <Image source={user} style={{width: 120, height: 120}}/>
-                    </View>
+              <View style={{borderBottomWidth: 2}}>
+
+                  <LottieView
+                      style={{width: WIDTH}}
+                      source={require('../../assets/profilbackground.json')} 
+                      autoPlay 
+                      loop={true}
+                  />
+
+                  <View style={{flex: 1, alignItems: 'center'}}>
+                      <Image source={user} style={{width: 150, height: 150, position: 'absolute', bottom: -10}}/>
+                  </View>
+
               </View>
 
-
+            
+                  
             <View>
             
                 <TouchableOpacity
@@ -67,7 +70,7 @@ export function profil({ navigation }) {
       
 
             </View>
-            <View style={{flex: 1, alignSelf: 'center', flexDirection: 'row', justifyContent: 'space-around', width: '99%'}}>
+            <View style={{flex: 1, alignSelf: 'center', flexDirection: 'row', justifyContent: 'space-around', width: '99%', paddingTop: 40}}>
       
                 <CustomButton
                     key={1}
@@ -88,7 +91,7 @@ export function profil({ navigation }) {
 
 const styles = StyleSheet.create({
   buttonArrondi2: {
-    marginTop: 5,
+    marginTop: 10,
     marginBottom: 5,
     backgroundColor: "#E6E6E6",
     borderRadius: 21,
@@ -102,23 +105,5 @@ const styles = StyleSheet.create({
     color: 'grey',
     fontSize: 20,
     marginLeft: 10,
-    textAlignVertical: 'center'
-  },
-  backgroundContainer: {
-    width: 550,
-    height: 240,
-    position: 'absolute',
-    borderColor: 'black',
-    borderWidth: 2,
-    right: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    overflow: 'hidden',
-    paddingRight: 10,
-  },
-  user: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    position: 'absolute',
   },
 });
