@@ -23,6 +23,7 @@ import { spot } from './screens/spot/spot';
 import { startrando } from './screens/spot/startrando';
 import { addreview } from './screens/spot/addreview';
 import { signalspot } from './screens/spot/signalspot';
+import { signalpost } from './screens/spot/signalpost';
 import { viewpost } from './screens/spot/viewpost';
 
 import { addspot } from './screens/addSpot/addspot1';
@@ -71,6 +72,8 @@ export default function App() {
         <Stack.Screen name="comments" component={comments} />
         <Stack.Screen name="getHistorique" component={getHistorique} />
         <Stack.Screen name="infoMed" component={infoMed} />
+        <Stack.Screen name="stats" component={stats} />
+        <Stack.Screen name="profil" component={profil} />
 
         <Stack.Screen name="like" component={like} />
 
@@ -78,12 +81,11 @@ export default function App() {
         <Stack.Screen name="spot" component={spot} />
         <Stack.Screen name="addreview" component={addreview} />
         <Stack.Screen name="signalspot" component={signalspot} />
+        <Stack.Screen name="signalpost" component={signalpost} />
         <Stack.Screen name="addspot" component={addspot} />
         <Stack.Screen name="addspotnext" component={addspotnext} />
         <Stack.Screen name="viewpost" component={viewpost} />
-        <Stack.Screen name="stats" component={stats} />
-        <Stack.Screen name="profil" component={profil} />
-
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

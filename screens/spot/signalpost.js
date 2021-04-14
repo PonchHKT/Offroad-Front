@@ -11,9 +11,9 @@ import CustomInput from '../../components/CustomInput';
 import Navbar from '../../components/Navbar';
 import CustomTitle from '../../components/CustomTitle';
 
-export function signalspot({ route, navigation }) {
+export function signalpost({ route, navigation }) {
 
-    const { spotId, userInfos } = route.params;
+    const { postInfos, userInfos } = route.params;
 
     const [comment, setComment] = useState('');
 
@@ -27,7 +27,7 @@ export function signalspot({ route, navigation }) {
 
         } else {
 
-            fetch(`https://offroad-app.herokuapp.com/api/reportpost/add`, {
+            fetch(`https://offroad-app.herokuapp.com/api/reportspot/add`, {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json',
@@ -35,14 +35,14 @@ export function signalspot({ route, navigation }) {
                 },
                 body: JSON.stringify({
                     content: comment,
-                    spotId: spotId,
+                    postId: postInfos.id,
                     authorId: userInfos.id
                 })
             })
             .then((response) => response.json())
             .then((responseData) => {
                 if (responseData.data) {
-                    Alert.alert('Spot bien signalé !')
+                    Alert.alert('Commentaire bien signalé !')
                     navigation.navigate('spot', {spotId: spotId, userInfos: userInfos})
                 }
             })
@@ -77,7 +77,7 @@ export function signalspot({ route, navigation }) {
                 <CustomTitle
                     key={1}
                     id={1}
-                    title={'Signaler un spot'}
+                    title={'Signaler un Commentaire'}
                 />
             </View>
             

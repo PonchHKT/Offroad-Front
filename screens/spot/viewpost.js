@@ -61,17 +61,17 @@ export function viewpost({ route, navigation }) {
                             name="share" 
                             color="black"
                             size={30}
-                            style={styles.locationBtn}/>
+                        />
                     </TouchableOpacity>
                 </View>
 
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate('signalpost', { userInfos: userInfos, postInfos: postInfos})}>
                         <FontAwesome 
                             name="warning" 
                             color="black"
                             size={30}
-                            style={styles.heartBtn}/>
+                        />
                     </TouchableOpacity>
                 </View>
 
