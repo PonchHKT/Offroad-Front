@@ -24,7 +24,7 @@ export function addspotnext({ route, navigation }) {
     return (
         <ImageBackground style={{backgroundColor: 'white',}}>
             <View>
-                <View>
+                <ScrollView>
                     <Navbar 
                         key={1}
                         dashboard={false}
@@ -35,7 +35,7 @@ export function addspotnext({ route, navigation }) {
                         account={false}
                         accountPress={() => navigation.navigate('profil', {userInfos: userInfos})}
                     />
-                </View>
+                </ScrollView>
 
                     <Separator/>
                     <Separator/>
@@ -60,7 +60,7 @@ export function addspotnext({ route, navigation }) {
 
                     <View style={styles.level}>
                         <Text style={{fontSize: 20, color: '#606060'}}>Niveau :</Text>
-                        <View>
+                        <ScrollView>
                             <CustomRadio 
                                 key={1}
                                 value={'Débutant'}
@@ -89,7 +89,7 @@ export function addspotnext({ route, navigation }) {
                                 status={checked === 'Expert' ? 'checked' : 'unchecked'}
                                 action={() => setChecked('Expert')}
                             />
-                        </View>
+                        </ScrollView>
                     </View>
 
                     <View>
