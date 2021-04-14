@@ -20,8 +20,6 @@ export function infoMed({ route, navigation }) {
     const [traitement, setTraitement] = useState({ value: '', error: '' })
     const [other, setOther] = useState({ value: '', error: '' })
     
-
-
     return (
     <ScrollView>
         <View>

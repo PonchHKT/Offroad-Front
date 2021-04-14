@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, ScrollView, StyleSheet, Text, Dimensions, View } from "react-native";
+import { Image, StyleSheet, Text, Dimensions, View } from "react-native";
 import CustomButton from './CustomButton';
 import Note from './Note';
 
@@ -8,7 +8,7 @@ import Separator from '../components/Separator2';
 const { width: WIDTH } = Dimensions.get('window')
 
 export default function Historique(props) {
-
+    
     const styles = StyleSheet.create({
         container: {
             flex: 1,
@@ -63,6 +63,7 @@ export default function Historique(props) {
                         key={1}
                         title={'Voir'}
                         width={250}
+                        actionsbtn={props.actionsbtn}
                     />
                 </View>
             </View>

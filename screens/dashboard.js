@@ -139,7 +139,7 @@ export function dashboard({ navigation }) {
                 icon={"check"}
                 size={30}
                 color={'red'}
-                onPress={() => navigation.navigate('stats')}
+                onPress={() => navigation.navigate('stats', {userInfos: user})}
             />
               
             <MapView

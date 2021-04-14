@@ -75,6 +75,9 @@ export function like({ route, navigation }) {
                     <Historique
                         key={index}
                         date={like.createdAt}
+                        image={true}
+                        note={3}
+                        actionsbtn={() => navigation.navigate('spot', { spotId: like.spotId, userInfos: userInfos})}
                     />
                 ))
             }

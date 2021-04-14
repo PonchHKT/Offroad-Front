@@ -78,6 +78,7 @@ export function comments({ route, navigation }) {
                         date={post.createdAt}
                         text={post.content}
                         note={post.note}
+                        actionsbtn={() => navigation.navigate('spot', { spotId: like.spotId, userInfos: userInfos})}
                     />
                 ))
             }
