@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Image, StyleSheet, Text, Dimensions, View } from "react-native";
 import CustomButton from './CustomButton';
 import Note from './Note';
@@ -9,6 +9,39 @@ const { width: WIDTH } = Dimensions.get('window')
 
 export default function Historique(props) {
     
+    const[spot, setSpot] = useState({})
+
+    {
+        props.note ? 
+            props.note
+        :
+
+        useEffect(() => {
+            try {
+                fetch(`https://offroad-app.herokuapp.com/api/spot/unique/${props.spot}`, {
+                    method: 'GET',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                })
+                .then((response) => response.json())
+                .then((responseData) => {
+                    setSpot(responseData.data.spot)
+                })
+                .catch((error) =>{
+                    console.error(error);
+                })
+            } catch(e) {
+                console.log(e)
+            }
+        },[])
+
+        if (!spot.note) {
+            return <View></View>
+        }
+    }
+
     const styles = StyleSheet.create({
         container: {
             flex: 1,
@@ -54,7 +87,7 @@ export default function Historique(props) {
                 <View style={styles.bottom}>
                     <Note 
                         key={props.id}
-                        note={props.note}
+                        note={props.note ? props.note : spot.note}
                         edit={false}
                         spacing={4}
                         size={25}

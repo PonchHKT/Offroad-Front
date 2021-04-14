@@ -20,7 +20,7 @@ export function spot({ route, navigation }) {
     useEffect(() => {
         try {
 
-            fetch(`https://offroad-app.herokuapp.com/api/spot/${spotId}`, {
+            fetch(`https://offroad-app.herokuapp.com/api/spot/unique/${spotId}`, {
                 method: 'GET',
                 headers: {
                     'Accept': 'application/json',
@@ -29,8 +29,7 @@ export function spot({ route, navigation }) {
             })
             .then((response) => response.json())
             .then((responseData) => {
-                
-                setSpot(responseData.data)
+                setSpot(responseData.data.spot)
             })
             .catch((error) =>{
                 console.error(error);
@@ -106,7 +105,10 @@ export function spot({ route, navigation }) {
         .catch((error) =>{
             console.error(error);
         })
-        
+    }
+
+    if (!spot.note) {
+        return <View></View>
     }
             
     return (
@@ -130,7 +132,7 @@ export function spot({ route, navigation }) {
                 <Text style={styles.noteText}>Note :</Text>
                 <Note 
                     key={1}
-                    note={3}
+                    note={spot.note}
                     edit={false}
                     spacing={4}
                     size={30}

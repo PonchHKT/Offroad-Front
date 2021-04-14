@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Dimensions, FlatList, SafeAreaView } from 'react-native';
 import {FontAwesome} from '@expo/vector-icons';
 import Navbar from '../components/Navbar';
 import Note from '../components/Note';
@@ -13,79 +13,73 @@ export function viewpost({ route, navigation }) {
     const { userInfos } = route.params;
             
     return (
-        <ScrollView>
-
         <View>
-            <Navbar 
-                key={1}
-                dashboard={false}
-                mapPress={() => navigation.navigate('dashboard')}
-                plus={false}
-                plusPress={() => navigation.navigate('addspot')}
-                like={false}
-                likePress={() => navigation.navigate('like', {userInfos: userInfos})}
-                account={true}
-            />
-        </View>
 
-        <View style={styles.userContainer}>
-                <Text style={styles.user}>Jack, amateur</Text>
-            </View>
+                <ScrollView>
+                    <Navbar 
+                        key={1}
+                        dashboard={false}
+                        mapPress={() => navigation.navigate('dashboard')}
+                        plus={false}
+                        plusPress={() => navigation.navigate('addspot', {userInfos: userInfos})}
+                        like={false}
+                        likePress={() => navigation.navigate('like', {userInfos: userInfos})}
+                        account={true}
+                    />
+                </ScrollView>
 
-            <View>
-                <Text style={styles.description}>Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.</Text>
-            </View>
-            <Separator/>
-            <View>
-            <Text style={styles.noteText}>Note :</Text>
-            <View style={{right: 5,}}>
-            <Note
-                key={1}
-                note={3}
-                edit={false}
-                spacing={4}
-                size={30}
-            />
-            </View>
-        </View>
+                <View style={styles.userContainer}>
+                    <Text style={styles.user}>Jack, amateur</Text>
+                </View>
 
-            <Separator/>
+                <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+                    <Text style={styles.description}>Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.</Text>
+                </ScrollView>
+
+                <Separator/>
+
+                <View>
+                    <Text style={styles.noteText}>Note :</Text>
+                    <View>
+                        <Note
+                            key={1}
+                            note={3}
+                            edit={false}
+                            spacing={4}
+                            size={30}
+                        />
+                    </View>
+                </View>
+
+                <Separator/>
 
             <View style={styles.icons}>
 
-            <View style={styles.buttonContainer}>
-                <TouchableOpacity>
-                    <FontAwesome 
-                        name="share" 
-                        color="black"
-                        size={30}
-                        style={styles.locationBtn}/>
-                </TouchableOpacity>
-            </View>
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity>
+                        <FontAwesome 
+                            name="share" 
+                            color="black"
+                            size={30}
+                            style={styles.locationBtn}/>
+                    </TouchableOpacity>
+                </View>
 
-            <View style={styles.buttonContainer}>
-                <TouchableOpacity>
-                    <FontAwesome 
-                        name="warning" 
-                        color="black"
-                        size={30}
-                        style={styles.heartBtn}/>
-                </TouchableOpacity>
-            </View>
+                <View style={styles.buttonContainer}>
+                    <TouchableOpacity>
+                        <FontAwesome 
+                            name="warning" 
+                            color="black"
+                            size={30}
+                            style={styles.heartBtn}/>
+                    </TouchableOpacity>
+                </View>
 
             </View>
             <StatusBar style="auto" hidden={true}/>
-        </ScrollView>
+        </View>
     )
 };
-
-class Star extends React.Component {
-    render() {
-        return (
-            <FontAwesome name="star" color="black" size={32} style={styles.stars}/>
-        )
-    } 
-}
 
 const styles = StyleSheet.create({
     userContainer: {
@@ -116,13 +110,11 @@ const styles = StyleSheet.create({
     icons: {
         flex: 1,
         flexDirection: 'row',
-        justifyContent: 'space-between',
         alignSelf: 'center',
-        width: WIDTH - 300,
-        marginBottom: 25,
-        bottom: 8,
+        marginBottom: 10,
     },
     buttonContainer: {
-        paddingBottom: 10,
-    },
+        paddingLeft: 20,
+        paddingRight: 20
+    }
 });
