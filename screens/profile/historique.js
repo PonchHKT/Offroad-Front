@@ -1,8 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import {  View, ScrollView, Text } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import jwt_decode from "jwt-decode";
+import {  View, ScrollView } from 'react-native';
 
 import Navbar from '../../components/Navbar';
 import Historique from '../../components/Historique';
@@ -50,7 +48,7 @@ export function getHistorique({ route, navigation }) {
     },[])
 
     if (!historiques.historique) {
-        return <Text>Chargement...</Text>
+        return <View></View>
     }
    
     return (
@@ -78,7 +76,7 @@ export function getHistorique({ route, navigation }) {
                         date={historique.createdAt}
                         img={historique.content}
                         spot={historique.spotId}
-                        actionsbtn={() => navigation.navigate('spot', {userInfos: userInfos})}
+                        actionsbtn={() => navigation.navigate('spot', { spotId: post.spotId, userInfos: userInfos})}
                     />
                 ))
             }

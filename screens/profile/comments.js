@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import {  View, ScrollView, Text } from 'react-native';
+import {  View, ScrollView } from 'react-native';
 
 
 import Navbar from '../../components/Navbar';
@@ -71,7 +71,8 @@ export function comments({ route, navigation }) {
 
             { !posts.post ?
                 <View></View>
-            :
+            :   
+                
                 posts.post.map((post, index) => (
                     <Historique
                         key={index}

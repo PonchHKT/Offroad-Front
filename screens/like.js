@@ -61,10 +61,10 @@ export function like({ route, navigation }) {
                     dashboard={false}
                     mapPress={() => navigation.navigate('dashboard')}
                     plus={false}
-                    plusPress={() => navigation.navigate('addspot')}
+                    plusPress={() => navigation.navigate('addspot', {userInfos: userInfos})}
                     like={true}
                     account={false}
-                    accountPress={() => navigation.navigate('profil')}
+                    accountPress={() => navigation.navigate('profil', {userInfos: userInfos})}
                 />
             </View>
 

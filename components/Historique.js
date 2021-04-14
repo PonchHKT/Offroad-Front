@@ -11,11 +11,10 @@ const { width: WIDTH } = Dimensions.get('window')
 export default function Historique(props) {
     
     const[spot, setSpot] = useState({})
+    const[verify, setVerify] = useState(false)
 
-    {
-        props.note ? 
-            props.note
-        :
+       
+    if(!props.note) {
 
         useEffect(() => {
             try {
@@ -89,7 +88,7 @@ export default function Historique(props) {
                     <Image source={heart} style={{width: 25, height: 25,}}/>
                 </View>
             :
-            <View></View>
+                <View></View>
             }
             <View style={styles.container2}>
                 <Text style={styles.title}>{convertDate(props.date)}</Text>
