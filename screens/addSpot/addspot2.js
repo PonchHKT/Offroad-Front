@@ -47,14 +47,7 @@ export function addspotnext({ route, navigation }) {
                         />
                     </View>
 
-                    <LottieView 
-                        style={{flex: 1, width: WIDTH / 2, right: 0, top: HEIGHT / 9, position: 'absolute',}}
-                        resizeMode={'cover'}
-                        source={require('../../assets/addspotmap.json')} 
-                        autoPlay 
-                        loop={true}
-                        speed={0.5}
-                    />
+                    
 
                     <View>
 
@@ -89,8 +82,17 @@ export function addspotnext({ route, navigation }) {
                                 status={checked === 'Expert' ? 'checked' : 'unchecked'}
                                 action={() => setChecked('Expert')}
                             />
+                            
                         </ScrollView>
-                    </View>
+                        <LottieView 
+                            style={{flex: 1, width: WIDTH / 2, right: 0, position: 'absolute'}}
+                            resizeMode={'cover'}
+                            source={require('../../assets/addspotmap.json')} 
+                            autoPlay 
+                            loop={true}
+                            speed={0.5}
+                        />
+                </View>
 
                     <View>
 
