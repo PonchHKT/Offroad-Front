@@ -1,8 +1,10 @@
 import 'react-native-gesture-handler';
-import { StyleSheet, View, Text, TouchableOpacity,  ScrollView, Dimensions } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity,  ScrollView, Dimensions, Image } from "react-native";
 import React from 'react';
 import Navbar from '../../components/Navbar';
 import CustomButton from '../../components/CustomButton';
+import LottieView from 'lottie-react-native';
+import user from '../../assets/images/usericon.jpg';
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
@@ -23,9 +25,17 @@ export function profil({ navigation }) {
                       account={true}
                   />
               </ScrollView>
-
               <View style={styles.backgroundContainer}>
-                
+
+                    <LottieView
+                    style={{width: WIDTH / 0.2, height: HEIGHT / 2.7, display: 'flex', position: 'absolute',}}
+                    source={require('../../assets/profilbackground.json')} 
+                    autoPlay 
+                    loop
+                    speed={0.2}/>
+                    <View style={styles.user}>
+                    <Image source={user} style={{width: 120, height: 120}}/>
+                    </View>
               </View>
 
 
@@ -92,15 +102,23 @@ const styles = StyleSheet.create({
     color: 'grey',
     fontSize: 20,
     marginLeft: 10,
+    textAlignVertical: 'center'
   },
   backgroundContainer: {
     width: 550,
-    height: 250,
+    height: 240,
     position: 'absolute',
-    backgroundColor: 'red',
     borderColor: 'black',
     borderWidth: 2,
     right: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    overflow: 'hidden',
+    paddingRight: 10,
   },
-
+  user: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+  },
 });
