@@ -8,7 +8,7 @@ import Historique from '../components/Historique';
 
 export function like({ route, navigation }) {
 
-    const { spotId, userInfos } = route.params;
+    const { userInfos } = route.params;
 
     const [likes, setLike] = useState({})
 
@@ -62,9 +62,9 @@ export function like({ route, navigation }) {
                     mapPress={() => navigation.navigate('dashboard')}
                     plus={false}
                     plusPress={() => navigation.navigate('addspot')}
-                    like={false}
-                    likePress={() => navigation.navigate('like')}
-                    account={true}
+                    like={true}
+                    account={false}
+                    accountPress={() => navigation.navigate('profil')}
                 />
             </View>
 

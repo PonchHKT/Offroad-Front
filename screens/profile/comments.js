@@ -8,7 +8,7 @@ import Historique from '../../components/Historique';
 
 export function comments({ route, navigation }) {
 
-    const { spotId, userInfos } = route.params;
+    const { userInfos } = route.params;
 
     const [posts, setPost] = useState({})
 
@@ -64,7 +64,7 @@ export function comments({ route, navigation }) {
                     plus={false}
                     plusPress={() => navigation.navigate('addspot')}
                     like={false}
-                    likePress={() => navigation.navigate('like')}
+                    likePress={() => navigation.navigate('like', {userInfos: userInfos})}
                     account={true}
                 />
             </View>

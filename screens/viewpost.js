@@ -8,7 +8,9 @@ import Separator from '../components/Separator3';
 
 const { width: WIDTH } = Dimensions.get('window')
 
-export function viewpost({ navigation }) {
+export function viewpost({ route, navigation }) {
+
+    const { userInfos } = route.params;
             
     return (
         <ScrollView>
@@ -21,7 +23,7 @@ export function viewpost({ navigation }) {
                 plus={false}
                 plusPress={() => navigation.navigate('addspot')}
                 like={false}
-                likePress={() => navigation.navigate('like')}
+                likePress={() => navigation.navigate('like', {userInfos: userInfos})}
                 account={true}
             />
         </View>

@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
 import Note from '../../components/Note';
 import Separator2 from '../../components/Separator3';
@@ -10,7 +10,9 @@ import Navbar from '../../components/Navbar';
 import CustomTitle from '../../components/CustomTitle';
 import CustomInput from '../../components/CustomInput';
 
-export function addspot({ navigation }) {
+export function addspot({ route, navigation }) {
+
+    const { userInfos } = route.params;
 
     const [comment, setComment] = useState('');
     const [note, setNote] = useState(0);
@@ -25,9 +27,9 @@ export function addspot({ navigation }) {
                 mapPress={() => navigation.navigate('dashboard')}
                 plus={true}
                 like={false}
-                likePress={() => navigation.navigate('like')}
+                likePress={() => navigation.navigate('like', {userInfos: userInfos})}
                 account={false}
-                accountPress={() => navigation.navigate('profil')}
+                accountPress={() => navigation.navigate('profil', {userInfos: userInfos})}
             /></View>
 
             <View>

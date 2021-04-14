@@ -12,8 +12,9 @@ import {FontAwesome} from '@expo/vector-icons';
 
 const { width: WIDTH } = Dimensions.get('window')
 
-export function stats({ navigation }) {
+export function stats({ route, navigation }) {
 
+    const { userInfos } = route.params;
     
     const [region, setRegion] = useState({})
     const [spot, setSpot] = useState({ value: [] })
@@ -89,7 +90,7 @@ export function stats({ navigation }) {
                     plus={false}
                     plusPress={() => navigation.navigate('addspot')}
                     like={false}
-                    likePress={() => navigation.navigate('like')}
+                    likePress={() => navigation.navigate('like', {userInfos: userInfos})}
                     account={true}
             /></View>
 

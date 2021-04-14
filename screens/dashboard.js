@@ -98,9 +98,9 @@ export function dashboard({ navigation }) {
                     plus={false}
                     plusPress={() => navigation.navigate('addspot')}
                     like={false}
-                    likePress={() => navigation.navigate('like')}
+                    likePress={() => navigation.navigate('like', {userInfos: user})}
                     account={false}
-                    accountPress={() => navigation.navigate('profil')}
+                    accountPress={() => navigation.navigate('profil', {userInfos: user})}
                 />
             </View>
             <IconButton

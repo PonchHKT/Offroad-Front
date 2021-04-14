@@ -64,9 +64,9 @@ export function signalspot({ route, navigation }) {
                     plus={false}
                     plusPress={() => navigation.navigate('addspot')}
                     like={false}
-                    likePress={() => navigation.navigate('like')}
+                    likePress={() => navigation.navigate('like', {userInfos: userInfos})}
                     account={false}
-                    accountPress={() => navigation.navigate('profil')}
+                    accountPress={() => navigation.navigate('profil', {userInfos: userInfos})}
                 />
             </View>
 

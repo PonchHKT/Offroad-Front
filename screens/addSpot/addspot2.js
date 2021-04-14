@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 
 import Separator from '../../components/Separator';
 import Separator2 from '../../components/Separator3';
@@ -11,9 +11,9 @@ import CustomTitle from '../../components/CustomTitle';
 import CustomInput from '../../components/CustomInput';
 import LottieView from 'lottie-react-native';
 
-const { width: WIDTH } = Dimensions.get('window')
+export function addspotnext({ route, navigation }) {
 
-export function addspotnext({ navigation }) {
+    const { userInfos } = route.params;
 
     const [checked, setChecked] = useState('Débutant');
     const [adress, setAdress] = useState('');
@@ -29,9 +29,9 @@ export function addspotnext({ navigation }) {
                 mapPress={() => navigation.navigate('dashboard')}
                 plus={true}
                 like={false}
-                likePress={() => navigation.navigate('like')}
+                likePress={() => navigation.navigate('like', {userInfos: userInfos})}
                 account={false}
-                accountPress={() => navigation.navigate('profil')}
+                accountPress={() => navigation.navigate('profil', {userInfos: userInfos})}
             />
         </View>
 

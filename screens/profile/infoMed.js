@@ -8,7 +8,9 @@ import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
 
 
-export function infoMed({ navigation }) {
+export function infoMed({ route, navigation }) {
+
+    const { userInfos } = route.params;
 
     const [taille, setTaille] = useState({ value: '', error: '' })
     const [poids, setPoids] = useState({ value: '', error: '' })
@@ -30,7 +32,7 @@ export function infoMed({ navigation }) {
                 plus={false}
                 plusPress={() => navigation.navigate('addspot')}
                 like={false}
-                likePress={() => navigation.navigate('like')}
+                likePress={() => navigation.navigate('like', {userInfos: userInfos})}
                 account={true}
             />
         </View>
