@@ -53,7 +53,7 @@ export function infoMed({ route, navigation }) {
                 valeur={poids.value}
                 error={!!poids.error}
                 errorText={poids.error}
-                text={(text) => setPoids({ value: text, error: '' })}
+                text={(text) => setSang({ value: text, error: '' })}
             />
 
             <Text style={styles.front}>Groupe sanguin :</Text>
