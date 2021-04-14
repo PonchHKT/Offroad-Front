@@ -26,7 +26,7 @@ export function profil({ route, navigation }) {
                     account={true}
                 />
 
-              <View style={{borderBottomWidth: 3.5,}}>
+              <View style={{borderBottomWidth: 3.3,}}>
 
                   <LottieView
                       style={{width: WIDTH}}

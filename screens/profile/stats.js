@@ -137,11 +137,16 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: 'row',
         alignSelf: 'center',
-        bottom: 10,
         marginBottom: 10,
+        zIndex: 10,
+        top: 610, //* Bug non responsive ?
+        justifyContent: 'center',
+        position: 'absolute',
     },
     buttonContainer: {
         paddingLeft: 20,
-        paddingRight: 20
+        paddingRight: 20,
+        zIndex: 10,
+
     }
 });
