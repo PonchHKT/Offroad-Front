@@ -55,7 +55,7 @@ export function like({ route, navigation }) {
     return (
         <ScrollView>
             <View>
-                <Navbar 
+                <Navbar
                     key={1}
                     id={1}
                     dashboard={false}
@@ -81,7 +81,6 @@ export function like({ route, navigation }) {
                     />
                 ))
             }
-
             <StatusBar style="auto" hidden={true}/>
         </ScrollView>
     ); 

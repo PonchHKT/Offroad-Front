@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Image, StyleSheet, Text, Dimensions, View } from "react-native";
 import CustomButton from './CustomButton';
 import Note from './Note';
+import heart from '../assets/images/heart.png';
 
 import Separator from '../components/Separator2';
 
@@ -54,7 +55,8 @@ export default function Historique(props) {
         },
         title: {
             fontSize: 22,
-            paddingBottom: 10
+            paddingBottom: 10,
+            marginTop: 10,
         },
         bottom: {
             flex: 1,
@@ -62,7 +64,16 @@ export default function Historique(props) {
             paddingTop: 10,
             alignItems: 'center',
             justifyContent: 'space-between'
-        }
+        },
+        heart: {
+            width: 25, 
+            height: 25, 
+            justifyContent: 'center', 
+            alignItems: 'center',
+            position: 'absolute', 
+            top: 21,
+            left: 135,
+        },
     });   
     
     function convertDate(inputFormat) {
@@ -73,6 +84,9 @@ export default function Historique(props) {
     
     return (
         <View style={styles.container}>
+            <View style={styles.heart}>
+            <Image source={heart} style={{width: 25, height: 25,}}/>
+            </View>
             <View style={styles.container2}>
                 <Text style={styles.title}>{convertDate(props.date)}</Text>
                 { props.image ? 
