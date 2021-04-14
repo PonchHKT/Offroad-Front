@@ -37,6 +37,9 @@ export function addspotnext({ route, navigation }) {
                     />
                 </ScrollView>
 
+                <Separator />
+                <Separator />
+
                     <View>
                         <CustomTitle
                             key={1}

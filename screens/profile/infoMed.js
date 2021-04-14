@@ -28,7 +28,7 @@ export function infoMed({ route, navigation }) {
                 dashboard={false}
                 mapPress={() => navigation.navigate('dashboard')}
                 plus={false}
-                plusPress={() => navigation.navigate('addspot')}
+                plusPress={() => navigation.navigate('addspot', {userInfos: userInfos})}
                 like={false}
                 likePress={() => navigation.navigate('like', {userInfos: userInfos})}
                 account={true}

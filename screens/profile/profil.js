@@ -1,107 +1,92 @@
 import 'react-native-gesture-handler';
-import { StyleSheet, View, Text, TouchableOpacity,  ScrollView } from "react-native";
-import * as React from 'react';
+import { StyleSheet, View, Text, TouchableOpacity,  ScrollView, Dimensions } from "react-native";
+import React from 'react';
+import Navbar from '../../components/Navbar';
+import CustomButton from '../../components/CustomButton';
 
+const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export function profil({ navigation }) {
-return (
+  
+    return (
+        <View style={{flex: 1}}>
+              <ScrollView>
+                  <Navbar 
+                      key={1}
+                      id={1}
+                      dashboard={false}
+                      mapPress={() => navigation.navigate('dashboard')}
+                      plus={false}
+                      plusPress={() => navigation.navigate('addspot', {userInfos: userInfos})}
+                      like={false}
+                      likePress={() => navigation.navigate('like', {userInfos: userInfos})}
+                      account={true}
+                  />
+              </ScrollView>
 
-    
-<ScrollView>
-  <View style={styles.container}>
-    
-  <TouchableOpacity
-        style={styles.buttonArrondi2}
-        onPress={() => navigation.navigate('Profil')}>
-        <Text style={styles.front2}>Informations personnelles</Text>
-      </TouchableOpacity>
+            <View>
+            
+                <TouchableOpacity
+                    style={styles.buttonArrondi2}
+                    onPress={() => navigation.navigate('Profil')}>
+                    <Text style={styles.front2}>Informations personnelles</Text>
+                </TouchableOpacity>
 
-      <TouchableOpacity
-        style={styles.buttonArrondi2}
-        onPress={() => navigation.navigate('Profil')}>
-        <Text style={styles.front2}>Informations médicales</Text>
-      </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.buttonArrondi2}
+                    onPress={() => navigation.navigate('Profil')}>
+                    <Text style={styles.front2}>Informations médicales</Text>
+                </TouchableOpacity>
 
-      <TouchableOpacity
-        style={styles.buttonArrondi2}
-        onPress={() => navigation.navigate('Profil')}>
-        <Text style={styles.front2}>Mes Commentaires</Text>
-      </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.buttonArrondi2}
+                    onPress={() => navigation.navigate('Profil')}>
+                    <Text style={styles.front2}>Mes Commentaires</Text>
+                </TouchableOpacity>
 
-      <TouchableOpacity
-        style={styles.buttonArrondi2}
-        onPress={() => navigation.navigate('Profil')}>
-        <Text style={styles.front2}>Mon Historique</Text>
-      </TouchableOpacity>  
+                <TouchableOpacity
+                    style={styles.buttonArrondi2}
+                    onPress={() => navigation.navigate('Profil')}>
+                    <Text style={styles.front2}>Mon Historique</Text>
+                </TouchableOpacity>  
       
 
-  </View>
-  <View style={styles.container2}>
+            </View>
+            <View style={{flex: 1, alignSelf: 'center', flexDirection: 'row', justifyContent: 'space-around', width: '100%'}}>
       
-  <TouchableOpacity
-        style={styles.buttonArrondi}
-        onPress={() => navigation.navigate('Profil')}
-      >
-        <Text style={styles.front}>Retour</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={styles.buttonArrondi}
-        onPress={() => navigation.navigate('Profil')}
-      >
-        <Text style={styles.front}>Déconnexion</Text>
-      </TouchableOpacity>
+                <CustomButton
+                    key={1}
+                    actionsbtn={() => navigation.navigate('Profil')}
+                    title={'Déconnexion'}
+                    width={200}
+                />
+                
+                <CustomButton
+                    key={2}
+                    actionsbtn={() => navigation.navigate('Profil')}
+                    title={'Options'}
+                    width={200}
+                />
 
-  </View>
-</ScrollView>
-
+            </View>
+      </View>
 )};
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  container2: {
-    flexDirection:'row',
-  },
-
-  buttonArrondi: { 
-  backgroundColor: "#E6E6E6",
-  borderRadius: 21,
-  width: '40%',
-  height: '50%',
-  marginBottom: '10%',
-  marginLeft: '5%',
-  marginTop: 60,
-  alignItems: "center",
-},
-buttonArrondi2: { 
+  buttonArrondi2: {
+    marginTop: 5,
+    marginBottom: 5,
     backgroundColor: "#E6E6E6",
     borderRadius: 21,
-    width: '80%',
-    height: '15%',
-    marginLeft: '5%',
-    marginTop: '12%',
-    alignItems: "center",
+    width: WIDTH / 1.1,
+    height: 60,
+    alignSelf: 'center',
+    justifyContent: 'center'
   },
-  front:{
-    marginTop: 20,
-    color: 'grey',
-    height: 50,
-    fontSize: 20,
-    marginLeft: '2%',
-  },
-
   front2:{
     color: 'grey',
-    height: 50,
     fontSize: 20,
-    marginLeft: '2%',
+    marginLeft: 10,
     textAlignVertical: 'center'
   },
-
-  backgroundImage: {
-    flex: 1,
-    width: undefined,
-    height: undefined,
-  }
 });
