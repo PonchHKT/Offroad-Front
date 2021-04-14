@@ -10,6 +10,7 @@ import Navbar from '../../components/Navbar';
 import CustomTitle from '../../components/CustomTitle';
 import CustomInput from '../../components/CustomInput';
 import LottieView from 'lottie-react-native';
+import { commentsValidator } from '../../helpers/commentsValidator';
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
@@ -41,12 +42,16 @@ export function addspotnext({ route, navigation }) {
                 body: JSON.stringify({
                     level: checked,
                     adress: adress,
-                    infos: comment,
-                    note: note,
+                    infos: infos,
+                    noteUser: note,
+                    content: comment,
+                    authorId: userInfos.id,
+                    userName: userInfos.pseudo
                 })
             })
             .then((response) => response.json())
             .then((responseData) => {
+                console.log(responseData)
                 if (responseData.data) {
                     Alert.alert('Spot bien ajouté !')
                     navigation.navigate('spot', {spotId: responseData.data.spot.id, userInfos: userInfos})
@@ -170,6 +175,7 @@ export function addspotnext({ route, navigation }) {
                         <CustomButton
                             key={1}
                             title={'Ajouter'}
+                            actionsbtn={() => submit()}
                         />
                         </View>
 
