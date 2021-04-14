@@ -4,8 +4,7 @@ import { StyleSheet, View, Image, ScrollView, Dimensions, Text } from 'react-nat
 import LottieView from 'lottie-react-native';
 
 import logo from '../assets/images/motocrosslogo.png';
-
-import CustomTitle from '../components/CustomTitle';
+import { useFonts } from 'expo-font';
 import CustomButton from '../components/CustomButton';
 import GoogleButton from '../components/Google2';
 import Separator from '../components/Separator2';
@@ -15,6 +14,14 @@ const { width: WIDTH } = Dimensions.get('window')
 
 export function welcome({ navigation }) {
 
+    const [loaded] = useFonts({
+        Apetizzer: require('../assets/fonts/apetiz.otf'),
+      });
+      
+      if (!loaded) {
+        return null;
+      }
+    
     return (
         <ScrollView style={styles.backgroundContainer}>
 
@@ -29,7 +36,7 @@ export function welcome({ navigation }) {
                 </View>
 
                 <View style={styles.header}>
-                    <Text style={{fontSize: 34, top: 27, left: 20, zIndex: 10}}>Bienvenue</Text>
+                    <Text style={{fontFamily: 'Apetizzer', fontSize: 40, top: 27, left: 20, zIndex: 10}}>Bienvenue</Text>
                     <LottieView 
                         style={{width: WIDTH / 4}}
                         source={require('../assets/location.json')} 
