@@ -68,8 +68,7 @@ export function spot({ route, navigation }) {
         })
         .then((response) => response.json())
         .then((responseData) => {
-            console.log(responseData.data.like)
-
+            
             if(!responseData.data.like[0]) {
 
                 fetch(`https://offroad-app.herokuapp.com/api/like/add`, {
