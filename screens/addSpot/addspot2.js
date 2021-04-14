@@ -18,7 +18,7 @@ export function addspotnext({ route, navigation }) {
 
     const { userInfos, comment, note } = route.params;
 
-    const [checked, setChecked] = useState('Débutant');
+    const [checked, setChecked] = useState('DEBUTANT');
     const [adress, setAdress] = useState('');
     const [infos, setInfos] = useState('');
 
@@ -100,28 +100,28 @@ export function addspotnext({ route, navigation }) {
                                 value={'Débutant'}
                                 color={'black'}
                                 status={checked === 'Débutant' ? 'checked' : 'unchecked'}
-                                action={() => setChecked('Débutant')}
+                                action={() => setChecked('DEBUTANT')}
                             />
                             <CustomRadio 
                                 key={2}
                                 value={'Intermédiaire'}
                                 color={'black'}
                                 status={checked === 'Intermédiaire' ? 'checked' : 'unchecked'}
-                                action={() => setChecked('Intermédiaire')}
+                                action={() => setChecked('INTERMEDIAIRE')}
                             />
                             <CustomRadio 
                                 key={3}
                                 value={'Avancé'}
                                 color={'black'}
                                 status={checked === 'Avancé' ? 'checked' : 'unchecked'}
-                                action={() => setChecked('Avancé')}
+                                action={() => setChecked('AVANCE')}
                             />
                             <CustomRadio 
                                 key={4}
                                 value={'Expert'}
                                 color={'black'}
                                 status={checked === 'Expert' ? 'checked' : 'unchecked'}
-                                action={() => setChecked('Expert')}
+                                action={() => setChecked('EXPERT')}
                             />
                             
                         </ScrollView>
