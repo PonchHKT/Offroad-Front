@@ -16,6 +16,8 @@ export function spot({ route, navigation }) {
     const { spotId, userInfos } = route.params;
 
     const[spot, setSpot] = useState({})
+    const[posts, setPost] = useState({})
+    const[userPost, setUserPost] = useState({})
 
     useEffect(() => {
         try {
@@ -30,6 +32,7 @@ export function spot({ route, navigation }) {
             .then((response) => response.json())
             .then((responseData) => {
                 setSpot(responseData.data.spot)
+
                 fetch(`https://offroad-app.herokuapp.com/api/post/spot/${spotId}`, {
                     method: 'GET',
                     headers: {
@@ -39,11 +42,12 @@ export function spot({ route, navigation }) {
                 })
                 .then((response) => response.json())
                 .then((responseData) => {
-                    console.log(responseData)
+                    setPost(responseData.data)
                 })
                 .catch((error) =>{
                     console.error(error);
                 })
+
             })
             .catch((error) =>{
                 console.error(error);
@@ -123,21 +127,25 @@ export function spot({ route, navigation }) {
     if (!spot.note) {
         return <View></View>
     }
+
+    if (!posts.post) {
+        return <View></View>
+    }
             
     return (
 
         <View style={{flex: 1}}>
 
-                <Navbar 
-                    key={1}
-                    dashboard={true}
-                    plus={false}
-                    plusPress={() => navigation.navigate('addspot', {userInfos: userInfos})}
-                    like={false}
-                    likePress={() => navigation.navigate('like', {userInfos: userInfos})}
-                    account={false}
-                    accountPress={() => navigation.navigate('profil', {userInfos: userInfos})}
-                />
+            <Navbar 
+                key={1}
+                dashboard={true}
+                plus={false}
+                plusPress={() => navigation.navigate('addspot', {userInfos: userInfos})}
+                like={false}
+                likePress={() => navigation.navigate('like', {userInfos: userInfos})}
+                account={false}
+                accountPress={() => navigation.navigate('profil', {userInfos: userInfos})}
+            />
 
             <Image source={Spot} style={styles.imageSpot}></Image>
             
@@ -157,13 +165,19 @@ export function spot({ route, navigation }) {
             <View style={styles.comments}>
 
                 <ScrollView contentContainerStyle={{flexGrow: 1}}>
-                    <View>
-                        <Text style={styles.user}>[USERNAME], [LEVEL]</Text>
-                    </View>
+                    { posts.post.map((post, index) => (
+                        
+                        <View key={index}>
+                            <View>
+                                <Text style={styles.user}>{post.authorId}, {post.authorId}</Text>
+                            </View>
 
-                    <View>
-                        <Text style={styles.description}>Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulaitEndroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.</Text>
-                    </View>
+                            <View>
+                                <Text style={styles.description}>{post.content}</Text>
+                            </View>
+                        </View>
+                    ))}
+
                 </ScrollView>
             </View>
 
