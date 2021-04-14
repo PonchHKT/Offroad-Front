@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, View, Image, ScrollView, Dimensions } from 'react-native';
+import { StyleSheet, View, Image, ScrollView, Dimensions, Text } from 'react-native';
 import LottieView from 'lottie-react-native';
 
 import logo from '../assets/images/motocrosslogo.png';
@@ -29,12 +29,9 @@ export function welcome({ navigation }) {
                 </View>
 
                 <View style={styles.header}>
-                    <CustomTitle
-                        key={1}
-                        title={'Bienvenue'}
-                    />
+                    <Text style={{fontSize: 34, top: 27, left: 20, zIndex: 10}}>Bienvenue</Text>
                     <LottieView 
-                        style={{width: WIDTH / 5}}
+                        style={{width: WIDTH / 4}}
                         source={require('../assets/location.json')} 
                         autoPlay 
                         loop
