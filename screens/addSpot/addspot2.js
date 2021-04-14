@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, Dimensions, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Dimensions, ImageBackground, Alert } from 'react-native';
 
 import Separator from '../../components/Separator';
 import Separator2 from '../../components/Separator3';
@@ -99,28 +99,28 @@ export function addspotnext({ route, navigation }) {
                                 key={1}
                                 value={'Débutant'}
                                 color={'black'}
-                                status={checked === 'Débutant' ? 'checked' : 'unchecked'}
+                                status={checked === 'DEBUTANT' ? 'checked' : 'unchecked'}
                                 action={() => setChecked('DEBUTANT')}
                             />
                             <CustomRadio 
                                 key={2}
                                 value={'Intermédiaire'}
                                 color={'black'}
-                                status={checked === 'Intermédiaire' ? 'checked' : 'unchecked'}
+                                status={checked === 'INTERMEDIAIRE' ? 'checked' : 'unchecked'}
                                 action={() => setChecked('INTERMEDIAIRE')}
                             />
                             <CustomRadio 
                                 key={3}
                                 value={'Avancé'}
                                 color={'black'}
-                                status={checked === 'Avancé' ? 'checked' : 'unchecked'}
+                                status={checked === 'AVANCE' ? 'checked' : 'unchecked'}
                                 action={() => setChecked('AVANCE')}
                             />
                             <CustomRadio 
                                 key={4}
                                 value={'Expert'}
                                 color={'black'}
-                                status={checked === 'Expert' ? 'checked' : 'unchecked'}
+                                status={checked === 'EXPERT' ? 'checked' : 'unchecked'}
                                 action={() => setChecked('EXPERT')}
                             />
                             
