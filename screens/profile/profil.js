@@ -8,14 +8,15 @@ import user from '../../assets/images/usericon.jpg';
 
 const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
-export function profil({ navigation }) {
+export function profil({ route, navigation }) {
+
+    const { userInfos } = route.params;
   
     return (
         <View style={{flex: 1}} >
               
                 <Navbar 
                     key={1}
-                    id={1}
                     dashboard={false}
                     mapPress={() => navigation.navigate('dashboard')}
                     plus={false}
@@ -52,19 +53,19 @@ export function profil({ navigation }) {
 
                 <TouchableOpacity
                     style={styles.buttonArrondi2}
-                    onPress={() => navigation.navigate('Profil')}>
+                    onPress={() => navigation.navigate('infoMed', {userInfos: userInfos})}>
                     <Text style={styles.front2}>Informations médicales</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
                     style={styles.buttonArrondi2}
-                    onPress={() => navigation.navigate('Profil')}>
+                    onPress={() => navigation.navigate('comments', {userInfos: userInfos})}>
                     <Text style={styles.front2}>Mes Commentaires</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
                     style={styles.buttonArrondi2}
-                    onPress={() => navigation.navigate('Profil')}>
+                    onPress={() => navigation.navigate('historique', {userInfos: userInfos})}>
                     <Text style={styles.front2}>Mon Historique</Text>
                 </TouchableOpacity>  
       
