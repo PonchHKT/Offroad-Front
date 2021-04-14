@@ -67,7 +67,6 @@ export function spot({ route, navigation }) {
                 })
                 .then((response) => response.json())
                 .then((responseData) => {
-                    console.log(responseData)
                     if (responseData.data) {
                         Alert.alert('Spot bien ajouté aux favoris !')
                     }

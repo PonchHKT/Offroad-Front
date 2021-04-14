@@ -11,7 +11,7 @@ import CustomTitle from '../../components/CustomTitle';
 import CustomInput from '../../components/CustomInput';
 import LottieView from 'lottie-react-native';
 
-const { width: WIDTH } = Dimensions.get('window')
+const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export function addspotnext({ route, navigation }) {
 
@@ -48,7 +48,7 @@ export function addspotnext({ route, navigation }) {
                     </View>
 
                     <LottieView 
-                        style={{width: WIDTH / 2, left: 55, top: 50, position: 'absolute',}}
+                        style={{flex: 1, width: WIDTH / 2, right: 0, top: HEIGHT / 9, position: 'absolute',}}
                         resizeMode={'cover'}
                         source={require('../../assets/addspotmap.json')} 
                         autoPlay 
