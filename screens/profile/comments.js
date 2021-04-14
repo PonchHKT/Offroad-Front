@@ -50,7 +50,7 @@ export function comments({ route, navigation }) {
     },[])
 
     if (!posts.post) {
-        return <Text>Chargement...</Text>
+        return <View></View>
     }
    
     return (
