@@ -51,7 +51,6 @@ export function addspotnext({ route, navigation }) {
             })
             .then((response) => response.json())
             .then((responseData) => {
-                console.log(responseData)
                 if (responseData.data) {
                     Alert.alert('Spot bien ajouté !')
                     navigation.navigate('spot', {spotId: responseData.data.spot.id, userInfos: userInfos})

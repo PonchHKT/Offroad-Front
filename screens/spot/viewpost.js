@@ -43,7 +43,7 @@ export function viewpost({ route, navigation }) {
                     <View>
                         <Note
                             key={1}
-                            note={3}
+                            note={postInfos.note}
                             edit={false}
                             spacing={4}
                             size={30}
