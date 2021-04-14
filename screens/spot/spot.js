@@ -17,7 +17,6 @@ export function spot({ route, navigation }) {
 
     const[spot, setSpot] = useState({})
     const[posts, setPost] = useState({})
-    const[userPost, setUserPost] = useState({})
 
     useEffect(() => {
         try {
@@ -43,6 +42,7 @@ export function spot({ route, navigation }) {
                 .then((response) => response.json())
                 .then((responseData) => {
                     setPost(responseData.data)
+
                 })
                 .catch((error) =>{
                     console.error(error);
@@ -138,7 +138,8 @@ export function spot({ route, navigation }) {
 
             <Navbar 
                 key={1}
-                dashboard={true}
+                dashboard={false}
+                mapPress={() => navigation.navigate('dashboard')}
                 plus={false}
                 plusPress={() => navigation.navigate('addspot', {userInfos: userInfos})}
                 like={false}
@@ -166,13 +167,13 @@ export function spot({ route, navigation }) {
 
                 <ScrollView contentContainerStyle={{flexGrow: 1}}>
                     { posts.post.map((post, index) => (
-                        
+
                         <View key={index}>
                             <TouchableOpacity
                                 onPress={() => navigation.navigate('viewpost', { userInfos: userInfos, postInfos: post})}
                             >
                                 <View>
-                                    <Text style={styles.user}>{post.authorId}</Text>
+                                    <Text style={styles.user}>{post.userName}</Text>
                                 </View>
 
                                 <View>

@@ -40,7 +40,8 @@ export function addreview({ route, navigation }) {
                     content: comment,
                     noteUser: note,
                     spotId: spotId,
-                    authorId: userInfos.id
+                    authorId: userInfos.id,
+                    userName: userInfos.pseudo
                 })
             })
             .then((response) => response.json())
