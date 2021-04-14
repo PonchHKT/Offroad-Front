@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Dimensions } from 'react-native';
 
 import Separator from '../../components/Separator';
 import Separator2 from '../../components/Separator3';
@@ -10,6 +10,8 @@ import Navbar from '../../components/Navbar';
 import CustomTitle from '../../components/CustomTitle';
 import CustomInput from '../../components/CustomInput';
 import LottieView from 'lottie-react-native';
+
+const { width: WIDTH } = Dimensions.get('window')
 
 export function addspotnext({ route, navigation }) {
 
@@ -44,6 +46,17 @@ export function addspotnext({ route, navigation }) {
                     title={'Ajout d\'un spot'}
                 />
             </View>
+
+            <LottieView 
+                style={{width: WIDTH / 2, left: 55}}
+                resizeMode={'cover'}
+                source={require('../../assets/addspotmap.json')} 
+                autoPlay 
+                loop={true}
+                speed={0.5}
+            />
+
+            <View style={{bottom: 180}}>
 
             <View style={styles.level}>
                 <Text style={{fontSize: 20, color: '#606060'}}>Niveau :</Text>
@@ -120,6 +133,7 @@ export function addspotnext({ route, navigation }) {
                     key={1}
                     title={'Ajouter'}
                 />
+                </View>
 
             </View>
         </View>
