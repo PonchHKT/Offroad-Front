@@ -252,7 +252,7 @@ export function spot({ route, navigation }) {
             <View style={{paddingBottom: 10}}>
                 <CustomButton
                     key={1}
-                    title={'Démarer'}
+                    title={'Démarrer'}
                     actionsbtn={() => navigation.navigate('startrando', {spotId: spotId, userInfos: userInfos})}
                 />
             </View>

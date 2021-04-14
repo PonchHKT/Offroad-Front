@@ -76,13 +76,13 @@ export function profil({ route, navigation }) {
                 <TouchableOpacity
                     style={styles.buttonArrondi2}
                     onPress={() => navigation.navigate('comments', {userInfos: userInfos})}>
-                    <Text style={styles.front2}>Mes Commentaires</Text>
+                    <Text style={styles.front2}>Mes commentaires</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
                     style={styles.buttonArrondi2}
                     onPress={() => navigation.navigate('getHistorique', {userInfos: userInfos})}>
-                    <Text style={styles.front2}>Mon Historique</Text>
+                    <Text style={styles.front2}>Mon historique</Text>
                 </TouchableOpacity>  
       
 

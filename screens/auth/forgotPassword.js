@@ -73,7 +73,7 @@ export function forgotPassword({ navigation }) {
                 </View>
 
                 <Text style={styles.text}>
-                    Un email vous sera envoyé, pour récupéré votre mot de passe.
+                    Un email vous sera envoyé, pour récupérer votre mot de passe.
                 </Text>
 
                 <CustomInput
@@ -99,7 +99,7 @@ export function forgotPassword({ navigation }) {
                     <Text style={styles.Account}>Vous vous rappelez de votre mot de passe ?</Text>
 
                     <TouchableOpacity>
-                        <Text onPress={() => navigation.navigate('login')} style={styles.clickHere}>Se connectez !</Text>
+                        <Text onPress={() => navigation.navigate('login')} style={styles.clickHere}>Se connecter !</Text>
                     </TouchableOpacity>
                 </View>
 

@@ -38,7 +38,7 @@ export function register({ navigation }) {
     const passwordError2 = passwordValidator(password2.value)
 
     if(isSelected == false) {
-      Alert.alert('Vous devez coché les conditions générales d\'utilisation')
+      Alert.alert('Vous devez cocher les conditions générales d\'utilisation')
       return;
     }
 
@@ -149,7 +149,7 @@ export function register({ navigation }) {
 
                   <CustomInput
                       key={5}
-                      placeholder={'Confirmer mot de passe'}
+                      placeholder={'Confirmez mot de passe'}
                       valeur={password2.value}
                       error={!!password2.error}
                       errorText={password2.error}
