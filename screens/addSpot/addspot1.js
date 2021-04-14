@@ -20,92 +20,93 @@ export function addspot({ route, navigation }) {
 
     return (
         <ImageBackground style={{backgroundColor: 'white',}}>
-        <ScrollView>
             <View>
-            <Navbar 
-                key={1}
-                dashboard={false}
-                mapPress={() => navigation.navigate('dashboard')}
-                plus={true}
-                like={false}
-                likePress={() => navigation.navigate('like', {userInfos: userInfos})}
-                account={false}
-                accountPress={() => navigation.navigate('profil', {userInfos: userInfos})}
-            /></View>
-
-            <View>
-
-                <Separator/>
-                <Separator/>
-
-                <View>
-                    <CustomTitle
+                <ScrollView>
+                    <Navbar 
                         key={1}
-                        id={1}
-                        title={'Ajout d\'un spot'}
+                        dashboard={false}
+                        mapPress={() => navigation.navigate('dashboard')}
+                        plus={true}
+                        like={false}
+                        likePress={() => navigation.navigate('like', {userInfos: userInfos})}
+                        account={false}
+                        accountPress={() => navigation.navigate('profil', {userInfos: userInfos})}
                     />
-                </View>
-        
-                <View>
-                    <Text style={styles.commentText}>Ecrire un commentaire :</Text>
-                </View>
-
-                <View style={{zIndex: 1000}}>
-                    <CustomInput
-                        key={1}
-                        placeholder={''}
-                        valeur={comment}
-                        text={(text) => setComment(text)}
-                        multiline={true}
-                    />
-                </View>
-
-                        
-                <View>
-                    <Text style={styles.noteText}>Note :</Text>
-                </View>
-
-                <Separator/>
-
-                <View style={styles.note}>
-                    <Note
-                        key={1}
-                        note={note}
-                        update={(val) => setNote(val)}
-                        edit={true}
-                        spacing={4}
-                        size={30}
-                    />
-                </View>
-
-                <View style={{justifyContent: 'center', alignItems: 'center', position: 'absolute', left: 210, top: 350}}>
-                    <Image 
-                    source={couple}
-                    style={{width: 150, height: 150}}/>
-                </View>
+                </ScrollView>
 
                 <View>
-                
+
                     <Separator/>
-                    <Separator2/>
+                    <Separator/>
 
                     <View>
-                        <CustomButton
+                        <CustomTitle
                             key={1}
-                            title={'Suivant'}
-                            actionsbtn={() => navigation.navigate('addspotnext', {userInfos: userInfos})}
+                            id={1}
+                            title={'Ajout d\'un spot'}
                         />
                     </View>
-                    <Separator/>
-                    <Separator/>
-                    <Separator/>
+            
+                    <View>
+                        <Text style={styles.commentText}>Ecrire un commentaire :</Text>
+                    </View>
+
+                    <ScrollView style={{zIndex: 1000}}>
+                        <CustomInput
+                            key={1}
+                            placeholder={''}
+                            valeur={comment}
+                            text={(text) => setComment(text)}
+                            multiline={true}
+                        />
+                    </ScrollView>
+
+                            
+                    <View>
+                        <Text style={styles.noteText}>Note :</Text>
+                    </View>
+
                     <Separator/>
 
-                </View>
-            </View> 
-            <StatusBar style="auto" hidden={true}/>
-    </ScrollView>
-</ImageBackground>
+                    <View style={styles.note}>
+                        <Note
+                            key={1}
+                            note={note}
+                            update={(val) => setNote(val)}
+                            edit={true}
+                            spacing={4}
+                            size={30}
+                        />
+                    </View>
+
+                    <View style={{justifyContent: 'center', alignItems: 'center', position: 'absolute', left: 210, top: 350}}>
+                        <Image 
+                        source={couple}
+                        style={{width: 150, height: 150}}/>
+                    </View>
+
+                    <View>
+                    
+                        <Separator/>
+                        <Separator2/>
+
+                        <View>
+                            <CustomButton
+                                key={1}
+                                title={'Suivant'}
+                                actionsbtn={() => navigation.navigate('addspotnext', {userInfos: userInfos})}
+                            />
+                        </View>
+                        <Separator/>
+                        <Separator/>
+                        <Separator/>
+                        <Separator/>
+
+                    </View>
+                </View> 
+                <StatusBar style="auto" hidden={true}/>
+        </View>
+    </ImageBackground>
 )};
 
 const styles = StyleSheet.create({

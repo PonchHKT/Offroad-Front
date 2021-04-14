@@ -59,9 +59,9 @@ export function addreview({ route, navigation }) {
 
     return (
 
-        <ScrollView>
+        <View>
 
-            <View>
+            <ScrollView>
                 <Navbar 
                     key={1}
                     dashboard={true}
@@ -72,7 +72,7 @@ export function addreview({ route, navigation }) {
                     account={false}
                     accountPress={() => navigation.navigate('profil', {userInfos: userInfos})}
                 />
-            </View>
+            </ScrollView>
 
             <Separator/>
             <Separator/>
@@ -88,7 +88,7 @@ export function addreview({ route, navigation }) {
                 <Text style={styles.commentText}>Ecrire un commentaire :</Text>
             </View>
 
-            <View>
+            <ScrollView>
                 <CustomInput
                     key={1}
                     placeholder={''}
@@ -96,7 +96,7 @@ export function addreview({ route, navigation }) {
                     text={(text) => setComment(text)}
                     multiline={true}
                 />
-            </View>
+            </ScrollView>
 
                     
             <View>
@@ -128,7 +128,7 @@ export function addreview({ route, navigation }) {
 
             </View>
             <StatusBar style="auto" hidden={true}/>
-        </ScrollView> 
+        </View> 
 
 )};
 

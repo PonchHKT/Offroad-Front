@@ -55,9 +55,9 @@ export function signalspot({ route, navigation }) {
 
     return (
 
-        <ScrollView>
+        <View>
 
-            <View>
+            <ScrollView>
                 <Navbar 
                     key={1}
                     dashboard={true}
@@ -68,7 +68,7 @@ export function signalspot({ route, navigation }) {
                     account={false}
                     accountPress={() => navigation.navigate('profil', {userInfos: userInfos})}
                 />
-            </View>
+            </ScrollView>
 
             <Separator/>
             <Separator/>
@@ -85,7 +85,7 @@ export function signalspot({ route, navigation }) {
                 <Text style={styles.commentText}>Décrire votre signalement :</Text>
             </View>
 
-            <View>
+            <ScrollView>
                 <CustomInput
                     key={1}
                     placeholder={''}
@@ -93,7 +93,7 @@ export function signalspot({ route, navigation }) {
                     text={(text) => setComment(text)}
                     multiline={true}
                 />
-            </View>
+            </ScrollView>
 
             <Separator/>
             <Separator2/>
@@ -109,7 +109,7 @@ export function signalspot({ route, navigation }) {
 
             </View>
             <StatusBar style="auto" hidden={true}/>
-        </ScrollView> 
+        </View> 
 
 )};
 

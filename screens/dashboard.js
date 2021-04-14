@@ -90,8 +90,8 @@ export function dashboard({ navigation }) {
     }
 
     return (
-        <ScrollView>
-            <View>
+        <View>
+            <ScrollView>
                 <Navbar 
                     key={1}
                     dashboard={true}
@@ -102,7 +102,7 @@ export function dashboard({ navigation }) {
                     account={false}
                     accountPress={() => navigation.navigate('profil', {userInfos: user})}
                 />
-            </View>
+            </ScrollView>
             <IconButton
                 icon={"plus-circle"}
                 size={30}
@@ -156,6 +156,6 @@ export function dashboard({ navigation }) {
             </MapView>
 
             <StatusBar style="auto" hidden={true}/>
-        </ScrollView>
+        </View>
     ); 
 }

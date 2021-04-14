@@ -8,7 +8,7 @@ export function cgu({ navigation }) {
     
 
     return (
-        <ScrollView>
+        <View>
             <View>
                 <Separator></Separator>
                 <Separator></Separator>
@@ -32,7 +32,7 @@ export function cgu({ navigation }) {
             </View>
 
             <StatusBar style="auto" hidden={true}/>
-        </ScrollView>
+        </View>
     ); 
 }
 

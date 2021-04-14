@@ -22,124 +22,124 @@ export function addspotnext({ route, navigation }) {
     const [infos, setInfos] = useState('');
 
     return (
-    <ImageBackground style={{backgroundColor: 'white',}}>
-    <ScrollView>
-        <View>
-            <Navbar 
-                key={1}
-                dashboard={false}
-                mapPress={() => navigation.navigate('dashboard')}
-                plus={true}
-                like={false}
-                likePress={() => navigation.navigate('like', {userInfos: userInfos})}
-                account={false}
-                accountPress={() => navigation.navigate('profil', {userInfos: userInfos})}
-            />
-        </View>
-
-            <Separator/>
-            <Separator/>
-
+        <ImageBackground style={{backgroundColor: 'white',}}>
             <View>
-                <CustomTitle
-                    key={1}
-                    title={'Ajout d\'un spot'}
-                />
-            </View>
-
-            <LottieView 
-                style={{width: WIDTH / 2, left: 55, top: 50, position: 'absolute',}}
-                resizeMode={'cover'}
-                source={require('../../assets/addspotmap.json')} 
-                autoPlay 
-                loop={true}
-                speed={0.5}
-            />
-
-            <View>
-
-            <View style={styles.level}>
-                <Text style={{fontSize: 20, color: '#606060'}}>Niveau :</Text>
                 <View>
-                    <CustomRadio 
+                    <Navbar 
                         key={1}
-                        value={'Débutant'}
-                        color={'black'}
-                        status={checked === 'Débutant' ? 'checked' : 'unchecked'}
-                        action={() => setChecked('Débutant')}
-                    />
-                    <CustomRadio 
-                        key={2}
-                        value={'Intermédiaire'}
-                        color={'black'}
-                        status={checked === 'Intermédiaire' ? 'checked' : 'unchecked'}
-                        action={() => setChecked('Intermédiaire')}
-                    />
-                    <CustomRadio 
-                        key={3}
-                        value={'Avancé'}
-                        color={'black'}
-                        status={checked === 'Avancé' ? 'checked' : 'unchecked'}
-                        action={() => setChecked('Avancé')}
-                    />
-                    <CustomRadio 
-                        key={4}
-                        value={'Expert'}
-                        color={'black'}
-                        status={checked === 'Expert' ? 'checked' : 'unchecked'}
-                        action={() => setChecked('Expert')}
+                        dashboard={false}
+                        mapPress={() => navigation.navigate('dashboard')}
+                        plus={true}
+                        like={false}
+                        likePress={() => navigation.navigate('like', {userInfos: userInfos})}
+                        account={false}
+                        accountPress={() => navigation.navigate('profil', {userInfos: userInfos})}
                     />
                 </View>
-            </View>
 
-            <View>
+                    <Separator/>
+                    <Separator/>
 
-            <View>
-                <Text style={styles.commentText}>Adresse :</Text>
-            </View>
+                    <View>
+                        <CustomTitle
+                            key={1}
+                            title={'Ajout d\'un spot'}
+                        />
+                    </View>
 
-            <View>
-                <CustomInput
-                    key={1}
-                    placeholder={''}
-                    valeur={adress}
-                    text={(text) => setAdress(text)}
-                    secure={false}
-                    pwd={false}
-                />
-            </View>
+                    <LottieView 
+                        style={{width: WIDTH / 2, left: 55, top: 50, position: 'absolute',}}
+                        resizeMode={'cover'}
+                        source={require('../../assets/addspotmap.json')} 
+                        autoPlay 
+                        loop={true}
+                        speed={0.5}
+                    />
+
+                    <View>
+
+                    <View style={styles.level}>
+                        <Text style={{fontSize: 20, color: '#606060'}}>Niveau :</Text>
+                        <View>
+                            <CustomRadio 
+                                key={1}
+                                value={'Débutant'}
+                                color={'black'}
+                                status={checked === 'Débutant' ? 'checked' : 'unchecked'}
+                                action={() => setChecked('Débutant')}
+                            />
+                            <CustomRadio 
+                                key={2}
+                                value={'Intermédiaire'}
+                                color={'black'}
+                                status={checked === 'Intermédiaire' ? 'checked' : 'unchecked'}
+                                action={() => setChecked('Intermédiaire')}
+                            />
+                            <CustomRadio 
+                                key={3}
+                                value={'Avancé'}
+                                color={'black'}
+                                status={checked === 'Avancé' ? 'checked' : 'unchecked'}
+                                action={() => setChecked('Avancé')}
+                            />
+                            <CustomRadio 
+                                key={4}
+                                value={'Expert'}
+                                color={'black'}
+                                status={checked === 'Expert' ? 'checked' : 'unchecked'}
+                                action={() => setChecked('Expert')}
+                            />
+                        </View>
+                    </View>
+
+                    <View>
+
+                    <View>
+                        <Text style={styles.commentText}>Adresse :</Text>
+                    </View>
+
+                    <ScrollView>
+                        <CustomInput
+                            key={1}
+                            placeholder={''}
+                            valeur={adress}
+                            text={(text) => setAdress(text)}
+                            secure={false}
+                            pwd={false}
+                        />
+                    </ScrollView>
 
 
-            <View>
-                <Text style={styles.commentText}>Informations supplémentaires :</Text>
-            </View>
+                    <View>
+                        <Text style={styles.commentText}>Informations supplémentaires :</Text>
+                    </View>
 
-            <View>
-                <CustomInput
-                    key={2}
-                    placeholder={''}
-                    valeur={infos}
-                    text={(text) => setInfos(text)}
-                    secure={false}
-                    pwd={false}
-                />
-            </View>
+                    <ScrollView>
+                        <CustomInput
+                            key={2}
+                            placeholder={''}
+                            valeur={infos}
+                            text={(text) => setInfos(text)}
+                            secure={false}
+                            pwd={false}
+                        />
+                    </ScrollView>
 
-            <View style={{bottom: 14,}}>
+                    <View style={{bottom: 14,}}>
 
-                <Separator2/>
+                        <Separator2/>
 
-                <CustomButton
-                    key={1}
-                    title={'Ajouter'}
-                />
+                        <CustomButton
+                            key={1}
+                            title={'Ajouter'}
+                        />
+                        </View>
+
+                    </View>
                 </View>
-
-            </View>
-        </View>
-        <StatusBar style="auto" hidden={true}/>
-    </ScrollView> 
-</ImageBackground>
+                <StatusBar style="auto" hidden={true}/>
+            </View> 
+        </ImageBackground>
 
 )};
 
