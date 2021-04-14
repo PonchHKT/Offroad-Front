@@ -132,7 +132,7 @@ export function dashboard({ navigation }) {
                 icon={"check"}
                 size={30}
                 color={'red'}
-                onPress={() => navigation.navigate('infoMed')}
+                onPress={() => navigation.navigate('infoMed', {userInfos: user})}
             />
 
             <IconButton

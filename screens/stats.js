@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import {View, StyleSheet, Text, ScrollView, TouchableOpacity, ImageBackground} from 'react-native';
+import {View, StyleSheet, Text, ScrollView, TouchableOpacity, ImageBackground, Dimensions } from 'react-native';
 import MapView, { Marker } from 'react-native-maps';
 
 import Separator from '../components/Separator2'
@@ -8,6 +8,7 @@ import Separator2 from '../components/Separator'
 import Navbar from '../components/Navbar';
 import {FontAwesome} from '@expo/vector-icons';
 
+const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export function stats({ route, navigation }) {
 
@@ -43,7 +44,7 @@ export function stats({ route, navigation }) {
     
     return(
 
-        <ImageBackground style={{backgroundColor: 'white',}}>
+        <ImageBackground style={{backgroundColor: 'white', height: HEIGHT}}>
         <View>
             <View>
 

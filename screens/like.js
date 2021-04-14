@@ -49,7 +49,7 @@ export function like({ route, navigation }) {
     },[])
 
     if (!likes.like) {
-        return <Text>Chargement...</Text>
+        return <View></View>
     }
    
     return (
