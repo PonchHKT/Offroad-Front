@@ -210,7 +210,7 @@ export function spot({ route, navigation }) {
                 </View>
             </View>
             
-            <View>
+            <View style={{ marginTop: 20}}>
                 <CustomButton
                     key={1}
                     title={'Démarer'}
