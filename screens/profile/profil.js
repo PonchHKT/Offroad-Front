@@ -9,8 +9,8 @@ const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 export function profil({ navigation }) {
   
     return (
-        <View style={{flex: 1}}>
-              <ScrollView>
+        <View style={{flex: 1}} >
+              <ScrollView style={{zIndex: 100}}>
                   <Navbar 
                       key={1}
                       id={1}
@@ -23,6 +23,11 @@ export function profil({ navigation }) {
                       account={true}
                   />
               </ScrollView>
+
+              <View style={styles.backgroundContainer}>
+                
+              </View>
+
 
             <View>
             
@@ -52,7 +57,7 @@ export function profil({ navigation }) {
       
 
             </View>
-            <View style={{flex: 1, alignSelf: 'center', flexDirection: 'row', justifyContent: 'space-around', width: '100%'}}>
+            <View style={{flex: 1, alignSelf: 'center', flexDirection: 'row', justifyContent: 'space-around', width: '99%'}}>
       
                 <CustomButton
                     key={1}
@@ -67,9 +72,8 @@ export function profil({ navigation }) {
                     title={'Options'}
                     width={200}
                 />
-
+                </View>
             </View>
-      </View>
 )};
 
 const styles = StyleSheet.create({
@@ -81,11 +85,22 @@ const styles = StyleSheet.create({
     width: WIDTH / 1.1,
     height: 60,
     alignSelf: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    top: 30,
   },
   front2:{
     color: 'grey',
     fontSize: 20,
     marginLeft: 10,
   },
+  backgroundContainer: {
+    width: 550,
+    height: 250,
+    position: 'absolute',
+    backgroundColor: 'red',
+    borderColor: 'black',
+    borderWidth: 2,
+    right: 1,
+  },
+
 });
