@@ -16,7 +16,7 @@ export default function CustomButton(props) {
             width: WIDTH - customWidth,
             height: 55,
             backgroundColor: `${props.color ? props.color : "#e74c3c"}`,
-            borderWidth: 1.75,
+            borderWidth: 1,
             borderColor: `${props.border ? props.border : "black"}`,
             borderRadius: 15,
         },
