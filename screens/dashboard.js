@@ -96,7 +96,7 @@ export function dashboard({ navigation }) {
                     key={1}
                     dashboard={true}
                     plus={false}
-                    plusPress={() => navigation.navigate('addspot')}
+                    plusPress={() => navigation.navigate('addspot', {userInfos: user})}
                     like={false}
                     likePress={() => navigation.navigate('like', {userInfos: user})}
                     account={false}

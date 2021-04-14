@@ -68,15 +68,14 @@ export function like({ route, navigation }) {
                 />
             </View>
 
-            { !posts.post ?
+            { !likes.like ?
                 <View></View>
             :
-                posts.post.map((post, index) => (
+                likes.like.map((like, index) => (
                     <Historique
                         key={index}
-                        date={post.createdAt}
-                        text={post.content}
-                        note={post.note}
+                        date={like.createdAt}
+                        spotId={like.spotId}
                     />
                 ))
             }
