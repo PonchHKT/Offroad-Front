@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions, Alert } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions, Alert, ScrollView } from 'react-native';
 import {FontAwesome} from '@expo/vector-icons';
 
 import Spot from '../../assets/images/spots/forest.jpg';
@@ -113,7 +113,7 @@ export function spot({ route, navigation }) {
             
     return (
 
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
 
             <Navbar 
                 key={1}
@@ -219,7 +219,7 @@ export function spot({ route, navigation }) {
             </View>
 
             <StatusBar style="auto" hidden={true}/>
-        </View>
+        </ScrollView>
     )
 };
 
