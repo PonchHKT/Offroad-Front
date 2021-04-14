@@ -75,7 +75,6 @@ export function like({ route, navigation }) {
                     <Historique
                         key={index}
                         date={like.createdAt}
-                        spotId={like.spotId}
                     />
                 ))
             }

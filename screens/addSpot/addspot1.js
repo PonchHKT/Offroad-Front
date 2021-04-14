@@ -86,7 +86,7 @@ export function addspot({ route, navigation }) {
                         <CustomButton
                             key={1}
                             title={'Suivant'}
-                            actionsbtn={() => navigation.navigate('addspotnext')}
+                            actionsbtn={() => navigation.navigate('addspotnext', {userInfos: userInfos})}
                         />
                     </View>
 
