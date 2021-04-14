@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, Image, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Image, ImageBackground, Dimensions } from 'react-native';
 
 import Note from '../../components/Note';
 import Separator2 from '../../components/Separator3';
@@ -11,6 +11,8 @@ import CustomTitle from '../../components/CustomTitle';
 import CustomInput from '../../components/CustomInput';
 import couple from '../../assets/images/addspotcouple.gif'
 
+const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
+
 export function addspot({ route, navigation }) {
 
     const { userInfos } = route.params;
@@ -19,7 +21,7 @@ export function addspot({ route, navigation }) {
     const [note, setNote] = useState(0);
 
     return (
-        <ImageBackground style={{backgroundColor: 'white',}}>
+        <ImageBackground style={{backgroundColor: 'white', height: HEIGHT}}>
             <View>
                 <ScrollView>
                     <Navbar 

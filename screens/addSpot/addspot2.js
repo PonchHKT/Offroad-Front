@@ -22,7 +22,7 @@ export function addspotnext({ route, navigation }) {
     const [infos, setInfos] = useState('');
 
     return (
-        <ImageBackground style={{backgroundColor: 'white',}}>
+        <ImageBackground style={{backgroundColor: 'white', height: HEIGHT}}>
             <View>
                 <ScrollView>
                     <Navbar 
@@ -37,18 +37,13 @@ export function addspotnext({ route, navigation }) {
                     />
                 </ScrollView>
 
-                    <Separator/>
-                    <Separator/>
-
                     <View>
                         <CustomTitle
                             key={1}
                             title={'Ajout d\'un spot'}
                         />
                     </View>
-
-                    
-
+                   
                     <View>
 
                     <View style={styles.level}>
@@ -142,7 +137,6 @@ export function addspotnext({ route, navigation }) {
                 <StatusBar style="auto" hidden={true}/>
             </View> 
         </ImageBackground>
-
 )};
 
 const styles = StyleSheet.create({
