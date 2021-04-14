@@ -87,6 +87,5 @@ const styles = StyleSheet.create({
     color: 'grey',
     fontSize: 20,
     marginLeft: 10,
-    textAlignVertical: 'center'
   },
 });

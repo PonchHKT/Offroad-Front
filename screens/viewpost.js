@@ -6,14 +6,14 @@ import Navbar from '../components/Navbar';
 import Note from '../components/Note';
 import Separator from '../components/Separator3';
 
-const { width: WIDTH } = Dimensions.get('window')
+const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export function viewpost({ route, navigation }) {
 
     const { userInfos } = route.params;
             
     return (
-        <View>
+        <View style={{flex: 1}}>
 
                 <ScrollView>
                     <Navbar 
@@ -27,14 +27,15 @@ export function viewpost({ route, navigation }) {
                         account={true}
                     />
                 </ScrollView>
-
-                <View style={styles.userContainer}>
-                    <Text style={styles.user}>Jack, amateur</Text>
+                
+                <View style={{height: '60%'}}>
+                    <View style={styles.userContainer}>
+                        <Text style={styles.user}>Jack, amateur</Text>
+                    </View>
+                    <ScrollView contentContainerStyle={{flexGrow: 1}}>
+                        <Text style={styles.description}>Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.</Text>
+                    </ScrollView>
                 </View>
-
-                <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-                    <Text style={styles.description}>Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.Endroit vraiment kool avec baucoup de dune on peu eskalader et fair des sot en cross. Le térin est pa priver donk tout le monde peu yaller donk je met cinque étoiles vous pouvé allez voir si vou voulait.</Text>
-                </ScrollView>
 
                 <Separator/>
 
@@ -84,21 +85,19 @@ export function viewpost({ route, navigation }) {
 const styles = StyleSheet.create({
     userContainer: {
         marginLeft: 10,
-        marginTop: 25,
         left: 8,
+        paddingBottom: 10,
     },
     user: {
         fontWeight: 'bold',
         color: '#606060',
-        fontSize: 16,
+        fontSize: 20,
     },
     description: {
         color: '#606060',
-        fontSize: 15,
-        marginTop: 5,
-        width: 340,
-        height: 350,
-        left: 15,
+        fontSize: 16,
+        width: '90%',
+        alignSelf: 'center',
     },
     noteText: {
         fontSize: 20,
