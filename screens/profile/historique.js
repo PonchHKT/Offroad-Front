@@ -39,7 +39,7 @@ export function getHistorique({ route, navigation }) {
                     } while(changed);
                 }
                 sort(responseData.data.historique)
-                setHistorique(responseData.data)
+                setHistorique(responseData.data.historique)
             })
             .catch((error) =>{
                 console.error(error);
@@ -49,7 +49,7 @@ export function getHistorique({ route, navigation }) {
         }
     },[])
 
-    if (!historiques) {
+    if (!historiques.historique) {
         return <Text>Chargement...</Text>
     }
    
@@ -75,10 +75,9 @@ export function getHistorique({ route, navigation }) {
                 historiques.historique.map((historique) => (
                     <Historique
                         key={historique.id}
-                        id={historique.id}
                         date={historique.createdAt}
                         img={historique.content}
-                        note={historique.note}
+                        note={3}
                     />
                 ))
             }
