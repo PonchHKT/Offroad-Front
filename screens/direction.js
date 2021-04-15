@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { View, ScrollView, Alert, Dimensions, Platform } from 'react-native';
+import { View, ScrollView, Alert, Dimensions, Platform, Image, StyleSheet, TouchableOpacity, Text } from 'react-native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import jwt_decode from "jwt-decode";
@@ -11,7 +11,11 @@ import MapView, { Marker } from 'react-native-maps';
 import Navbar from '../components/Navbar';
 import CustomButton from '../components/CustomButton';
 
-const HEIGHT = Dimensions.get("window").height;
+import car from '../assets/images/car.png'
+import walking from '../assets/images/walking.png'
+import bicycle from '../assets/images/bicycle.png'
+
+const WIDTH = Dimensions.get("window").height;
 
 export function direction({ navigation }) {
 
@@ -79,6 +83,7 @@ export function direction({ navigation }) {
     }
 
     return (
+        <View style={{backgroundColor: '#ffffff'}}>
         <View>
             <ScrollView>
                 <Navbar 
@@ -96,7 +101,7 @@ export function direction({ navigation }) {
             <MapView
                 initialRegion={region}
                 onRegionChangeComplete={(val) => setRegion({latitude: val.latitude, longitude: val.longitude, latitudeDelta: val.latitudeDelta, longitudeDelta: val.longitudeDelta})}
-                style={{width: '100%', height: 612, zIndex: 2}}
+                style={{width: '100%', height: 450}}
             >
                 { spot.value.map((info, index) => (
                 <Marker
@@ -107,8 +112,39 @@ export function direction({ navigation }) {
                 ))}
             </MapView>
 
-            <View style={{zIndex: 100, flex: 1, alignSelf: 'center', flexDirection: 'row', justifyContent: 'space-around', width: '99%', paddingTop: 10, paddingBottom: 20, bottom: 75, left: 100}}>
+            <View style={{position: 'relative', top: 10, flexDirection: 'row', flex: 1, alignSelf: 'center', justifyContent: 'space-around',}}>
+                <View>
+                <TouchableOpacity>
+                <Image source={car} style={styles.icons}/>
+                </TouchableOpacity>
+                </View>
 
+                <View>
+                <TouchableOpacity>
+                <Image source={bicycle}  style={styles.icons}/>
+                </TouchableOpacity>
+                </View>
+
+                <View>
+                <TouchableOpacity>
+                <Image source={walking}  style={styles.icons}/>
+                </TouchableOpacity>
+                </View>
+            </View>
+
+            <View style={{position: 'relative', top: 10, flexDirection: 'row', flex: 1, alignSelf: 'center', justifyContent: 'space-around',}}>
+                <View>
+                <Text style={styles.text}>Distance</Text>
+                <Text style={styles.data}>18.2 km</Text>
+                </View>
+
+                <View>
+                <Text style={styles.text}>Durée :</Text>
+                <Text style={styles.data}>37 minutes</Text>
+                </View>
+            </View>
+
+            <View style={{zIndex: 100, flex: 1, alignSelf: 'center', flexDirection: 'row', justifyContent: 'space-around', width: '99%', top: 100, left: 100}}>
             <CustomButton
                 key={1}
                 actionsbtn={() => navigation.navigate('dashboard')}
@@ -119,5 +155,28 @@ export function direction({ navigation }) {
 
             <StatusBar style="auto" hidden={true}/>
         </View>
+    </View>
     ); 
 }
+
+const styles = StyleSheet.create({
+    icons: {
+        flex: 1, 
+        alignSelf: 'center', 
+        justifyContent: 'space-between',
+        alignSelf: 'center',
+        width: 55,
+        height: 55,
+        borderRadius: 60,
+    },
+    text: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: 'black',
+    },
+    data: {
+        fontSize: 8,
+        fontWeight: 'bold',
+        color: '#34568b',
+    },
+})
