@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, Alert } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Alert, Image } from 'react-native';
 
 import { commentsValidator } from '../../helpers/commentsValidator';
 
@@ -11,6 +11,7 @@ import CustomButton from '../../components/CustomButton';
 import Navbar from '../../components/Navbar';
 import CustomTitle from '../../components/CustomTitle';
 import CustomInput from '../../components/CustomInput';
+import review from '../../assets/images/addreview.gif'
 
 export function addreview({ route, navigation }) {
 
@@ -61,7 +62,7 @@ export function addreview({ route, navigation }) {
 
     return (
 
-        <View>
+        <View style={{backgroundColor: 'white', color: 'ffffff'}}>
 
             <ScrollView>
                 <Navbar 
@@ -93,7 +94,7 @@ export function addreview({ route, navigation }) {
             <ScrollView>
                 <CustomInput
                     key={1}
-                    placeholder={''}
+                    placeholder={'Dites ce que vous en pensez...'}
                     valeur={comment}
                     text={(text) => setComment(text)}
                     multiline={true}
@@ -115,6 +116,12 @@ export function addreview({ route, navigation }) {
                     size={30}
                 />
             </View>
+
+            <View style={{justifyContent: 'center', alignItems: 'center', position: 'absolute', left: 210, top: 448}}>
+                        <Image 
+                        source={review}
+                        style={{width: 120, height: 120}}/>
+                    </View>
 
             <Separator/>
             <Separator2/>
