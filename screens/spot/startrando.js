@@ -1,9 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, Dimensions, ImageBackground } from 'react-native';
-import MapView from 'react-native-maps';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import jwt_decode from "jwt-decode";
+import MapView, { Polyline } from 'react-native-maps';
 
 import { getPreciseDistance, getSpeed } from 'geolib';
 
@@ -14,26 +12,24 @@ const HEIGHT = Dimensions.get("window").height;
 
 export function startrando({ route, navigation }) {
 
-    const { spotId } = route.params;
+    const { spotInfos, userInfos } = route.params;
 
     const [region, setRegion] = useState({
-        latitude: 0,
-        longitude: 0,
+        latitude: spotInfos.lat,
+        longitude: spotInfos.lng,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
-        verify: false
     })
 
     const [coord, setCoord] = useState({})
+    const [polyline, setPolyline] = useState([{ latitude: region.latitude, longitude: region.longitude }])
 
     let longueur = 0;
     let secondes = 0;
     let speed = 0;
     let startDate = new Date();
 
-    const [userToken, setUserToken] = useState([])
-
-    if(region.verify === false) {
+    if(region.latitude == undefined) {
         navigator.geolocation.getCurrentPosition(success, error, options);
     }
 
@@ -97,6 +93,7 @@ export function startrando({ route, navigation }) {
             
 
             navigator.geolocation.getCurrentPosition(success, error)
+            // setPolyline(polyline, latitude: position.coords.latitude)
             secondes = secondes + (endDate.getTime() - startDate.getTime()) / 1000;
             longueur = longueur + distance;
 
@@ -108,20 +105,6 @@ export function startrando({ route, navigation }) {
             console.error(err.message);
         })
     }
-
-    useEffect(() => {
-        try {
-            const value = AsyncStorage.getItem('token')
-            .then((token) => { 
-                const decryptToken = jwt_decode(token);
-                setUserToken(decryptToken)
-            })
-        } catch(e) {
-            console.log(e)
-        }
-    },[])
-
-   
 
     const Stop = async() => {
         fetch(`https://offroad-app.herokuapp.com/api/historique/add`, {
@@ -135,7 +118,7 @@ export function startrando({ route, navigation }) {
                 temps: secondes,
                 speed: speed,
                 spotId: spotId,
-                authorId: userToken.id
+                authorId: userInfos.id
             })
         })
         .then((response) => response.json())
@@ -150,8 +133,18 @@ export function startrando({ route, navigation }) {
     return (
         <View style={styles.backgroundContainer}>
             <MapView
-                region={region}
-                style={styles.map}>
+                initialRegion={region}
+                showsUserLocation={true}
+                followsUserLocation={true}
+                scrollEnabled={false}
+                style={styles.map}
+            > 
+                <Polyline  
+                    coordinates={polyline}
+                    strokeColor="#000"
+                    fillColor="rgba(255,0,0,0.5)"
+                    strokeWidth={6}
+                />
             </MapView>
 
             <View style={styles.buttons}>
