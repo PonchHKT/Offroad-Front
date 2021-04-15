@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions, Alert, Scr
 import {FontAwesome} from '@expo/vector-icons';
 
 import Separator from '../../components/Separator2';
+import Separator2 from '../../components/SeparatorComment';
 import Note from '../../components/Note';
 import CustomButton from '../../components/CustomButton';
 import Navbar from '../../components/Navbar';
@@ -171,7 +172,6 @@ export function spot({ route, navigation }) {
                     size={30}
                 />
             </View>
-
             <Separator/>
 
             <View style={styles.comments}>
@@ -190,13 +190,16 @@ export function spot({ route, navigation }) {
                                 <View>
                                     <Text style={styles.description}>{post.content}</Text>
                                 </View>
+                                <View style={{bottom: 16, right: 20}}>
                                 <Note 
                                     key={1}
                                     note={post.note}
                                     edit={false}
                                     spacing={4}
-                                    size={15}
+                                    size={16}
                                 />
+                                </View>
+                                <Separator2/>
                             </TouchableOpacity>
                         </View>
                     ))}
@@ -294,12 +297,12 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#606060',
         fontSize: 16,
-        marginTop: 5,
+        marginBottom: 15,
     },
     description: {
         color: '#606060',
         fontSize: 15,
-        marginTop: 5,
+        bottom: 15,
     },
     icons: {
         flex: 1,

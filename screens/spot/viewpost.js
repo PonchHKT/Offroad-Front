@@ -48,7 +48,7 @@ export function viewpost({ route, navigation }) {
                     <View style={styles.userContainer}>
                         <Text style={styles.user}>{postInfos.userName}</Text>
                     </View>
-                    <ScrollView contentContainerStyle={{flexGrow: 1}}>
+                    <ScrollView contentContainerStyle={{flexGrow: 1,}}>
                         <Text style={styles.description}>{postInfos.content}</Text>
                     </ScrollView>
                 </View>
