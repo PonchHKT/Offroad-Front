@@ -56,9 +56,24 @@ export function direction({ route, navigation }) {
     }
 
     const updateValue = async(val) => {
-        let distance = val.distance;
+        let kilom = val.distance * 1000;
+        let km = Math.floor(kilom / 1000);
+        let m = kilom - km * 1000;
 
-        let duration = val.duration;
+        function str_pad_left2(string,pad,length) {
+            return (new Array(length+1).join(pad)+string).slice(-length);
+        }
+
+        let distance = str_pad_left2(km,'0',2)+'km '+str_pad_left2(m,'0',2);
+
+        let time = val.duration * 60;
+        let minutes = Math.floor(time / 60);
+        let seconds = time - minutes * 60;
+        function str_pad_left(string,pad,length) {
+            return (new Array(length+1).join(pad)+string).slice(-length);
+        }
+
+        let duration = str_pad_left(minutes,'0',2)+'m '+str_pad_left(seconds,'0',2);
 
         if(distance != infos.distance || duration != infos.time) {
             setInfos({ distance: distance, time: duration})
@@ -127,12 +142,12 @@ export function direction({ route, navigation }) {
                 <View style={{flexDirection: 'row', flex: 1, alignSelf: 'center', justifyContent: 'space-between', width: '70%'}}>
                     <View>
                         <Text style={styles.text}>Distance :</Text>
-                        <Text style={styles.data}>{infos.distance} m</Text>
+                        <Text style={styles.data}>{infos.distance}m</Text>
                     </View>
 
                     <View>
                     <Text style={styles.text}>Durée :</Text>
-                    <Text style={styles.data}>{infos.time} minutes</Text>
+                    <Text style={styles.data}>{infos.time}s</Text>
                     </View>
                 </View>
 
