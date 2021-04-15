@@ -80,7 +80,14 @@ export function signalspot({ route, navigation }) {
                     title={'Signaler un spot'}
                 />
             </View>
-            
+
+            <View style={{justifyContent: 'center', alignItems: 'center'}}>
+                <Text 
+                style={{fontFamily: 'Helvetica', fontSize: 13,width: 300, height: 70,}}
+                numberOfLines={4}
+                >Pour clôturer votre signalement, vous choisissez de transférer le message à notre équipe en vue d'un contrôle. Nous vous tiendrons au courant des suites qui y seront réservées par email.</Text>
+            </View>
+
             <View>
                 <Text style={styles.commentText}>Décrire votre signalement :</Text>
             </View>
@@ -95,7 +102,6 @@ export function signalspot({ route, navigation }) {
                 />
             </ScrollView>
 
-            <Separator/>
             <Separator2/>
             <Separator/>
 
@@ -121,5 +127,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         left: 25,
         bottom: 10,
+        marginBottom: 10,
     },
 });

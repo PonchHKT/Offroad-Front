@@ -12,8 +12,9 @@ export default function SeparatorFull() {
 const styles = StyleSheet.create({
     separator:{
         borderBottomColor: 'black',
-        borderBottomWidth: 2,
-        width: '100%',
+        borderBottomWidth: 1.2,
+        width: 500,
+        right: 30,
         marginTop:'3%',
         opacity: 0.76,
         marginTop: 20,
