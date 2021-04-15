@@ -4,7 +4,7 @@ import CustomButton from './CustomButton';
 import Note from './Note';
 import heart from '../assets/images/heart.png';
 
-import Separator from '../components/Separator2';
+import Separator from '../components/Separator3';
 
 const { width: WIDTH } = Dimensions.get('window')
 

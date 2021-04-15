@@ -8,6 +8,7 @@ import Separator2 from '../../components/SeparatorComment';
 import Note from '../../components/Note';
 import CustomButton from '../../components/CustomButton';
 import Navbar from '../../components/Navbar';
+import LottieView from 'lottie-react-native';
 
 const { width: WIDTH } = Dimensions.get('window')
 
@@ -160,7 +161,14 @@ export function spot({ route, navigation }) {
             />
 
             <Image source={{uri: spot.photo}} style={styles.imageSpot}></Image>
-            
+            <LottieView 
+                style={{zIndex: 10, width: WIDTH / 2.5, position: 'absolute', left: 68, top: 76}}
+                resizeMode={'cover'}
+                source={require('../../assets/drivingspot.json')} 
+                autoPlay 
+                loop= {true}
+                speed={0.5}
+            />
             <View>
                 <Text style={styles.noteText}>Note :</Text>
                 <Note 

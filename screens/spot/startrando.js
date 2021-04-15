@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Dimensions, Text } from 'react-native';
+import { StyleSheet, View, Dimensions, ImageBackground } from 'react-native';
 import MapView from 'react-native-maps';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import jwt_decode from "jwt-decode";
@@ -148,7 +148,6 @@ export function startrando({ route, navigation }) {
     }
 
     return (
-    
         <View style={styles.backgroundContainer}>
             <MapView
                 region={region}
@@ -170,12 +169,13 @@ export function startrando({ route, navigation }) {
                 />
             </View>
 
+            <View style={{marginBottom: 10}}>
                 <CustomButton
                     key={3}
                     title={'Départ'}
                     style={styles.button}
                     actionsbtn={() => Boucle()}
-                />
+                /></View>
             <StatusBar style="auto" hidden={true}/>
         </View>
 )}
@@ -186,17 +186,19 @@ const styles = StyleSheet.create({
         width: null,
         height: null,
         justifyContent: 'center',
+        backgroundColor: 'white',
     },
     map: {
         width: '100%',
-        height: HEIGHT - 100,
-        borderColor: 'black',
+        height: HEIGHT - 150,
+        marginBottom: -50,
     },
     buttons: {
         flex: 1,
         flexDirection: 'row',
         alignSelf: 'center',
         justifyContent: 'space-around',
-        width: '100%'
+        width: '100%',
+        marginTop: 50,
     },
 });
