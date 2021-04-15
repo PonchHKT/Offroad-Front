@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
-import { View, ScrollView, Alert, Dimensions, Platform, Image, StyleSheet, TouchableOpacity, Text } from 'react-native';
+import React, { useState } from 'react';
+import { View, Image, StyleSheet, TouchableOpacity, Text } from 'react-native';
 
 import MapView, { Marker } from 'react-native-maps';
 import PolylineDirection from '@react-native-maps/polyline-direction';
@@ -12,9 +12,9 @@ import car from '../assets/images/car.png'
 import walking from '../assets/images/walking.png'
 import bicycle from '../assets/images/bicycle.png'
 
-const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
-
 export function direction({ route, navigation }) {
+
+    const GOOGLE_MAPS_APIKEY = 'AIzaSyBPB7WjyuSV2X_zabLgQeLe8oszvNtlNCQ';
 
     const { spotInfos, userInfos } = route.params;
 
@@ -55,7 +55,15 @@ export function direction({ route, navigation }) {
         console.warn(`ERREUR (${err.code}): ${err.message}`);
     }
 
-    const GOOGLE_MAPS_APIKEY = 'AIzaSyBPB7WjyuSV2X_zabLgQeLe8oszvNtlNCQ';
+    const updateValue = async(val) => {
+        let distance = val.distance / 1000;
+
+        let duration = val.duration / 60;
+
+        if(distance != infos.distance || duration != infos.time) {
+            setInfos({ distance: distance, time: duration})
+        }
+    }
 
     return (
         <View style={{flex: 1}}>
@@ -81,7 +89,7 @@ export function direction({ route, navigation }) {
                     origin={origin}
                     destination={{latitude: spotInfos.lat, longitude: spotInfos.lng}}
                     apiKey={GOOGLE_MAPS_APIKEY}
-                    onReady={async(val) => await setInfos({ distance: val.distance, time: val.duration})}
+                    onReady={(val) => updateValue(val)}
                     strokeWidth={4}
                     mode={mode}
                     strokeColor="#12bc00"
