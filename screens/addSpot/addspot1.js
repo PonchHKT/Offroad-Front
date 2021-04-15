@@ -64,7 +64,7 @@ export function addspot({ route, navigation }) {
                     </View>
             
                     <View>
-                        <Text style={styles.commentText}>Ecrire un commentaire :</Text>
+                        <Text style={styles.commentText}>Écrire un commentaire :</Text>
                     </View>
 
                     <ScrollView style={{zIndex: 1000}}>

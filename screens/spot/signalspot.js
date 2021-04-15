@@ -55,7 +55,7 @@ export function signalspot({ route, navigation }) {
 
     return (
 
-        <View>
+        <View style={{backgroundColor: '#ffffff'}}>
 
             <ScrollView>
                 <Navbar 
