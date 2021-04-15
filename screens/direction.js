@@ -81,7 +81,7 @@ export function direction({ route, navigation }) {
     }
 
     return (
-        <View style={{flex: 1}}>
+        <View style={{flex: 1, backgroundColor: 'white'}}>
             
                 <Navbar 
                     key={1}
@@ -118,7 +118,7 @@ export function direction({ route, navigation }) {
 
             </MapView>
 
-            <View style={{height: '30%'}}>
+            <View style={{height: '30%', marginTop: 10,}}>
                 <View style={{flexDirection: 'row', flex: 1, justifyContent: 'space-around'}}>
                     <View>
                         <TouchableOpacity onPress={() => setMode('driving')}>
@@ -151,7 +151,7 @@ export function direction({ route, navigation }) {
                     </View>
                 </View>
 
-                <View>
+                <View style={{marginBottom: 15}}>
                     <CustomButton
                         key={1}
                         actionsbtn={() => navigation.navigate('spot', { userInfos: userInfos, spotId: spotInfos.id})}
