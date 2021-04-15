@@ -77,7 +77,7 @@ export function like({ route, navigation }) {
                         date={like.createdAt}
                         image={true}
                         spot={like.spotId}
-                        like={true}
+                        like={like.id}
                         actionsbtn={() => navigation.navigate('spot', { spotId: like.spotId, userInfos: userInfos})}
                     />
                 ))

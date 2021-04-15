@@ -161,14 +161,7 @@ export function spot({ route, navigation }) {
             />
 
             <Image source={{uri: spot.photo}} style={styles.imageSpot}></Image>
-            <LottieView 
-                style={{zIndex: 10, width: WIDTH / 2.5, position: 'absolute', left: 68, top: 76}}
-                resizeMode={'cover'}
-                source={require('../../assets/drivingspot.json')} 
-                autoPlay 
-                loop= {true}
-                speed={0.5}
-            />
+            
             <View>
                 <Text style={styles.noteText}>Note :</Text>
                 <Note 
@@ -178,7 +171,15 @@ export function spot({ route, navigation }) {
                     spacing={4}
                     size={30}
                 />
+                <LottieView 
+                    style={{flex: 1, width: WIDTH / 3, right: 0, top: -10, position: 'absolute'}}
+                    source={require('../../assets/drivingspot.json')} 
+                    autoPlay 
+                    loop= {true}
+                    speed={0.5}
+                />
             </View>
+
             <Separator/>
 
             <View style={styles.comments}>

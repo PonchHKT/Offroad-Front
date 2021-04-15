@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Image, StyleSheet, Text, Dimensions, View } from "react-native";
+import { Image, StyleSheet, Text, Dimensions, View, TouchableOpacity, Alert } from "react-native";
 import CustomButton from './CustomButton';
 import Note from './Note';
 import heart from '../assets/images/heart.png';
@@ -40,6 +40,25 @@ export default function Historique(props) {
         }
     }
 
+    const unLike = () => {
+        fetch(`https://offroad-app.herokuapp.com/api/like/delete/${props.like}`, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+        })
+        .then((response) => response.json())
+        .then((responseData) => {
+            if(responseData.data.like) {
+                Alert.alert('Le spot a bien été retiré des favoris !')
+            }
+        })
+        .catch((error) =>{
+            console.error(error);
+        })
+    }
+
     const styles = StyleSheet.create({
         container: {
             flex: 1,
@@ -63,19 +82,9 @@ export default function Historique(props) {
             alignItems: 'center',
             justifyContent: 'space-between'
         },
-        heart: {
-            width: 25, 
-            height: 25, 
-            justifyContent: 'center', 
-            alignItems: 'center',
-            position: 'absolute', 
-            top: 21,
-            left: 135,
-        },
         imageSpot: {
             height: 150,
             borderRadius: 25,
-            right: 8,
         },
     });   
     
@@ -87,15 +96,18 @@ export default function Historique(props) {
     
     return (
         <View style={styles.container}>
-            { props.like ? 
-                <View style={styles.heart}>
-                    <Image source={heart} style={{width: 25, height: 25,}}/>
-                </View>
-            :
-                <View></View>
-            }
+            
             <View style={styles.container2}>
-                <Text style={styles.title}>{convertDate(props.date)}</Text>
+                <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', left: 10}}>
+                    <Text style={styles.title}>{convertDate(props.date)}</Text>
+                    { props.like ? 
+                        <TouchableOpacity style={{left: 10}} onPress={() => unLike()}>
+                            <Image source={heart} style={{width: 25, height: 25,}}/>
+                        </TouchableOpacity>
+                    :
+                        <View></View>
+                    }
+                </View>
                 { props.image ? 
                     <Image 
                         source={{uri: spot.photo}}
