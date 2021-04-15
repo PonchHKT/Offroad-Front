@@ -31,7 +31,7 @@ export function profil({ route, navigation }) {
     return (
         <View style={{flex: 1}} >
               
-                <Navbar 
+                <Navbar
                     key={1}
                     dashboard={false}
                     mapPress={() => navigation.navigate('dashboard')}
@@ -42,19 +42,21 @@ export function profil({ route, navigation }) {
                     account={true}
                 />
 
+                <View style={{bottom: 40}}>
               <View style={{borderBottomWidth: 3.3,}}>
 
                   <LottieView
-                      style={{width: WIDTH}}
+                      style={{width: WIDTH,}}
                       source={require('../../assets/profilbackground.json')} 
                       autoPlay 
                       loop={true}
                   />
 
-                  <View style={{flex: 1, alignItems: 'center'}}>
+                  <View style={{flex: 1, alignItems: 'center' }}>
                       <Image source={user} style={{width: 150, height: 150, position: 'absolute', bottom: -30, borderWidth: 4, borderColor: 'black', borderRadius: 75}}/>
                   </View>
 
+              </View>
               </View>
 
             
@@ -87,7 +89,7 @@ export function profil({ route, navigation }) {
       
 
             </View>
-            <View style={{flex: 1, alignSelf: 'center', flexDirection: 'row', justifyContent: 'space-around', width: '99%', paddingTop: 40, marginBottom: 20}}>
+            <View style={{flex: 1, alignSelf: 'center', flexDirection: 'row', justifyContent: 'space-around', width: '99%', paddingTop: 10, paddingBottom: 20, marginBottom: 30,}}>
       
                 <CustomButton
                     key={1}
@@ -103,6 +105,8 @@ export function profil({ route, navigation }) {
                     width={200}
                 />
                 </View>
+
+                <View><Text onPress={() => navigation.navigate('cgu')} style={styles.clickHere}>Conditions générales d'utilisation</Text></View>
             </View>
 )};
 
@@ -116,11 +120,19 @@ const styles = StyleSheet.create({
     height: 60,
     alignSelf: 'center',
     justifyContent: 'center',
-    top: 30,
+    bottom: 10,
   },
   front2:{
     color: 'grey',
     fontSize: 20,
     marginLeft: 10,
   },
+  clickHere: {
+    textDecorationLine: 'underline',
+    fontWeight: 'bold',
+    color: 'black',
+    fontSize: 10,
+    textAlign: 'center',
+    bottom: 25,
+},
 });
