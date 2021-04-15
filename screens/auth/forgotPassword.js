@@ -92,7 +92,7 @@ export function forgotPassword({ navigation }) {
                     key={3}
                     id={3}
                     actionsbtn={() => onSendPressed()}
-                    title={'Envoyez'}
+                    title={'Envoyer'}
                 />
 
                 <View>

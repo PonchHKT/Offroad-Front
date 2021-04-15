@@ -27,6 +27,14 @@ export function viewpost({ route, navigation }) {
           alert(error.message);
         }
     };
+
+    const deletePost = () => {
+
+    }
+
+    const editPost = () => {
+        
+    }
             
     return (
         <View style={{flex: 1}}>
@@ -81,6 +89,33 @@ export function viewpost({ route, navigation }) {
                         />
                     </TouchableOpacity>
                 </View>
+
+                { postInfos.authorId == userInfos.id ?
+                    <View style={styles.buttonContainer}>
+                        <TouchableOpacity onPress={() => editPost()}>
+                            <FontAwesome 
+                                name="trash" 
+                                color="black"
+                                size={30}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                :
+                    <View></View>
+                }
+                { postInfos.authorId == userInfos.id ?
+                    <View style={styles.buttonContainer}>
+                        <TouchableOpacity onPress={() => editPost()}>
+                            <FontAwesome 
+                                name="edit" 
+                                color="black"
+                                size={30}
+                            />
+                        </TouchableOpacity>
+                    </View>
+                :
+                    <View></View>
+                }
 
                 <View style={styles.buttonContainer}>
                     <TouchableOpacity onPress={() => navigation.navigate('signalpost', { userInfos: userInfos, postInfos: postInfos})}>

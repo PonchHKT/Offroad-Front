@@ -1,11 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-gesture-handler';
-import { StyleSheet, View, Text, TouchableOpacity, ScrollView } from "react-native";
+import { StyleSheet, View, Text, ScrollView } from "react-native";
 import React, { useState } from 'react';
 
 import Navbar from '../../components/Navbar';
 import CustomInput from '../../components/CustomInput';
 import CustomButton from '../../components/CustomButton';
+import { commentsValidator } from '../../helpers/commentsValidator';
 
 
 export function infoMed({ route, navigation }) {
@@ -19,6 +20,53 @@ export function infoMed({ route, navigation }) {
     const [allergies, setAllergies] = useState({ value: '', error: '' })
     const [traitement, setTraitement] = useState({ value: '', error: '' })
     const [other, setOther] = useState({ value: '', error: '' })
+
+    const submit = async() => {
+
+        const tailleError = commentsValidator(taille.value)
+        const poidsError = commentsValidator(poids.value)
+        const sangError = commentsValidator(sang.value)
+        const numeroError = commentsValidator(numero.value)
+        const allergiesError = commentsValidator(allergies.value)
+        const traitementError = commentsValidator(traitement.value)
+        const otherError = commentsValidator(other.value)
+
+        if (tailleError || poidsError || sangError || numeroError || allergiesError || traitementError || otherError) {
+            setTaille({ ...taille, error: tailleError })
+            setPoids({ ...poids, error: poidsError })
+            setSang({ ...sang, error: sangError })
+            setNumero({ ...numero, error: numeroError })
+            setAllergies({ ...allergies, error: allergiesError })
+            setTraitement({ ...traitement, error: traitementError })
+            setOther({ ...other, error: otherError })
+            return;
+      
+        } else {
+            fetch(`https://offroad-app.herokuapp.com/api/users/edit/medic/${userInfos.id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + token
+                    },
+                    body: JSON.stringify({
+                        pseudo: pseudo.value,
+                        email: email.value,
+                        password: password.value,
+                        passwordConfirmation: passwordConfirmation.value,
+                        level: level.value,
+                        notif: true,
+                    })
+                })
+                .then((response) => response.json())
+                .then((responseData) => {
+                    console.log(responseData)
+                })
+            .catch((error) =>{
+                console.error(error);
+            })
+        }
+    };
     
     return (
     <ScrollView>
@@ -87,7 +135,7 @@ export function infoMed({ route, navigation }) {
             />
 
 
-            <Text style={styles.front}>Traitement suivis :</Text>
+            <Text style={styles.front}>Traitements suivis :</Text>
                 <CustomInput
                 key={7}
                 placeholder={'prise de médicament anti-coagulant'}

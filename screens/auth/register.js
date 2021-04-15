@@ -149,7 +149,7 @@ export function register({ navigation }) {
 
                   <CustomInput
                       key={5}
-                      placeholder={'Confirmez mot de passe'}
+                      placeholder={'Confirmation du mot de passe'}
                       valeur={password2.value}
                       error={!!password2.error}
                       errorText={password2.error}

@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, ScrollView, Image, ImageBackground, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, Image, ImageBackground, Dimensions, Alert } from 'react-native';
 
 import Note from '../../components/Note';
 import Separator2 from '../../components/Separator3';
