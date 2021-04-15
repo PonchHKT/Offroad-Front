@@ -11,7 +11,6 @@ import { forgotPassword } from './screens/auth/forgotPassword';
 import { dashboard } from './screens/dashboard';
 import { cgu } from './screens/cgu';
 
-import { infoMed } from './screens/profile/infoMed';
 import { stats } from './screens/profile/stats';
 import { profil } from './screens/profile/profil.js'
 import { comments } from './screens/profile/comments';
@@ -31,6 +30,9 @@ import { addspotnext } from './screens/addSpot/addspot2';
 
 import { splash } from './screens/splashscreen';
 import { welcome } from './screens/welcome.js';
+
+import { infoMed } from './screens/profile/infoMed';
+import { infoUser } from './screens/profile/infoUser';
 
 const Stack = createStackNavigator();
 
@@ -85,6 +87,7 @@ export default function App() {
         <Stack.Screen name="addspot" component={addspot} />
         <Stack.Screen name="addspotnext" component={addspotnext} />
         <Stack.Screen name="viewpost" component={viewpost} />
+        <Stack.Screen name="infoUser" component={infoUser} />
         
       </Stack.Navigator>
     </NavigationContainer>

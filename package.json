@@ -29,6 +29,7 @@
     "react-native-fontawesome": "^7.0.0",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-maps": "^0.27.1",
+    "react-native-modal-dropdown": "^1.0.0",
     "react-native-paper": "^4.7.2",
     "react-native-radio-button": "^2.0.1",
     "react-native-stars": "^1.2.2",
