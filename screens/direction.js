@@ -56,9 +56,9 @@ export function direction({ route, navigation }) {
     }
 
     const updateValue = async(val) => {
-        let distance = val.distance / 1000;
+        let distance = val.distance;
 
-        let duration = val.duration / 60;
+        let duration = val.duration;
 
         if(distance != infos.distance || duration != infos.time) {
             setInfos({ distance: distance, time: duration})
@@ -124,15 +124,15 @@ export function direction({ route, navigation }) {
                     </View>
                 </View>
 
-                <View style={{flexDirection: 'row', flex: 1, alignSelf: 'center', justifyContent: 'space-between', width: '80%'}}>
+                <View style={{flexDirection: 'row', flex: 1, alignSelf: 'center', justifyContent: 'space-between', width: '70%'}}>
                     <View>
                         <Text style={styles.text}>Distance :</Text>
-                        <Text style={styles.data}>{infos.distance}</Text>
+                        <Text style={styles.data}>{infos.distance} m</Text>
                     </View>
 
                     <View>
                     <Text style={styles.text}>Durée :</Text>
-                    <Text style={styles.data}>{infos.time}</Text>
+                    <Text style={styles.data}>{infos.time} minutes</Text>
                     </View>
                 </View>
 
