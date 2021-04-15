@@ -7,6 +7,9 @@ import CustomInput from '../../components/CustomInput';
 import ModalDropdown from 'react-native-modal-dropdown';
 import CustomButton from '../../components/CustomButton';
 import Separator from '../../components/Separator';
+import { pseudoValidator } from '../../helpers/auth/pseudoValidator';
+import { emailValidator } from '../../helpers/auth/emailValidator';
+import { passwordValidator } from '../../helpers/auth/passwordValidator';
 
 const { width: WIDTH } = Dimensions.get('window')
 
@@ -65,29 +68,44 @@ export function infoUser({ route, navigation }) {
     }
 
     const submit = async() => {
-        fetch(`https://offroad-app.herokuapp.com/api/users/edit/${userInfos.id}`, {
-            method: 'PATCH',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + token
-            },
-            body: JSON.stringify({
-                pseudo: pseudo.value,
-                email: email.value,
-                password: password.value,
-                passwordConfirmation: passwordConfirmation.value,
-                level: level.value,
-                notif: true,
+
+        const pseudoError = pseudoValidator(pseudo.value)
+        const emailError = emailValidator(email.value)
+        const passwordError = passwordValidator(password.value)
+        const passwordError2 = passwordValidator(passwordConfirmation.value)
+
+        if (pseudoError || emailError || passwordError || passwordError2) {
+            setPseudo({ ...pseudo, error: pseudoError })
+            setEmail({ ...email, error: emailError })
+            setPassword({ ...password, error: passwordError })
+            setPasswordConf({ ...passwordConfirmation, error: passwordError2 })
+            return;
+      
+        } else {
+            fetch(`https://offroad-app.herokuapp.com/api/users/edit/${userInfos.id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                        'Authorization': 'Bearer ' + token
+                    },
+                    body: JSON.stringify({
+                        pseudo: pseudo.value,
+                        email: email.value,
+                        password: password.value,
+                        passwordConfirmation: passwordConfirmation.value,
+                        level: level.value,
+                        notif: true,
+                    })
+                })
+                .then((response) => response.json())
+                .then((responseData) => {
+                    console.log(responseData)
+                })
+            .catch((error) =>{
+                console.error(error);
             })
-        })
-        .then((response) => response.json())
-        .then((responseData) => {
-            console.log(responseData)
-        })
-        .catch((error) =>{
-            console.error(error);
-        })
+        }
     };
 
     return (
@@ -192,7 +210,7 @@ export function infoUser({ route, navigation }) {
         
                     <CustomButton
                         key={2}
-                        actionsbtn={() => navigation.navigate('')}
+                        actionsbtn={() => submit()}
                         title={'Modifier'}
                         width={200}
                     />
