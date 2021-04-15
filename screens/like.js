@@ -1,7 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import {  View, ScrollView, StyleSheet, Dimensions } from 'react-native';
-import LottieView from 'lottie-react-native';
 
 import Navbar from '../components/Navbar';
 import Historique from '../components/Historique';
@@ -56,14 +55,6 @@ export function like({ route, navigation }) {
    
     return (
         <View style={styles.backgroundContainer}>
-        <LottieView
-            resizeMode={'cover'}
-            source={require('../assets/likebackground.json')} 
-            autoPlay
-            loop= {false}
-            speed={1}
-            onAnimationFinish={{width: 0, height: 0}}
-            />
         <ScrollView>
             <View style={{zIndex: 1000}}>
                 <Navbar
