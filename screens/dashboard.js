@@ -88,7 +88,7 @@ export function dashboard({ navigation }) {
                     like={false}
                     likePress={() => navigation.navigate('like', {userInfos: user})}
                     account={false}
-                    accountPress={() => navigation.navigate('profil', {userInfos: user})}
+                    accountPress={() => navigation.navigate('profil', {userInfos: user, token: token})}
                 />
             </ScrollView>
 

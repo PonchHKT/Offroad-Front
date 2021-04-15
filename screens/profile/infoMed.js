@@ -110,22 +110,27 @@ export function infoMed({ route, navigation }) {
 
         </View>
         <View style={styles.container2}>
+                
+                <View style={{flex: 1, alignSelf: 'center', flexDirection: 'row', justifyContent: 'space-around', width: '99%', paddingTop: 10, paddingBottom: 20, marginTop: 20}}>
+        
+                    <CustomButton
+                        key={1}
+                        actionsbtn={() => navigation.navigate('profil', { userInfos: userInfos})}
+                        title={'Retour'}
+                        width={200}
+                    />
+        
+                    <CustomButton
+                        key={2}
+                        actionsbtn={() => submit()}
+                        title={'Modifier'}
+                        width={200}
+                    />
+                </View>
 
-            <CustomButton
-                key={1}
-                actionsbtn={() => navigation.navigate('Profil')}
-                title={'Retour'}
-            />
-            
-            <CustomButton
-                key={2}
-                actionsbtn={() => navigation.navigate('Profil')}
-                title={'Modifier'}
-            />
-
-        <StatusBar style="auto" hidden={true}/>
-        </View>
-    </ScrollView>
+            </View>
+            <StatusBar style="auto" hidden={true}/>
+        </ScrollView>
 )};
 
 const styles = StyleSheet.create({

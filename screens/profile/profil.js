@@ -12,7 +12,7 @@ const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export function profil({ route, navigation }) {
 
-    const { userInfos } = route.params;
+    const { userInfos, token } = route.params;
 
     if (!AsyncStorage.getItem('token')) {
         navigation.navigate('welcome')
@@ -65,7 +65,7 @@ export function profil({ route, navigation }) {
             
                 <TouchableOpacity
                     style={styles.buttonArrondi2}
-                    onPress={() => navigation.navigate('infoUser')}>
+                    onPress={() => navigation.navigate('infoUser', {userInfos: userInfos, token: token})}>
                     <Text style={styles.front2}>Informations personnelles</Text>
                 </TouchableOpacity>
 
