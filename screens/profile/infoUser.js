@@ -15,6 +15,8 @@ export function infoUser({ route, navigation }) {
 
     const { userInfos, token } = route.params;
 
+    const [security, changeSecurity] = useState(true);
+
     const [pseudo, setPseudo] = useState({ value: userInfos.pseudo, error: '' })
     const [email, setEmail] = useState({ value: userInfos.email, error: '' })
     const [password, setPassword] = useState({ value: '', error: '' })
@@ -89,7 +91,21 @@ export function infoUser({ route, navigation }) {
                     error={!!password.error}
                     errorText={password.error}
                     text={(text) => setPassword({ value: text, error: '' })}
+                    secure={security}
                     pwd={true}
+                    changeVisibility={changeSecurity}
+                />
+
+                <Text style={styles.front}>Confirmation du mot de passe :</Text>
+                <CustomInput
+                    key={5}
+                    valeur={passwordConfirmation.value}
+                    error={!!passwordConfirmation.error}
+                    errorText={passwordConfirmation.error}
+                    text={(text) => setPasswordConf({ value: text, error: '' })}
+                    secure={security}
+                    pwd={true}
+                    changeVisibility={changeSecurity}
                 />
 
                 <Text style={styles.front}>Niveau :</Text>
