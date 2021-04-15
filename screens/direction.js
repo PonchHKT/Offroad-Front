@@ -1,58 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
-import { View, ScrollView, Alert, Dimensions, Platform } from 'react-native';
+import React, { useState } from 'react';
+import { View, ScrollView, Dimensions } from 'react-native';
 
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import jwt_decode from "jwt-decode";
-
-import { IconButton } from 'react-native-paper';
-import MapView, { Marker } from 'react-native-maps';
+import MapView from 'react-native-maps';
+import PolylineDirection from '@react-native-maps/polyline-direction';
 
 import Navbar from '../components/Navbar';
 import CustomButton from '../components/CustomButton';
 
 const HEIGHT = Dimensions.get("window").height;
 
-export function direction({ navigation }) {
+export function direction({ route, navigation }) {
+
+    const { spotInfos, userInfos } = route.params;
 
     const [region, setRegion] = useState({})
-    const [spot, setSpot] = useState({ value: [] })
-    const [user, setUser] = useState({})
-    const [token, setToken] = useState({})
+    const [origin, setOrigin] = useState({})
 
-    useEffect(() => {
-        try {
-            const value = AsyncStorage.getItem('token')
-            .then((token) => { 
-                const decryptToken = jwt_decode(token);
-                setUser(decryptToken)
-                setToken(token)
-  
-                fetch(`https://offroad-app.herokuapp.com/api/spot/${decryptToken.level}`, {
-                    method: 'GET',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                    },
-                })
-                .then((response) => response.json())
-                .then((responseData) => {
-                    if(responseData.data.spot) {
-                        setSpot({ value: responseData.data.spot})
-                    }
-                })
-
-                .catch((error) =>{
-                    console.error(error);
-                })
-    
-          })
-        } catch(e) {
-          console.log(e)
-        }
-    },[])
-
-    if(region.latitude == undefined) {
+    if(region.latitude === undefined || origin.latitude === undefined) {
         navigator.geolocation.getCurrentPosition(success, error, options);
         return ( <View></View> )
     }
@@ -72,11 +37,18 @@ export function direction({ navigation }) {
             latitudeDelta: 0.0922,
             longitudeDelta: 0.0421,
         })
+
+        setOrigin({
+            latitude: crd.latitude,
+            longitude: crd.longitude,
+        })
     }
     
     function error(err) {
         console.warn(`ERREUR (${err.code}): ${err.message}`);
     }
+
+    const GOOGLE_MAPS_APIKEY = 'AIzaSyBPB7WjyuSV2X_zabLgQeLe8oszvNtlNCQ';
 
     return (
         <View>
@@ -85,37 +57,38 @@ export function direction({ navigation }) {
                     key={1}
                     dashboard={true}
                     plus={false}
-                    plusPress={() => navigation.navigate('addspot', {userInfos: user})}
+                    plusPress={() => navigation.navigate('addspot', {userInfos: userInfos})}
                     like={false}
-                    likePress={() => navigation.navigate('like', {userInfos: user})}
+                    likePress={() => navigation.navigate('like', {userInfos: userInfos})}
                     account={false}
-                    accountPress={() => navigation.navigate('profil', {userInfos: user})}
+                    accountPress={() => navigation.navigate('profil', {userInfos: userInfos})}
                 />
             </ScrollView>
 
             <MapView
                 initialRegion={region}
-                onRegionChangeComplete={(val) => setRegion({latitude: val.latitude, longitude: val.longitude, latitudeDelta: val.latitudeDelta, longitudeDelta: val.longitudeDelta})}
-                style={{width: '100%', height: 612, zIndex: 2}}
+                style={{width: '100%', height: HEIGHT - 50}}
             >
-                { spot.value.map((info, index) => (
-                <Marker
-                    key={index}
-                    coordinate={{ latitude : info.lat , longitude : info.lng }}
-                    onPress={() => navigation.navigate('spot', {spotId: info.id, userInfos: user})}
+                <PolylineDirection
+                    origin={origin}
+                    destination={{latitude: spotInfos.lat, longitude: spotInfos.lng}}
+                    apiKey={GOOGLE_MAPS_APIKEY}
+                    strokeWidth={4}
+                    strokeColor="#12bc00"
                 />
-                ))}
+
             </MapView>
 
             <View style={{zIndex: 100, flex: 1, alignSelf: 'center', flexDirection: 'row', justifyContent: 'space-around', width: '99%', paddingTop: 10, paddingBottom: 20, bottom: 75, left: 100}}>
 
-            <CustomButton
-                key={1}
-                actionsbtn={() => navigation.navigate('dashboard')}
-                title={'Retour'}
-                width={200}
-         />
-        </View>
+                <CustomButton
+                    key={1}
+                    actionsbtn={() => navigation.navigate('spot', { userInfos: userInfos, spotId: spotId})}
+                    title={'Retour'}
+                    width={200}
+                />
+
+            </View>
 
             <StatusBar style="auto" hidden={true}/>
         </View>
