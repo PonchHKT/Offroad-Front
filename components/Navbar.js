@@ -22,10 +22,10 @@ export default function Navbar(props) {
         },
     })
 
-    const [search, setSearch] = useState({ value: '' })
+    const [search, setSearch] = useState('')
 
     const updateSearch = (search) => {
-        setSearch({ value: search })
+        setSearch(search)
     }
     
     return (

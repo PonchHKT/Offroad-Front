@@ -93,7 +93,8 @@ export function dashboard({ navigation }) {
             </ScrollView>
 
             <MapView
-                region={region}
+                initialRegion={region}
+                onRegionChangeComplete={(val) => setRegion({latitude: val.latitude, longitude: val.longitude, latitudeDelta: val.latitudeDelta, longitudeDelta: val.longitudeDelta})}
                 style={{width: '100%', height: HEIGHT}}
             >
                 { spot.value.map((info, index) => (
