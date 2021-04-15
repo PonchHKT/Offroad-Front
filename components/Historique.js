@@ -74,6 +74,8 @@ export default function Historique(props) {
         },
         imageSpot: {
             height: 150,
+            borderRadius: 25,
+            right: 8,
         },
     });   
     
