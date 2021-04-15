@@ -25,9 +25,8 @@ export function addspotnext({ route, navigation }) {
     const submit = () => {
 
         const adressError = commentsValidator(adress)
-        const infosError = commentsValidator(infos)
 
-        if (adressError || infosError) {
+        if (adressError) {
             Alert.alert('Des champs non pas été remplis !')
             return;
 
