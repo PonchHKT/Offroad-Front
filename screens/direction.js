@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
 import { View, ScrollView, Alert, Dimensions, Platform, Image, StyleSheet, TouchableOpacity, Text } from 'react-native';
 
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 import PolylineDirection from '@react-native-maps/polyline-direction';
 
 import Navbar from '../components/Navbar';
@@ -12,7 +12,7 @@ import car from '../assets/images/car.png'
 import walking from '../assets/images/walking.png'
 import bicycle from '../assets/images/bicycle.png'
 
-const WIDTH = Dimensions.get("window").height;
+const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export function direction({ route, navigation }) {
 
@@ -20,6 +20,9 @@ export function direction({ route, navigation }) {
 
     const [region, setRegion] = useState({})
     const [origin, setOrigin] = useState({})
+
+    const [infos, setInfos] = useState({})
+    const [mode, setMode] = useState('driving')
 
     if(region.latitude === undefined || origin.latitude === undefined) {
         navigator.geolocation.getCurrentPosition(success, error, options);
@@ -55,9 +58,8 @@ export function direction({ route, navigation }) {
     const GOOGLE_MAPS_APIKEY = 'AIzaSyBPB7WjyuSV2X_zabLgQeLe8oszvNtlNCQ';
 
     return (
-        <View style={{backgroundColor: '#ffffff'}}>
-        <View>
-            <ScrollView>
+        <View style={{flex: 1}}>
+            
                 <Navbar 
                     key={1}
                     dashboard={true}
@@ -68,11 +70,10 @@ export function direction({ route, navigation }) {
                     account={false}
                     accountPress={() => navigation.navigate('profil', {userInfos: userInfos})}
                 />
-            </ScrollView>
 
             <MapView
                 initialRegion={region}
-                style={{width: '100%', height: HEIGHT - 50}}
+                style={{width: '100%', height: '60%'}}
                 showsUserLocation={true}
                 followsUserLocation={true}
             >
@@ -80,76 +81,81 @@ export function direction({ route, navigation }) {
                     origin={origin}
                     destination={{latitude: spotInfos.lat, longitude: spotInfos.lng}}
                     apiKey={GOOGLE_MAPS_APIKEY}
+                    onReady={async(val) => await setInfos({ distance: val.distance, time: val.duration})}
                     strokeWidth={4}
+                    mode={mode}
                     strokeColor="#12bc00"
+                />
+                
+                <Marker
+                    coordinate={{ latitude : spotInfos.lat , longitude : spotInfos.lng }}
+                    title={spotInfos.level}
+                    description={spotInfos.adress}
                 />
 
             </MapView>
 
-            <View style={{position: 'relative', top: 10, flexDirection: 'row', flex: 1, alignSelf: 'center', justifyContent: 'space-around',}}>
-                <View>
-                <TouchableOpacity>
-                <Image source={car} style={styles.icons}/>
-                </TouchableOpacity>
+            <View style={{height: '30%'}}>
+                <View style={{flexDirection: 'row', flex: 1, justifyContent: 'space-around'}}>
+                    <View>
+                        <TouchableOpacity onPress={() => setMode('driving')}>
+                            <Image source={car} style={styles.icons}/>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View>
+                        <TouchableOpacity onPress={() => setMode('bicycling')}>
+                            <Image source={bicycle}  style={styles.icons}/>
+                        </TouchableOpacity>
+                    </View>
+
+                    <View>
+                        <TouchableOpacity onPress={() => setMode('walking')}>
+                            <Image source={walking}  style={styles.icons}/>
+                        </TouchableOpacity>
+                    </View>
+                </View>
+
+                <View style={{flexDirection: 'row', flex: 1, alignSelf: 'center', justifyContent: 'space-between', width: '80%'}}>
+                    <View>
+                        <Text style={styles.text}>Distance :</Text>
+                        <Text style={styles.data}>{infos.distance}</Text>
+                    </View>
+
+                    <View>
+                    <Text style={styles.text}>Durée :</Text>
+                    <Text style={styles.data}>{infos.time}</Text>
+                    </View>
                 </View>
 
                 <View>
-                <TouchableOpacity>
-                <Image source={bicycle}  style={styles.icons}/>
-                </TouchableOpacity>
-                </View>
-
-                <View>
-                <TouchableOpacity>
-                <Image source={walking}  style={styles.icons}/>
-                </TouchableOpacity>
+                    <CustomButton
+                        key={1}
+                        actionsbtn={() => navigation.navigate('spot', { userInfos: userInfos, spotId: spotInfos.id})}
+                        title={'Retour'}
+                        width={200}
+                    />
                 </View>
             </View>
-
-            <View style={{position: 'relative', top: 10, flexDirection: 'row', flex: 1, alignSelf: 'center', justifyContent: 'space-around',}}>
-                <View>
-                <Text style={styles.text}>Distance</Text>
-                <Text style={styles.data}>18.2 km</Text>
-                </View>
-
-                <View>
-                <Text style={styles.text}>Durée :</Text>
-                <Text style={styles.data}>37 minutes</Text>
-                </View>
-            </View>
-
-            <View style={{zIndex: 100, flex: 1, alignSelf: 'center', flexDirection: 'row', justifyContent: 'space-around', width: '99%', top: 100, left: 100}}>
-            <CustomButton
-                    key={1}
-                    actionsbtn={() => navigation.navigate('spot', { userInfos: userInfos, spotId: spotId})}
-                    title={'Retour'}
-                    width={200}
-                />
-        </View>
 
             <StatusBar style="auto" hidden={true}/>
         </View>
-    </View>
     ); 
 }
 
 const styles = StyleSheet.create({
     icons: {
-        flex: 1, 
-        alignSelf: 'center', 
-        justifyContent: 'space-between',
-        alignSelf: 'center',
         width: 55,
         height: 55,
         borderRadius: 60,
     },
     text: {
-        fontSize: 16,
+        fontSize: 20,
         fontWeight: 'bold',
         color: 'black',
     },
     data: {
-        fontSize: 8,
+        fontSize: 12,
         fontWeight: 'bold',
         color: '#34568b',
     },
