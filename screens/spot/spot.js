@@ -5,6 +5,7 @@ import {FontAwesome} from '@expo/vector-icons';
 
 import Spot from '../../assets/images/spots/forest.jpg';
 import Separator from '../../components/Separator2';
+import Separator2 from '../../components/SeparatorComment';
 import Note from '../../components/Note';
 import CustomButton from '../../components/CustomButton';
 import Navbar from '../../components/Navbar';
@@ -155,7 +156,6 @@ export function spot({ route, navigation }) {
                     size={30}
                 />
             </View>
-
             <Separator/>
 
             <View style={styles.comments}>
@@ -168,19 +168,22 @@ export function spot({ route, navigation }) {
                                 onPress={() => navigation.navigate('viewpost', { userInfos: userInfos, postInfos: post})}
                             >
                                 <View>
-                                    <Text style={styles.user}>{post.userName}</Text>
+                                    <Text style={styles.user}>{post.userName}, {userInfos.level}</Text>
                                 </View>
 
                                 <View>
                                     <Text style={styles.description}>{post.content}</Text>
                                 </View>
+                                <View style={{bottom: 16, right: 20}}>
                                 <Note 
                                     key={1}
                                     note={post.note}
                                     edit={false}
                                     spacing={4}
-                                    size={15}
+                                    size={16}
                                 />
+                                </View>
+                                <Separator2/>
                             </TouchableOpacity>
                         </View>
                     ))}
@@ -283,7 +286,7 @@ const styles = StyleSheet.create({
     description: {
         color: '#606060',
         fontSize: 15,
-        marginTop: 5,
+        bottom: 15,
     },
     icons: {
         flex: 1,
