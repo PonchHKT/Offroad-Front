@@ -15,14 +15,54 @@ export function infoUser({ route, navigation }) {
 
     const { userInfos, token } = route.params;
 
-    const [security, changeSecurity] = useState(true);
+    const [security, setSecurity] = useState(true);
 
     const [pseudo, setPseudo] = useState({ value: userInfos.pseudo, error: '' })
     const [email, setEmail] = useState({ value: userInfos.email, error: '' })
     const [password, setPassword] = useState({ value: '', error: '' })
     const [passwordConfirmation, setPasswordConf] = useState({ value: '', error: '' })
-    const [level, setLevel] = useState({ value: userInfos.level });
-    const [notif, setNotif] = useState({ value: userInfos.notif });
+    const [level, setLevel] = useState(userInfos.level);
+    const [notif, setNotif] = useState(userInfos.notif);
+
+    const changeSecurity = () => {
+        { security ?
+            setSecurity(false)
+        :
+            setSecurity(true)
+        }
+    }
+
+    const levelChose = (val) => {
+        switch (val) {
+            case 0:
+                setLevel('DEBUTANT')
+                break;
+            case 1:
+                setLevel('INTERMEDIAIRE')
+                break;
+            case 2:
+                setLevel('AVANCE')
+                break;
+            case 3:
+                setLevel('EXPERT')
+                break;
+            default:
+                break;
+        }
+    }
+
+    const notifChose = (val) => {
+        switch (val) {
+            case 0:
+                setNotif(true)
+                break;
+            case 1:
+                setNotif(false)
+                break;
+            default:
+                break;
+        }
+    }
 
     const submit = async() => {
         fetch(`https://offroad-app.herokuapp.com/api/users/edit/${userInfos.id}`, {
@@ -113,7 +153,7 @@ export function infoUser({ route, navigation }) {
                     <ModalDropdown
                         options={ ['Débutant', 'Intermédiaire','Avancé', 'Expert']}
                         style={{height: 40, width: '100%'}}
-                        onSelect={(val) => console.log(val)}
+                        onSelect={(val) => levelChose(val)}
                         dropdownStyle={styles.dropdown}
                         dropdownTextStyle={{fontSize: 20, width: WIDTH - 70}}
                         defaultValue={'Appuyer pour choisir'}
@@ -130,6 +170,7 @@ export function infoUser({ route, navigation }) {
                     <ModalDropdown
                     options={ ['Oui', 'Non']}
                     style={{height: 40, width: '100%'}}
+                    onSelect={(val) => notifChose(val)}
                     dropdownStyle={styles.dropdown}
                     dropdownTextStyle={{fontSize: 20, width: WIDTH - 70,}}
                     defaultValue={'Appuyer pour choisir'}

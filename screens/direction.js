@@ -68,6 +68,8 @@ export function direction({ route, navigation }) {
             <MapView
                 initialRegion={region}
                 style={{width: '100%', height: HEIGHT - 50}}
+                showsUserLocation={true}
+                followsUserLocation={true}
             >
                 <PolylineDirection
                     origin={origin}
