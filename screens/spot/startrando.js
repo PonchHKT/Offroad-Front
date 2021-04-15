@@ -20,7 +20,7 @@ export function startrando({ route, navigation }) {
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421,
     })
-
+    
     const [coord, setCoord] = useState({})
     const [polyline, setPolyline] = useState([{ latitude: region.latitude, longitude: region.longitude }])
 
@@ -29,7 +29,7 @@ export function startrando({ route, navigation }) {
     let speed = 0;
     let startDate = new Date();
 
-    if(region.latitude == undefined) {
+    if(coord.latitude == undefined) {
         navigator.geolocation.getCurrentPosition(success, error, options);
     }
 
@@ -74,9 +74,11 @@ export function startrando({ route, navigation }) {
 
         getPosition()
         .then((position) => {
-            
+
             let endDate = new Date();
             
+            console.log(coord)
+
             const distance = getPreciseDistance(
                 { latitude: coord.latitude, longitude: coord.longitude },
                 { latitude: position.coords.latitude, longitude: position.coords.longitude }
@@ -90,10 +92,14 @@ export function startrando({ route, navigation }) {
             if(speed2 > speed) {
                 speed = speed2;
             }
-            
 
             navigator.geolocation.getCurrentPosition(success, error)
-            // setPolyline(polyline, latitude: position.coords.latitude)
+
+            const newCoord = {latitude: position.coords.latitude, longitude: position.coords.longitude}
+            polyline.push(newCoord)
+            console.log('AH')
+            console.log(polyline)
+
             secondes = secondes + (endDate.getTime() - startDate.getTime()) / 1000;
             longueur = longueur + distance;
 
@@ -117,13 +123,14 @@ export function startrando({ route, navigation }) {
                 distance: longueur,
                 temps: secondes,
                 speed: speed,
-                spotId: spotId,
+                spotId: spotInfos.id,
                 authorId: userInfos.id
             })
         })
         .then((response) => response.json())
         .then(async(responseData) => {
-            // navigation.navigate('dashboard')
+            console.log(responseData)
+            navigation.navigate('dashboard')
         })
         .catch((error) =>{
             console.error(error);
@@ -133,17 +140,17 @@ export function startrando({ route, navigation }) {
     return (
         <View style={styles.backgroundContainer}>
             <MapView
-                initialRegion={region}
+                region={region}
                 showsUserLocation={true}
                 followsUserLocation={true}
                 scrollEnabled={false}
                 style={styles.map}
             > 
                 <Polyline  
-                    coordinates={polyline}
+                    coordinates={[{ latitude: region.latitude, longitude: region.longitude }, { latitude: 48.024838, longitude: -1.13891 }]}
                     strokeColor="#000"
                     fillColor="rgba(255,0,0,0.5)"
-                    strokeWidth={6}
+                    strokeWidth={2}
                 />
             </MapView>
 
