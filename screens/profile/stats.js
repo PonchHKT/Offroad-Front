@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import {View, StyleSheet, Text, ScrollView, TouchableOpacity, ImageBackground, Dimensions } from 'react-native';
+import {View, StyleSheet, Text, ScrollView, TouchableOpacity, ImageBackground, Dimensions, Share } from 'react-native';
 import {FontAwesome} from '@expo/vector-icons';
 import MapView from 'react-native-maps';
 
@@ -41,6 +41,23 @@ export function stats({ route, navigation }) {
     function error(err) {
         console.warn(`ERREUR (${err.code}): ${err.message}`);
     }
+
+    const onShare = async () => {
+        try {
+          const result = await Share.share({
+            message:
+              `Regarde, j\'ai trouvé un commentaire qui pourrait être interessant pour toi !`,
+          });
+          if (result.action === Share.sharedAction) {
+            if (result.activityType) {
+            } else {
+            }
+          } else if (result.action === Share.dismissedAction) {
+          }
+        } catch (error) {
+          alert(error.message);
+        }
+    };
     
     return(
 
@@ -81,7 +98,7 @@ export function stats({ route, navigation }) {
 
             <View style={styles.icons}>
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => onShare()}>
                         <FontAwesome 
                             name="share" 
                             color="black"

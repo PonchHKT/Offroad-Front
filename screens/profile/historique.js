@@ -74,7 +74,7 @@ export function getHistorique({ route, navigation }) {
                     <Historique
                         key={index}
                         date={historique.createdAt}
-                        img={historique.content}
+                        image={true}
                         spot={historique.spotId}
                         actionsbtn={() => navigation.navigate('spot', { spotId: post.spotId, userInfos: userInfos})}
                     />

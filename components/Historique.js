@@ -11,8 +11,6 @@ const { width: WIDTH } = Dimensions.get('window')
 export default function Historique(props) {
     
     const[spot, setSpot] = useState({})
-    const[verify, setVerify] = useState(false)
-
        
     if(!props.note) {
 
@@ -46,8 +44,8 @@ export default function Historique(props) {
         container: {
             flex: 1,
             paddingTop: 10,
-            width: WIDTH - 50,
-            paddingLeft: 20
+            paddingLeft: 20,
+            paddingRight: 20
         },
         container2: {
             paddingBottom: 10,
@@ -61,6 +59,7 @@ export default function Historique(props) {
             flex: 1,
             flexDirection: 'row',
             paddingTop: 10,
+            paddingRight: 20,
             alignItems: 'center',
             justifyContent: 'space-between'
         },
@@ -72,6 +71,9 @@ export default function Historique(props) {
             position: 'absolute', 
             top: 21,
             left: 135,
+        },
+        imageSpot: {
+            height: 150,
         },
     });   
     
@@ -94,7 +96,8 @@ export default function Historique(props) {
                 <Text style={styles.title}>{convertDate(props.date)}</Text>
                 { props.image ? 
                     <Image 
-                    
+                        source={{uri: spot.photo}}
+                        style={styles.imageSpot}
                     />
                 :
                     <Text>

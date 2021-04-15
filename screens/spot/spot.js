@@ -1,9 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions, Alert, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Dimensions, Alert, ScrollView, Share } from 'react-native';
 import {FontAwesome} from '@expo/vector-icons';
 
-import Spot from '../../assets/images/spots/forest.jpg';
 import Separator from '../../components/Separator2';
 import Note from '../../components/Note';
 import CustomButton from '../../components/CustomButton';
@@ -123,6 +122,23 @@ export function spot({ route, navigation }) {
         })
     }
 
+    const onShare = async () => {
+        try {
+          const result = await Share.share({
+            message:
+              `Regarde, j\'ai trouvé un spot qui pourrait être interessant pour toi !`,
+          });
+          if (result.action === Share.sharedAction) {
+            if (result.activityType) {
+            } else {
+            }
+          } else if (result.action === Share.dismissedAction) {
+          }
+        } catch (error) {
+          alert(error.message);
+        }
+    };
+
     if (!spot.note || !spot.photo || !posts.post) {
         return <View></View>
     }
@@ -213,7 +229,7 @@ export function spot({ route, navigation }) {
                 </View>
 
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.shareTouch}>
+                    <TouchableOpacity style={styles.shareTouch} onPress={() => onShare()}>
                         <FontAwesome 
                             name="share" 
                             color="black" 

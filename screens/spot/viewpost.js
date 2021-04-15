@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Share } from 'react-native';
 import {FontAwesome} from '@expo/vector-icons';
 
 import Navbar from '../../components/Navbar';
@@ -10,6 +10,23 @@ import Separator from '../../components/Separator3';
 export function viewpost({ route, navigation }) {
 
     const { userInfos, postInfos } = route.params;
+
+    const onShare = async () => {
+        try {
+          const result = await Share.share({
+            message:
+              `Regarde, j\'ai trouvé un commentaire qui pourrait être interessant pour toi !`,
+          });
+          if (result.action === Share.sharedAction) {
+            if (result.activityType) {
+            } else {
+            }
+          } else if (result.action === Share.dismissedAction) {
+          }
+        } catch (error) {
+          alert(error.message);
+        }
+    };
             
     return (
         <View style={{flex: 1}}>
@@ -56,7 +73,7 @@ export function viewpost({ route, navigation }) {
             <View style={styles.icons}>
 
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => onShare()}>
                         <FontAwesome 
                             name="share" 
                             color="black"
