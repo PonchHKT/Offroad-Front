@@ -220,7 +220,7 @@ export function spot({ route, navigation }) {
             <View style={styles.icons}>
             
                 <View style={styles.buttonContainer}>
-                    <TouchableOpacity style={styles.locationTouch}>
+                    <TouchableOpacity style={styles.locationTouch} onPress={() => navigation.navigate('direction')}>
                         <FontAwesome 
                             name="location-arrow" 
                             color="black"

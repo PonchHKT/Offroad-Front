@@ -96,7 +96,7 @@ export function direction({ navigation }) {
             <MapView
                 initialRegion={region}
                 onRegionChangeComplete={(val) => setRegion({latitude: val.latitude, longitude: val.longitude, latitudeDelta: val.latitudeDelta, longitudeDelta: val.longitudeDelta})}
-                style={{width: '100%', height: HEIGHT}}
+                style={{width: '100%', height: 612, zIndex: 2}}
             >
                 { spot.value.map((info, index) => (
                 <Marker
@@ -107,11 +107,11 @@ export function direction({ navigation }) {
                 ))}
             </MapView>
 
-            <View style={{flex: 1, alignSelf: 'center', flexDirection: 'row', justifyContent: 'space-around', width: '99%', paddingTop: 10, paddingBottom: 20, marginTop: 20}}>
+            <View style={{zIndex: 100, flex: 1, alignSelf: 'center', flexDirection: 'row', justifyContent: 'space-around', width: '99%', paddingTop: 10, paddingBottom: 20, bottom: 75, left: 100}}>
 
             <CustomButton
                 key={1}
-                actionsbtn={() => navigation.navigate('')}
+                actionsbtn={() => navigation.navigate('dashboard')}
                 title={'Retour'}
                 width={200}
          />
