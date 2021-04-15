@@ -6,7 +6,6 @@ import heart from '../assets/images/heart.png';
 
 import Separator from '../components/Separator3';
 
-const { width: WIDTH } = Dimensions.get('window')
 
 export default function Historique(props) {
     
@@ -96,7 +95,6 @@ export default function Historique(props) {
     
     return (
         <View style={styles.container}>
-            
             <View style={styles.container2}>
                 <View style={{flex: 1, flexDirection: 'row', alignItems: 'center', left: 10}}>
                     <Text style={styles.title}>{convertDate(props.date)}</Text>

@@ -65,7 +65,7 @@ export function profil({ route, navigation }) {
             
                 <TouchableOpacity
                     style={styles.buttonArrondi2}
-                    onPress={() => navigation.navigate('Profil')}>
+                    onPress={() => navigation.navigate('infoUser')}>
                     <Text style={styles.front2}>Informations personnelles</Text>
                 </TouchableOpacity>
 
