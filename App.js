@@ -34,6 +34,8 @@ import { welcome } from './screens/welcome.js';
 import { infoMed } from './screens/profile/infoMed';
 import { infoUser } from './screens/profile/infoUser';
 
+import { direction } from './screens/direction';
+
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -88,6 +90,7 @@ export default function App() {
         <Stack.Screen name="addspotnext" component={addspotnext} />
         <Stack.Screen name="viewpost" component={viewpost} />
         <Stack.Screen name="infoUser" component={infoUser} />
+        <Stack.Screen name="direction" component={direction} />
         
       </Stack.Navigator>
     </NavigationContainer>
