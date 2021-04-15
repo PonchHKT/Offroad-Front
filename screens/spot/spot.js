@@ -59,7 +59,7 @@ export function spot({ route, navigation }) {
 
     const addLike = () => {
 
-        fetch(`https://offroad-app.herokuapp.com/api/like/${userInfos.id}`, {
+        fetch(`https://offroad-app.herokuapp.com/api/like/${userInfos.id}/${spotId}`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json',
@@ -68,7 +68,7 @@ export function spot({ route, navigation }) {
         })
         .then((response) => response.json())
         .then((responseData) => {
-            
+            console.log(responseData.data)
             if(!responseData.data.like[0]) {
 
                 fetch(`https://offroad-app.herokuapp.com/api/like/add`, {
