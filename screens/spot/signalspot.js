@@ -83,7 +83,7 @@ export function signalspot({ route, navigation }) {
 
             <View style={{justifyContent: 'center', alignItems: 'center'}}>
                 <Text 
-                style={{fontFamily: 'Helvetica', fontSize: 13,width: 300, height: 70,}}
+                style={{fontSize: 13,width: 300, height: 70,}}
                 numberOfLines={4}
                 >Pour clôturer votre signalement, vous choisissez de transférer le message à notre équipe en vue d'un contrôle. Nous vous tiendrons au courant des suites qui y seront réservées par email.</Text>
             </View>
@@ -92,7 +92,7 @@ export function signalspot({ route, navigation }) {
                 <Text style={styles.commentText}>Décrire votre signalement :</Text>
             </View>
 
-            <ScrollView>
+            <ScrollView style={{zIndex: 10}}>
                 <CustomInput
                     key={1}
                     placeholder={''}

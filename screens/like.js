@@ -1,10 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import {  View, ScrollView, Text } from 'react-native';
-
+import {  View, ScrollView, StyleSheet, Dimensions } from 'react-native';
+import LottieView from 'lottie-react-native';
 
 import Navbar from '../components/Navbar';
 import Historique from '../components/Historique';
+
+const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export function like({ route, navigation }) {
 
@@ -53,8 +55,17 @@ export function like({ route, navigation }) {
     }
    
     return (
+        <View style={styles.backgroundContainer}>
+        <LottieView
+            resizeMode={'cover'}
+            source={require('../assets/likebackground.json')} 
+            autoPlay
+            loop= {false}
+            speed={1}
+            onAnimationFinish={{width: 0, height: 0}}
+            />
         <ScrollView>
-            <View>
+            <View style={{zIndex: 1000}}>
                 <Navbar
                     key={1}
                     id={1}
@@ -84,5 +95,14 @@ export function like({ route, navigation }) {
             }
             <StatusBar style="auto" hidden={true}/>
         </ScrollView>
+        </View>
     ); 
 }
+
+const styles = StyleSheet.create({
+    backgroundContainer: {
+        height: HEIGHT, 
+        width: WIDTH,
+        backgroundColor: 'white',
+    },
+})
