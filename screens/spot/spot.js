@@ -168,7 +168,7 @@ export function spot({ route, navigation }) {
                                 onPress={() => navigation.navigate('viewpost', { userInfos: userInfos, postInfos: post})}
                             >
                                 <View>
-                                    <Text style={styles.user}>{post.userName}, {userInfos.level}</Text>
+                                    <Text style={styles.user}>{post.userName}</Text>
                                 </View>
 
                                 <View>
@@ -281,7 +281,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#606060',
         fontSize: 16,
-        marginTop: 5,
+        marginBottom: 15,
     },
     description: {
         color: '#606060',
