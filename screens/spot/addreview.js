@@ -46,7 +46,6 @@ export function addreview({ route, navigation }) {
             })
             .then((response) => response.json())
             .then((responseData) => {
-                console.log(responseData)
                 if (responseData.data) {
                     Alert.alert('Commentaire bien ajouté !')
                     navigation.navigate('spot', {spotId: spotId, userInfos: userInfos})
