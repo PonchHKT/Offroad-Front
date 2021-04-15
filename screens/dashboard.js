@@ -36,7 +36,9 @@ export function dashboard({ navigation }) {
                 })
                 .then((response) => response.json())
                 .then((responseData) => {
-                    setSpot({ value: responseData.data.spot})
+                    if(responseData.data.spot) {
+                        setSpot({ value: responseData.data.spot})
+                    }
                 })
 
                 .catch((error) =>{
