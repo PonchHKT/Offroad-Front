@@ -123,14 +123,10 @@ export function spot({ route, navigation }) {
         })
     }
 
-    if (!spot.note) {
+    if (!spot.note || !spot.photo || !posts.post) {
         return <View></View>
     }
-
-    if (!posts.post) {
-        return <View></View>
-    }
-            
+      
     return (
 
         <View style={{flex: 1}}>
@@ -147,7 +143,7 @@ export function spot({ route, navigation }) {
                 accountPress={() => navigation.navigate('profil', {userInfos: userInfos})}
             />
 
-            <Image source={Spot} style={styles.imageSpot}></Image>
+            <Image source={{uri: spot.photo}} style={styles.imageSpot}></Image>
             
             <View>
                 <Text style={styles.noteText}>Note :</Text>
