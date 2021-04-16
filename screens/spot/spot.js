@@ -191,7 +191,7 @@ export function spot({ route, navigation }) {
                                 onPress={() => navigation.navigate('viewpost', { userInfos: userInfos, postInfos: post})}
                             >
                                 <View>
-                                    <Text style={styles.user}>{post.authorId}</Text>
+                                    <Text style={styles.user}>{post.userName}</Text>
                                 </View>
 
                                 <View>
