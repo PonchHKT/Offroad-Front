@@ -29,7 +29,6 @@ export function stats({ route, navigation }) {
         .then((responseData) => {
             if(responseData.data.historique) {
                 setHisto(responseData.data.historique)
-                console.log(histo)
             }
         })
 
@@ -104,14 +103,26 @@ export function stats({ route, navigation }) {
             <MapView
                 region={region}
                 style={{width: '100%', height: 300}}
+                scrollEnabled={false}
             />
 
             <View style={styles.dataContainer}>
-
-                <Text style={styles.dataText}>Vitesse moyenne : {histo.vMoyen}</Text>
-                <Text style={styles.dataText}>Durée : {histo.time}</Text>
-                <Text style={styles.dataText}>Longueur : [data] </Text>
-                <Text style={styles.dataText}>Vitesse max : [data]</Text>
+                <View style={styles.dataView}>
+                    <Text style={styles.dataText}>Vitesse moyenne :</Text> 
+                    <Text style={{textAlignVertical: 'center'}}>{histo.vMoyen}</Text>
+                </View>
+                <View style={styles.dataView}>
+                    <Text style={styles.dataText}>Durée :</Text> 
+                    <Text style={{textAlignVertical: 'center'}}>{histo.time}</Text>
+                </View>
+                <View style={styles.dataView}>
+                    <Text style={styles.dataText}>Longueur :</Text> 
+                    <Text style={{textAlignVertical: 'center'}}>{histo.longueur} </Text>
+                </View>
+                <View style={styles.dataView}>
+                    <Text style={styles.dataText}>Vitesse max :</Text> 
+                    <Text style={{textAlignVertical: 'center'}}>{histo.max}</Text>
+                </View>
             </View>
 
             <Separator2/>
@@ -164,11 +175,16 @@ const styles = StyleSheet.create({
     },
     dataContainer: {
         marginTop: 10,
-        justifyContent: 'space-between',
-        marginLeft: 20,
+    },
+    dataView: {
+        flexDirection: 'row', 
+        alignSelf: 'center',
+        justifyContent: 'space-between', 
+        width: '80%', 
+        paddingBottom: 10, 
+        paddingTop: 10
     },
     dataText: {
-        paddingTop: 20,
         fontWeight: 'bold',
         fontSize: 20,
     },
@@ -178,14 +194,10 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         marginBottom: 10,
         zIndex: 10,
-        top: 610, //* Bug non responsive ?
-        justifyContent: 'center',
-        position: 'absolute',
     },
     buttonContainer: {
         paddingLeft: 20,
         paddingRight: 20,
         zIndex: 10,
-
     }
 });
