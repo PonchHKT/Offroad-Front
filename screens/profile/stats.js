@@ -17,24 +17,26 @@ export function stats({ route, navigation }) {
     const [region, setRegion] = useState({})
     const [histo, setHisto] = useState({})
 
-    fetch(`https://offroad-app.herokuapp.com/api/historique/unique/${historiqueInfos.id}`, {
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-        },
-    })
-    .then((response) => response.json())
-    .then((responseData) => {
-        console.log(responseData.data)
-        // if(responseData.data.historique) {
-        //     setHisto({ value: responseData.data.historique})
-        // }
-    })
+    if(histo.id == undefined) {
+        fetch(`https://offroad-app.herokuapp.com/api/historique/unique/${historiqueInfos.id}`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+        })
+        .then((response) => response.json())
+        .then((responseData) => {
+            if(responseData.data.historique) {
+                setHisto(responseData.data.historique)
+                console.log(histo)
+            }
+        })
 
-    .catch((error) =>{
-        console.error(error);
-    })
+        .catch((error) =>{
+            console.error(error);
+        })
+    }
 
     if(region.latitude == undefined) {
         navigator.geolocation.getCurrentPosition(success, error, options);
@@ -106,8 +108,8 @@ export function stats({ route, navigation }) {
 
             <View style={styles.dataContainer}>
 
-                <Text style={styles.dataText}>Vitesse moyenne : [data]</Text>
-                <Text style={styles.dataText}>Durée : [data]</Text>
+                <Text style={styles.dataText}>Vitesse moyenne : {histo.vMoyen}</Text>
+                <Text style={styles.dataText}>Durée : {histo.time}</Text>
                 <Text style={styles.dataText}>Longueur : [data] </Text>
                 <Text style={styles.dataText}>Vitesse max : [data]</Text>
             </View>
