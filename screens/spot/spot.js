@@ -127,7 +127,7 @@ export function spot({ route, navigation }) {
         try {
           const result = await Share.share({
             message:
-              `Regarde, j\'ai trouvé un spot qui pourrait être interessant pour toi !`,
+              `Regarde, j\'ai trouvé un spot qui pourrait être interessant pour toi ! Voici la photo : ${spot.photo}, la note : ${spot.note}`,
           });
           if (result.action === Share.sharedAction) {
             if (result.activityType) {

@@ -15,7 +15,7 @@ export function viewpost({ route, navigation }) {
         try {
           const result = await Share.share({
             message:
-              `Regarde, j\'ai trouvé un commentaire qui pourrait être interessant pour toi !`,
+              `Regarde, j\'ai trouvé un commentaire de ${postInfos.userName} qui pourrait être interessant pour toi !`,
           });
           if (result.action === Share.sharedAction) {
             if (result.activityType) {
