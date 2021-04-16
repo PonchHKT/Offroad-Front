@@ -67,13 +67,15 @@ export function direction({ route, navigation }) {
         let distance = str_pad_left2(km,'0',2)+'km '+str_pad_left2(m,'0',2);
 
         let time = val.duration * 60;
+        let hours = Math.floor(time / 3600);
+        time = time - hours * 3600;
         let minutes = Math.floor(time / 60);
         let seconds = time - minutes * 60;
         function str_pad_left(string,pad,length) {
             return (new Array(length+1).join(pad)+string).slice(-length);
         }
 
-        let duration = str_pad_left(minutes,'0',2)+'m '+str_pad_left(seconds,'0',2);
+        let duration = str_pad_left(hours,'0',2)+'h '+str_pad_left(minutes,'0',2)+'m '+str_pad_left(seconds,'0',2);
 
         if(distance != infos.distance || duration != infos.time) {
             setInfos({ distance: distance, time: duration})
