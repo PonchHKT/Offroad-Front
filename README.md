@@ -58,7 +58,7 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
-Copyright © 2021 [@Edofo](https://github.com/Edofo) [@Matthlo](https://github.com/Matthlo) [@Ponch](https://github.com/Ponch) [@SebP](https://github.com/Seb-Pere)
+Copyright © 2021 [@Edofo](https://github.com/Edofo) [@Matthlo](https://github.com/Matthlo) [@Ponch](https://github.com/PonchHKT) [@SebP](https://github.com/Seb-Pere)
 .<br />
 
 *** 
