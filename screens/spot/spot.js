@@ -186,13 +186,12 @@ export function spot({ route, navigation }) {
 
                 <ScrollView contentContainerStyle={{flexGrow: 1}}>
                     { posts.post.map((post, index) => (
-
                         <View key={index}>
                             <TouchableOpacity
                                 onPress={() => navigation.navigate('viewpost', { userInfos: userInfos, postInfos: post})}
                             >
                                 <View>
-                                    <Text style={styles.user}>{post.userName}</Text>
+                                    <Text style={styles.user}>{post.authorId}</Text>
                                 </View>
 
                                 <View>

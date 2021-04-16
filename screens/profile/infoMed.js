@@ -50,12 +50,13 @@ export function infoMed({ route, navigation }) {
                         'Authorization': 'Bearer ' + token
                     },
                     body: JSON.stringify({
-                        pseudo: pseudo.value,
-                        email: email.value,
-                        password: password.value,
-                        passwordConfirmation: passwordConfirmation.value,
-                        level: level.value,
-                        notif: true,
+                        sang: pseudo.value,
+                        allergie: email.value,
+                        medicament: password.value,
+                        taille: passwordConfirmation.value,
+                        poids: level.value,
+                        tel: true,
+                        other: '',
                     })
                 })
                 .then((response) => response.json())
