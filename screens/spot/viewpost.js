@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Share } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Share, Alert } from 'react-native';
 import {FontAwesome} from '@expo/vector-icons';
 
 import Navbar from '../../components/Navbar';
