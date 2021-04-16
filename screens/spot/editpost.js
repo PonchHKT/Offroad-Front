@@ -46,7 +46,6 @@ export function editpost({ route, navigation }) {
             })
             .then((response) => response.json())
             .then((responseData) => {
-                console.log(responseData)
                 if (responseData.data) {
                     Alert.alert('Commentaire bien modifié !')
                     navigation.navigate('spot', {spotId: spotId, userInfos: userInfos})
@@ -61,7 +60,7 @@ export function editpost({ route, navigation }) {
 
     return (
 
-        <View style={{backgroundColor: 'white', color: 'ffffff'}}>
+        <View style={{backgroundColor: 'white', height: '100%'}}>
 
             <ScrollView>
                 <Navbar 
@@ -114,13 +113,14 @@ export function editpost({ route, navigation }) {
                     spacing={4}
                     size={30}
                 />
+                <View style={{flex: 1, position: 'absolute', right: 0, bottom: '15%'}}>
+                    <Image 
+                    source={review}
+                    style={{width: 120, height: 120}}/>
+                </View>
             </View>
 
-            <View style={{justifyContent: 'center', alignItems: 'center', position: 'absolute', left: 210, top: 448}}>
-                        <Image 
-                        source={review}
-                        style={{width: 120, height: 120}}/>
-                    </View>
+            
 
             <Separator/>
             <Separator2/>

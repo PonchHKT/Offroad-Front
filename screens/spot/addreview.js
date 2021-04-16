@@ -61,7 +61,7 @@ export function addreview({ route, navigation }) {
 
     return (
 
-        <View style={{backgroundColor: 'white', color: 'ffffff'}}>
+        <View style={{backgroundColor: 'white', height: '100%'}}>
 
             <ScrollView>
                 <Navbar 
@@ -76,7 +76,6 @@ export function addreview({ route, navigation }) {
                 />
             </ScrollView>
 
-            <Separator/>
             <Separator/>
 
             <View>
@@ -104,7 +103,11 @@ export function addreview({ route, navigation }) {
             <View>
                 <Text style={styles.noteText}>Note :</Text>
                 </View>
-
+                <View style={{flex: 1, position: 'absolute', right: 0, bottom: '15%'}}>
+                    <Image 
+                        source={review}
+                        style={{width: 120, height: 120}}/>
+                </View>
                 <View style={styles.note}>
                 <Note 
                     key={1}
@@ -114,13 +117,10 @@ export function addreview({ route, navigation }) {
                     spacing={4}
                     size={30}
                 />
+                
             </View>
 
-            <View style={{justifyContent: 'center', alignItems: 'center', position: 'absolute', left: 210, top: 448}}>
-                        <Image 
-                        source={review}
-                        style={{width: 120, height: 120}}/>
-                    </View>
+            
 
             <Separator/>
             <Separator2/>
@@ -135,6 +135,8 @@ export function addreview({ route, navigation }) {
                 />
 
             </View>
+            <Separator/>
+            <Separator />
             <StatusBar style="auto" hidden={true}/>
         </View> 
 
