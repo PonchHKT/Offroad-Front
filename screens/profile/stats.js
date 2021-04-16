@@ -46,7 +46,7 @@ export function stats({ route, navigation }) {
         try {
           const result = await Share.share({
             message:
-              `Regarde, j\'ai trouvé un commentaire qui pourrait être interessant pour toi !`,
+              `Regarde, ce que j'ai fait comme spot !`,
           });
           if (result.action === Share.sharedAction) {
             if (result.activityType) {
