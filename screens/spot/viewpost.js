@@ -9,7 +9,7 @@ import Separator from '../../components/Separator3';
 
 export function viewpost({ route, navigation }) {
 
-    const { userInfos, postInfos } = route.params;
+    const { spotId, userInfos, postInfos } = route.params;
 
     const onShare = async () => {
         try {
@@ -29,11 +29,25 @@ export function viewpost({ route, navigation }) {
     };
 
     const deletePost = () => {
+        fetch(`https://offroad-app.herokuapp.com/api/post/delete/${postInfos.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+        })
+        .then((response) => response.json())
+        .then((responseData) => {
+            console.log(responseData)
+            if (responseData.data) {
+                Alert.alert('Le commentaire à bien été supprimé !')
+                navigation.navigate('spot', {userInfos: userInfos, spotId: spotId})
+            }
+        })
 
-    }
-
-    const editPost = () => {
-        
+        .catch((error) =>{
+            console.error(error);
+        })
     }
             
     return (
@@ -92,7 +106,7 @@ export function viewpost({ route, navigation }) {
 
                 { postInfos.authorId == userInfos.id ?
                     <View style={styles.buttonContainer}>
-                        <TouchableOpacity onPress={() => editPost()}>
+                        <TouchableOpacity onPress={() => deletePost()}>
                             <FontAwesome 
                                 name="trash" 
                                 color="black"
@@ -105,7 +119,7 @@ export function viewpost({ route, navigation }) {
                 }
                 { postInfos.authorId == userInfos.id ?
                     <View style={styles.buttonContainer}>
-                        <TouchableOpacity onPress={() => editPost()}>
+                        <TouchableOpacity onPress={() => navigation.navigate('editpost', {userInfos: userInfos, spotId: spotId, postInfos: postInfos})}>
                             <FontAwesome 
                                 name="edit" 
                                 color="black"

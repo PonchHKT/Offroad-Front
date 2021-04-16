@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { StyleSheet, View, Dimensions, ImageBackground } from 'react-native';
+import { StyleSheet, View, Dimensions } from 'react-native';
 import MapView, { Polyline } from 'react-native-maps';
 
 import { getPreciseDistance, getSpeed } from 'geolib';
@@ -22,6 +22,7 @@ export function startrando({ route, navigation }) {
     })
     
     const [coord, setCoord] = useState({})
+    const [stopBoucle, setStop] = useState(false)
     const [polyline, setPolyline] = useState([{ latitude: region.latitude, longitude: region.longitude }])
 
     let longueur = 0;
@@ -66,75 +67,89 @@ export function startrando({ route, navigation }) {
         });
     }
 
+    // console.log(stopBoucle)
+    
     const Boucle = async() => {
+        console.log(stopBoucle)
 
-        if (!startDate) {
-            startDate = new Date();
-        }
+        try {
+            console.log(stopBoucle)
 
-        getPosition()
-        .then((position) => {
+            if(stopBoucle === false) {
+                console.log(stopBoucle)
 
-            let endDate = new Date();
-            
-            console.log(coord)
+                if (!startDate) {
+                    startDate = new Date();
+                }
 
-            const distance = getPreciseDistance(
-                { latitude: coord.latitude, longitude: coord.longitude },
-                { latitude: position.coords.latitude, longitude: position.coords.longitude }
-            )
+                getPosition()
+                .then((position) => {
 
-            const speed2 = getSpeed(
-                { latitude: coord.latitude, longitude: coord.longitude, time: startDate },
-                { latitude: position.coords.latitude, longitude: position.coords.longitude, time: endDate }
-            )
+                    let endDate = new Date();
+                    
+                    const distance = getPreciseDistance(
+                        { latitude: coord.latitude, longitude: coord.longitude },
+                        { latitude: position.coords.latitude, longitude: position.coords.longitude }
+                    )
 
-            if(speed2 > speed) {
-                speed = speed2;
+                    const speed2 = getSpeed(
+                        { latitude: coord.latitude, longitude: coord.longitude, time: startDate },
+                        { latitude: position.coords.latitude, longitude: position.coords.longitude, time: endDate }
+                    )
+
+                    if(speed2 > speed) {
+                        speed = speed2;
+                    }
+
+                    navigator.geolocation.getCurrentPosition(success, error)
+
+                    const newCoord = {latitude: position.coords.latitude, longitude: position.coords.longitude}
+                    polyline.push(newCoord)
+                    console.log('AH')
+                    
+
+                    secondes = secondes + (endDate.getTime() - startDate.getTime()) / 1000;
+                    longueur = longueur + distance;
+
+                    startDate = endDate
+                    console.log(stopBoucle)
+                    setTimeout(Boucle, 3000)
+                })
+                .catch((err) => {
+                    console.error(err.message);
+                })
             }
-
-            navigator.geolocation.getCurrentPosition(success, error)
-
-            const newCoord = {latitude: position.coords.latitude, longitude: position.coords.longitude}
-            polyline.push(newCoord)
-            console.log('AH')
-            console.log(polyline)
-
-            secondes = secondes + (endDate.getTime() - startDate.getTime()) / 1000;
-            longueur = longueur + distance;
-
-            startDate = endDate
-
-            setTimeout(Boucle, 1000)
-        })
-        .catch((err) => {
-            console.error(err.message);
-        })
+        } catch(e) {
+            console.error(e.message)
+        }
     }
 
     const Stop = async() => {
-        fetch(`https://offroad-app.herokuapp.com/api/historique/add`, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                distance: longueur,
-                temps: secondes,
-                speed: speed,
-                spotId: spotInfos.id,
-                authorId: userInfos.id
-            })
-        })
-        .then((response) => response.json())
-        .then(async(responseData) => {
-            console.log(responseData)
-            navigation.navigate('dashboard')
-        })
-        .catch((error) =>{
-            console.error(error);
-        })
+        setStop(true)
+        // console.log(stopBoucle)
+
+        // fetch(`https://offroad-app.herokuapp.com/api/historique/add`, {
+        //     method: 'POST',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({
+        //         distance: longueur,
+        //         temps: secondes,
+        //         speed: speed,
+        //         spotId: spotInfos.id,
+        //         authorId: userInfos.id
+        //     })
+        // })
+        // .then((response) => response.json())
+        // .then(async(responseData) => {
+        //     console.log(responseData)
+        //     navigation.navigate('dashboard')
+        // })
+        // .catch((error) =>{
+        //     console.error(error);
+        // })
     }
 
     return (

@@ -11,7 +11,7 @@ import { commentsValidator } from '../../helpers/commentsValidator';
 
 export function infoMed({ route, navigation }) {
 
-    const { userInfos } = route.params;
+    const { userInfos, token } = route.params;
 
     const [taille, setTaille] = useState({ value: '', error: '' })
     const [poids, setPoids] = useState({ value: '', error: '' })
@@ -47,22 +47,22 @@ export function infoMed({ route, navigation }) {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ' + token
-                    },
-                    body: JSON.stringify({
-                        sang: pseudo.value,
-                        allergie: email.value,
-                        medicament: password.value,
-                        taille: passwordConfirmation.value,
-                        poids: level.value,
-                        tel: true,
-                        other: '',
-                    })
+                    'Authorization': 'Bearer ' + token
+                },
+                body: JSON.stringify({
+                    sang: sang.value,
+                    allergie: allergies.value,
+                    medicament: traitement.value,
+                    taille: taille.value,
+                    poids: poids.value,
+                    tel: numero.value,
+                    other: other.value,
                 })
-                .then((response) => response.json())
-                .then((responseData) => {
-                    console.log(responseData)
-                })
+            })
+            .then((response) => response.json())
+            .then((responseData) => {
+                console.log(responseData)
+            })
             .catch((error) =>{
                 console.error(error);
             })
@@ -98,11 +98,10 @@ export function infoMed({ route, navigation }) {
             <Text style={styles.front}>Poids :</Text>
             <CustomInput
                 key={3}
-                placeholder={'63Kg'}
                 valeur={poids.value}
                 error={!!poids.error}
                 errorText={poids.error}
-                text={(text) => setSang({ value: text, error: '' })}
+                text={(text) => setPoids({ value: text, error: '' })}
             />
 
             <Text style={styles.front}>Groupe sanguin :</Text>
@@ -112,7 +111,7 @@ export function infoMed({ route, navigation }) {
                 valeur={sang.value}
                 error={!!sang.error}
                 errorText={sang.error}
-                text={(text) => setPoids({ value: text, error: '' })}
+                text={(text) => setSang({ value: text, error: '' })}
             />
 
             <Text style={styles.front}>Numéro du proche à contacter :</Text>

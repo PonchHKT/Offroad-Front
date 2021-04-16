@@ -188,7 +188,7 @@ export function spot({ route, navigation }) {
                     { posts.post.map((post, index) => (
                         <View key={index}>
                             <TouchableOpacity
-                                onPress={() => navigation.navigate('viewpost', { userInfos: userInfos, postInfos: post})}
+                                onPress={() => navigation.navigate('viewpost', { userInfos: userInfos, postInfos: post, spotId: spotId})}
                             >
                                 <View>
                                     <Text style={styles.user}>{post.userName}</Text>

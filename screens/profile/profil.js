@@ -71,7 +71,7 @@ export function profil({ route, navigation }) {
 
                 <TouchableOpacity
                     style={styles.buttonArrondi2}
-                    onPress={() => navigation.navigate('infoMed', {userInfos: userInfos})}>
+                    onPress={() => navigation.navigate('infoMed', {userInfos: userInfos, token: token})}>
                     <Text style={styles.front2}>Informations médicales</Text>
                 </TouchableOpacity>
 

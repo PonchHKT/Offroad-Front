@@ -24,6 +24,7 @@ import { addreview } from './screens/spot/addreview';
 import { signalspot } from './screens/spot/signalspot';
 import { signalpost } from './screens/spot/signalpost';
 import { viewpost } from './screens/spot/viewpost';
+import { editpost } from './screens/spot/editpost';
 
 import { addspot } from './screens/addSpot/addspot1';
 import { addspotnext } from './screens/addSpot/addspot2';
@@ -76,6 +77,7 @@ export default function App() {
         <Stack.Screen name="comments" component={comments} />
         <Stack.Screen name="getHistorique" component={getHistorique} />
         <Stack.Screen name="infoMed" component={infoMed} />
+        <Stack.Screen name="infoUser" component={infoUser} />
         <Stack.Screen name="stats" component={stats} />
         <Stack.Screen name="profil" component={profil} />
 
@@ -86,11 +88,13 @@ export default function App() {
         <Stack.Screen name="addreview" component={addreview} />
         <Stack.Screen name="signalspot" component={signalspot} />
         <Stack.Screen name="signalpost" component={signalpost} />
+        <Stack.Screen name="viewpost" component={viewpost} />
+        <Stack.Screen name="direction" component={direction} />
+        <Stack.Screen name="editpost" component={editpost} />
+
         <Stack.Screen name="addspot" component={addspot} />
         <Stack.Screen name="addspotnext" component={addspotnext} />
-        <Stack.Screen name="viewpost" component={viewpost} />
-        <Stack.Screen name="infoUser" component={infoUser} />
-        <Stack.Screen name="direction" component={direction} />
+        
         
       </Stack.Navigator>
     </NavigationContainer>

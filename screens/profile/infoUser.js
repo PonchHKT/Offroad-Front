@@ -1,7 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-gesture-handler';
 import { StyleSheet, View, Text, ScrollView, Dimensions } from "react-native";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import jwt_decode from "jwt-decode";
+
 import Navbar from '../../components/Navbar';
 import CustomInput from '../../components/CustomInput';
 import ModalDropdown from 'react-native-modal-dropdown';
@@ -19,13 +23,15 @@ export function infoUser({ route, navigation }) {
     const { userInfos, token } = route.params;
 
     const [security, setSecurity] = useState(true);
+    const [user, setUser] = useState({});
+    const [token2, setToken] = useState('');
 
     const [pseudo, setPseudo] = useState({ value: userInfos.pseudo, error: '' })
     const [email, setEmail] = useState({ value: userInfos.email, error: '' })
     const [password, setPassword] = useState({ value: '', error: '' })
     const [passwordConfirmation, setPasswordConf] = useState({ value: '', error: '' })
-    const [level, setLevel] = useState(userInfos.level);
-    const [notif, setNotif] = useState(userInfos.notif);
+    const [level, setLevel] = useState(0);
+    const [notif, setNotif] = useState(0);
 
     const changeSecurity = () => {
         { security ?
@@ -94,14 +100,22 @@ export function infoUser({ route, navigation }) {
                         email: email.value,
                         password: password.value,
                         passwordConfirmation: passwordConfirmation.value,
-                        level: level.value,
-                        notif: true,
+                        level: level,
+                        notif: notif,
                     })
                 })
                 .then((response) => response.json())
-                .then((responseData) => {
+                .then(async(responseData) => {
                     console.log(responseData)
+                    await AsyncStorage.removeItem('token')
+                    AsyncStorage.setItem('token', responseData.data.token)
+                    .then((tokenUser) => { 
+                        const decryptToken = jwt_decode(tokenUser);
+                        setUser(decryptToken)
+                        setToken(tokenUser)
+                    })
                 })
+
             .catch((error) =>{
                 console.error(error);
             })
