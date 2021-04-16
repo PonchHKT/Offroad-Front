@@ -76,7 +76,7 @@ export function getHistorique({ route, navigation }) {
                         date={historique.createdAt}
                         image={true}
                         spot={historique.spotId}
-                        actionsbtn={() => navigation.navigate('stats', { spotId: historique.spotId, userInfos: userInfos})}
+                        actionsbtn={() => navigation.navigate('stats', { spotId: historique.spotId, userInfos: userInfos, historiqueInfos: historique})}
                     />
                 ))
             }

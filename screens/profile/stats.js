@@ -12,9 +12,29 @@ const { width: WIDTH, height: HEIGHT } = Dimensions.get('window')
 
 export function stats({ route, navigation }) {
 
-    const { userInfos } = route.params;
+    const { userInfos, historiqueInfos } = route.params;
     
     const [region, setRegion] = useState({})
+    const [histo, setHisto] = useState({})
+
+    fetch(`https://offroad-app.herokuapp.com/api/historique/unique/${historiqueInfos.id}`, {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+    })
+    .then((response) => response.json())
+    .then((responseData) => {
+        console.log(responseData.data)
+        // if(responseData.data.historique) {
+        //     setHisto({ value: responseData.data.historique})
+        // }
+    })
+
+    .catch((error) =>{
+        console.error(error);
+    })
 
     if(region.latitude == undefined) {
         navigator.geolocation.getCurrentPosition(success, error, options);
